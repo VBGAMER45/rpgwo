@@ -1,0 +1,245 @@
+;; bandit rob haven
+
+;; send in a scout to locate the bank
+;; if scout comes back, send in small force
+;; if scout dies send in larger force
+;; Have bandits start off outside of town
+;; Move them towards the bank
+;; Have them wait at bank 5 minutes
+;; move them out of town
+
+;;;;;;;;;;;;;;;
+
+Dim StartX
+Dim StartY
+Dim ShopX
+Dim ShopY
+
+Dim BanditTag
+Dim ScoutTag
+Dim BaronTag
+Dim RogueTag
+
+Let StartX = 1455
+Let StartY = 1645
+
+Let ShopX = 1465
+Let ShopY = 1680
+
+Let StartX = 120
+Let StartY = 100
+
+Let ShopX = 120
+Let ShopY = 120
+
+
+Let BanditTag = GetFreeTag()
+Let ScoutTag = GetFreeTag()
+Let BaronTag = GetFreeTag()
+Let RogueTag = GetFreeTag()
+
+Title Bandits Raid Haven
+
+;;;;;;;;;;;;;;;
+
+Global The town of Haven is a peaceful, safe place for the wandering adventurer... also the perfect place for bandits to raid!!!
+
+
+MonsterAdd Bandit Scout, startx, starty, 0, 1, ScoutTag
+MonsterGoto ScoutTag, ShopX, ShopY-5
+MonsterIgnoreAll ScoutTag, True
+
+
+;;;;;;;;;;;;;;;
+
+:WaitForScout1
+
+Wait 1
+
+IfMonsterAt ScoutTag, ShopX, ShopY-5, 2, ScoutAtBank
+
+IfNotMonsterExist ScoutTag, ScoutKilled
+
+Goto WaitForScout1
+
+;;;;;;;;;;;;;;;;;;
+
+:ScoutAtBank
+
+Wait 2
+
+MonsterGoto ScoutTag, StartX, StartY
+
+;;;;;;;;;;;;;;;;;;
+
+:WaitForScout2
+
+IfMonsterAt ScoutTag, StartX, StartY, 2, ScoutAtForest
+
+IfNotMonsterExist ScoutTag, ScoutKilled
+
+Goto WaitForScout2
+
+;;;;;;;;;;;;;;;;;;
+
+:ScoutKilled
+
+Global A Bandit Scout has been spotted and killed near Haven!
+
+Wait 4
+
+MonsterAdd Bandit Baron, startx, starty, 0, 1, BaronTag
+MonsterAdd Bandit Rogue, startx, starty, 0, 1, RogueTag
+
+MonsterChat RogueTag, My Baron\, our scout has not returned and I fear he is dead.
+
+Wait 1
+
+MonsterChat BaronTag, I agree. We shall move forward but with greater forces and wariness.
+
+MonsterAdd Bandit Mage, startx, starty, 0, 4, BanditTag
+MonsterAdd Bandit Archer, startx, starty, 0, 4, BanditTag
+MonsterAdd Bandit, startx, starty, 0, 4, BanditTag
+
+MonsterAdd Bandit Rogue, startx, starty, 0, 4, BanditTag
+MonsterAdd Bandit Spar, startx, starty, 0, 4, BanditTag
+
+Wait 1
+
+MonsterChat BaronTag, Let's go.
+
+MonsterGoto BanditTag, Shopx, ShopY
+MonsterGoto RogueTag, Shopx, ShopY
+MonsterGoto BaronTag, Shopx, ShopY
+
+Goto Attackhaven
+
+;;;;;;;;;;;;;;;;;;
+
+:ScoutAtForest
+
+MonsterAdd Bandit Baron, startx, starty, 0, 1, BaronTag
+
+MonsterChat BaronTag, Report what you have found out.
+
+Wait 1
+
+MonsterChat ScoutTag, The bank is not well guarded. A small force should suffice.
+
+Wait 1
+
+MonsterChat BaronTag, Good, we shall take them easily.
+
+MonsterAdd Bandit Mage, startx, starty, 0, 4, BanditTag
+MonsterAdd Bandit Archer, startx, starty, 0, 4, BanditTag
+MonsterAdd Bandit, startx, starty, 0, 4, BanditTag
+
+MonsterIgnoreAll ScoutTag, False
+
+Wait 1
+
+MonsterChat BaronTag, Let's go.
+
+MonsterGoto BanditTag, Shopx, ShopY
+MonsterGoto RogueTag, Shopx, ShopY
+MonsterGoto BaronTag, Shopx, ShopY
+MonsterGoto ScoutTag, Shopx, ShopY
+
+Goto Attackhaven
+
+;;;;;;;;;;;;;;;;;;
+
+:AttackHaven
+
+MonsterChat BaronTag, To the bank! Kill all who stand in the way!
+
+Wait 4
+
+IfMonsterAt BanditTag, Shopx, ShopY, 5, RobBank
+
+IfNotMonsterExist BanditTag, Victory1
+
+IfNotMonsterExist BaronTag, BaronDead1
+
+Goto AttackHaven
+
+;;;;;;;;;;;;;;;;;;
+
+:RobBank
+
+MonsterChat BaronTag, Take only the gold. Leave the notes, they are worthless.
+
+Wait 4
+
+IfNotMonsterExist BaronTag, BaronDead2
+
+Goto FleeHaven
+
+;;;;;;;;;;;;;;;;;;
+
+:Victory1
+
+Global The bandit raid has been thwarted!
+
+MonsterChat BaronTag, I'll be back one day... I promise!!!
+
+MonsterRemove RogueTag
+MonsterRemove ScoutTag
+MonsterRemove BaronTag
+MonsterRemove BanditTag
+
+End
+
+;;;;;;;;;;;;;;;;;;
+
+:BaronDead1
+
+Global The bandit baron has been killed!
+
+Goto AttackHaven
+
+;;;;;;;;;;;;;;;;;;
+
+
+:BaronDead2
+
+Global The bandit baron has been killed!
+
+Goto FleeHaven
+
+;;;;;;;;;;;;;;;;;;
+
+
+:FleeHaven
+
+MonsterChat BaronTag, Let's get back to the forest and escape this mire!
+
+MonsterGoto BanditTag, Startx, StartY
+MonsterGoto RogueTag, Startx, StartY
+MonsterGoto BaronTag, Startx, StartY
+MonsterGoto ScoutTag, Startx, StartY
+
+Wait 1
+
+IfMonsterAt BanditTag, Startx, StartY, 8, Escape
+
+IfNotMonsterExist BanditTag, Victory1
+
+IfNotMonsterExist BaronTag, BaronDead2
+
+Goto Fleehaven
+
+;;;;;;;;;;;;;
+
+:Escape
+
+Global The bandits have robbed the Haven bank and have escaped!
+
+MonsterRemove RogueTag
+MonsterRemove ScoutTag
+MonsterRemove BaronTag
+MonsterRemove BanditTag
+
+End
+
+;;;;;;;;;;;;;;;

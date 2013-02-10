@@ -1,0 +1,7 @@
+
+ItemUse
+ItemTool=1/4 Full Water Barrel
+ItemFocus=1/8 Full Water Barrel
+SuccessTool=3/4 Full Water Barrel
+FailedTool=1/4 Full Water Barrel
+FailedFocus=5/8 Full Water Barrel

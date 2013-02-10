@@ -1,0 +1,355 @@
+; guide.es
+
+; Event Script guide
+
+
+;;;;; Implemented commands...
+
+
+;;; Notes on strings...
+;;;  - enclose variable names in % in string messages like the global to print variables out
+;;;     - example (assume tag1 is a variable): Global Hello World %tag1%
+;;;  - use 2 % to print a single %
+;;;     - example: MonsterChat Tag1, I have 100%% life.
+
+
+;   -- use a @ in front of label to denote a gosub instead of a goto
+;       Example:  IfMonsterExist MonsterTag1, @sub1
+
+
+;   Hidden            ; does not show up in /event  command
+
+;   Log TRUE | FALSE    ; each line is logged as it is executed
+
+;   Begin          ; starting point of execution
+
+;   End            ; stop script
+
+;   Goto <label>
+
+;   Sub <label>    ; start of a subroutine
+
+;   Gosub <label>
+
+;   Return    ; returns from a sub
+
+;   EndSub    ; same as Return but more explicit
+
+;   :<text>             ; label
+
+;   EventStart <filename>
+
+;   Arguments for scripts when started from other scripts
+;         - Arg0, Arg1, ... , Arg9
+
+
+;   GDim <variable>     ; a global variable seen by ALL scripts running
+
+;   Dim <variable>
+
+;   Let <variable> = <number> | <expression> | <built-in-function name>
+              ; <expression> => <source> + <source>
+              ; <expression> => <source> - <source>
+              ; <expression> => <source> * <source>
+              ; <expression> => <source> / <source>
+              ; <source> => <number> | <variable>
+
+;   GetFreeTag()    ; returns an unused tag and marks it as used until script ends
+                    ; Example: Let Tag1 = GetFreeTag()
+
+;   GetChatUUID()   ; returns the player uuid that met the last IfPlayerChat criteria
+                    ; Example: Let UUID1 = GetCHatUUID()
+
+;   RND()       ; returns a random number from min to max (default 0 to 100), longs only
+                ; example: Let R1 = RND()
+
+;   GetNearestPlayer()     ; used to get the last player found with ifplayernear or not
+;                          ; this includes tames
+;         Example:  WarpPlayer GetNearestPlayer(), 100, 100, 0
+
+;   MaxRnd <number>    ; sets the max for RND() to return
+
+;   MinRnd <number>    ; sets the min for RND() to return
+
+;   Title <text>          ; shows up when player types /event
+
+;   Global <text>         ; sent out to all players
+
+;   LocalChat <xpos>, <ypos>, <zpos>, <range>, <message>
+
+;   SendMessage <uuid>, <message>
+
+;   MailSend <playername>, <message>       ; admins names, remove @
+
+;   Wait <20 second interval(s)>        
+
+;   MonsterAdd <name>, <xpos>, <ypos>, <zpos>, <qty>, <tag>
+
+;   MonsterGoto <tag>, <xpos>, <ypos>   ; sets all <tags> to goto x,y
+
+;   MonsterRemove <tag>      ; remove monsters with <tag>
+
+;   IfNotMonsterExist <tag>, <label>   ; if monsters with the <tag> not exist then
+                                       ; goto <label> else fall through
+
+;   IfMonsterAT <tag>, <xpos>, <ypos>, <range>, <label>
+
+;   IfNotMonsterAT <tag>, <xpos>, <ypos>, <range>, <label>
+
+;   MonsterChat <tag>, <message>
+
+;   MonsterIgnoreAll <tag>, TRUE | FALSE
+
+;   MonsterAttackable <tag>, TRUE | FALSE      ; players cannot attack the monster
+
+;   MonsterAcceptItem <tag>, <itemid>
+
+;   IfMonsterHasItem <tag>, <itemid>, <label>, <quantity>
+
+;   IfNotMonsterHasItem <tag>, <itemid>, <label>, <quantity>
+
+;   MonsterLocation <tag>, <varX>, <varY>, <varZ>   ; places x,y,z in the vars
+
+;   MonsterFollow <tag>, <uuid> | <name> | <tag>, <range>
+
+;   MonsterNewHome <tag>           ; stops the monster and holds them at current spot
+
+;   MonsterCount <tag>, <varCount>       ; counts tag monsters, places in varcount
+
+;   IfPlayerNear <xpos>, <ypos>, <zpos>, <range>, <label>        ; includes tames???
+
+;   IfNotPlayerNear <xpos>, <ypos>, <zpos>, <range>, <label>     ; includes tames???
+
+;   ItemAdd <name>, <xpos>, <ypos>, <zpos>, <qty>, <tag>
+
+;   ItemRemove <tag>
+
+;   ItemData <tag>, <data1>, <data2>, <data3>, <data4>, <data5>, <data6>, <data7>, <data8>
+
+;   ItemLock <tag>, TRUE | FALSE
+
+;***New   ItemGoto <tag>, <Xpos>, <Ypos>
+
+;   ItemGive <itemtag>, <playeruuid>
+;          moves itemtag from ground into players inventory, so you make it on the ground first w/data, etc
+
+;   IfItemAt <tag>, <xpos>, <ypos>, <zpos>, <range>, <label>
+
+;   IfNotItemAt <tag>, <xpos>, <ypos>, <zpos>, <range>, <label>
+
+;   RecordChatOn <xpos>, <ypos>, <zpos>, <range>, <tag>     ; saves player chat near a tagged monster
+
+;   RecordChatOff <tag>       ; stops logging on this tag
+ 
+;   RecordChatReset <tag>     ; clears all chat logged on this tag
+
+;   IfPlayerChat <tag>, <chat phrase>, <label>
+
+;   Animation <xpos>, <ypos>, <zpos>, <animation>
+
+;   WarpPlayer <UUID>, <Xpos>, <ypos>, <zpos>
+
+;   IfEquals <number1>, <number2>, <label>  ; if 1 = 2 then goto label
+
+;   IfGreater <number1>, <number2>, <label>  ; if 1 > 2 then goto label
+
+;   IfLess <number1>, <number2>, <label>  ; if 1 < 2 then goto label
+
+;   GiveXp <uuid>, <xp>
+
+;   Distance <X1>, <Y1>, <X2>, <Y2>, <varDist>    ; puts distance into <varDist>
+
+
+;;;;; Normally push and pop are used internally for gosub and return
+;;;;; but can be used as long as gosub or @<label> was not called
+;   Push <expression>
+
+;   Pop <variable>
+
+
+
+;;;;;;;; not implemented yet
+
+
+
+;   LoadPlayer <vessel tag>, <UUID>    ; loads a player onto another "player", ie boat
+
+;   UnloadPlayer <vessel tag>, <UUID>   ; unloads a player from another "player", ie boat
+
+;   SpotItemClear <Xpos>, <Ypos>, <Zpos>      ; remove any item there
+
+;   NPCTag <name>, <tag>       ;  tagging existing NPC/Monsters
+
+;   MonsterGiveItem <tag>, <item name>, <qty>
+
+;   MonsterArmItem <tag>, <item name>
+
+;   GlobalChat <message>
+
+;   IfChance <percent>, <label>
+
+;   MonsterSpawnAdd <name>, <xpos>, <ypos>, <zpos>, <qty>, <tag>, <ttl>
+
+;   MonsterSpawnRemove <xpos>, <ypos>, <zpos> | <name>   ; use <name> for NPCs
+
+;   MapAdd <filename>, <xpos>, <ypos>, <zpos>, <tag>
+
+;   LandPlotClaim <xpos>, <ypos>
+
+;   LandPlotUnClaim <xpos>, <ypos>
+
+
+
+;   ItemUse <monstertag>, <itemtag>
+
+;   MonsterNPCIgnore <tag>, TRUE | FALSE         ; npc gaurds ignore the monster
+
+;   TriggerPlayer()          ; returns the player who triggered the event
+
+;   MonsterStalk <tag>, <uuid> | <name> | <tag>
+
+;   MonsterGaurd <tag>
+
+;   MonsterHome <tag>
+
+;   MonsterSetFire <tag>, TRUE | FALSE
+
+;   ItemMovable <tag>, TRUE | FALSE
+
+;   ItemReset <tag>, <number>
+
+;   ItemWriting <tag>, <text>
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;; WARNING: THE FOLLOWING SCRIPT WAS NEVER TESTED OR RUN BY ME
+;;;;;          IT WAS DEVELOPED TO HELP ME FIGURE OUT A SYNTAX
+;;;;;          IT IS MORE OF AN EXAMPLE OF WHAT I WAS SHOOTING FOR
+;;;;;          IT MOST LIKELY CONTAINS BUGS!!!!
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;
+; begin
+
+Dim X1
+Dim Y1
+Dim X2
+Dim Y2
+Dim Tag1
+
+
+Begin
+
+Let X1 = 100
+Let Y1 = 100
+
+Let X2 = 160
+Let Y2 = 160
+
+Let Tag1 = GetFreeTag()
+
+Title The invasion begins...
+
+
+Global From far across the raging seas, a new race has arrived in search of suitable land for settlement.
+
+MonsterAdd Grayvyn Male, X1, Y1, 0, 4, Tag1
+MonsterAdd Grayvyn Female, X1+5, Y1, 0, 4, Tag1
+MonsterAdd Grayvyn Child, X1, Y1+5, 0, 4, Tag1
+MonsterAdd Grayvyn Hive, X1+5, Y1+5, 0, 4, Tag1
+
+MonsterGoto Tag1, X2+10, Y2+10
+
+
+;;;;;;;;;;;;
+
+
+:label1
+
+Wait 5
+
+IfNotMonsterExist Tag1, victory1
+
+IfNotMonsterAt Tag1, X2+10, Y2+10, 10, label1
+
+IfPlayerExist X2+10, Y2+10, 20, label1
+
+
+;;;;;;;;;;;;
+
+
+Global The Grayvyns have found a suitable area and have begun building.
+
+MonsterRemove Tag1
+
+MapAdd GrayvynPartialVillage1, X2, Y2, 0, Tag1
+
+Wait 25
+
+
+;;;;;;;;;;;;
+
+
+:label2
+
+Wait 5
+
+IfNotMonsterExist Tag1, victory2
+
+IfPlayerExist X2+10, Y2+10, 20, label2
+
+
+;;;;;;;;;;;;
+
+
+Global The Grayvyns have settled.
+
+MonsterRemove Tag1
+
+MapAdd GrayvynVillage1, X2, Y2, 0, Tag1
+
+
+;;;;;;;;;;;
+
+
+:label3
+
+Wait 5
+
+IfNotMonsterExist Tag1, victory2
+
+Goto label3
+
+
+;;;;;;;;;;;
+
+
+:Victory1
+
+Global The settling Grayvyns have been slaughtered. Victory for the humans!
+
+GivePlayerXp X1, Y1, 20, 200
+GivePlayerXp X2, Y2, 20, 200
+
+End
+
+
+;;;;;;;;;;;
+
+
+:Victory2
+
+Global The settling Grayvyns have been slaughtered and their settlement burned! Victory for the humans!
+
+MapAdd GrayvynBurningVillage1, X2, Y2, 0
+
+GivePlayerXp X2, Y2, 20, 400
+
+End
+
+
+;;;;;;;;;;;
+
+
+

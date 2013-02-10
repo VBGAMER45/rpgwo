@@ -1,0 +1,336 @@
+; merchant1.es
+
+; quest where the player escorts a merchant to a village from claye
+
+
+Dim State
+
+Dim StartX
+Dim StartY
+
+Dim DestX
+Dim DestY
+
+Dim CurrentX
+Dim CurrentY
+Dim CurrentZ
+
+Dim Dist
+Dim LastDist
+
+Dim AwayCount
+Dim MasterCount
+
+Dim Tag1
+Dim ChatTag1
+
+Dim GoldTag
+
+Dim PlayerUUID
+Dim LastPlayerUUID
+
+Dim Counter
+
+Dim RewardXP
+Dim RewardGold
+
+Dim AmbushFlag
+Dim AmbushTag
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+Begin
+
+   Title Telone Merchant Escort
+
+   Let RewardXP = 500
+   Let RewardGold = 250
+
+   Let StartX = 460
+   Let StartY = 500
+
+   Let DestX = 288
+   Let DestY = 287
+ 
+   Let Tag1 = GetFreeTag()
+   Let ChatTag1 = GetFreeTag()
+   Let AmbushTag = GetFreeTag()
+
+   Let State = 1
+
+:MainStart
+
+   IfEquals State, 1, @State1
+
+   IfEquals State, 2, @State2
+
+   IfEquals State, 3, @State3
+
+   IfEquals State, 4, @State4
+
+   Goto MainStart
+
+End
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+Sub Init
+
+   MonsterRemove Tag1
+   MonsterRemove AmbushTag
+
+   MonsterAdd Merchant, StartX, StartY, 0, 1, Tag1
+
+EndSub
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+Sub State1
+   ; waiting for a player to come near
+
+   
+:State1Loop
+ 
+   IfNotMonsterExist Tag1, @Init
+
+   IfPlayerNear startX, startY, 0, 4, State1Near   
+
+   Wait 1
+
+   Goto State1Loop
+
+:State1Near
+
+   MonsterCHat Tag1, Excuse me... I am in need of an mercenary to protect me on my journey to Telone. Will you help me? [yes]
+
+   Let State = 2
+
+EndSub
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+Sub State2
+   ; waiting for a response from nearby players
+
+   RecordChatOn startx, starty, 0, 4, chattag1
+
+   Let Counter = 3
+
+:State2Loop
+
+   Wait 1
+
+   IfPlayerChat ChatTag1, yes, State2Yes   
+
+   Let Counter = Counter - 1
+       
+   IfEquals Counter, 0, State2TimeOut
+
+   Goto State2Loop
+
+:State2Timeout
+
+   RecordChatOff ChatTag1
+
+   Let State = 1
+
+   Return
+
+:State2Yes
+
+   Let PlayerUUID = GetChatUUID()
+
+;   IfEquals playeruuid, lastplayeruuid, State
+
+
+   MonsterFollow tag1, playeruuid
+
+   MonsterCHat Tag1, Great! I will follow you. Lead the way to Telone.
+
+   RecordChatOff ChatTag1
+
+   MonsterLocation tag1, CurrentX, CurrentY, CurrentZ
+
+   Distance CurrentX, CurrentY, DestX, DestY, LastDist
+
+   Let AwayCount = 0
+
+   Let MasterCount = 0
+
+   Let AmbushFlag = 0
+
+   Let State = 3
+
+EndSub
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+Sub State3
+   ; merchant following player
+
+   Let Counter = 6
+
+:State3Loop
+
+   IfNotMonsterExist Tag1, State3Dead
+
+   IfMonsterAT tag1, destX, destY, 10, State3Arrival   
+
+   Wait 1
+
+   IfGreater Rnd(), 90, @Ambush
+
+   Let Counter = Counter - 1
+
+   ifEquals Counter, 0, State3Timeout
+
+   Goto State3Loop
+
+
+:State3Dead
+
+   SendMessage playerUUID, The merchant you are protecting has died!
+
+   Global A player escorting a merchant to Telone has failed!
+
+   Let LastPlayerUUID = PlayerUUID
+
+   Let State = 1
+
+   Wait 3
+
+   Return
+      
+
+:State3Timeout
+
+   Let masterCount = mastercount + 1
+
+   IfEquals mastercount, 5, State3End
+
+   MonsterLocation tag1, currentX, currentY, currentZ            
+
+   Distance CurrentX, CurrentY, DestX, DestY, Dist
+
+   IfGreater Dist, LastDist, @TakenAway
+
+   IfEquals State, 1, State3End
+
+   Let lastDist = Dist    
+
+   Let Counter = 6   
+
+   Goto State3Loop   
+
+:State3Arrival
+   
+   Let State = 4
+
+   Return
+
+:State3End
+
+   Let State = 1
+
+   MonsterRemove Tag1
+   
+EndSub
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+Sub Ambush
+   ; send ambush if not already did
+
+   IfEquals AmbushFlag, 1, AmbushCancel   
+
+   Let AmbushFlag = 1
+
+   MonsterLocation tag1, currentX, currentY, currentZ
+
+   MonsterAdd bandit, currentX - 10 , currenty - 10, currentZ, 1, AmbushTag   
+   MonsterAdd bandit, currentX + 10 , currenty - 10, currentZ, 1, AmbushTag   
+   MonsterAdd bandit, currentX + 10 , currenty + 10, currentZ, 1, AmbushTag   
+   MonsterAdd bandit, currentX - 10 , currenty + 10, currentZ, 1, AmbushTag   
+
+   MonsterGoto AmbushTag, CurrentX, CurrentY
+
+   MonsterChat tag1, Bandit ambush! Look out!
+
+   Return
+
+:AmbushCancel
+
+EndSub
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+Sub TakenAway
+
+   MonsterChat Tag1, Um/, I don't think this is the right way.
+
+   Let AwayCount = AwayCount + 1
+
+   IfEquals AwayCount, 5, TakenAwayQuit
+
+   Return
+
+:TakenAwayQuit
+   
+   MonsterChat Tag1, OK/, enough of this. You obviously do NOT know where you are going. Goodbye!
+
+   MonsterGoto Tag1, CurrentX, CurrentY   
+
+   Wait 3
+
+   MonsterRemove Tag1
+
+   Let State = 1
+
+EndSub
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+Sub State4
+   ; player made it with merchant
+
+   MonsterChat Tag1, A job well done! Thank you so much for your services.
+
+   MonsterGoto Tag1, DestX, DestY
+
+   GiveXp PlayerUUID, RewardXP
+
+   Let Goldtag = GetFreeTag()
+
+   ItemAdd gold, 1, 1, 1, RewardGold, GoldTag
+   ItemGive goldtag, playeruuid   
+
+   Wait 3
+
+   MonsterRemove Tag1
+
+   Let State = 1
+
+EndSub
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

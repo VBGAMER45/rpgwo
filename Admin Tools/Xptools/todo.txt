@@ -1,0 +1,30 @@
+Todo List/Wish List
+#=Done and Finished
+
+Line of sight
+#Fix monster in walls
+Spells
+#Fix all uses
+Scan Button
+Monster Stealth
+Battle Text on screen
+#Less Flickering
+Better Monster AI
+#Option to Set weapon Damage Max and Min
+Water move monsters
+Big monsters using imagetype
+Big items using imagetype
+#Animation (half done) only does two frames right now
+Sound Effects (half done)
+Hit animation
+#Mouse control
+Targeting system
+Display player stealth
+World Fog
+#Draw Health Stamina, Mana Bars Better.
+#Make Attuning work         
+Spell Animations
+#Set Item uses
+Make monsters all respawn
+lockable doors.
+#triggers

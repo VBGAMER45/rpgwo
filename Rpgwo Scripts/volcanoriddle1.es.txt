@@ -1,0 +1,124 @@
+;; volcano magma demon riddle script
+
+
+;; demon 1 : 527, 1307
+;; door 1 : 527, 1304 
+
+;; demon 2 : 527,1274
+;; door 2 : (524,1274)
+
+
+;; demon 3 : 500, 1273
+;; door 3 : 499, 1274
+
+
+;;;;;;;;;;;;;;;;;;;;
+
+Dim DemonX1
+Dim DemonY1
+
+Dim DemonTag1
+
+Dim DemonChat1
+
+Dim DoorX1
+Dim DoorY1
+
+Dim DoorTag1
+
+;;;;;;;;;;;;;;;;;;;;;
+
+Begin
+
+   Hidden
+
+   Let DemonX1 = 746
+   Let DemonY1 = 906
+
+
+   Let DoorX1 = 746
+   Let DoorY1 = 903
+
+
+   Let DemonTag1 = GetFreeTag()
+   Let DoorTag1 = GetFreeTag()
+   Let DemonChat1 = GetFreeTag()
+
+;;;;;;;;;;;;;;;
+   
+:Start1
+
+   IfNotMonsterExist DemonTag1, @AddDemon
+
+   IfNotItemAt DoorTag1, DoorX1, DoorY1, 1, 0, @AddDoor
+
+   MonsterIgnoreAll DemonTag1, TRUE
+   MonsterAttackable DemonTag1, FALSE
+
+;;;;;;;;;;;;;;;;
+
+:Start2
+
+   Wait 1
+
+   IfNotPlayerNear DemonX1, DemonY1, 1, 5, Start2
+
+;;;;;;;;;;;;;;
+
+   MonsterChat Demontag1, What is brown and is trod under foot?
+
+   RecordChatOn DemonX1, DemonY1, 1, 5, DemonChat1
+
+   Wait 1
+
+   IfPlayerChat DemonChat1, dirt, Success1   
+   IfPlayerChat DemonChat1, sand, Success1   
+   IfPlayerChat DemonChat1, soil, Success1   
+
+   RecordChatOff DemonChat1
+
+   MonsterChat DemonTag1, Incorrect.
+
+   MonsterIgnoreAll DemonTag1, FALSE
+   MonsterAttackable DemonTag1, TRUE
+
+:Attack1
+
+   Wait 1
+
+   IfNotPlayerNear DemonX1, DemonY1, 1, 5, Start1
+
+   Goto Attack1
+
+;;;;;;;;;;;;;;;;
+
+:Success1
+
+   RecordChatOff DemonChat1
+
+   MonsterChat Demontag1, Correct... You may pass.
+
+   ItemRemove DoorTag1
+
+   Wait 1   
+
+Goto Start1
+
+;;;;;;;;;;;;;;;
+
+Sub AddDoor
+
+   ;;; add red window
+   ItemAdd 460, DoorX1, DoorY1, 1, 1, DoorTag1
+
+Return
+
+;;;;;;;;;;;;;;;
+
+Sub AddDemon
+
+   MonsterAdd Magma Demon, DemonX1, DemonY1, 1, 1, DemonTag1
+
+Return
+
+;;;;;;;;;;;;;;;

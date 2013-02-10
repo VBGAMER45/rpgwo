@@ -1,0 +1,13 @@
+frmFileSource = 132, 132, 482, 408, , 154, 154, 511, 500, C
+modGlobals = 22, 22, 378, 368, 
+ModMap = 110, 110, 467, 456, 
+frmClient = 66, 66, 410, 412, , 22, 22, 366, 368, C
+modAI = 44, 44, 401, 390, 
+modUses = 114, 104, 471, 450, 
+modSpells = 0, 0, 357, 346, 
+modRpgwoMapFormat = 22, 22, 379, 368, 
+clsBitmap = 88, 88, 444, 434, 
+frmWeaponSelect = 0, 0, 301, 265, , 66, 66, 367, 331, C
+frmMonsterSelect = 22, 22, 323, 290, , 0, 0, 301, 268, C
+frmItemSelect = 132, 132, 558, 400, , 88, 88, 389, 356, C
+modMessage = 66, 66, 423, 348, 

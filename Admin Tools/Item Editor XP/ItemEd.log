@@ -1,0 +1,6 @@
+Line 32: Property ItemData in lstMonsters had an invalid file reference.
+Line 34: Property List in lstMonsters had an invalid file reference.
+Line 98: Property ItemData in cboNotAttackable had an invalid file reference.
+Line 100: Property List in cboNotAttackable had an invalid file reference.
+Line 108: Property ItemData in cboWhenAttacked had an invalid file reference.
+Line 110: Property List in cboWhenAttacked had an invalid file reference.
