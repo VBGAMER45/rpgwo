@@ -192,7 +192,6 @@ Public Function DecompressFile(FilePathIn As String, FilePathOut As String) As L
 Dim TheBytes() As Byte
 Dim result As Long
 Dim lngFileLen As Long
-
 'allocate byte array
 ReDim TheBytes(FileLen(FilePathIn) - 1)
 
@@ -201,10 +200,10 @@ Open FilePathIn For Binary Access Read As #1
     Get #1, , lngFileLen 'the original (uncompressed) file's length
     Get #1, , TheBytes()
 Close #1
-
+'lngFileLen = 40056
 'decompress
+'result = DecompressByteArray(TheBytes(), 40056)
 result = DecompressByteArray(TheBytes(), lngFileLen)
-
 'kill any file already there
 On Error Resume Next
 Kill FilePathOut

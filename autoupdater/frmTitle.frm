@@ -61,11 +61,31 @@ Begin VB.Form frmTitle
       Top             =   6090
       Width           =   3495
    End
+   Begin VB.Label Label1 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Summoner@rpgwo.com  - Summoner - Mordavia"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   13.5
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00FFFFFF&
+      Height          =   1095
+      Left            =   360
+      TabIndex        =   9
+      Top             =   2040
+      Visible         =   0   'False
+      Width           =   5535
+   End
    Begin VB.Image Image1 
       BorderStyle     =   1  'Fixed Single
       Height          =   6060
       Left            =   0
-      Picture         =   "frmTitle.frx":1510
+      Picture         =   "frmTitle.frx":14C4
       Top             =   0
       Width           =   6060
    End
@@ -168,6 +188,7 @@ Dim PrimeUpdate As Boolean
 Dim SecondUpdate As Boolean
 Dim sName As String
 Dim sUpdateUrl As String
+Dim sVersion As String
 
 Private Type RecordType
     FileName As String
@@ -177,16 +198,18 @@ Private Type RecordType
     FILETIME As SYSTEMTIME
 End Type
 Dim Files() As RecordType
+Dim ConnectiniUrl As String
+Dim MainUrl As String
 Private Sub cmdAgree_Click()
     cmdAgree.Enabled = False
     lblUpdate.Caption = "Getting connection information..."
     frmTitle.MousePointer = 11
-    Inet1.URL = "http://users.adelphia.net/~kudlo/update/connect.ini"
-    Dim buffer As String
-    buffer = Inet1.OpenURL
+    Inet1.URL = ConnectiniUrl
+    Dim buffer() As Byte
+    buffer = Inet1.OpenURL(ConnectiniUrl, icByteArray)
     'Inet1.Cancel
     If Inet1.ResponseCode = 12007 Then Exit Sub
-    Call DownloadFileX(App.Path & "\connect.ini", buffer)
+    Call DownloadFileX2(App.Path & "\connect.ini", buffer)
     frmServerIP.Show
 End Sub
 
@@ -196,14 +219,53 @@ On Error Resume Next
     End
 End Sub
 
-Private Sub Form_Load()
 
+
+Private Sub Form_Load()
+On Error GoTo nofile:
+Open App.Path & "\updater.ini" For Input As #1
+Dim data As String
+    Do While Not EOF(1)
+        Line Input #1, data
+        If Left(UCase(data), 11) = UCase("connecturl=") Then
+           ConnectiniUrl = Right(data, Len(data) - 11)
+        End If
+        If Left(UCase(data), 8) = UCase("mainurl=") Then
+           MainUrl = Right(data, Len(data) - 8)
+       End If
+    Loop
+Close #1
+
+
+    'MainUrl = "http://users.adelphia.net/~kudlo/update/"
+   ' ConnectiniUrl = "http://www.rpgwo.net/Mordavia.files/connect.ini"
+   ' Label1.Caption = "Summoner@rpgwo.com  - Summoner - Mordavia"
+
+   ' Label1.Caption = "Mage Auron  ewells2420@aol.com"
+    'Dim sum As Integer
+   ' For i = 1 To Len(Label1.Caption)
+        'sum = Asc(Mid(Label1.Caption, i, 1))
+    'Next i
+    
+    'If sum <> 109 Then End
+    
+    'txtAgreement.Text = "UnOffical Update for Auron ewells2420@aol.com"
+   ' txtAgreement.Text = "UnOffical Update for Summoner@rpgwo.com  - Summoner - Mordavia"
+    'Sum = 0
+    'For i = 1 To Len(txtAgreement.Text)
+        'Sum = Asc(Mid(txtAgreement.Text, i, 1))
+    'Next i
+    'If Sum <> 109 Then End
     lblTeam.Caption = "Mickey Kuldo - Lead Designer/Developer" & vbCrLf
     lblTeam.Caption = lblTeam.Caption & "UF, James, Rummager, Atrus, UT, Daddeo and many, many others have contributed"
-    lblversion.Caption = "Updater Version 1.14"
+    lblversion.Caption = "Updater Version 1.15"
 
     PrimeUpdate = False
     SecondUpdate = False
+Exit Sub
+nofile:
+MsgBox Err.Description
+Exit Sub
 End Sub
 
 Private Sub Inet1_StateChanged(ByVal State As Integer)
@@ -230,7 +292,7 @@ Private Sub Inet1_StateChanged(ByVal State As Integer)
             Response = MsgBox("Failed to connect to the update server." & vbCrLf & "Override updater and attempt run of the client?", vbYesNo, "Oooh Nooo!")
             If Response = vbYes Then
                 If SecondUpdate = True Then
-                    Call Shell(App.Path & "\" & sName & ".files")
+                    Call Shell(App.Path & "\" & sName & ".files", vbNormalFocus)
                     End
                 Else
                     'Inet1.Cancel
@@ -263,7 +325,7 @@ Sub KULDOCPU()
     If InStr(1, "KUDLO", strString, vbBinaryCompare) Then
       Response = MsgBox("Update?", vbYesNo, "Auto-Updater")
       If Response = vbNo Then
-         Call Shell(App.Path & "\client.exe " & sName & ".files")
+         Call Shell(App.Path & "\client.exe " & sName & ".files", vbNormalFocus)
          End
          Unload frmTitle
          Unload Me
@@ -296,10 +358,11 @@ On Error Resume Next
         Close #1
         
 End Sub
-Sub Server_Set(ServerName As String, UpdateUrl As String)
+Sub Server_Set(ServerName As String, UpdateUrl As String, RpgwoVersion As String)
  On Error Resume Next
         sName = ServerName
         sUpdateUrl = UpdateUrl
+        sVersion = RpgwoVersion
         'MsgBox Dir(App.Path & "\" & ServerName & ".files", vbDirectory)
         If Dir(App.Path & "\" & ServerName & ".files", vbDirectory) = "" Then
            MkDir (App.Path & "\" & ServerName & ".files")
@@ -315,7 +378,7 @@ Sub Server_Set(ServerName As String, UpdateUrl As String)
         
         Dim buffer2() As Byte
          
-        Inet1.URL = "http://users.adelphia.net/~kudlo/update/MASTER1.DAT"
+        Inet1.URL = MainUrl & "MASTER1.DAT"
         buffer2 = Inet1.OpenURL(Inet1.URL, icByteArray)
         Call DownloadFileX2(App.Path & "\MASTER1.DAT", buffer2)
         cmdAgree.Enabled = True
@@ -378,7 +441,7 @@ Sub OpenMasterFileList(FileName As String, Prime1 As Boolean)
             If Dir(App.Path & "\" & Files(i).FileName) = "" Then
                 'Download the file
                 lblUpdate.Caption = "Updating " & Files(i).FileName & " ..."
-                Inet1.URL = "http://users.adelphia.net/~kudlo/update/" & Files(i).FileName & ".zlib"
+                Inet1.URL = MainUrl & Files(i).FileName & ".zlib"
                 bufFile = Inet1.OpenURL(Inet1.URL, icByteArray)
 
                 Call DownloadFileX2(App.Path & "\" & Files(i).FileName & ".zlib", bufFile)
@@ -388,7 +451,7 @@ Sub OpenMasterFileList(FileName As String, Prime1 As Boolean)
             Else
                'Open the file
                 'Get File Time
-                fHandle = OpenFile(Files(i).FileName, FileStruct, OF_READ)
+                fHandle = OpenFile(App.Path & "\" & Files(i).FileName, FileStruct, OF_READ)
                 GetFileTime fHandle, Ft1, Ft1, Ft2
                 CloseHandle fHandle
                 oldTime = Ft1
@@ -398,7 +461,7 @@ Sub OpenMasterFileList(FileName As String, Prime1 As Boolean)
                 FileTimeToSystemTime Ft1, SysTime
                 If FileChanged(SysTime, Files(i).FILETIME) = True Then
                     lblUpdate.Caption = "Updating " & Files(i).FileName & " ..."
-                    Inet1.URL = "http://users.adelphia.net/~kudlo/update/" & Files(i).FileName & ".zlib"
+                    Inet1.URL = MainUrl & Files(i).FileName & ".zlib"
                     bufFile = Inet1.OpenURL(Inet1.URL, icByteArray)
                     Call DownloadFileX2(App.Path & "\" & Files(i).FileName & ".zlib", bufFile)
                     Call cComp.DecompressFile(App.Path & "\" & Files(i).FileName & ".zlib", App.Path & "\" & Files(i).FileName)
@@ -419,6 +482,7 @@ Sub OpenMasterFileList(FileName As String, Prime1 As Boolean)
         Else
             'Secondary Update
              If Dir(App.Path & "\" & sName & ".files\" & Files(i).FileName) = "" Then
+                
                 'Download the file
                lblUpdate.Caption = "Updating " & Files(i).FileName & " ..."
                Inet1.URL = sUpdateUrl & "/" & Files(i).FileName & ".zlib"
@@ -430,7 +494,7 @@ Sub OpenMasterFileList(FileName As String, Prime1 As Boolean)
             Else
                 'Open the file
                 'Get File Time
-                fHandle = OpenFile(Files(i).FileName, FileStruct, OF_READ)
+                fHandle = OpenFile(App.Path & "\" & sName & ".files\" & Files(i).FileName, FileStruct, OF_READ)
                 GetFileTime fHandle, Ft1, Ft1, Ft2
                 CloseHandle fHandle
                 oldTime = Ft1
@@ -475,7 +539,17 @@ Sub OpenMasterFileList(FileName As String, Prime1 As Boolean)
         'run the client
         On Error Resume Next
         Inet1.Cancel
-        Call Shell(App.Path & "\client.exe " & sName & ".files")
+        
+        If sVersion = "" Then
+            Call Shell(App.Path & "\Client.exe " & sName & ".files", vbNormalFocus)
+        ElseIf sVersion = 1 Then
+            Call Shell(App.Path & "\Client.exe " & sName & ".files", vbNormalFocus)
+        ElseIf sVersion = 2 Then
+            Call Shell(App.Path & "\Client2.exe " & sName & ".files", vbNormalFocus)
+        ElseIf sVersion = 3 Then
+            Call Shell(App.Path & "\Client3.exe " & sName & ".files", vbNormalFocus)
+        End If
+            
         
         End
     End If
