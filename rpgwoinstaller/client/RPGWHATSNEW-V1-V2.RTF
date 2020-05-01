@@ -1,0 +1,2131 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fnil\fprq2\fcharset2 Wingdings;}}
+{\colortbl ;\red0\green0\blue255;\red0\green0\blue0;\red255\green0\blue0;\red0\green128\blue128;\red128\green0\blue128;\red128\green0\blue0;}
+{\stylesheet{ Normal;}{\s1 heading 1;}}
+{\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\nowidctlpar\lang2057\b\f0\fs20 Version 2.14 (09/20/11)\par
+\b0\f1\'b7\f0  been over a year since I really did anything for V2. Running a Faction world on Wilbur. That will be shutdown soon then will work on a new "normal" V2 world for players.\par
+\f1\'b7\f0  Added maze generator code to rpgwoedit2 under the Edit menu. Start with a blank map and a flat surface selected. It asks for the width of tunnels and if you want random wall openings. If left at zero, it creates no loops otherwise any random walls opened create loops. 0.5 has worked well for my needs. Also added random placing of items and monsters in map tab. The map tab scales better for maps larger than 200.\par
+\f1\'b7\f0  The V2 client now shows water properly on the global map\par
+\f1\'b7\f0  V3 FaceBook version is on hold due to various technical and personal reasons. Don't know what will happen with it but thanks to all players who gave it time and tested it out. I still do plan to use Silverlight for future development so the 1.5 years I spent working on V3 client isn't going to waste.\par
+\b\par
+Version 2.14 (09/17/10)\par
+\b0\f1\'b7\f0  mades changes to surfaces. now allowing upto 100 flat surfaces when before it was 40\par
+\f1\'b7\f0  I am mostly busy working on RPGWO V3 which is browser based for FaceBook. The link for a test world is {\field{\*\fldinst{HYPERLINK "http://www.rpgwo.com/testpage.html"}}{\fldrslt{\ul\cf1 http://www.rpgwo.com/testpage.html}}}\f0\fs20  \par
+\par
+\b Version 2.14 (12/02/09)\par
+\b0\f1\'b7\f0  I needed to take some time off from RPGWO to deal with some real life stuff and not to mention, I worked hard over the summer on RPGWO and needed a break.\par
+\f1\'b7\f0  Getting back into things slowly. Need to start looking at email, heh, and deal with people's personal server issues.\par
+\f1\'b7\f0  I want to open a Mission worl for the holidays. I think I can get the Apocalypse city one to work correctly. Will take some redo work.\par
+\f1\'b7\f0  Then I am fishing for ideas on what is next. I know the Core people want V2 and I'll probably let them run one off my machine soon. I have some other ideas like tron, stone age, underworld and an old school 3D version ({\field{\*\fldinst{HYPERLINK "http://www.rpgwo.com/rpgwo3d-5.jpg"}}{\fldrslt{\ul\cf1 http://www.rpgwo.com/rpgwo3d-5.jpg}}}\f0\fs20 ). It would not be smooth scrolling but choppy old school. Email me with what interests you or if you have a new idea.\par
+\f1\'b7\f0  Thanks for playing and happy holidays!\cf2\par
+\cf0\b\par
+Version 2.14 (09/17/09)\par
+\b0\f1\'b7\f0  If you haven't noticed yet, I released the V1.15 server to the public. Just go to rpgwo.com and the download section. Enjoy! Feel free to email \cf3 mkudlo@hotmail.com \cf2 for help with running it. Please put "RPGWO Server Server Server" in the subject so I can give it some priority.\par
+\cf0\f1\'b7\f0  There was a bug with the released server such that if you use SPECIFY IP on the server select screen, it would not use the LOCAL.FILES folder but instead it would use the CRUCIBLE.FILES folder thus you would get subscript errors cuz the data files don't match and I think it was trying to run it as V2 in some cases. So, Specify option now uses LOCAL.FILES folder. This was a fix to the client.exe file which gets auto-updated for everyone so no need to fetch/update a new server zip file.\par
+\f1\'b7\f0  I am going back to work on my Online RTS at \cf1 projectrts.com. \cf2 I will still be showing up on Crucible and dealing with perks and such. \par
+\cf0\f1\'b7\f0  I think Jon got the forums somewhat saved and posted at rpgwoforums.net. There is also rpgwo.org to try.\par
+\b\par
+Version 2.14 (08/11/09)\par
+\b0\f1\'b7\f0  I want to release the V1.15 server to the public. It would include the server.exe, master maker, rune scrambler, and the ini files from an older world like Nulona.\par
+\f1\'b7\f0  It would be free to use privately but you cannot charge people to play your world. If you wanted to have a world you created listed in the world selection list then you would have to pay Mickey for that right then you would be allowed to charge people to play your world. I would probably charge $50 per month to be listed.\par
+\f1\'b7\f0  Perk money paid to Mickey would NOT apply to any of these "3rd Party" worlds.\par
+\f1\'b7\f0  I'll try to publish a manual how to run a server with admin commands, .ini settings, client updates, etc.\par
+\f1\'b7\f0  RIGHT NOW... I need feedback before I do this. Email me at mkudlo@hotmail.com your comments since we don't have an official forums anymore.\b\par
+\par
+Version 2.14 (07/24/09)\par
+\b0\f1\'b7\f0  Wow, been a long time since I updated. Horizon was closed due to bugs. The bugs have since then been fixed but Crucible has taken over as the newbie world. Also Skull, a forced PK, no rules world, entertained for a short time. \par
+\f1\'b7\f0  Project wise, I have been messing with 3D C++ game programming plus my current RTSWO project using C#.Net and Direct X. You can check that out at my blog mickeykudlo.spaces.live.com.\par
+\f1\'b7\f0  Updated the V2 client to better deal with deleted/renamed players. Deleted players will have <DELETED> in from of their name when displayed in the Chat Ignore feature. Also, since names are stored by the client, each time you login, the client will refresh the names so anyone renamed will get updated.\par
+\f1\'b7\f0  I plan to work on Crucible for the rest of July then sporadically after that. So far there is 10 dungeon levels to explore plus 1 bonus level.\par
+\b\par
+Version 2.14 (12/12/08)\par
+\b0\f1\'b7\f0  RPGWOEdit2.exe, added an import feature that can bring in seperately saved maps into the current map you are working on.\par
+\b\par
+Version 2.14 (12/09/08)\par
+\b0\f1\'b7\f0  Added Last Man Standing (LMS) and Capture The Flag (CTF) automated events to Horizon.\par
+\f1\'b7\f0  \cf4 Artifact weapons are now activated!!! \cf2 I finally came up with an idea for them. They do dynamic damage based on your skill, like how Unarmed Attack works with no weapon armed. The higher your skill, the higher the damage. They also... self repair!! Just disarm it, leave in inventory or on the ground and they will slowly repair themselves. Artifact Orb also has dynamic power rating and self repair. You can still repair Artifact items on an Artifact Anvil, for faster repairs.\par
+\cf0\f1\'b7\f0  \cf3 Looking for 2 @@ Admins for Horizon\cf0 . I am just not able to be on enough and it is in desperate need of more quests and newb player helpers. Requirements:\par
+\tab\f1\'b7\f0  Real Admins don't play the world they admin therefore, your mainland horizon player must be deleted (it can always be restored if you quit admin)\par
+\tab\f1\'b7\f0  Must have 1 year of playing RPGWO, 8 years prefered, heh\par
+\tab\f1\'b7\f0  No previous admin experience needed but some is a plus\par
+\tab\f1\'b7\f0  Can use RpgwoEdit2.exe to make quest maps\par
+\tab\f1\'b7\f0  Can't be infamous or generally hated in the community\par
+\tab\f1\'b7\f0  Mature, over the age of 30 is a plus, but must be at least 20 years old, might make an exception\par
+If you think you got the right stuff and can commit yourself for 20+ years, email me at MKUDLO@HOTMAIL.COM with real name, age, player names you use now and used in the past, years played RPGWO, favorite color, a 10 page essay on why UT is the best thing that happened to RPGWO, and some of your ideas for quests and stuff you would add. Subject line "Horizon Admin Application"... Thanks!\par
+\b\par
+Version 2.14 (11/26/08)\par
+\b0\f1\'b7\f0  FINALLY got \cf5 Zephyrium\cf0  weapons added to Horizon!!!\par
+\b\par
+Version 2.14 (10/24/08)\par
+\b0\f1\'b7\f0  adjusted combat XP up a notch (did it last weekend)\par
+\f1\'b7\f0  fixed damon golems, they will return back to an item when players not around or if server restarts\par
+\f1\'b7\f0  bridges can be torn down\par
+\f1\'b7\f0  changed range of Bow from 6 to 8\par
+\b\par
+Version 2.14 (10/22/08)\par
+\b0\f1\'b7\f0  changed Tames... your tames get removed from world when you leave and placed back when you come back. Exceptions are Traders always stay in and any tame on your land stays in always.\par
+\f1\'b7\f0  Tames now shared Xp with owners. As of this writing it is set to 1%. The owner must be in world and within sight of the tame to get the XP.\par
+\f1\'b7\f0  Halloween Event started up on Horizon!!!\par
+\b\par
+Version 2.14 (10/13/08)\par
+\b0\f1\'b7\f0  added Chat Filter to the client so you can filter what words you want, look for the button in the OPTIONS tab\par
+\f1\'b7\f0  added Ignore or Muzzle for the client. Instead of using /ignore command line, please use the Ignore button in the OPTIONS tab. You can easily select names and ignore or un-ignore them. It also ignores ALL other players from the same logon name. A chat tab called "Ignored" will show up to let you know it is working plus allow you to peek at what they say if you choose to. SO PLEASE don't complain to admin(s) that certain players need to be muzzled, etc, ... DO IT YOURSELVES!\par
+\b\par
+Version 2.13 (10/13/08)\par
+\b0\f1\'b7\f0  been updating Horizon and V2 on an almost daily basis: bug fixes, maps, features, etc\par
+\f1\'b7\f0  /surface is disabled so the only way to surface is to use items on the ground like ore sheets\par
+\f1\'b7\f0  Marble Ore can now be turned into Marble sheets that can be used to surface ground\par
+\f1\'b7\f0  added more surface choices for wood plank surfacing\par
+\f1\'b7\f0  NPC traders: changed the weaponsmith, armorer, and bowyer to buy only monster drops or quest spawn items\par
+\f1\'b7\f0  Sorry if I don't mention every fix and update... their is just so much going on,it hard to keep track and still add new stuff, etc.\par
+\b\par
+Version 2.13 (10/01/08)\par
+\b0\f1\'b7\f0  opened Horizon world\par
+\f1\'b7\f0  \cf3\b IF YOU PLAYED ON HORIZONTEST THEN PLEASE USE THE SAME ACCOUNT!! DO NOT CREATE NEW!\cf0\b0\par
+\b\par
+Version 2.13 (09/16/08)\par
+\b0\f1\'b7\f0  started making the real Horizon world and it should be ready by October 1st.\par
+\f1\'b7\f0  V2 now stores player data and maps in the folder <servername>.<playername>\par
+\b\par
+Version 2.11 (08/06/08)\par
+\b0\f1\'b7\f0  I have been quiet lately because I have been busy working hard on V2. So here is what's going on and my general plan...\par
+\f1    \'b7\f0  After a month of multi-map testing, I decided it was time to redo the .ini files (content) for my fantasy worlds. Tons of work and re-work but I finally got it done enough to open a new world. 2 of the major things I re-worked was I added ore weapons and I changed how blacksmith works. Blacksmith is like jewelry making now with smelting ores and using molds. You'll see when it comes out soon.\par
+   \f1\'b7\f0  I am now in the process of resizing the internal structures, adding more space and expanding fields like player name from size 20 to 50, carry items from 50 to 100, etc. I should have this wrapped up within the week.\par
+   \f1\'b7\f0  Then I am going to open up a test world in which I will need 5-10 veteran players to test all these changes out. A veteran is a player who has hit at least level 40 and has played (off and on) for several years. The test world will be restricted access so you will have to email me when it shows up on the server list for me to consider you and grant access. I'll probably give @@ at that time and give other incentives to find bugs. Incentives like special items, perks, land, etc when the real world opens. The test world will only be open for a few weeks and will be wiped. Also, Chaos will have to be closed since it would have data incompatibilities.\par
+   \f1\'b7\f0  When I am satisfied the test world has dealt with all the bugs, then I will open a new world to all players. It will replace Asylum and be the new "Newb Friendly" world that I will run. I am shooting for the glory days of Steeltide and plan to build and code like the good ol' days. Actually, that is all I have been doing lately!!!\par
+   \f1\'b7\f0  Chaos will probably remain closed and probably won't come back until X-mas time. It would be fully wiped. Maybe it would come back sooner if players requested it but I doubt it.\par
+\f1\'b7\f0  So that is what is planned and going on. I know a lot of you have been emailing me and asking for a new world and better admin involvement, so just hang in there.\par
+\b\par
+Version 2.11 (05/30/08)\par
+\b0\f1\'b7\f0  added multi-map support to Chaos. It is not fully implemented yet but for now allows more levels underground. Soon, it will allow me to expand maps, create seperate quest maps or areas, give ability to load and unload areas if anyone is there, give seperate maps for houses, etc.\f1\par
+\'b7\f0  wiped everything on Chaos except player stats. I did this because the multi-map changes had data incompatibilities. I'll try to make it up by giving out goodies. \par
+\b\par
+Version 2.11 (05/06/08)\par
+\b0\f1\'b7\f0  you can now place multiple items in the same spot on the map!!! This of course required extensive coding and modification so expect to find some bugs.\par
+\f1\'b7\f0  by clicking on the same spot on the map with multiple items there, it will cycle through them so you can do usage on it or pick it up, etc Te VIEW tab also displays the items for picking up.\par
+\b\par
+Version 2.10 (04/14/08)\par
+\b0\f1\'b7\f0  moved item usage form to the Usage tab\par
+\f1\'b7\f0  moved hotkey form to the Hotkey tab\par
+\f1\'b7\f0  subtype containers added, so you could make something like a book where the item only accepts subtypes of type Paper. This was mainly added to support blueprints for modern worlds but has application to fantasy worlds say for organizing potions, seeds, jewelry, etc into a common sack or something.\par
+\f1\'b7\f0  you can now do multi-use from within containers, just right click on the item and if it available, then it will show up.\par
+\f1\'b7\f0  started messing with multi-item at one spot coding so if anything weird going on with items then let me know. So far I am only dealing with the client since it won't require any version changes yet.\par
+\f1\'b7\f0  added a second tab in HELP for a local world help file\b\par
+\par
+Version 2.8 (04/04/08)\par
+\b0\f1\'b7\f0  Had to disable the ssurface smoothening due to some bugs that I don't have time to fix yet cuz I broke plants, heh, and need to fix those first. This just affects Version 2 worlds like Chaos. \b\par
+\par
+Version 2.7 (03/19/08)\par
+\b0\f1\'b7\f0  Version 2 client now has ability to smoothen surfaces. Just flat grass/dirt for now. In the OPTIONS tab, toogle "Smoothen Surfaces" to try it out. Warning: It will dramatically increase RAM and disk space needed. In about 5 minutes, it created over 30 meg of tiles. Not to mention CPU cycles blending the tiles. It creates s folder in the Chaos.files called textures. Feel free to delete everything in there it creates if you don't wanna use it and you worried your hard drive is to weak to handle a few files, heh.\par
+\b\par
+Version 2.7 (03/10/08)\par
+\b0\f1\'b7\f0  changed how the client stores the item definitions in order to combat hackers changing light and line of sight settings\par
+\f1\'b7\f0  added some tabs to the right side tab bar. Just seeing how it will look and if players think it is ok. It seems crowded but I would like to get rid of a lot of floating forms\par
+\f1\'b7\f0  your player image actual displays in the Player tab now\par
+\f1\'b7\f0  Tribunal approvals of PLOT claim must be done on the actual land parcel\par
+\f1\'b7\f0  started Google advertising to get some fresh players. We'll see what happens, so far it looks positive.\par
+\b\par
+Version 2.5 (02/27/08)\par
+\b0\f1\'b7\f0  I have decided to drop Isometric view. It had too many technical issues plus it just didn't look like RPGWO. It was too big of a change. So, I removed all the code that supported it but may have missed some things. Therefore, let me know of any issues.\par
+\f1\'b7\f0  added a Mail GUI. It has a new mail flashing light which you can click on to open the interface. Also added a button in the Menu tab. I removed the /mail chat commands\par
+\f1\'b7\f0  added tool tip popup for the magic effects, poison and vitae xp needed circles. Had to do this manually since VB shapes don't have events so hopefully it works ok.\par
+\f1\'b7\f0  made a fix to usage that maybe fixed the items loosing % use left and dissappearing on repair. Let me know how that goes.\par
+\f1\'b7\f0  Not sure if I mentioned it yet but I redid the website {\field{\*\fldinst{HYPERLINK "www.rpgwo.com"}}{\fldrslt{\ul\cf1 www.rpgwo.com}}}\f0\fs20  \par
+\b\par
+Version 2.3 (02/21/08)\par
+\b0\f1\'b7\f0  Reverted the isometric view that was running on Chaos. This doesn't mean I am giving up on ISO, just that I am done testing for now and need to decide if I should push forward with ISO or try something else. Thanks to everyone who actually came on Chaos and tried it out. \par
+\b\par
+Version 2.4 (02/20/08)\par
+\b0\f1\'b7\f0  Added an Isometric view. It is far from finished and still requires bug fixing, refinement, etc. I am just gonna have it up and running on Chaos for a short time to get some feedback. Head over to {\field{\*\fldinst{HYPERLINK "www.rpgwoforums.com"}}{\fldrslt{\ul\cf1 www.rpgwoforums.com}}}\f0\fs20  and find a thread I will start under the RPGWO 2 section about Isometric. There you can post your comments, suggestions, bugs, complaints, etc.\par
+\b\par
+Version 2.x (01/31/08)\par
+\b0\f1\'b7\f0  By some miracle, I was able to fix {\field{\*\fldinst{HYPERLINK "http://www.medievalnation.com" }}{\fldrslt{\cf1\ul www.medievalnation.com}}}\cf0\ulnone\f0\fs20  and that is currently running. I don\rquote t plan to work on it unless I get bored. I am too busy with V2.\par
+\b\par
+Version 2.0 (11/08/07)\par
+\b0\f1\'b7\f0  It is now official... I have started work on RPGWO 2 !!!! For now I am gonna use the Chaos world at least until the data format changes.\par
+\f1\'b7\f0  Change will come slow but sure. The base RPGWO code is messy and I am gonna take the time to clean it up and change major systems.\par
+\f1\'b7\f0  Some changes will be obvious like display size and others will be only noticable to me like packet streamlining.\par
+\f1\'b7\f0  What does this mean for "classic" RPGWO? As long as people play the worlds and admn want to run them, they will remain up.\par
+\f1\'b7\f0  Why don't I just upgrade version 1.15? Because it has a "classic" feel I don't wanna change and some ppl may prefer the classic version to the new one.\par
+\cf6\f1\'b7\f0  The first change I have done, is to increase the world display size. Before it was 15x13 but it is now 19x19. Also, the client was set for 800x600 but is now set for 1024x768. A simple easy change that almost all can benefit from. I am working on organizing the screen so it still has a lot of empty space.\par
+\cf0\f1\'b7\f0  Please email me at \cf1 mkudlo@hotmail.com\cf0  with the subject of "RPGWO 2 SUCKS!" with your ideas and comments and bugs, etc. I have a design doc in which to keep track of that crap. It doesn't mean I will use your ideas but I at least am listening. And pretty much anything goes as far as ideas and I am willing to change just about everything.\cf6\b\par
+\cf0\par
+Version 1.15 (10/01/07)\par
+\b0\f1\'b7\f0  I have been having network connectivity problems with my server the past couple of weeks. It could be either a hardware issue or an OS hack issue. I have turned the firewall one so we\rquote ll see if that helps. Also I have set Asylum to save every hour so that when it looses the network, I just need to wait an hour for it to save then I can have my ISP remote reboot it and get it back up without any data loss.\par
+\b\par
+Version 1.15 (09/2007)\par
+\b0\f1\'b7\f0  Closed Xerxes and opened up Asylum which is run by Gun and Silk.\par
+\b\par
+Version 1.15 (06/29/07)\par
+\b0\f1\'b7\f0  UT is having trouble with his server. So I am in the process of movign things around and such.\par
+\b\par
+Version 1.15 (04/18/07)\par
+\b0\f1\'b7\f0  Having trouble with my ISP and looks like they are gonna shutdown my server soon. So, I am moving the website to UT\rquote s machine until I get a new machine. This also includes the updater functions and world selection feature. The worlds affect are Xerxes and Mission. All the rest should be ok as long as I get the updater/website moved before my ISP shuts me down. Oh, they are going out of business or something. Nothing that I or the players did anything\'85 maybe something UT did though, heh.\par
+\b\par
+Version 1.15 (02/09/07)\par
+\b0\f1\'b7\f0  Shut down Nulona in December and opened up Xerxes which is mostly run by Silk.\par
+\f1\'b7\f0  Started an RPGWO world based only on dungeons called... Dungeon. It went well but I had to refocus back on Xerxes and get it ready to open, etc. Closed it down due to lack of players (and lack of my interest.) Will bring it back from time to time like the Mission worlds.\par
+\f1\'b7\f0  I am shelving GVO for now. I wasn't too happy with the direction it was going although I did get a decent alpha version working. I still like the idea but need to step back for a time and re-think what I want to do.\par
+\f1\'b7\f0   Got back to work on RPG Party the past month. I like the idea and plan to see it through to completion. Hopefully no longer than this Summer I should have it pretty much completed. I have a new version out with many updates and changes so check it out at {\field{\*\fldinst{HYPERLINK "www.rpgparty.net"}}{\fldrslt{\ul\cf1 www.rpgparty.net}}}\f0\fs20 .\par
+\f1\'b7\f0  Thanks for playing!!!\par
+\b\par
+Version 1.15 (11/06/06)\par
+\b0\f1\'b7\f0  Wow, been a long time since I updated this so here goes\'85\par
+\f1\'b7\f0  To let you know what I have been up to this year:\par
+  \f1\'b7\f0  worked on RPG Party for about 6 months, artist went AWOL, so I stopped\par
+  \f1\'b7\f0  worked on RPGWO, did the Faction world which lasted a few months. It was fun and I\rquote ll probably bring it back every once in a while\par
+  \f1\'b7\f0  brought an RPGWO Mission world online for about a month\par
+  \f1\'b7\f0  started back on RPG Party but decided to start serious work on GVO which is my current project\par
+\f1\'b7\f0  Right now I am gonna re-focus on RPGWO. I have some ideas for AI and having active races kinda like what Phobos had at one time but instead of admin controlled, they would be controlled by the system\par
+\f1\'b7\f0  Thanks for playing!\b\par
+\par
+Version 1.15 (02/09/06)\par
+\b0\f1\'b7\f0  Well, after working hard on Nulona for a good 2 months now, I am a bit burned out on RPGWO. So, I am gonna start focusing on a new game. I'll still be around but Rhaorth will be doing all the updates and basically running Nulona. I'll still be taking care of perks and such though.\par
+\f1\'b7\f0  HELP WANTED!!! Looking for a graphic artist to work on my new game. I plan to paythis person (not a whole lot but some plus maybe % of net profit) and of course give official credit in the game credits. I require the following:\par
+   - minimum 1 year commitment ( I don't want someone that will bail out part way through)\par
+   - 5-10 hours per week, flexible\par
+   - 18+ years old, responsible, reliable, no flakes\par
+   - need to be easily contactable, for example you check email daily or several times per week\par
+   - semi-professional to professional quality artwork, NO beginners\par
+   - 3-D artwork prefered but hand pixeled stuff ok if it looks good\par
+   - must be able to animate everything, ie. people, monsters, objects, magic, etc.\par
+   - artwork must be original and can't be used in any other project. It becomes "the games" property\par
+   - sample work to review to help me make my choice\par
+I am willing to buy tools, models, textures, etc. in order to assist the artist. I am open to more having more that one artist as long as they are willing to split the pay and can work well together. Please email me at mickey@rpgwo.com to apply or with questions, etc. Please use the Subject "New Game Artist". I am excited about this new project of mine. BTW it is not Galactic Venture Online. That is on the back burner for now. This new project is something else that I have not seen in the online fantasy game community. I am looking forward to hearing from you!\b\par
+\par
+Version 1.15 (12/22/05)\par
+\b0\f1\'b7\f0  WARNING!!! It has come to my(Mickey Kudlo) attention that a server.exe is being distributed freely. It is a stolen, pirated, and hacked version NOT sanctioned by me. The source of the program and other supporting programs is un-trust-worthy. I and You have NO idea what the program is doing since they have been altered from their original state. They could be malware or other harmful code inserted into the programs designed to take advantage of you. For example, keystroke logger to get passwords and credit card numbers. The programs may work just fine on the outside but you will NEVER know what they are really doing behind your back. I strongly advise against running these programs and participating in these illegal and morally wrong situations.\par
+\f1\'b7\f0  An admin of one of these rogue servers used client info from players who logged onto it to hack their accounts on other servers, including Steeletide and the new Nulona. Not only can the EXE be NOT trusted but those who run them cannot either. The client sends personal info about your computer to the server each time you login. That info can be used to impersonate you or used maliciously against you.\par
+\f1\'b7\f0  So basically, DO NOT GO ON THESE ROGUE SERVER/WORLDS. Doing so is hazardous and also a slap in the face to all those who have worked hard on the legitimate versions through the years.\par
+\b\par
+Version 1.15 (12/18/05)\par
+\b0\f1\'b7\f0  closed Steeltide\b\par
+\b0\f1\'b7\f0  opened a new world called Nulona to replace Steeltide\par
+\b\par
+Version 1.15 (10/04/05)\par
+\b0\f1\'b7\f0  opened a new world called Chaos. It is meant to be a player made world, with no admin interference. No /rules, just the EULA in force for extreme cases. The world is half PK. The left half is normal but the right half is forced PK. I will be working on it for a few weeks to get code in to support the player built towns and such. Also, get some scripts running to do events. Then I won't be around much on Chaos.\b\par
+\par
+Version 1.15 (09/15/05)\par
+\b0\f1\'b7\f0  I got {\field{\*\fldinst{HYPERLINK "www.medievalnation.com"}}{\fldrslt{\ul\cf1 www.medievalnation.com}}}\f0\fs20  back up and working. Might still be buggy but have fun! I think I might set it up to auto-wipe after like 40,000 turns or something. I think that is about a 2 week duration.\b\par
+\par
+Version 1.15 (06/03/05)\par
+\b0\f1\'b7\f0  Updated client to support the new type of weapon I added on SteelTide\b\par
+\par
+Version 1.15 (05/27/05)\par
+\b0\f1\'b7\f0  Well, school is just about over for me. Gonna start working on RPGWO again very soon. I think I am gonna work on ST and add more quests and tie up some loose ends there.\par
+\f1\'b7\f0  Got tired of people asking "How did you make this game?" so I whipped up a single player RPG and am allowing the source code to be public. {\field{\*\fldinst{HYPERLINK "www.dungeonfate.com"}}{\fldrslt{\ul\cf1 www.dungeonfate.com}}}\f0\fs20   ..... Enjoy!\b\par
+\par
+Version 1.15 (04/15/05)\par
+\b0\f1\'b7\f0  Hey everyone! Thanks for still playing RPGWO while I have been away. Well, I am still away dealing with school but that should be over with at the end of May, start of June. Then I hope to work on RPGWO again.\par
+\f1\'b7\f0  I have stopped work on Galactic Venture for now until school is done. I am pretty much as far as I need to go for this single player version and am now planning the multi-player version. It always was a testing grounds for some new ideas for a multi-player, persistent game. I'll still make updates to it as I test new features but my main focus is gonna be the multi-player version. Thanks to all who have tested it out and provided feedback.\par
+\f1\'b7\f0  One of my classes has been a web programming class this semester. So I decided to try my new skills at making a web based game. Here is the URL {\field{\*\fldinst{HYPERLINK "http://66.36.229.88/wg"}}{\fldrslt{\ul\cf1 http://66.36.229.88/wg}}}\f0\fs20  for you to try out. It is a medieval, nation building, warfare, strategy game that is multi-player and turn based. Seems to be turning out nicely so if you have a chance, please try it out and provide any feedback via the contact page on that site. Thanks in advance!\par
+\b\par
+Version 1.15 (01/31/05)\par
+\b0\f1\'b7\f0  I am starting back on my masters degree so Rhaorth and UT have volunteered to run Steeltide. I will be around a little bit but mainly for perks and bugs. Thanks.\par
+\f1\'b7\f0  Got an official name for my new game: Galactic Venture ... {\field{\*\fldinst{HYPERLINK "www.galacticventure.com"}}{\fldrslt{\ul\cf1 www.galacticventure.com}}}\f0\fs20  \par
+\f1\'b7\f0  strategy.zip renamed to gv.zip\par
+\b\par
+Version 1.15 (01/26/05)\par
+\b0\f1\'b7\f0  If you have been wondering what the file strategy.zip is for then it is a single player RPG I have been working on. It is a precursor and research to a new multi-player RPG I am planning to make in the next year. I am trying to do things differently and hopefully better than RPGWO code. One thing you'll notice is it is Isometric plus you can control more than one player at the same time. It also has RTS elements and control style as well. Just unzip it into a new folder and run Strategy.exe to give it a try. Keep in mind you can resize the play screen to fit your resolution. And read the readme.txt file to see what features it has and what has changed recently. Thanks!\b\par
+\par
+Version 1.15 (12/27/04)\par
+\b0\f1\'b7\f0  Wiped Steeltide. I know I said that I would never wipe it but I discovered that by nature my game system needs a wipe at least once per year, depending on population and use. I think Steeltide was well bloated and past due for a wipe. All players were wiped and their land. Only PLOT land was spared. I know it sucks and I did not want to do this but read above.\par
+\f1\'b7\f0  If you paid for perks in the month of December 2004 and you wish to quit because of the wipe, then I will gladly refund the paypal donation. Send email to mickey@rpgwo.com with the subject of PERKS REFUND and include in the body the email you used to donate with.\par
+\f1\'b7\f0  The new donation limit is now 1 year back. So if you donated before Jan 2004, sorry, you are no longer eligible for perks unless you donate again.\par
+\b\par
+Version 1.15 (11/10/04)\par
+\b0\f1\'b7\f0  client has option to turn off \ldblquote red lines\rdblquote  in shooting weapons, it also shows desert terrain accurately in world maps\par
+\b\par
+Version 1.15 (10/28/04)\par
+\b0\f1\'b7\f0  made some changes to the client and how it deals with monsters/NPCs. Guard will now NOT target non-attackable targets. The problem is that the monsterdef.dat file needs to be updated for each server and I don\rquote t have access to do it all and I am lazy so if you update and you can\rquote t attack monsters then turn on ATTCK PLAYERS as a temporary solution until your @@@ can update that file. Sorry about the trouble.\b\par
+\par
+Version 1.15 (10/24/04)\par
+\b0\f1\'b7\f0  Trying out a new type of world I call "Mission" worlds. Basically they are modern weaponry based and focus on a single quest or mission kinda like a Navy Seal.\par
+\f1\'b7\f0  The Mission worlds are LIMITED to a small number of players. Raptor Island only allows 5 players MAX and it only allows you 60 minutes of play time before it boots you so others can play. It then\par
+disallows you for logging back in for about 5 minutes. Why? Because I don't want scores of players running around getting in each others way and making it too easy. \par
+\f1\'b7\f0  Any problems/comments/suggestions with the new worlds please email Mickey at mickey@rpgwo.com\b\par
+\par
+Version 1.15 (9/14/04)\par
+\b0\f1\'b7\f0  Steeltide and Phobos now auto-restart at 3am and 4am CST respectively. This should get rid of the lag monster rearing its head plus no more \ldblquote world saves\rdblquote , it only saves when it restarts and backs it up then as well going back 10 days instead of 5\par
+\b\par
+Version 1.15 (7/09/04)\par
+\b0\f1\'b7\f0  made some security changes\par
+\f1\'b7\f0  added /email <email address>  so you can change the email you registered under\par
+\b\par
+Version 1.14 (6/18/04)\par
+\b0\f1\'b7\f0  added chat channels, see HELP #29\'85 it still might need some features but it is functional\par
+\f1\'b7\f0  added Summoner\rquote s FAQ to the end of HELP, it is more SteelTide oriented but should help all worlds somewhat\par
+\f1\'b7\f0  still getting bad lag on SteelTide every 2 days or so, I am still trying to figure it out, thanks\par
+\b\par
+Version 1.13 (6/12/04)\par
+\b0\f1\'b7\f0  when you click on an item that has a skill bonus or spell, it gives more info about it in the lower right status area... this should help you sort through jewelry better\par
+\f1\'b7\f0  old update but it affects all worlds, you can drag items from your inventory to your trader/mule instead of "selling" them like you did before.\par
+\b\par
+Version 1.13 (5/28/04)\par
+\b0\f1\'b7\f0  in the client, in the HOTKEYs, you can now setup an action called \ldblquote USE ITEM UNDERNEATH\rdblquote  , so if you set a hotkey up that uses a PLOUGH then it will use the PLOUGH underneath you thus speeding up farming tasks. It can be used for just about any item use  like planting seeds into ploughed ground, paving roads, etc\par
+\b\par
+Version 1.13 (5/27/04)\par
+\b0\f1\'b7\f0  in RPGWOEdit, added 2 features in the EDIT menu that will connect walls properly. The granite one will connect any granite wall you place down. The wood wall one is tricky\'85 you can still place down any wall of that color but when you use the feature, you must have the first wall part of that color selected else it will go over the boundary and place incorrect wood walls. Both features affect the WHOLE map, not just the visible screen so with the wood one, you need to be careful\par
+\b\par
+Version 1.13 (5/13/04)\par
+\b0\f1\'b7\f0  SECURE TRADE!!! Right click on a player and select trade. Then add or remove items from your offer then accept or cancel. Use /securetrade to toggle it on or off for your player. Use it carefully for now since it is new and could be buggy\b\par
+\par
+Version 1.12 (5/04/04)\par
+\b0\f1\'b7\f0  you can now set prices on individual items, please refer to HELP at the end, hopefully it is not too confusing\par
+\b\par
+Version 1.12 (4/30/04)\par
+\b0\f1\'b7\f0  you can now make invisible traps, you can only see them on your land or if you have rights to your land\par
+\f1\'b7\f0  throwable items, mainly for UTWorld\par
+\f1\'b7\f0  Just like some parcels you can\rquote t PK, now there are forced PK ones possible, like for making arenas\par
+\f1\'b7\f0  gonna start adding sceen shots to the main menu (cuz it has room) so send them to screenshot@rpgwo.com\'85 they MUSt be 800x600 and in JPEG format.\par
+\f1\'b7\f0  added a What\rquote s New for the individual servers\par
+\f1\'b7\f0  /ignoreguildchat\par
+\f1\'b7\f0  /ignore <player> now ignores /tells\par
+\b\par
+Version 1.12 (4/27/04)\par
+\b0\f1\'b7\f0  you can now see Quality % on items while trading with NPCs, it shows a bar in the graphic box and when you click on it, it also shows up in the text line.\par
+\f1\'b7\f0  added spell casting items, they only cast when armed or wearing and only when you need it, for example an Amulet with healing spell of value 5 will only cast heal on you when your LIFE drops 5 or more form your full LIFE\'85 also they only cast every 20 seconds so you won\rquote t see an immediate spell cast\par
+\f1\'b7\f0  How can you get these items? Amulets are the only monster drop right now and guess who drops them? That\rquote s right\'85 your old buddy Trolkins.\par
+\f1\'b7\f0  Just ordered a new hardware machine that I plan to move SteelTide and Phobos to, should be up in 24-48 hours\'85 your donations hard at work\'85 this should lower lag and lessen save times\b\par
+\par
+Version 1.11 (4/20/04)\par
+\b0\f1\'b7\f0  some monsters can have 2 weapons, one for range and one for melee\par
+\f1\'b7\f0  admin globals show up in red so people can\rquote t imitate\par
+\b\par
+Version 1.11 (4/16/04)\par
+\b0\f1\'b7\f0  I set the durability loss down to 0 on weapons for now until I can review it more\par
+\f1\'b7\f0  You can now claim reserved land, the land is no longer reserved\par
+\f1\'b7\f0  land from 1000,1000 to 2000,2000 is now claimable\'85 I\rquote ll add a warp and maybe a town there soon\par
+\f1\'b7\f0  use a shovel, lit torch or magic torch on Trolkin Shards to destroy them\par
+\b\par
+Version 1.11 (4/13/04)\par
+\b0\f1\'b7\f0  Changed how the durability of weapons works\'85 the MAX slowly goes down which means after each repair to a weapon, the MAX durability lowers which means it will require repairs sooner and sooner until the weapon breaks real fast or can\rquote t be repaired anymore. Not sure how well this will work so just let me know. If this works out well, I plan to do it for Armor.\par
+\b\par
+Version 1.11 (4/08/04)\par
+\b0\f1\'b7\f0  also about perks, I will NOT reply to your email if there is no problem. I also may not tell you in game for example if you are not online, etc, because you don\rquote t have to be online for me to activate them. So look out for the \ldblquote You have perks\rdblquote  message when you enter the world to see if you got them or not. I would say if you have not got them within a week then email me again.\par
+\f1\'b7\f0  I think I fixed the problem with the server booting people who put in bad passwords, making new accounts, logging out, etc., which was related to some security code I put in place a few months ago\b\par
+\par
+Version 1.11 (4/07/04)\par
+\b0\f1\'b7\f0  Steeltide news\'85\b\par
+\b0\f1\'b7\f0  land claim enabled, refer to (4/2/4) message on reserved land for details on reserved land\par
+\f1\'b7\f0  I, @@@Admin Mickey2, am giving out perks now. This is how it will be done\'85 email me at {\field{\*\fldinst{HYPERLINK "mailto:mickey@rpgwo.com" }}{\fldrslt{\cf1\ul mickey@rpgwo.com}}}\cf0\ulnone\f0\fs20  with the subject being \ldblquote PERKS - <playername>\rdblquote , that is it. If you have donated since January 2003 and your player name shows up on my list then you will get perks. DO NOT contact me in game. DO NOT contact me in game. DO NOT contact me in game. Get the hint? I WILL ban you for 1 day if asked for perks. If you play a different player than the one you paid perks for then the subject line of the email should be \ldblquote PERKS -<email of paypal account> - <new player name>\rdblquote .  Get it right cuz I have many players with perks and I don\rquote t want to waste my time cuz you forgot what name it was under.  SO CHECK FIRST. I want everyone who paid to get what they deserve so please be patient and do it my way.\par
+\f1\'b7\f0  added about 6 villages and more roads since opening plus Brigand Bar\par
+\f1\'b7\f0  I have many quests on my list to make that you will start to see in the coming weeks. So don\rquote t ask and definitely don\rquote t tell me what I should add\'85 ummm kaaaay.\par
+\f1\'b7\f0  at this time the MOD positions are full so don\rquote t ask anymore. When I promote some to @ then I will open MOD up to more players but until then don\rquote t ask.\par
+\b\par
+Version 1.11 (4/02/04)\par
+\b0\f1\'b7\f0  Liberty wiped, SteelTide takes its place\par
+\f1\'b7\f0  Most basic structure is in place. I should delay another week but decided to not wait any longer. The problem is I don\rquote t want you claiming land that I might use but did not want to limit you girls right away either. So, /landclaim will work to \ldblquote reserve\rdblquote  a land parcel. Reserving costs nothing and once I allow normal claiming you can then go back and /landclaim it normally. This will allow you to find your land you want but cost you nothing in case I use it in the next week. It does NOT behave like normal claimed land so your items can be stolen and walls will goto ruin. This is just an interim solution so I can keep building but not worry about players grabbing land I need to use. You may only reserve one parcel. You can un-reserve land by the same command /landclaim. When I open up land claiming normally, you don\rquote t need to claim the land you reserved. You can claim anyplace and will free your reservation once you claim someplace else.\par
+\f1\'b7\f0  The basic structure of  SteelTide is almost done. Including villages, roads, and a major town. Only a few quests have been added. PLENTY more will be added in the coming weeks, I just needed to get \ldblquote basic\rdblquote  stuff done then go from there. For right now, the wilderness spawns are in place and should entertain for now. But Haven is all done, with full quests.\par
+\f1\'b7\f0  Items have been repriced, most much lower than before. This mostly affects SteelTide and Phobos but Lunatik is affected somewhat as well, mainly with weapons and armor.\par
+\f1\'b7\f0  Admin role is in flux right now so please don\rquote t ask to be one yet. I did however add a new type called a moderator. They are just themselves, a regular player, that have commands like /muzzleglobal, /muzzle, and /globaldelay. The bonus for them is they are not limited by the globaldelay. A mod\rquote s job is to keep chat under control when a normal admin is not on. If you believe you can do this job then contact me. Beware, abuse of this position WILL result in a perm ban. I\rquote ll give a guideline for you to follow if I choose you. You can contact me about being a mod at this time but not about being @ or @@. \par
+\f1\'b7\f0  Perks will be giving out once land claims are opened up. So hopefully in a week. Only people who have donated since January 2003 will be eligible. If you donated before that time, you will need to re-donate.\super\par
+\nosupersub\b\par
+\par
+Version 1.11 (3/26/04)\par
+\b0\f1\'b7\f0  Liberty wipe postponed until friday April 2\super nd\par
+\nosupersub\f1\'b7\f0  All Admin on Liberty. just make a player with Admin in the name, also your normal players have admin powers as well, this is equivalent to @@\'85. DON\rquote T MESS WITH NEWB ISLAND OR NEWBS or I will shut down ALL servers for a week.\par
+\f1\'b7\f0  If you are NEW to the game, please bear with the jerks as we are in transition to a new world.. If the game is too hard to play with all the commotion then try back on April 2\super nd\nosupersub , thanks\par
+\f1\'b7\f0  made some changes to rpgwoedit\'85 added a MAP view tab, the numpad keys move you around the map, added select and paste which works off where the mouse cursor is, I suggest using F2, F3 and fool around with it to get hang of it, remember F4 undos\b\par
+\par
+Version 1.11 (3/15/04)\par
+\b0\f1\'b7\f0  Liberty wipe planned for April 1\super st\nosupersub\'85 in the past 3 months I have held off a wipe due to player requests but after the recent item duping problems (that should be fixed now) I have no choice but to wipe Liberty. That means all items, maps, and players\'85 everything. I know this sucks for most people since you have invested a lot of time into your player and don\rquote t want to loose them. It also means a lot of work for me and the admins rebuilding Liberty. So I have avoided this action as long as I can. Just know that the new liberty will be better with more properly designed and balanced quests and general world features.\par
+\f1\'b7\f0  Please DO NOT argue or complain to me about this choice. With a wipe, it opens up unique opportunities like making everyone admin and/or end of the world events. So enjoy it!\par
+\f1\'b7\f0  This is the LAST wipe of Liberty that I ever plan to do so rest assured that any new virtual lives you start will be preserved for the eons to come or until those damned Grayvyn show up\'85\par
+\f1\'b7\f0  PERKS REFUNDS: If you donated within the last month and because of the wipe you don\rquote t want to play anymore and want a refund then email me at {\field{\*\fldinst{HYPERLINK "mailto:mickey@rpgwo.com" }}{\fldrslt{\cf1\ul mickey@rpgwo.com}}}\cf0\ulnone\f0\fs20  with the subject line PERKS REFUND and be sure to include your logon and player name plus the email and real name that the donation came from and then I\rquote ll refund your money ASAP.\par
+\b\par
+Version 1.11 (3/05/04)\par
+\b0\f1\'b7\f0  made magic walls not able to block players, just monsters\par
+\f1\'b7\f0  working on some new terrains like desert and swamps, etc\par
+\b\par
+Version 1.11 (2/20/04)\par
+\b0\f1\'b7\f0  Phobos was wiped\par
+\f1\'b7\f0  mules added,  /mulebuy  right now, it just for Lunatik until bugs fixed up\par
+\b\par
+Version 1.10 (2/11/04)\par
+\b0\f1\'b7\f0  moved Phobos over with Liberty\par
+\f1\'b7\f0  added F button for follow on client\par
+\f1\'b7\f0  optimized some monster processing that should bring monsters up to normal speed\par
+\f1\'b7\f0  added marlin and fish bait, plus the different sizes of fish give more or less fillets\par
+\f1\'b7\f0  monsters can now have fragments other than blood when hit, I haven\rquote t yet added this into the monsters but the code is in place and working right, I\rquote ll soon add this to golems and such\par
+\f1\'b7\f0  made some changes to mana conversion skill, it kinda got sucky XP and performance, so look for some improvements there next time I update servers, maybe tomorrow\par
+\f1\'b7\f0  the client only shows player name now, NOT monster names anymore\b\par
+\par
+Version 1.10 (2/09/04)\par
+\b0\f1\'b7\f0  swapped Liberty and Lunatik worlds, so Liberty is running on a better machine and hopefully will fix the lag that has plagued it. Lunatik should not see any change in service, I hope. \par
+\f1\'b7\f0  fishing got some tweaks, now certain fish can only be caught at different depths, like the deeper you go the bigger you will find, also the \ldblquote fishing out\rdblquote  has been tweaked a lot lower so you will get about 10 fish per area then it is fished out then you should move, the areas will slowly regen but will take time\par
+\f1\'b7\f0  MAJOR CHANGE: items dropped on land other that what you own or have right to will get cleaned up by the system within 10 minutes of the drop. This is to keep the item count down and keep PLOT areas clean which might be causing longer and longer save times\par
+\b\par
+Version 1.10 (2/05/04)\par
+\b0\f1\'b7\f0  changed how fishing works, it is much better now, you need to bait your pole, look up worm in USAGE to figure out how to get them, fishing spots can now be \ldblquote fished out\rdblquote  so you catch less and less often in that\par
+area, your skill determines how big of a fish you can successfully reel in once you actually get them on the hook. So there are 3 outcomes: no bite, bite but lost, bite and catch.\b\par
+\par
+Version 1.10 (2/02/04)\par
+\b0\f1\'b7\f0  toned down the mob effect to x = x + x/2 so it should be much better\par
+\f1\'b7\f0  alchemy plants no longer spawn on your land, they now act like normal plants, use farmer\rquote s scythe to harvets seeds, grind the seeds to get grounds, etc\par
+\b\par
+Version 1.10 (1/30/04)\par
+\b0\f1\'b7\f0  changed the Mob Effect from 20 + 20 + 20\'85  to 10 + 20 + 40 + 80 + 160\'85 it might be too much but we\rquote ll see how it goes.\par
+\f1\'b7\f0  spells now affected by and affect Mob Effect\par
+\f1\'b7\f0  monster AI enhancements: Warp moving, keep distance, and pick pocketing\par
+\f1\'b7\f0  monsters that steal from you drop the loot after being killed\par
+\f1\'b7\f0  whoever does the most damage to a monster before it dies, gets rights to the loot\par
+\b\par
+Version 1.09 (1/12/04-b)\par
+\b0\f1\'b7\f0  Auto Mine for the client, look in MENU for the switch, when underground and you try to walk into a wall and you are carrying a pick, it will mine the wall for you\par
+\b\par
+Version 1.09 (1/12/04)\par
+\b0\f1\'b7\f0  newbie mines now give a random ore: granite, coal, copper, silver or iron and cave in faster\par
+\f1\'b7\f0  old unclaimed land gets cleaned up better, the surface gets overgrown, walls crumble to ruins, etc\par
+\f1\'b7\f0  auto-sieges now run 4 times a day with these random level ranges: 10-20, 20-40, 30-32000, 10-32000\par
+\b\par
+Version 1.09 (1/09/04)\par
+\b0\f1\'b7\f0  looks like I am not gonna wipe Liberty but I do have some major plans for it\'85\par
+\f1\'b7\f0  Some of the things I have planned: \par
+    \f1\'b7\f0  redo newb island, no high level things, fix mines, smaller town\par
+    \f1\'b7\f0  check all the wilderness spawns, fix auto-seige area\par
+    \f1\'b7\f0  review artwork and any items not added by me (kinda done already)\par
+    \f1\'b7\f0  review appeals and implement them as needed\par
+    \f1\'b7\f0  check each quest to make sure it makes sense and works properly\par
+    \f1\'b7\f0  add more towns and roads connecting them\par
+    \f1\'b7\f0  if your land is in the way of a road, I\rquote ll pay you 1000 gold for it, that\rquote s it\par
+    \f1\'b7\f0  add more real quests and quest trophies\par
+    \f1\'b7\f0  make Grayvyns more active\par
+    \f1\'b7\f0  add more content as needed and as submitted by players\par
+\b\par
+Version 1.09 (1/07/04)\par
+\b0\f1\'b7\f0  went and fixed the ore weapons since they were out of balance. They are better but harder to make plus now have skill requirements on them, plus some extra bonus things like hessite sword does stamina damage\par
+\f1\'b7\f0  when one of your appeals gets edited/changed, you will get an in game mail, also for admins, if you edited the appeal at anytime, you also get a mail\par
+\f1\'b7\f0  I am going over many things to get Liberty back in shape (according to my preference of course, heh), one thing being the appeals, so please put any requests, ideas, etc in there. The admins in Liberty have been temporarily demoted until I can get a handle on things.\par
+\f1\'b7\f0  All of the above apply to Liberty and Phobos only, except the appeal mail thingy.\par
+\b\par
+Version 1.09 (1/06/04)\par
+\b0\f1\'b7\f0  after shutting down the worlds because of hackers, I decided to deal with some security issues that have been outstanding but never really caused problems. The system is now more secure so we\rquote ll see how things go. Thanks for waiting this mess out.\par
+\b\par
+Version 1.07 (11/07/03)\par
+\b0\f1\'b7\f0  seems like the server got hacked and renegade servers are popping up. They are unauthorized and actually illegal since the origin of the server was illegally obtained. Better change your passwords in case they got the password file. Sorry about the trouble.\par
+\b\par
+Version 1.06 (10/20/03)\par
+\b0\f1\'b7\f0  changed mining\'85 made it more realistic where there are veins of ore and the view will respawn for a few times with cave ins but will eventually run out. I am testing this on Phobos.\par
+\f1\'b7\f0  I, Mickey, will run Phobos for now. I\rquote ll get a few admins but basically it will be like the original: no rules, forced PK, player run, blah blah blah\'85 I\rquote ll probably do some scripts for the grayvyns to keep it\par
+interesting, kinda like the races but script/system controlled, we\rquote ll see\'85 and UT is not doing anything for Phobos so don\rquote t ask\par
+\b\par
+Version 1.04 (10/10/03)\par
+\b0\f1\'b7\f0  added mortar/cannons to Carnage. Added an area to battle with them. Just use your hand on the mortar to aim it then use a mortar shell on it to fire. The Trajectory skill helps aiming but is not needed to fire\par
+\b\par
+Version 1.04 (09/22/03)\par
+\b0\f1\'b7\f0  projectiles like arrows and magic spells can now have a projectile animation, I have not added them all nor refined it yet but so far it looks better than nothing, heh.\b\par
+\par
+Version 1.03 (09/17/03)\par
+\b0\f1\'b7\f0  added some security to hinder macroers and \ldblquote helper\rdblquote  apps\b\par
+\par
+Version 1.02 (08/02/03)\par
+\b0 Lunatik Updates\'85\par
+\f1\'b7 \b\f0 New Skill Added \b0\endash  \b Jeweler\b0  You may notice while you are mining, strange glittering objects appearing. These raw gems are perfect for the new Jeweler skill.  Hold on to these beauties, as they will be valuable to those who wish to learn this new trade.  Experience the joy of working with gold and precious gems, as you explore the world of Jewelry Making.  Become a Master of the trade to create precious baubles to enhance the skill of anyone.\par
+\par
+\b Version 1.02 (07/28/03)\par
+\b0 Lunatik Updates\'85\par
+\f1\'b7\f0  EW Log Wall Slit will not go to player inventory now when being made, as well as North Log Wall End can now be made.\b\par
+\b0\f1\'b7 M\f0 inor and major stamina and mana potions will give an additional boost when used on player by a First-Aider.\par
+\par
+\b Version 1.02 (07/18/03)\par
+\pard\keepn\nowidctlpar\s1\b0 Lunatik Updates\'85.\b\par
+\pard\nowidctlpar\b0\f1\'b7\f0  Added some new plants for farmers including tomato, potato, and carrots with each having their own uses.  Fixed coffee trees, they are now removable.\par
+\f1\'b7 \f0 Plan is to complete the items that as of yet do not have a usage tied to them. (Really that is my plan)\f1\par
+\b\f0\par
+Version 1.02 (07/09/03)\par
+\b0\f1\'b7\f0  did some data packet optimisations on monsters, it should help with any bandwidth issues, however, it does not affect tame or player packets\par
+\f1\'b7\f0  updated the HELP on gods and goddesses\par
+\f1\'b7\f0  website is back up with info on the worlds and such, {\field{\*\fldinst{HYPERLINK "www.rpgwo.com"}}{\fldrslt{\ul\cf1 www.rpgwo.com}}}\f0\fs20\par
+\b\par
+Version 1.01 (06/26/03)\par
+\b0\f1\'b7\f0  Lunatik open\'85 \par
+\f1\'b7\f0  Admins on Lunatik will be Role-Playing gods, will give more info as we go along, we do have a sort of a guide to follow, basically if players \ldblquote worship\rdblquote  the god then the god will help in certain ways that the god can, each player will have a /karma amount that dictates how much a god can  help, you get karma by pleasing the god\par
+\f1\'b7\f0  Phobos is in flux and looks like we are gonna recreate it, check out the forum on details, Dan and Joe are leading the way\par
+\b\par
+Version 1.01 (06/12/03)\par
+\b0\f1\'b7\f0  Lunatik semi-open\'85 you may create a new client but it will not be enabled to log in. I will start enabling/approving new clients starting Friday morning PST. And do not email me to expedite the process, that will just make me angry, heh, no really, it will.\par
+\f1\'b7\f0  Lunatik is a Role-Playing server. Role play rules as defined in the User Agreement like names and being \ldblquote in character\rdblquote  will be strictly enforced. Please take some time to read and understand this. We will permanently ban you on Lunatik and maybe other servers if you break these rules.\par
+\b\par
+Version 1.01 (05/29/03)\par
+\b0\f1\'b7\f0  temperature affects the snow level, it will lower and cover the land when cold and colder, etc\par
+\f1\'b7\f0  added a bunch of commands for making streams and lakes other than the sea level, Admins if you ask nicely maybe I\rquote ll tell you them heh\par
+\b\par
+Version 1.01 (05/19/03)\par
+\b0\f1\'b7\f0  beds now serve a \ldblquote real\rdblquote  purpose other than warming\'85 when you exit the world on a bed, each v-hour that player is offline you get a renewal bonus when they come back in AND the bed is still in same spot. This basically simulates sleeping and makes inns, apartments, and homes more useful. See HELP for more details\par
+\f1\'b7\f0  changed the burden on beds to 2000, gonna add bedrolls and royal beds soon too that give different gain rates\par
+\f1\'b7\f0  speaking of inns and apartments\'85 I revised the Inn code a bit and plan to add some and teach the admins how to set one up. The apartment code I have now automated kinda like guilds and inn code put together. See HELP for more details\par
+\f1\'b7\f0  The vorth spawns at meteorite sites now have a \ldblquote TimeToLive\rdblquote  meaning after getting killed like 5-10 times the spawn will stop so you at least clean the area out if near your home or whatever\par
+\f1\'b7\f0  on the client in MENU added a \ldblquote dbl click item view\rdblquote  option that toggles the double click item view heh\par
+\b\par
+Version 1.01 (05/15/03)\par
+\b0\f1\'b7\f0  on your world map view, your location flashes, plus changed the color of some things, like alchemy items show up red/brown and roads/surfaces show up gray\par
+\f1\'b7\f0  admins, I added a nifty \ldblquote sector scan\rdblquote  button to the MAP tab, press it to start, let it go til it stops or press it again to stop it\par
+\f1\'b7\f0  some other admin commands: /surfacetrailwidth #, /forest <itemname>\par
+\f1\'b7\f0  I redid the skill roll calc from being a flat calc to a curved calc\'85 don\rquote t ask me what that means, just tell me if it is not working right: {\field{\*\fldinst{HYPERLINK "mailto:mickey@rpgwo.com" }}{\fldrslt{\cf1\ul mickey@rpgwo.com}}}\cf0\ulnone\f0\fs20\par
+\f1\'b7\f0  meteorites are now auto-mated to fall about once per week, no ones land is safe, except PLOT but it drops Damonite Ore and if it on your land, it gives you ownership so at least you have something left. It most likely will fall on unclaimed land but also may fall into water as well so dust off your raft and start paddling\par
+\f1\'b7\f0  if you have not noticed ALL shields now break the way they were intended, near or after the 0% mark \par
+\f1\'b7\f0  if your wondering what is going on with my new game, well it is on hold until UT and I get the new world up and running, yes Liberty 2, but I think it will be called Lunatik in memory of our first server host. When will it be available for players? Not sure, maybe another week or 2.\par
+\b\par
+Version 1.01 (05/12/03)\par
+\b0\f1\'b7\f0  made some bug fixes to RPGWOEdit plus you can now resize it and get a bigger edit area.\par
+\b\par
+Version 1.01 (05/08/03)\par
+\b0\f1\'b7\f0  damon wand and moo shield repairable\par
+\f1\'b7\f0  siege changes: siege only warps, only players in siege can attack siege monsters,  cannot tame siege monsters\par
+\b\par
+Version 1.01 (04/17/03)\par
+\b0\f1\'b7\f0  been playing secretly and found all sorts of small things that needed fixing\'85\par
+\f1\'b7\f0  mutant, elk, and drake armor now get correct skill bonuses: melee, missle, and magic defenses\'85 they are also now repairable\par
+\f1\'b7\f0  Damon armor AL changed from 20 to 25, MAL changed to 50\par
+\f1\'b7\f0  when viewing armor, it now displays more clearly AL ratings, specifically for elemental, it displays absolute instead of relative to AL now\par
+\f1\'b7\f0  worked on that item disappear bug when you arm/disarm items, not sure if I got it tho\par
+\f1\'b7\f0  the Armor II and III were in Red magic group but should be in White magic, fixed\par
+\b\par
+Version 1.01 (04/16/03)\par
+\b0\f1\'b7\f0  Local and Specify for server selection fixed\par
+\f1\'b7\f0  Also, old news, traders get removed just like land gets unclaimed if you do not login for more than a V-year which is about 1 real month. Only the traders gold gets dropped, any items on them get destroyed.\par
+\f1\'b7\f0  had to undo the monster optimisation, had too many bugs, so now screens with a lot of monster activity will go slow again\'85 I might still try to figure something out tho\par
+\b\par
+Version 1.01 (04/11/03)\par
+\b0\f1\'b7\f0  fixed the editor to run with the new folder structure\par
+\b\par
+Version 1.01 (04/09/03)\par
+\b0\f1\'b7\f0  major change to how the client updates and stores files per server\par
+\b\par
+Version 1.01 (04/02/03)\par
+\b0\f1\'b7\f0  ore xbows repairable and battering ram makable\par
+\b\par
+Version 1.01 (04/01/03)\par
+\b0\f1\'b7\f0  optimised display somewhat, so that when a lot of monsters moving on the screen should not lag as much or at all\par
+\f1\'b7\f0  did some race support code for phobos server, you can now become an ally with a race\par
+\b\par
+Version 1.00 (03/28/03)\par
+\b0\f1\'b7\f0  tweaked the grayvyn and dinos, still have some work to do yet but some stats went up, some went down, \par
+so be aware\par
+\f1\'b7\f0  got final rules for admin race controlling done\'85 might post it for players soon\'85 basically, at this point, anyone on Phobos is open to attack, online or offline, but it does start off slow, but we\rquote ll see, this is all new ideas so it might require some tweaks: email {\field{\*\fldinst{HYPERLINK "mailto:dan@rpgwo.com" }}{\fldrslt{\cf1\ul dan@rpgwo.com}}}\cf0\ulnone\f0\fs20  or Kermit(email?) with comments\par
+\f1\'b7\f0  you can use fire starter on <race> crops and battering ram on walls\par
+\b\par
+Version 1.00 (03/26/03)\par
+\b0\f1\'b7\f0  yesterday auto-sieges updated with grayvyn behemoths at end\par
+\f1\'b7\f0  normal auto-stalkers (the clones) spawn less\par
+\f1\'b7\f0  new server opened up called Phobos. It will be run mostly like the \lquote old\rquote  Phobos server. It will be forced PK, no newbie island, no player activation, stealing, but has a smaller map size 1000x1000. We are gonna try to have \ldblquote active\rdblquote  races, in other words admins will be controlling Grayvyn, Dinos, and other races as they grow and populate. This means that player activity will affect them. You can go and kill all of them and have it affect their progress AND they can come and kill you and burn your house down as well. Nothing is safe in this world. We\rquote ll see how it goes. THIS IS NOT A WORLD FOR WHINERS! This was my original idea for the game and I don\rquote t believe it is for everybody. Thanks for playing.\par
+\f1\'b7\f0  I would like to see people making just one player on Phobos but it is not the rule, just a strong recommendation. Why? Cause it promotes community.\par
+\f1\'b7\f0  players or items will NOT be transferred over from Liberty server to Phobos\par
+\b\par
+Version 1.00 (03/21/03)\par
+\b0\f1\'b7\f0  auto-sieges tweaked, monsters split into 4 groups now instead of 2, no more announcements when they get spawned, stalkers spawned for high level players in the siege, monsters that stand still or run away are not spawned\par
+\f1\'b7\f0  PK not allowed on a player in a siege, enforced with code so give it a try\par
+\f1\'b7\f0  typing /war when you are not in a siege will tell you the siege schedule and the server time\par
+\f1\'b7\f0  the auto-siege start announcement tells the min level to join\par
+\f1\'b7\f0  auto-stalkers now spawn for any player over level 10, this is NOT a siege thing but a normal play thing, heh, I think of the coolest things.\par
+\b\par
+Version 1.00 (03/18/03)\par
+\b0\f1\'b7\f0  automated sieges, although admins may still run them as they used to\par
+\f1\'b7\f0  auto-seiges can be scheduled to occur twice per real day. I think I will set them to start at 12pm and 3pm PST for now until they are tested/debugged enough\par
+\f1\'b7\f0  when a siege gets announced, you may join it by typing /warjoin \'85 this will take the 500 gold out of your inventory plus warp you to the siege area, so make sure your player is ready to join and be warped, note, when the siege is done, it does not warp you back, also, the spot it warps you to, is the center of the siege, meaning the area you must defend\par
+\f1\'b7\f0  the spawns start 5 minutes after the announcement and you may join or /warquit at any time during\par
+\f1\'b7\f0  the auto-seige lasts for 1 hour plus 15 minutes after. It stops spawning monsters after 1 hour, then gives you 15 minutes to kill them all before it starts removing the monsters one by one\par
+\f1\'b7\f0  the system will spawn monsters that are within 10 levels of the average player level in the siege, for right now it will announce when it spawns monsters and at what location, this will be tweaked as needed as we get this tested and ironed out, then the announcement will be removed\par
+\f1\'b7\f0  the system might spawn quest monsters but that is ok since no siege monster drops treasure/loot\f1\par
+\'b7\f0  the system will still require some tweaks to spawns since monster levels and player levels are not one to one except maybe at lower levels\b\par
+\b0\f1\'b7\f0  there are no rewards/penalties given out after an auto-seige\par
+\f1\'b7\f0  I changed the siege castle and added siege gate keys that will lock/unlock closed gates and doors so that monsters can\rquote t open them up, the keys will be on a fast spawn in the castle in a couple areas\par
+\f1\'b7\f0  you may ask why I am working on this game still since I said I was \ldblquote done\rdblquote , well, I had the idea over the weekend for my new game, that events and such should be automated, therefore I decided to test it out in RPGWO first to see how it goes and learn some lessons. So be happy, you people love sieges heh\par
+\b\par
+Version 1.00 (03/12/03)\par
+\b0\f1\'b7\f0  traders that sell notes are fixed\'85 somewhat, they can still run out of gold though\par
+\f1\'b7\f0  Version 1.00!!! What does this mean?!?! It means I plan no more major features. That means no more code changes unless it is for bugs or very minor things. \par
+\f1\'b7\f0  Content will still be updated as usual including images, sounds, items, monsters, quests, events, etc.\par
+\f1\'b7\f0  Thank you all for playing! I am very happy to have this game \ldblquote finished\rdblquote .\par
+\f1\'b7\f0  The Future\'85 I have started work on a new game. Hopefully, I will have something playable this Summer. I\rquote ll announce more about it as the information becomes available. So please do not ask me about it in game. And at this time, I do not need help with the new game. \par
+\b\par
+Version 0.86 (03/06/03)\par
+\b0\f1\'b7\f0  improved the physics of soccer balls \'85 again\par
+\f1\'b7\f0  admins, you can now /itemlock  bulletin boards to keep players from taking scrolls, etc out from them\'85 I am setting something up with the soccer rules by the soccer field is why I needed this\par
+\f1\'b7\f0  added an \ldblquote apartment\rdblquote  warp, basically you pay an admin and he gives you a \ldblquote room\rdblquote  that only you can warp to from the \ldblquote apartment\rdblquote  warp stone. Admin Someguy will be setting this all up so DO NOT ask any other admin about it or it is grounds for retribution!!! Have a nice day. \f2 J\f0\par
+\b\par
+Version 0.86 (03/06/03)\par
+\b0\f1\'b7\f0  fixed chess pieces so that they can not be picked up but can be moved around still\par
+\f1\'b7\f0  tweaked the soccer ball physics to be a little more realistic\par
+\f1\'b7\f0  you now check an items % directly: If the item is armed, then right click it\'85if the item is in your inventory then right click it, then choose \ldblquote check\rdblquote\'85 Also, tools, like a pick, can now be \ldblquote checked\rdblquote  as well\par
+\f1\'b7\f0  added 2 text commands to control your player during soccer: /goalie and /referee\par
+\f1\'b7\f0  /goalie  will toggle if when a ball hits you, it gets stopped under you\par
+\f1\'b7\f0  /referee  will toggle if the ball is affected by you or not, if enabled, you can\rquote t kick the ball and the ball goes right through you no matter what\par
+\f1\'b7\f0  Also, blocking someone elses kick is now a comparison or a skill roll from both players\par
+\b\par
+Version 0.85 (03/05/03)\par
+\b0\f1\'b7\f0  added \ldblquote sports\rdblquote  skill, free to train\par
+\f1\'b7\f0  sports skill affects how straight you kick the soccer ball and if you can block it\par
+\f1\'b7\f0  use targeting low, mid, and high for short, medium, and long kicks\par
+\f1\'b7\f0  added an official soccer ball for use during regulation play with admin ref\rquote ing\par
+\f1\'b7\f0  added chess boards and soccer field just North/East of mainland town\par
+\f1\'b7\f0  added an NPC soccer player, heh, that actually chases the ball\par
+\b\par
+Version 0.85 (03/04/03)\par
+\b0\f1\'b7\f0  soccer\'85 yep that\rquote s right, I added soccer, heh\'85.I\rquote ll setup a field and let you know where, probably setup a warp to it from the Main Land town.\par
+\f1\'b7\f0  to kick the ball, just walk on top of it, the direction you walk to it, is the direction it goes\par
+\f1\'b7\f0  if you get the ball in the goal, double click (use hand) on it to get ball out\par
+\f1\'b7\f0  /ignoresoccer  to toggle soccer messages on and off\par
+\f1\'b7\f0  soccer messages go as far as a /yell does\par
+\f1\'b7\f0  don\rquote t forget to put your jersey on, it goes on like armor, not like a coat\par
+\b\par
+Version 0.85 (03/01/03)\par
+\b0\f1\'b7\f0  removed the who\rquote s logged on list in main menu since it allowed hackers opportunities\par
+\f1\'b7\f0  added a separate IP ban and client name ban (Admins: /ipban <name>  works like /ban <name>), the regular /ban no longer works off IP or IP header\par
+\f1\'b7\f0  you can now /surface unclaimed land, also high elevations with snow/rock can be surfaced\par
+\f1\'b7\f0  grass dies off in winter, right now it kinda extreme, I\rquote ll soften the blow a bit\par
+\b\par
+Version 0.85 (02/28/03)\par
+\b0\f1\'b7\f0  the rest of the couches are makable\par
+\f1\'b7\f0  fixed bug that allowed wood walls to be built on un-even ground\par
+\f1\'b7\f0  helmets now show up on your player, looks kinda weird but ok for now\par
+\f1\'b7\f0  added 2 new spells per the a forum suggestion, it uses the un-used rune, heh\par
+\b\par
+Version 0.84 (02/24/03)\par
+\b0\f1\'b7\f0  you can now make toilet, mirror, and dresser\'85 look in USAGE\par
+\f1\'b7\f0  sprouting grapevine now dig-up-able with a shovel\par
+\b\par
+Version 0.84 (02/20/03)\par
+\b0\f1\'b7\f0  you can now make wine, sinks, and bath tubs\'85 look in USAGE\par
+\f1\'b7\f0  renamed \ldblquote alchohol\rdblquote  to \ldblquote beer\rdblquote\par
+\b\par
+Version 0.84 (02/19/03)\par
+\b0\f1\'b7\f0  changed how the client gets server to connect to\par
+\f1\'b7\f0  changed the updater, did better error checking\par
+\f1\'b7\f0  moved the update site back to old spot on ccinet.com\par
+\b\par
+Version 0.84 (02/14/03)\par
+\b0\f1\'b7\f0  added some \rdblquote black\rdblquote  heads, numbers 90 to 99\par
+\b\par
+Version 0.84 (02/11/03)\par
+\b0\f1\'b7\f0  when you click on a player/monster you now see 3 numbers instead of 1\'85(life%, stamina%, mana%), these numbers may not always be upto date however, only when the player moves or their life% changes, otherwise it is just too many packet updates to add more lag\par
+\f1\'b7\f0  actions or usages can now be \ldblquote bought\rdblquote  or assigned to a single player or guild, for example, if you have a guild flag, we can set it up so that only your guild members can make it, or we can \ldblquote lease\rdblquote  out rights to a player or guild so that only they can make a certain item, like a \ldblquote brand name\rdblquote  item like \ldblquote Shaolin\rquote s Monkey Rum\rdblquote  would be setup so only Shaolin could make it\par
+\f1\'b7\f0  I am very close to a version 1.0, I just need to finish up dynamic player icons: heads and some other things\par
+\b\par
+Version 0.83 (02/06/03)\par
+\b0\f1\'b7\f0  the rest of the weapons like elementals added to dynamic icons\par
+\f1\'b7\f0  wands should show up now as well\par
+\f1\'b7\f0  changed lockpicks and locksmith viewer, they no longer allowed to be used on someone else land unless they have rights, so you really can use doors and lock as intended and not use things to block the doors like freaking anvils\'85 thanks\par
+\f1\'b7\f0  runes last twice as long now as well\par
+\b\par
+Version 0.83 (01/29/03)\par
+\b0\f1\'b7\f0  weapons and shields now show up on your dynamic icon, not all the weapons were done, like the elementals still need to be added, but I just wanted to get the basics in for now, I did get all the shields in tho\par
+\f1\'b7\f0  next I will add more weapons and wands and then tackle helmets and heads\par
+\b\par
+Version 0.82 (01/27/03)\par
+\b0\f1\'b7\f0  dynamic player icons, basically, what you are wearing or have armed will show up on the map for everyone to see\par
+\f1\'b7\f0  so far I just have heads, arms, chest, and legs, \'85 I plan weapons and shields and maybe helmets and also maybe robes\par
+\f1\'b7\f0  I apologize for the skin colors of the heads and arms, if your ethnic background is not represented it is cuz there are too many to put in or I just forgot it, it isn\rquote t very visible anyways so\'85 oh well\par
+\f1\'b7\f0  as you enter, you are still in static image mode (unless you created new)\par
+\f1\'b7\f0  use the following commands: /image 0   to set yourself dynamic, or use numbers from 1 to 100 for staic images, /head <number>, /arms <number>, /chest <number>, /legs <number> will all set your default or \ldblquote naked\rdblquote  image when you are not wearing armor. So when you use these, take off your armor to see the new image.\par
+\f1\'b7\f0  These commands will NOT be around forever, they are there for you to adjust your player as needed.  You are not required to use dynamic images, you may keep your static image if wanted\'85.for now at least.\par
+\f1\'b7\f0  after the dynamic players are running smoothly, that is it, I will make it version 1.0 then the only thing I plan to do with the game is bug fixes and content\'85 thanks for playing \f2 J\f0\par
+\b\par
+Version 0.81 (01/15/03)\par
+\b0\f1\'b7\f0  you can no longer put items (traps) under a player\par
+\f1\'b7\f0  /tameimage <number>    look in HELP\par
+\f1\'b7\f0  traders now can carry unlimited burden but they can only move/follow if the burden is less than 5000\par
+\b\par
+Version 0.81 (01/14/03)\par
+\b0\f1\'b7\f0  player NPC can be bought at 5k, 10k, 15k and 20k so up to 4 can be bought\par
+\f1\'b7\f0  player NPC can now only hold 5000 burden(ppl were using them as pack mules, I\rquote ll add pack mules soon I hope)\par
+\f1\'b7\f0  burden when you sell items should be fixed now\par
+\f1\'b7\f0  /n <message>   (speak ancient, must have Read Ancient trained)\par
+\b\par
+Version 0.81 (01/10/03)\par
+\b0\f1\'b7\f0  player control traders NPCs, look in the HELP in the section on Tames, for owners, to give items for selling just \ldblquote sell\rdblquote  them to the trader, to take items off, just \ldblquote buy\rdblquote  the item, in both cases the price/cost for the owner is zero, non-owners may not sell items, only buy items off these traders\par
+\f1\'b7\f0  monsters got a little meaner\par
+\b\par
+Version 0.81 (12/23/02\par
+Another UT Update\par
+\b0\f1\'b7\f0  Ok Traps Finally finished and makeable   :)  (hears about time UT)\par
+\f1\'b7\f0  Also Log wall now Destroyable too  (hears another cheer)\par
+\f1\'b7 \f0 Jay's Teddy bears in too   (i was Blackmailed into adding them By JAY!!!!!!)\par
+\f1\'b7 \f0 and afew other things added but not gonna name them all so there :P\b\par
+\par
+Version 0.81  (12/18/02)\b0  \b\par
+\b0  A UT Update\par
+\f1\'b7 \f0 OK first off   Happy Christmas  Everyone  and \b GOTCHA  on server going down    its not really :P\par
+\b0\f1\'b7 \f0 New log walls are in and buildable  \par
+\f1\'b7 \f0 Also element traps are in but need bit more work on them \par
+any problems let me know :P    (YAY my first update :) )\b\par
+\par
+Version 0.81  (12/18/02)\b0  \par
+\f1\'b7\f0  fixed a bug with items spawning in chests\par
+\f1\'b7\f0  redid the animations and sound code, they are now dynamic and easily updatable, no real difference for players except maybe a little less lag\par
+\b\par
+Version 0.80  (12/17/02)\b0  \par
+\f1\'b7\f0  Improve Weapon spell now improves aromor and sheilds\par
+\f1\'b7\f0  new spell for Blue mages: Lock/Unlock spell, uses the unused rune\par
+\f1\'b7\f0  /tametransfer  see HELP\par
+\f1\'b7\f0  in rune bag, added a "Move to Player" button\par
+\f1\'b7\f0  Items can now spawn in chests or containers (for quests and such)\b\par
+\par
+Version 0.79  (12/16/02)\b0  \par
+\f1\'b7\f0  Spell delete button to get rid of spells you don't use\par
+\f1\'b7\f0  added tons of level 3 spells for Red and White magics\par
+\b\par
+Version 0.78  (12/13/02)\b0  \par
+\f1\'b7\f0  use tiny rocks on the ground to make roads, even on unlevel ground\par
+\f1\'b7\f0  The blue magic affect "dot" now shows potion and item bonuses affects\par
+\f1\'b7\f0  A button on client works like Guard button sorta, it pops up and down\par
+\f1\'b7\f0  elemental traps\par
+\b\par
+Version 0.78  (12/12/02)\b0  \par
+\f1\'b7\f0  fixed bugs with locksmith keyer on ground and chests\par
+\f1\'b7\f0  standing close to fire will warm you up, the longer you stand next to a fire the more warmth \ldblquote fuel\rdblquote  you get thus you stay warmer longer after you leave the fire\par
+\f1\'b7\f0  I am working on a final list of features I want for my game to make it version 1.0, I have finished going through my lists and will now review the appeals. This is only covering features, NOT content. Content like more weapons and such can always be added at anytime\par
+\f1\'b7\f0  UT has been promoted to @@@ and is now the official Content Manager. He has the ability to make monsters, items, etc for the game. I have given him free reign over the world to do what he wants\'85 sorry. I will still be involved with content but just not as much. Just time for someone else to lead things content wise.\par
+\b\par
+Version 0.78  (12/11/02)\b0  \par
+\f1\'b7\f0  you can get milk from cows and wool from sheep now, use bucket or clippers\par
+\f1\'b7\f0  those pesky monsters with hands just had them cut off! Like cows and sheep cannot open doors or move things around. But humanoid monsters still have them\par
+\f1\'b7\f0  only if you use first aid for more than zero healing do you get XP\par
+\f1\'b7\f0  Posts only last for a week or so then get deleted\par
+\b\par
+Version 0.78  (12/10/02)\b0  \par
+\f1\'b7\f0  using items on players is now possible, for example bandages on a player to heal\par
+\f1\'b7\f0  new skill: First Aid\par
+\b\par
+Version 0.77  (12/09/02)\b0  \par
+\f1\'b7\f0  green and purple walls now paintable\par
+\b\par
+Version 0.77  (12/06/02)\b0  \par
+\f1\'b7\f0  items that have \ldblquote water\rdblquote  can cool you down for a time like lemonade or limeade\par
+\f1\'b7\f0  added blue walls and paint, also red walls must be painted to get now, will add more colors soon\par
+\f1\'b7\f0  did a lot of optimisations to item usage code so let me know at \cf1\ul Mickey@rpgwo.com <\cf0\ulnone{\field{\*\fldinst{HYPERLINK "mailto:Mickey@rpgwo.com"}}{\fldrslt{\ul\cf1 mailto:Mickey@rpgwo.com}}}\cf1\ul\f0\fs20 >\cf0\ulnone  of any urgent issues\par
+\f1\'b7\f0  wands are repairable\par
+\f1\'b7\f0  tames reproducing will be limited to the Tame limit which right now is 20\par
+\b\par
+Version 0.77  (12/04/02)\b0  \par
+\f1\'b7\f0  added temperature effects, click on horizon to get time and basic temp info\par
+\f1\'b7\f0  /temp will give average temp and your current temp\par
+\f1\'b7\f0  if you are very cold you lose stamina just like starving, then lose life\par
+\f1\'b7\f0  if you are cold or hot or very hot, your stamina regains slower\par
+\f1\'b7\f0  temperature is determined by several factors: month(season), time of day, and elevation\par
+\f1\'b7\f0  temps under 50 stop plants from growing and keeps livestock animals from spawning, like cows\par
+\f1\'b7\f0  so basically stock up on food for winter\par
+\f1\'b7\f0  added a new slot for clothing, like cloaks and coats, these increase your warmth, Tailors can make them\par
+\f1\'b7\f0  /elevation gives your current elevation, 105 is sea level I think and 130 is impassable\par
+\f1\'b7\f0  I have no idea how harsh winter/summer will be, so email me at mickey@rpgwo.com with urgent issues\par
+\b\par
+Version 0.76  (12/03/02)\b0  \par
+\f1\'b7\f0  sheep and cows now reproduce\par
+\f1\'b7\f0  if a tame reproduces, the baby is also tame\par
+\f1\'b7\f0  monsters now have a speed variable that controls how fast they move. Before they all moved once per 2 seconds but now I can set any monster to move once from 1 to 360 seconds, so humanoid monsters still at 2 seconds, fast monsters like drakes are at 1 seconds, bigger or slower ones like cows are at 4 seconds\par
+\f1\'b7\f0  elevation now effects what may grow there, mainly a temperature affect, the lower the elevation, the warmer it is. For example, Banana trees grow in low elevations but apple trees only grow in higher elevations\par
+\b\par
+Version 0.76  (11/27/02)\b0  \par
+\f1\'b7\f0  fixed bugs with monster reproducing, they also will not go over walls now and I limit the spawn to 100 total monsters of that type so no more overcrowding, spiders also are cannibals now thus controlling their own population\par
+\f1\'b7\f0  pretty sure the /post bug is fixed, all should be able to post now\par
+\f1\'b7\f0  chickens and spiders are only monsters that reproduce, I plan to add more like sheep, cows, etc\par
+\b\par
+Version 0.76  (11/26/02)\b0  \par
+\f1\'b7\f0  monsters can now spawn items like chickens can lay eggs\par
+\f1\'b7\f0  items can now turn into monsters, like an egg can hatch into a baby chicken\par
+\f1\'b7\f0  monsters can now grow or change, like a baby chicken can change into a chicken\par
+\f1\'b7\f0  improved mining and cave in processing\par
+\f1\'b7\f0  updater runs faster, it skips the checksum calc except for light.bmp\par
+\b\par
+Version 0.76  (11/25/02)\b0  \par
+\f1\'b7\f0  /ignorenotices   will ignore player entrance and exit messages\par
+\f1\'b7\f0  added something real neat but not gonna tell you, it is for you to find out, heh\par
+\b\par
+Version 0.76  (11/22/02)\b0  \par
+\f1\'b7\f0  battle staff and battle spear are repairable\par
+\f1\'b7\f0  major changes to global chat, basically @@ or @@@ admins control it and it is always OFF when they are not online\par
+\f1\'b7\f0  added /POST , see HELP, this replaces globals as a means of advertisement and announcements, if you abuse /post or use it for normal chat, you can be muzzled on posts\par
+\f1\'b7\f0  alchemy plants reproduced on owned land get ownership, no one can come and steal them\par
+\b\par
+Version 0.76  (11/18/02)\b0  \par
+\f1\'b7\f0  steel items repairable\par
+\f1\'b7\f0  added ore bows so stop pestering me, sheesh, j/k, pester me all you want, I need someone to take my stress out on, heh\par
+\b\par
+Version 0.76  (11/13/02)\b0  \par
+\f1\'b7\f0  added elemental UA weapons\par
+\f1\'b7\f0  steel added and the weapons and armor for it, you figure it out\par
+\b\par
+Version 0.76  (11/13/02)\b0  \par
+\f1\'b7\f0  looks like the chest bug is all gone\par
+\f1\'b7\f0  stuff in containers now degrade, like food\par
+\f1\'b7\f0  added food that lasts forever: jerky and dried fruit\par
+\f1\'b7\f0  magnetite bars added\par
+\f1\'b7\f0  splitting items improved so you can split them into groups\par
+\b\par
+Version 0.76  (11/11/02)\b0  \par
+\f1\'b7\f0  I think I got chest bug fixed, let me know of any urgent trouble to mickey@rpgwo.com\par
+\b\par
+Version 0.76  (11/08/02)\b0  \par
+\f1\'b7\f0  ok, this time I really really fixed water monsters on the land\'85 really\par
+\f1\'b7\f0  parchments that got written on while in a stack would be buggy, which may be related to the bulletin board bug, I put some code in to limit it but existing bugged stuff should just be destroyed\f1\par
+\'b7\f0  Rules of Events: If you are online, you and your land are at risk, except the island of Haven. This means you can be killed and loose items and vitae. Also, your land can be sacked and pillaged. Ideally, when an event starts, it will be announced and conditions will be announced as needed. At that time, it is BEST for players to head home to their land to protect it and to help others out, ideally. Events are your chance to help shape the storyline (what little I have now).\par
+\f1\'b7\f0  I still got a lot of work on the storyline, getting things setup in game, on the map, and how I want it to go, so I will do what I can\'85 also, the grayvyns aren\rquote t the whole story\par
+\cf4\b Storyline: Many adventurers heeded the call and have left Haven to the \ldblquote new\rdblquote  world. Claiming land, establishing civilization, and fending off the inhabiting monsters. Trade has flourished as the humans discover their dependence on each other for goods, supplies, and friendship. \par
+To their amazement, the humans discovered intelligent life other than them. A peculiar gray humanoid called grayvyn.  With no defenses the humans did slaughter them with ease. Shocked by the savagery of the humans, the grayvyn trained and built up their defenses. To no avail, the humans did destroy one of their villages.  Even when reinforcements arrived from nearby villages, the humans prevailed. Now enraged with vengence, the grayvyn leaders plan and get ready for their next move\'85\par
+\cf0\par
+Version 0.76  (11/06/02)\b0  \par
+\f1\'b7\f0  got kinda burt out after the wipe so took some time to play secretly, please don\rquote t harass me, heh, been stressed out a lot lately, just use appeals and I will eventually get to your issue/idea\par
+\f1\'b7\f0  elemental weapons now repairable\par
+\f1\'b7\f0  armor tweaked with proper elemental defenses\par
+\f1\'b7\f0  in the process of adding studded armor\par
+\f1\'b7\f0  bars can now be makable, but only for trading purpose since they have less burden so more can be carried, they can be resmelted back to sheets when needed\par
+\f1\'b7\f0  @ admins are back as Rp enforcers so please get into RP mode but OOC is allowed on a limited basis to discuss game issues only\par
+\b\par
+Version 0.76  (10/31/02)\b0  \par
+\f1\'b7\f0  bulletin boards viewable by others no matter what, but only people with rights can take items out\par
+\f1\'b7\f0  water monsters should NOT be spawning on land anymore, same for land monsters spawning in the water\par
+\f1\'b7\f0  fix bone armor repair\par
+\f1\'b7\f0  added support for large monsters 96x96, added a few dragons too\par
+\f1\'b7\f0  you can now smelt armor back down into sheets, except helmets cuz they get made in groups of  2 or more\par
+\f1\'b7\f0  walls built on unclaimed land will no longer turn into ruins\par
+\f1\'b7\f0  fixed attune for new players becoming active, old players are still messed if not attuned by an admin\par
+\f1\'b7\f0  spread out the sea monster spawns so it is more relative to the area, so basically, you will only find loken in low areas, etc, no more \ldblquote Sea Serpent killed Royan\rdblquote , \ldblquote Royan says: WTF, I am on n00b!\rdblquote\par
+\f1\'b7\f0  added a new Grayvyn that everyone will just love, heh\par
+\f1\'b7\f0  when you use a trade skill and it asks you which item to produce, it will also print a number, that is the MIN skill needed to make that item, it also shows up in the item name display in parens.\par
+\f1\'b7\f0  giving a little more skill XP when you fail a trade skill task, basically 25% of the success XP, before it was around 10%\par
+\b\par
+Version 0.76  (10/30/02)\b0  \par
+\f1\'b7\f0  tweaked armor making, fixed bug with Titanium Plate armor, anyone with this armor MUST trade it in for a Titanium sheet or I will take it away and give you nothing in return, I am pissed no one told me about this bug, so your lucky I am being nice about it\par
+\f1\'b7\f0  birch trees plantable\par
+\f1\'b7\f0  tweaked monster loot\par
+\f1\'b7\f0  added new ore and weapons and armor (I used the old vexen images for them), I am NOT telling how you get the new ore, so don\rquote t ask\par
+\f1\'b7\f0  improved world fog, especially when in towns or buildings, it is not as harsh\par
+\b\par
+Version 0.76  (10/25/02)\b0  \par
+\f1\'b7\f0  world, items, and players wiped\par
+\f1\'b7\f0  a lot has changed and I may not have listed it all\'85.\par
+\f1\'b7\f0  only one logon per real person is allowed, any attempts to subvert this will result in immediate perm banning\'85 code is in place to detect this so be warned\par
+\f1\'b7\f0  the user agreement has changed, be sure to read it especially the part on Role Playing\par
+\f1\'b7\f0  while the world is in flux, for about a month, I will allow limited \ldblquote Out Of Character\rdblquote  chat but ONLY as long as it pertains to the game, NO REAL LIFE CHAT, use IM, AOL, etc. for that, this is a Role Playing game, not a fancy chat program, thank you\par
+\f1\'b7\f0  you may have up to 5 players per logon but only ONE may leave newbie island and be \ldblquote active\rdblquote , once that player crosses the 200 line, they become active and may NOT return to newbie island, any other of your players that try to leave newbie island will be stopped at 200, once one of your players goes active, that is it, an admin can NOT change it so be certain before you cross the 200 line, you do get a message telling you your player has become active\'85these changes help to build a \ldblquote real\rdblquote  economy on the mainland\par
+\f1\'b7\f0  this is now a \ldblquote player ran\rdblquote  world which to me means on newbie island, admins build anything they want\'85 on the mainland admins only build what is appropriate for the storyline, otherwise only the players build on the mainland\'85 this is different from most RP games which makes \ldblquote us\rdblquote  unique but not as \ldblquote rich\rdblquote  of a world that a pre-built admin world could be\'85 more coding needs to be done to support this concept, like player controlled NPCs and maybe some kind of government code\par
+\f1\'b7\f0  perks are now in as well\'85 this means if you don\rquote t have perks then your player is limited somewhat\'85look in HELP for them all\'85 if you feel a limitation really sucks, please /appeal or /mail me, don\rquote t just quit the game\'85 yeah but how you get perks? You either donate $$ or have helped in some other significant way like artwork, ideas, adminship, and bug hunting/reporting.\par
+\f1\'b7\f0  I plan a significant storyline in which players can shape or be shaped by. I\rquote ll be running it and for Phobos veterans, you know what that means\'85. Muhahahaha\'85 pez anyone?\par
+\f1\'b7\f0  I understand that some players will not like these changes and might leave but this is how I originally intended the game to be 2 years ago when I first started to work on it. Thanks ALL for making my game \ldblquote successful\rdblquote . I never imagined it would go this far.\par
+\f1\'b7\f0  not everything I wanted to do before the wipe got done, just the major technical issues, so Haven is in the making and the initial story line construction as well, and all the small things I wanted to do, so bear with me as we get through this, I assume you would take a half ass world then no world for another week\f1\par
+\'b7\f0  Sidenote: I plan to work on this game until version 1.0 of course. It might take another 6 months though cuz there is a lot I still would like to add. When I do finish, it will still stay up and I will probably hand it over to a trusted admin. So don\rquote t worry if you think this game is going bye-bye with me, it isn\rquote t. As far as my next game goes\'85 I\rquote ll let you know when I do, heh.\par
+\f1\'b7\f0  Thanks for letting me wipe the world, for the progress of the game and so I could bomb your homes of course.\par
+\cf4\b StoryLine: The humans of the isle of Haven have grown in number and strength.  Worried about over crowding, Stacy the Mayor has urged the adventurous to explore and take root in other lands.  Expecting the worst, adventurers train and get ready while also searching for a safe way off Haven. No one knows what lies beyond Haven.  It could be fame and fortune or death and despair\'85\par
+\cf0\par
+Version 0.75  (10/18/02)\b0  \par
+\f1\'b7\f0  last update until the wipe which is next Friday\par
+\f1\'b7\f0  added lotsa content: salt can be used on meats to preserve them, more plants and trees, etc\par
+\f1\'b7\f0  fixed small bugs here and there like the tames dieing all of a sudden\par
+\f1\'b7\f0  been going through appeals, writing most down and fixing/implementing others, and just plain old saying NO to a few, heh\par
+\f1\'b7\f0  I plan on working on code for the wipe, all the changes that need doing that are not compatible with the old version/data formats so any bugs you find tou need to live with until the wipe.\par
+\f1\'b7\f0  I might take the server down a day or 2 before Friday so that I have time to build newbie island and such\par
+\f1\'b7\f0  If you don\rquote t know or have heard, I plan a player run world this time (like Phobos) but with a storyline and some admn built stuff. No admin cities tho. Also plan to enforce Role Playing rules as well where you need to be \ldblquote In Character\rdblquote  as much as possible (except to deal with bugs, etc). I\rquote ll amend the User Agreement with more details sson.\par
+\f1\'b7\f0  If the player run world idea does not work out, we can always setup an admin based world but a player run world was my original idea and makes my game stand out from the rest of the \ldblquote hack n slash\rdblquote  games\par
+\b\par
+Version 0.75  (10/15/02)\b0  \par
+\f1\'b7\f0  added a new skill Read Ancient\par
+\f1\'b7\f0  RPGWO Edit given find for Items and Monsters under Edit menu, you can put in partial names too\par
+\f1\'b7\f0  added elemental scythes and throwing weapons\par
+\b\par
+Version 0.75  (10/14/02)\b0  \par
+\f1\'b7\f0  tweaked and rebalanced ore armors, no longer any overlapping of AL, burden increased on some, lowered on others, basically it is 150 burden and 200 gold per AL, the order from least to greatest is: leather, copper, silver, iron, gold, zircon, titanium, hessite\'85. I do plan ore studded leather soon\'85 mutant, elk and drake armors were not changed (maybe drake was lightened)\par
+\f1\'b7\f0  added blunt and broad tip arrows and bolts that deliever Bash and Cut damages\par
+\f1\'b7\f0  fixed some NPC trader bugs that keep n00b traders from removing sold items\par
+\f1\'b7\f0  stealth tames can be seen by owners and a Scan by owner or tames does not reveal the other\par
+\b\par
+Version 0.75  (10/10/02)\b0  \par
+\f1\'b7\f0  /tameuse and /tameattack  look in help for more details\par
+\f1\'b7\f0  split up cast spell into 4 groups: black(offensive), white(defensive), red(enchantment), and blue(items)\par
+\f1\'b7\f0  I NEED mages to make a test player and let me know how it goes. I can\rquote t wipe until I am satisfied with the results and the players too.\par
+\f1\'b7\f0  I did train/spec the magics for anyone who had Cast Spell already trained\par
+\f1\'b7\f0  Meteors seem to be getting bigger\'85 hmmm.\par
+\b\par
+Version 0.74  (10/08/02)\b0  \par
+\f1\'b7\f0  added the rest of the offensive magic spells and the runes for them, still need animations for Bash and Thrust spells so email if you got an idea, etc\par
+\f1\'b7\f0  added \ldblquote Chat Text\rdblquote  to HotKeys such that it will send that chat to the chat line. Useful for admins to do /warp commands or for players chat or something but mainly for admins\par
+\f1\'b7\f0  World Fog works better underground and does not allow selection of monsters or items if they in the fog\'85 I don\rquote t plan to make it grey unless it really bothers people, heh\par
+\f1\'b7\f0  I am freezing the code as far as major features goes and letting things settle down until the wipe. Only thing I will do is bugs and small stuff. This week I hope to get a good look at Appeals\par
+\f1\'b7\f0  It turns out that I just have too much to add still before the wipe. So, I plan NOT to make this a version 1.0 wipe but it \ldblquote should\rdblquote  be the last wipe, even when I do hit version 1.0 (which should be December). So I plan to work on this game code wise for the rest of the year for sure. I also plan to fix/add lots of content during and after. \par
+\f1\'b7\f0  looks like October 25 will be the wipe. I may need to keep the server down for a few days before the 25\super th\nosupersub  so I can build the new world a bit. We\rquote ll see how it goes.\par
+\b\par
+Version 0.74  (10/07/02)\b0  \par
+\f1\'b7\f0  offensive magic spells now have damage types to them, this is a major change to them\par
+\f1\'b7\f0  Flame, Black Hole, and Lightning now have 4 levels, the higher the level, the more damage it does, Level I spell needs 4 runes, level 2 and up need 5 runes, just a \ldblquote modifier\rdblquote  rune on the end kinda like Mux but Mux is not used for these offensive spells, look for new runes\par
+\f1\'b7\f0  I plan a Frost, Cut, Bash, and Thrust spell soon, just need to draw the animations\par
+\f1\'b7\f0  added another damage type: Magic or Pure Magic. This is what BlackHole and Harm use. Drej Sword does Magic damage and I plan more \ldblquote magic\rdblquote  weapons eventually\par
+\f1\'b7\f0  changed wording on attacking messages, gave it some flavor\par
+\b\par
+Version 0.74  (10/03/02)\b0  \par
+\f1\'b7\f0  elemental weapons are in, just missing scythe, dagger(kind of), and UA\'85 monsters drop them now\par
+\f1\'b7\f0  finished tweaking all the monsters per natural AL and damage types\par
+\f1\'b7\f0  tweaked staffs and spears, they got some love to get them up to par with the rest of the melee weapons\par
+\f1\'b7\f0  added lightning arrows/bolts but not sure if the source ingredient will start spawning correctly\par
+\f1\'b7\f0  rebuilt the Inn north of the castle\par
+\f1\'b7\f0  and the meteors seem to be hitting more frequently\par
+\b\par
+Version 0.74  (10/01/02)\b0  \par
+\f1\'b7\f0  tons is new\par
+\f1\'b7\f0  added Damage Types, which are Cut, Bash, Thrust, Fire, Cold, and Electric\par
+\f1\'b7\f0  Each weapon type has a damage type\par
+\f1\'b7\f0  Every monster has a weakness or strength to any damage type, like A Skeleton is weak to Bash damage but resists Thrust damage well. I have only gotten through about half the monsters at this time\par
+\f1\'b7\f0  Fire, Cold, and Electric weapons are not in yet, I need to get the drawings figured out\par
+\f1\'b7\f0  as I have been going through the monsters, I have been tweaking and giving drop items usefulness, like the skunk head now has a use, monsters that would normally not carry gold do not drop it now\par
+\f1\'b7\f0  mutant hide, elk hide, and drake scales can now be made into helmet, chest, or legging armor\par
+\f1\'b7\f0  Stealth Vision allows you see players/monsters who are in stealth mode, some monsters have it naturally, they are the key to figuring out the potion\par
+\f1\'b7\f0  I still need to finish monsters and add elemental weapons and change offensive magic spells (to allow damage types) so bear with me and these radical changes, totally rad, totally\par
+\b\par
+Version 0.74  (09/27/02)\b0  \par
+\f1\'b7\f0  fixed some water monster bugs\par
+\f1\'b7\f0  added wooden boxes, carpenters can make them\par
+\f1\'b7\f0  brass chest and wooden boxes are keyable and lockable now\par
+\f1\'b7\f0  added bulletin boards, it is a container item that only holds parchment and scrolls, it can be used on public land by anyone, to post jobs and the normal \ldblquote crap\rdblquote  players like to post about each other, heh, on owned land, it can only be used by owner and /landrights ppl\'85 this is good for  leaving notes for ppl other than /mail\par
+\f1\'b7\f0  containers show writing when you click on an item that has writing\par
+\f1\'b7\f0  hitting INSERT key when over an item will pick it up\par
+\f1\'b7\f0  meteorites? What the \'85.. \b BOOM\b0\par
+\b\par
+Version 0.73  (09/26/02)\b0  \par
+\f1\'b7\f0  ARRRG, me do thinks they be fish in the sea\'85 mean ones\par
+\f1\'b7\f0  you can now walk onto bridges from rafts\par
+\b\par
+Version 0.73  (09/25/02)\b0  \par
+\f1\'b7\f0  added some hotel/inn code, I\rquote ll setup an Inn near/in town someplace\par
+\b\par
+Version 0.73  (09/24/02)\b0  \par
+\f1\'b7\f0  scythe skill should work properly now\par
+\f1\'b7\f0  scythes have a \ldblquote critical bonus\rdblquote  which is a percent that they always do critical damage\par
+\f1\'b7\f0  tailors can make sacks now\par
+\f1\'b7\f0  had to wipe the traders inventory cuz I added some things like NPCGOLD, they buy items with the gold, if they run out they will not buy any more, they default to 100,000 gold which might be high, we\rquote ll see\par
+\f1\'b7\f0  NPC traders inventory now gets cleaned out of old items if near MAX inventory capacity\par
+\f1\'b7\f0  when you start a trade with a NPC trader, it only sends you the items you own that the NPC might buy\par
+\f1\'b7\f0  added a "fog" such that items that block line of sight, make that area black as if you can't see it, this is just for testing so you can turn it off in the MENU tab "World Fog" but please try it out, at least in quests to see how it works and give me feedback in appeals, thanks\par
+\b\par
+Version 0.73  (09/23/02)\b0  \par
+\f1\'b7\f0  created new weapon skill: Scythe and placed all the scythes in that group so axe and scythe are now different. If you have Axe trained and want Scythe trained and \ldblquote augmented\rdblquote , I will do it\par
+\f1\'b7\f0  added chess pieces, they are not pick-up-able but can be moved on the map normally\par
+\b\par
+Version 0.73  (09/20/02)\b0  \par
+\f1\'b7\f0  merged Lumberjack into Farming skill, there was just to many similarities with them\par
+\f1\'b7\f0  getting rid of Mastery skills, but they stay until wipe\par
+\f1\'b7\f0  added Specialization of skills (like Asheron\rquote s Call), this replaces Mastery Skills and causes the specialized skill to increase 2 times as fast as normal just like Masteries did.\par
+\f1\'b7\f0  you can only specialize during creation\par
+\f1\'b7\f0  specialized skills show up as blue in your STATS tab\par
+\f1\'b7\f0  added more skill points and attribute points at creation\'85 but DON\rquote T ask for any comps for existing players! I plan to auto-train all skills for all players soon anyway, like beginning of October\par
+\f1\'b7\f0  you now need the skill trained in order to do the action, like picking apples needs Farming\par
+\f1\'b7\f0  adjusted cost on some skills too\par
+\b\par
+Version 0.72a  (09/19/02)\b0  \par
+\f1\'b7\f0  been tweaking weapons. In order to encourage players to try different weapons, I am giving each weapon a different advantage or uniqueness.\par
+\f1\'b7\f0  Dagger : no advantage except a high damage rating when Improved with magic\par
+\f1\'b7\f0  Unarmed: no weapon needed, high damage is based on UA skill divided by 20 with a max of 20, low damage is half of the high damage calculated, this means at UA skill of 400 your Damage rating is 150\'85 cool\par
+\f1\'b7\f0  Sword: not determined yet\par
+\f1\'b7\f0  Axe: can break shields if damage roll is 6x greater than Shield AL\par
+\f1\'b7\f0  Mace: does Stamina Damage, right now set at 1.5X with out Armor reductions\par
+\f1\'b7\f0  Flail: circumvents shields\par
+\f1\'b7\f0  Staff: has Weapon AL, acts just like a shield\par
+\f1\'b7\f0  Spear: has short range\par
+\f1\'b7\f0  Bow: has medium range\par
+\f1\'b7\f0  CrossBow: has long range\par
+\f1\'b7\f0  Throwing: medium range\par
+\f1\'b7\f0  I might add a Scythe skill which I am not sure what advantage it would have\par
+\f1\'b7\f0  I plan to add Damage types, this includes Bash, Cut, Thrust, Fire, Frost, Lightning, and Pure Magic\'85it is a lot of work and will change a lot about combat so it may take some time before the next update, not sure\par
+\f1\'b7\f0  Added more economy code so that prices will rise as more players buy a certain item, but will fall back down with time, kind of a supply and demand feature, we\rquote ll see how it goes\par
+\f1\'b7\f0  I feel I am done with containers and traders/economy so /mail me if you think otherwise\par
+\f1\'b7\f0  Keep in mind that right now I am all about coding features. Content like more containers and more monsters, etc, will come either right before wipe and definetly after it. After version 1.0 and the wipe, most of my time will be towards content and much less on features so if you sent me stuff to put in, don\rquote t worry, I still have it and you will eventually see it, that is if it fits in.\par
+\f1\'b7\f0  I am excited about the wipe cuz it means a whole new world for me and the admins to make and for you to explore. Much is planned, with plenty of new things\'85 thanks for bearing with me! See ya in game!\par
+\b\par
+Version 0.72a  (09/16/02)\b0  \par
+\f1\'b7\f0  runes are buyable/sellable now\par
+\f1\'b7\f0  runes can be made from Magnetite Ore\par
+\b\par
+Version 0.72  (09/14/02)\b0  \par
+\f1\'b7\f0  fixed some bugs with containers concerning burden and the multi-quantity container, if your container is still bugged, dump it in garbage can and get a new one, else you risk losing items\par
+\f1\'b7\f0  rights needed for ppl to look at your containers on your land, just like normal item operations\par
+\f1\'b7\f0  NPC Traders and the Economy radically changed......\par
+\f1\'b7\f0  trader items now get saved, they only carry what was sold to them, they buy for half the value and sell for full value, they will pay extra for skill bonuses on items, traders have a max that they will buy of any item(it may vary from item to item however), this and more all for a real/player based economy\par
+\f1\'b7\f0  admins feel free to sell items to traders that players cannot yet make, like Cat Treat to Gladis, since making cat treats is not in game BUT do NOT sell items to players... ever... make sure n00b isle is stocked too sometimes (I'll do tis right away though at first)\par
+\b\par
+Version 0.71  (09/11/02)\b0  \par
+\f1\'b7\f0  finished containers except for bugs which you need to email me or /mailsend me\par
+\f1\'b7\f0  double click containers on the map to get a popup, select Look In\par
+\b\par
+Version 0.71  (09/10/02)\b0  \par
+\f1\'b7\f0  added containers, about 75% done, drag items onto a container, like a sack or an open brass chest\par
+\f1\'b7\f0  to view contents of a container, you need to be carrying it, right click and select OPEN, I plan to add a way to view contents while container is on the ground soon\par
+\f1\'b7\f0  be careful what you put in, bugs may wipe any items inside and I am not responsible nor will any items be replaced, so don\rquote t ask\par
+\f1\'b7\f0  Self Destruct is gone or should I say Perm Ban cuz of technical and support issues, admins use /ban <name>, days   to give bans or use -1 for days to make it permanent, /ban now works not only off IP but off IP header, that is the first 2 numbers of the IP determine the ban, this means some ppl may get banned that affect others so we will see how it goes, thanks\par
+\b\par
+Version 0.70b  (09/09/02)\b0  \par
+\f1\'b7\f0  changes the way traps work on the server, they are now invisible items to players, but otherwise they should work the same, although with some differences/limitations. So traps can now be added in RPGWO Edit\par
+\f1\'b7\f0  the data* configures the traps effects\par
+\f1\'b7\f0  data1 is the main effect for damage, ice, blind, hero, nova, heal and revive\par
+\f1\'b7\f0  data1, data2, and data6 is X, Y, Z for warps traps\par
+\f1\'b7\f0  data1 is monsterID, data2 is quantity for monster traps\par
+\f1\'b7\f0  data1 is itemID and data2 is quantity for item spawn traps (note items spawn around the trap)\par
+\f1\'b7\f0  data1 is itemID for item transform trap, this just changes the trap ID, like when fire will erupt underneath the player if they step on it\par
+\f1\'b7\f0  you cannot set the difficulty of a trap any more, it is static based on .INI settings\par
+\f1\'b7\f0  Admins/map makers, you NEED to set the reset on the item trap or it will NEVER return to \ldblquote set\rdblquote  except for the \ldblquote Quick\rdblquote  traps, they will always be armed and do not need a /itemreset on them\par
+\f1\'b7\f0  these Trap changes are a bit confusing but I changed the system in order to save RAM memory so that I can have a larger map for the wipe. I am shooting for 3000x3000 but my system still needs some optimising. \par
+\b\par
+Version 0.70b  (09/06/02)\b0  \par
+\f1\'b7\f0  made a new editor called RPGWOEdit.exe, any quests and such you make with it should be submitted to a \ldblquote willing\rdblquote  admin. If it complains about COMCTL32.OCX then get it off my website at members.ccinet.com\\~kudlo\par
+\b\par
+Version 0.70b  (08/29/02)\b0  \par
+\f1\'b7\f0  you can now drop runes from your rune bag, click the rune you want to drop then click Drop, it will drop 1 at a time, adding to any rune you are standing on\par
+\b\par
+Version 0.70a  (08/27/02)\b0  \par
+\f1\'b7\f0  use shovel to lower ground and use \ldblquote Pile of Dirt\rdblquote  on map to raise the ground, works kinda weird but you\rquote ll get used to it\par
+\f1\'b7\f0  changed the way red walls get made, now use hammer and nails on wood planks\par
+\f1\'b7\f0  swimming has seen some changes, being in water hinders combat, does NOT allow spell casting, and is harder when heavily burdened\par
+\f1\'b7\f0  added rafts (they move with you when you move on water) and bridges(that actually work)\par
+\f1\'b7\f0  as the elevation goes up, it can turn into \ldblquote snow\rdblquote  ground, at certain height, the terrain is impassible, so basically you have run into a mountain you can\rquote t walk over, but must go around\f1\par
+\'b7\f0  all these water and elevation changes are so geography is more significant in the world\par
+\f1\'b7\f0  Since I have freed up CPU cycles with recent monster changes, I plan to do more with the \ldblquote natural\rdblquote  world like make water \ldblquote flow\rdblquote  again, add weather, make plants and grass require water, climate regions like desert and mountains, etc, basically implement some of my original ideas from long ago\par
+\b\par
+Version 0.70a  (08/26/02)\b0  \par
+\f1\'b7\f0  added a Rune Bag for all you whiners, runes get placed in automatically, runes have no burden now, I will add a way to drop runes soon so don\rquote t ask\par
+\f1\'b7\f0  fixed some bugs with duration spells that allowed keeping a major spell effects by only casting minor spells\par
+\b\par
+Version 0.70  (08/23/02)\b0  \par
+\f1\'b7\f0  the Buh Rune now has an effect\par
+\f1\'b7\f0  I optimized some code having to do with monsters and spawn spots\'85 not wilderness spots but normal, admin made spawn spots\'85to players it should not look any different\'85 let me explain, before I was having ALL the monsters out on the map, making like 2000+ monsters, most just sitting there doing nothing but taking up memory and CPU cycles\'85 now, if no players are around, then it removes the monster\'85but the trick is when is a player around to be \ldblquote around\rdblquote\'85 so we may have some bugs or a lag time to when you enter an area or quest to when the monsters show up\'85.this change should speed up things,like player processing which is things like Mana and Stamina renewal but also things like monster attacking\b\par
+\par
+Version 0.70  (08/22/02)\b0  \par
+\f1\'b7\f0  because we have too many runes as it is, I am reusing the non-effect runes and giving them an effect. For example, Aon can be used in columns 4 and 5. As I add more I will let you know which runes get a double use\par
+\f1\'b7\f0  a bug with arming/disarming is making weapons and wands disappear, I am trying to resolve it but if you get struck by the bug, sorry\par
+\f1\'b7\f0  fine, I added more daggers\par
+\b\par
+Version 0.70  (08/20/02)\b0  \par
+\f1\'b7\f0  added the major spells for all the minor spells\par
+\f1\'b7\f0  added a Refraction Amulet that will reflect any harmful spell by a player back at them. It does not work on spells from monsters and also has a 20% chance of failure and only works 5 times, however mana stones do recharge them. This should level the playing field in PK with mages\par
+\b\par
+Version 0.70  (08/19/02)\b0  \par
+\f1\'b7\f0  added more spells\par
+\f1\'b7\f0  I made extensive code revisions that affects Attributes like Strength, Intelligence, etc, so please let me know of any strange behavior\par
+\b\par
+Version 0.70  (08/18/02)\b0  \par
+\f1\'b7\f0  added Hotkey control to the client, look in MENU tab for it. By default you get the old hotkeys. Horkeys are saved on a player by player basis, so you can have different hotkeys for your different players. Some hotkeys may not work properly since they may be the same as some System hotkeys. I do plan to add more Actions lik e"Ready Item", "Disarm All", etc.\par
+\b\par
+Version 0.70  (08/17/02)\b0  \par
+\f1\'b7\f0  added more spells, with some now needing 5 runes (hint: improve same rune.\par
+\f1\'b7\f0  put a "Check Rune" button in MAGIC tab which inventories your runes and tells you what you are missing that your known spells require to be cast. This should make shopping easier.\par
+\f1\'b7\f0  runes now weigh 2 burden, 5 was too high since you really need to carry a lot around and mages typically have low STRENGTH\par
+\f1\'b7\f0  click on the Blue dot in the lower right and it will tell you what spells are in effect on you and how long they have before they expire. Some, like the renewals, have a "fuel" rating which means it only uses it when it needs to and does not wear off with normal time. So if your Mana is low, it will use the fuel of mana renewal to raise it faster but only when it is not the Max mana. BTW, this is how it has always been.\par
+\f1\'b7\f0  with the blue dot, you can regulate effects since most if not all that show up there are cumulative when you cast them, so it adds to the fuel or minutes/seconds duration\par
+\b\par
+Version 0.70  (08/16/02)\b0  \par
+\f1\'b7\f0  added more spells of course\par
+\f1\'b7\f0  SCAN skill now based on ALL attributes, so let me know how it works out\par
+\f1\'b7\f0  correction on the website move\'85 \cf1\ul <\cf0\ulnone{\field{\*\fldinst{HYPERLINK "http://www.thedropship.com\\\\rpgwo\\\\rpgwo"}}{\fldrslt{\ul\cf1 http://www.thedropship.com\\rpgwo\\rpgwo}}}\cf1\ul\f0\fs20 >\cf0\ulnone  is still the main website, the members.ccinet.com website is merely where the updater gets the newest files, sorry about any confusion.\par
+\f1\'b7\f0  critical attacks changed a bit, made them less powerful, where it used to be up to 4x the damage, it now is only 2x damage\par
+\f1\'b7\f0  I have made a lot of code changes for magic so I may have messed up with duration/effects so if something is suspicious, let me know\'85although I have made some spells last longer than they used to on purpose\par
+\b\par
+Version 0.70  (08/15/02)\b0  \par
+\f1\'b7\f0  added more spells, offensive and renewal spells\par
+\f1\'b7\f0  if an item some tries to give you puts you over burden, it will be denied, so that players can\rquote t overburden someone else in hopes of a easy kill\par
+\b\par
+Version 0.70  (08/15/02)\b0  \par
+\f1\'b7\f0  added more spells, ones that affect Mana and Stamina\par
+\f1\'b7\f0  type /spellcount   to see how many in game spells exist, your own spell count now displays in the MAGIC tab\par
+\f1\'b7\f0  runes that traders sell are ALL used in a spell(s), which means I will not add a rune to a trader until it has a real use, in order to keep you from getting too confused. Keep in mind, I may still make more new spells from existing runes so a combo you tested at one time might be a spell at this time\par
+\f1\'b7\f0  runes burn off fast, 100 casts, but are a cheap 5 gold\par
+\b\par
+Version 0.70  (08/14/02)\b0  \par
+\f1\'b7\f0  the website has changed to \cf1\ul <\cf0\ulnone{\field{\*\fldinst{HYPERLINK "http://members.ccinet.com\\\\~kudlo"}}{\fldrslt{\ul\cf1 http://members.ccinet.com\\~kudlo}}}\cf1\ul\f0\fs20 >\cf0\ulnone   please get the latest autoupdater.exe off that site, thanks\par
+\f1\'b7\f0  the new magic system in now in place. Only 4 spells in so far, 3 you get when you Create new and 1 you can research to discover. All old magic commands have been disabled.  Runes are buyable from traders. I would like to see existing mages create a test player to see how the system works from a n00b stand point. The HELP has details on the new system.\par
+\f1\'b7\f0  alchemy items will \ldblquote reproduce\rdblquote   on your land automatically\par
+\f1\'b7\f0  wand arming is now based on skill required, wand skill no longer affects actual casting chance\par
+\f1\'b7\f0  runes found in monsters bash are not the same as casting runes, in fact I changed there name to keys instead of runes\par
+\b\par
+Version 0.69g  (08/09/02)\b0  \par
+\f1\'b7\f0  there is no problem with the updater, it is just my update site was down, thus the updater gave wrong error message, sorry about the down time\par
+\f1\'b7\f0  Bad News: I mis-calculated the idle land timeout and it turned out to be about 12 real days instead of 30, so lots of players may have lost their land and potentially may have been robbed, sorry about this, since I plan a wipe in late October, admins will NOT compensate players for their losses.\par
+\f1\'b7\f0  Good News: Jewelry will not be lost/destroyed after its power is all used up. It will merely not give you the skill bonus it claims. Also, I added a way to recharge the jewelry back to 100% power. Alchemists will need to learn how to make the new item to do this. It is called: Mana Stone. Hint: the clue is in the name.\par
+\f1\'b7\f0  More Good News: Jewelry, Armor, Weapons, and Wands will not report their power/use % left when you arm or dis-arm them\par
+\f1\'b7\f0  Even More Good News: Armor and Weapons (not quest weapons/armor) are now repairable\'85 search usage plz\par
+\f1\'b7\f0  I fixed some MAIL bugs, so those who were not getting mail before, plz try it\par
+\f1\'b7\f0  enhanced the client MAGIC tab a bit, colorized the buttons to make it a bit easier\par
+\f1\'b7\f0  in USAGE, next to the skill name in parenthesis, it now has the Minimum skill needed to accomplish the task\par
+\f1\'b7\f0  added some reseting traps for the trapsters\par
+\b\par
+Version 0.69g  (08/02/02)\b0  \par
+\f1\'b7\f0  added a poison \ldblquote dot\rdblquote  like the vitae \ldblquote dot\rdblquote , click on it for your poison level\par
+\f1\'b7\f0  clicking on vitae \ldblquote dot\rdblquote  will now display XP needed to gain next %\par
+\f1\'b7\f0  added Antler Crossbow but it has to be made with Fletching, check usage\par
+\f1\'b7\f0  added Bone Scythe but it has to be made with Blacksmith, check usage\par
+\f1\'b7\f0  added a few more alchemy ingredients for a few more trade skill potions\par
+\f1\'b7\f0  rose bushes are clippable on PLOT land\par
+\f1\'b7\f0  Dinos and Grayvyns are now enemies\par
+\f1\'b7\f0  unclaimed land is now usable, this means you can dig, build, farm, etc. The intent is mainly to allow farming and mining. I do NOT want to see huge buildings or anything that blocks quests, etc. I am being nice and allowing this, any abuse and I will take it away. Use Appeal to Report abuse or call an admin online. Also, all actions are logged in History, so we will know who setup what. I will not hesitate to ban anyone I feel has abused this privilege. Thank you.\par
+\b\par
+Version 0.69f  (08/01/02)\b0  \par
+\f1\'b7\f0  added MAIL commands for offline communication, see HELP\par
+\f1\'b7\f0  ASSESS skill is free, train it for cost of zero, or if you have it trained already, you should automatically get 2 skill points\par
+\b\par
+Version 0.69f  (08/01/02)\b0  \par
+\f1\'b7\f0  un-training a skill now takes 1 skill point away\'85 for reals!\par
+\f1\'b7\f0  you now get a message telling you if you are overburdened, also skills affected by it will be visibly reduced in your Stats and can be red\par
+\f1\'b7\f0  added \ldblquote Attack Tames\rdblquote  option in MENU tab, it works just like \ldblquote Attack Players\rdblquote\par
+\f1\'b7\f0  Scanning for Traps now uses the TRAP skill and not the SCAN skill\par
+\f1\'b7\f0  Spliting items works better, giving quantity choices\par
+\b\par
+Version 0.69f  (07/30/02)\b0  \par
+\f1\'b7\f0  all \ldblquote important\rdblquote  skill alchemy ingredients added, Appeal or email me picture to add other skills (like most trade skill ingredients were not added: fishing, blacksmith, etc) But all combat skills are added.\par
+\f1\'b7\f0  you can now make Major potions\par
+\f1\'b7\f0  repeatitive actions on the client like F12 key, have been limited to once per second due to packet lag/spam on the server causeing bandwidth issues\par
+\b\par
+Version 0.69f  (07/25/02)\b0  \par
+\f1\'b7\f0  changed the auto-land unclaim time to 180 v-days or 30 real days\par
+\f1\'b7\f0  added alchemy stuff, all the attribute potions are makeable\par
+\f1\'b7\f0  some ingredients used in alchemy will now spawn at random spots on the map except on water and on plot land, the system will add more randomly as players pick and use them: one example is rye weed\'85it will put items down in \ldblquote patches\rdblquote\par
+\f1\'b7\f0  you can now Tame Plot monsters again\par
+\b\par
+Version 0.69f  (07/24/02)\b0  \par
+\f1\'b7\f0  skills values are color coded, grey is normal, green means they are above normal, red means below normal. So if you are Nova\rquote d then your skills will be RED, Hero\rquote d then skills will be GREEN, etc\par
+\f1\'b7\f0  players not logged in every 120 V-days loose any claimed land, thus items on that land are stealable\par
+\b\par
+Version 0.69e (07/22/02)\b0  \par
+\f1\'b7\f0  appeals that were pending were auto-deleted instead of closed ones, please add your appeal again if it is missing\par
+\f1\'b7\f0  optimized the monster AI code a bit, let me know of any weird behavior\par
+\f1\'b7\f0  the client world map displays underground a bit more accurately\par
+\b\par
+Version 0.69e (07/19/02)\b0  \par
+\f1\'b7\f0  when you SCAN, it also will detect hidden traps and mark them with a flashing skull and cross bones\par
+\f1\'b7\f0  when looking at a monster, if it is Tamed, or was tame but now untame, it will display that owners name\par
+\f1\'b7\f0  abuse of the tame system can result in a players ability to tame being taken away\par
+\f1\'b7\f0  monsters on plot land are no longer tamable\par
+\f1\'b7\f0  magic flame does not hurt NON-PK players\par
+\f1\'b7\f0  /tell, /retell, and /reply improved a bit, less buggy, less chance of wrong message going out\par
+\f1\'b7\f0  In Game Rules added, see the User Agreement (it changed), type /rule to see the rules\par
+\b\par
+Version 0.69d (07/17/02)\b0  \par
+\f1\'b7\f0  appeal detail length changed from 200 to 500, that means I wiped them so repost your appeals\par
+\f1\'b7\f0  added 2 switches on client that show Stealth mode and Tames, they are on by default\par
+\f1\'b7\f0  tames follow more closely and can be affected by hidden traps\par
+\f1\'b7\f0  fixed buncha small things that were in old appeals\par
+\f1\'b7\f0  In train skill and creation screens, skills display Attributes affected by\par
+\f1\'b7\f0  added Beserker and Theif templates\par
+\f1\'b7\f0  you can now merge items on the map, from map to map or player to map, this should help stacking heavy items like ores and sheets\par
+\f1\'b7\f0  Burden changed, you can now pick up over your burden but it slows your RUN and attack and defense skills, these affects are NOT displayed in the STATS tab but happen on server side only, MAX burden is now 2 times your normal burden\par
+\b\par
+Version 0.69c (07/16/02)\b0  \par
+\f1\'b7\f0  you can now EDIT your own Appeals, also Admins can edit them as well like in reply\'85 adding a reply is more work and I want to see if this works out for now, I don\rquote t want a full fledged Message Board, heh\par
+\f1\'b7\f0  Also, Admin appeals can Not be edited or deleted by @ or @@ admins so there is no worry of your complaint getting deleted before I see it.\par
+\f1\'b7\f0  Appeal Statuses: Open means a player opened it but no admin is working on it, Pending means an admin is working on it, Closed means the admins feel no more action is required\par
+\b\par
+Version 0.69b (07/15/02)\b0  \par
+\f1\'b7\f0  added Player Creation Templates, see Creation screen\par
+\f1\'b7\f0  added an appeal system so players can post problems, etc, look in MENU tab\par
+\b\par
+Version 0.69a (07/11/02)\b0  \par
+\f1\'b7\f0  made some changes to slot winning combos, check Pay Outs \par
+\f1\'b7\f0  added Trap skill, the Trap toolkit is for disarming admin placed traps, use hand on player traps to arm, disarm\par
+\f1\'b7\f0  Tame turned on for Koreilth, YEAH!\par
+\f1\'b7\f0  Tames do not attack NON-PK players unless the player attacks first\par
+\f1\'b7\f0  At this time, no plans for player controlled slot machines, too much work for something small and not needed\par
+\f1\'b7\f0  History logging feature is now turned on for Koreilth\par
+\b\par
+Version 0.69a (07/11/02)\b0  \par
+\f1\'b7\f0  added slot machines, heh, \ldblquote Pay Out\rdblquote  should show what pays what but not working yet\par
+\f1\'b7\f0  added other stuff, but don\rquote t remember LOL, it was last week, so let me know of any trouble\par
+\b\par
+Version 0.69 (06/28/02)\b0  \par
+\f1\'b7\f0  when you press F12, it will repeat the last \ldblquote item use\rdblquote , like eating an apple or mining the ground\par
+\f1\'b7\f0  Trade Mastery skill items should now display correctly and not as \ldblquote unknown : 39\rdblquote\par
+\b\par
+Version 0.69 (06/28/02)\b0  \par
+\f1\'b7\f0  more tame commands added and tamed monsters now get saved but a little buggy so let me know\par
+\f1\'b7\f0  had to wipe tame monsters cuz of bug, but monsters now spend XP on stats automatically\par
+\b\par
+Version 0.69 (06/27/02)\b0  \par
+\f1\'b7\f0  some animal taming bugs fixed, lower level limit, higher defend ratio, more commands, time limit, stamina cost\par
+\b\par
+Version 0.69 (06/26/02)\b0  \par
+\f1\'b7\f0  animal taming added for Phobos server only, please see HELP\par
+\f1\'b7\f0  tamed monsters are not saved when server gets restarted but the feature will be added soon\par
+\f1\'b7\f0  tamed monsters can level, but currently only attack monsters, not players\par
+\b\par
+Version 0.68e (06/19/02)\b0  \par
+\f1\'b7\f0  started a new world called Phobos, it is for veteran players and is based on players, not admins\par
+\f1\'b7\f0  blacksmiths can make some tools, let me know what I missed\par
+\f1\'b7\f0  Phobos server: items are stealable off your land\par
+\f1\'b7\f0  Phobos server: Grayvyns have arrived with the new on comers and they mean!\par
+\f1\'b7\f0  added a /history feature, just type /history and it will show recent stealing activity in that area, will add more logging soon\par
+\f1\'b7\f0  fixed banana trees\par
+\f1\'b7\f0  got rid of house walls (not red house walls) so some doors may vanish\par
+\b\par
+Version 0.68e (06/17/02)\b0  \par
+\f1\'b7\f0  added bracelets\par
+\f1\'b7\f0  fixed the wand skill bonus bug\par
+\f1\'b7\f0  fixed the mastery skill bonus bug\par
+\b\par
+Version 0.68e (06/14/02)\b0  \par
+\f1\'b7\f0  added rings\par
+\f1\'b7\f0  tweaked vitae calc again, lowered it\par
+\f1\'b7\f0  added a trade mastery skill\par
+\b\par
+Version 0.68e (06/12/02)\b0  \par
+\f1\'b7\f0  changed the look of aiming controls cuz of focus bug\par
+\f1\'b7\f0  added necklace jewelry which can have skill bonuses, monsters can drop them, rings and braclets on the way\par
+\f1\'b7\f0  watch out for the grayvyns latest weapon!\par
+\b\par
+Version 0.68d (06/12/02)\b0  \par
+\f1\'b7\f0  Everlasting Tiki Torch Quest added to sector 3,1\par
+\f1\'b7\f0  added aiming options in the PLAYER tab\par
+\f1\'b7\f0  Aim Mid or Middle give normal attack\par
+\f1\'b7\f0  Aim Low to get 10% attack bonus but 10% damage penalty\par
+\f1\'b7\f0  Aim High to get 10% attack penalty but 10% damage bonus\par
+\b\par
+Version 0.68d (06/07/02)\b0  \par
+\f1\'b7\f0  items that you ready (weapons/armor/shields) can now have skill bonuses\par
+\f1\'b7\f0  monster treasure drop system improved, most might drop \ldblquote skill bonus\rdblquote  items\par
+\f1\'b7\f0  in the VIEW tab, clickin gon VIEW button while an item is selected in the map, \ldblquote views\rdblquote  it\par
+\f1\'b7\f0  vexen weapon quest added\par
+\f1\'b7\f0  \ldblquote Its Me2\rdblquote  has been promoted to @ admin\par
+\b\par
+Version 0.68c (06/04/02)\b0  \par
+\f1\'b7\f0  more throwing weapons added, plus a catapult!\par
+\f1\'b7\f0  tiny granite rocks can be thrown or slung\par
+\f1\'b7\f0  ammo that falls on the ground will now disappear eventually\par
+\f1\'b7\f0  raw materials for arrow and bolt making are now makable\par
+\b\par
+Version 0.68c (05/31/02)\b0  \par
+\f1\'b7\f0  added Nurovia\rquote s female pics, numbers 125-130, 133-135\par
+\f1\'b7\f0  /surface all alone brings up a selection box and gives you command to use\f1\par
+\'b7\f0  fixes to ammo, practice ammo is free, buy from Trader Joe\par
+\f1\'b7\f0  Trader Joe sells arrows and bolts\par
+\f1\'b7\f0  attacks over range 5 \ldblquote drift\rdblquote  to different spots on player\par
+\f1\'b7\f0  Throwing skill added, add weapon to Ammo spot and leave weapon slot empty\par
+\b\par
+Version 0.68c (05/30/02)\b0  \par
+\f1\'b7\f0  buy quantities from traders added\par
+\f1\'b7\f0  bows and crossbows use ammo now\par
+\f1\'b7\f0  fletching skill added, only bolts and arrows make-able currently\par
+\f1\'b7\f0  New bow added, Bovine Bow, dropped by $%^#\par
+\f1\'b7\f0  some arrows have a damage bonus that adds to a bows base damage\par
+\f1\'b7\f0  made changes to player.bmp, making more room for images, more dynamic\par
+\b\par
+Version 0.68b (05/24/02)\b0  \par
+\f1\'b7\f0  fixed the sign text bug ( I hope heh, still gotta fix screw ups though)\par
+\f1\'b7\f0  added pencil that you can use on signs and scrolls, added vendor for it too\par
+\f1\'b7\f0  elevation now affects attack, if you are higher than target, you get a bonus, if target is higher than you, target gets a bonus, the bonus is 10 per elevation\par
+\f1\'b7\f0  added the colored blank keys for locksmiths, you can pencil keys now as well\par
+\f1\'b7\f0  let me know if there is an object that you think should be able to write on\par
+\b\par
+Version 0.68a (05/22/02)\b0  \par
+\f1\'b7\f0  /guildtransfer command added to change ownership of a guild, see HELP\par
+\f1\'b7\f0  helmets added, some monsters attack high, like flies and drakes\par
+\f1\'b7\f0  guild monster guards added, see HELP\par
+\f1\'b7\f0  prices for guild monsters: 10,000 gold per level of monster, 5 minute spawn, 1 free Guard Dog spawn. Prices subject to change at any time\par
+\b\par
+Version 0.68 (05/21/02)\b0  \par
+\f1\'b7\f0  made some tweaks to client, it tracks monsters off screen and attacking will not get cancelled if they leave the screen unless you move manually of course\par
+\f1\'b7\f0  the Look button works better, when you have a player selected, if the player moves, the button still works\par
+\b\par
+Version 0.68 (05/21/02)\b0  \par
+\f1\'b7\f0  leg armor added, stats same as chest armor, some monsters attack legs now, like hounds\par
+\f1\'b7\f0  some weapons now have skill requirements, like Excalibur needs like 150 Sword to arm\par
+\f1\'b7\f0  small tweak to ranged missle and magic attacks: if target is moving then they harder to hit\par
+\f1\'b7\f0  small tweak to ranged missle and magic attacks: the farther the target is away, they harder to hit\par
+\f1\'b7\f0  the above 2 tweaks are to help balance the melee, missle, and magic types and also make sense\par
+\f1\'b7\f0  banana trees can be cut down now so stop bugging me, heh\par
+\f1\'b7\f0  the \ldblquote Multi-make\rdblquote  screen shows more choices since brick fences were not all showing up\par
+\b\par
+Version 0.67f (05/20/02)\b0  \par
+\f1\'b7\f0  guild XP and maintenance fee added, see HELP\par
+\f1\'b7\f0  guild destroy command should be fixed\par
+\f1\'b7\f0  I think I am done with guilds, post any more ideas on the message board\par
+\b\par
+Version 0.67f (05/17/02)\b0  \par
+\f1\'b7\f0  guild rules command added, see HELP\par
+\f1\'b7\f0  viewing a player gives more info now\par
+\b\par
+Version 0.67e (05/16/02)\b0  \par
+\f1\'b7\f0  guild wars! See help, it even keeps track of kills and deaths by each guild\par
+\f1\'b7\f0  if your guild wishes not to partake in wars use /guildnowar command\par
+\f1\'b7\f0  some items were getting orphaned with an ownership tag, added clean up code so the\par
+  ownership gets cleared on any item not on claimed land, I tested it well, but let me\par
+  know if items start disappearing off your land, heh\par
+\f1\'b7\f0  wars/sieges now might cost to join, admins running the siege determines it, defaults to 1000\par
+\f1\'b7\f0  pick can now tear down brick fences, so stop bothering me already about it!\par
+\b\par
+Version 0.67e (05/15/02)\b0  \par
+\f1\'b7\f0  /guildmessage command added so owners can set the \ldblquote enter world\rdblquote  message for their guild\par
+\f1\'b7\f0  /guildchat <msg>  or /z <msg>      private guild members only chat\par
+\f1\'b7\f0  /guildrequest <guild name>\'85 see help\par
+\b\par
+Version 0.67e (05/14/02)\b0  \par
+\f1\'b7\f0  guild commands deposit, withdraw for banks added\par
+\f1\'b7\f0  /guildrank will show all ranks set for a guild\par
+\f1\'b7\f0  history of deposits kept for each player in brackets [ ]\par
+\b\par
+Version 0.67e (05/10/02)\b0  \par
+\f1\'b7\f0  land claim guild commands added, not sure if it all works right so let me know, cost 10,000 gold\par
+\f1\'b7\f0  guild promote, demote and list commands added\par
+\b\par
+Version 0.67e (05/10/02)\b0  \par
+\f1\'b7\f0  had to wipe guilds, sorry\par
+\f1\'b7\f0  costs 10,000 gold to make a guild\par
+\f1\'b7\f0  costs 1,000 to join a guild\par
+\f1\'b7\f0  more guild commands added, see HELP\par
+\b\par
+Version 0.67e (05/10/02)\b0  \par
+\f1\'b7\f0  guilds added,  see HELP\par
+\b\par
+Version 0.67e (05/09/02)\b0  \par
+\f1\'b7\f0  /ignoreglobal\par
+\f1\'b7\f0  using Royans level XP formulae, I think we\rquote ll keep it\par
+\b\par
+Version 0.67e (05/08/02)\b0  \par
+\f1\'b7\f0  I put back 1 skill point per level\par
+\f1\'b7\f0  still tweaking Xp system so please let me know on msg brd\par
+\f1\'b7\f0  melee and archers attack better\par
+\b\par
+Version 0.67e (05/06/02)\b0  \par
+\f1\'b7\f0  after level 20, you only get 1 skill point per 2 levels\par
+\f1\'b7\f0  leveling XP changed, it was too easy to level at high levels\par
+\f1\'b7\f0  all Magic Armor Levels have been doubled to help balance magic vs. melee\par
+\f1\'b7\f0  cast spell times tweaked: harm 2, BH 3, L 3\par
+\f1\'b7\f0  added war/siege commands, mostly for admins, players just need to know /warquit, /war, and /s <messsage>\par
+\f1\'b7\f0  admins can now grant Xp or Vitae penalty for a war victory or loose\par
+\b\par
+Version 0.67e (05/02/02)\b0  \par
+\f1\'b7\f0  soon only one mastery skill will be allowed per player, please untrain any multi-mastery skills you may have or they might get ubtrain automatically and you might not like what the server chooses\par
+\f1\'b7\f0  nerfed renewal spells, added a limit\par
+\f1\'b7\f0  red windows and doors should be tear downable\par
+\f1\'b7\f0  minor and major potions\par
+\f1\'b7\f0  no more attacking yourself\par
+\f1\'b7\f0  Vexen items have very low burden so you can carry them around and use them as needed\par
+\b\par
+Version 0.67e (05/01/02)\b0  \par
+\f1\'b7\f0  new \ldblquote vexen\rdblquote  items added, including a 5.0 wand\par
+\f1\'b7\f0  /surface 0 while underground should un-surface your caves\par
+\b\par
+Version 0.67e (04/26/02)\b0  \par
+\f1\'b7\f0  mini-map now saves underground maps, sorry old maps are lost\par
+\f1\'b7\f0  right click on item in inventory and select STACK to merge items of that type\par
+\b\par
+Version 0.67d (04/26/02)\b0  \par
+\f1\'b7\f0  Tweaked melee weapons a bit, gave most \ldblquote greats\rdblquote  higher rating\par
+\f1\'b7\f0  fixed the \ldblquote head\rdblquote  re-use bug\par
+\b\par
+Version 0.67d (04/25/02)\b0  \par
+\f1\'b7\f0  Bad news: all weapons and armor will wear out and break including quest items\par
+\f1\'b7\f0  Good news: all weapons are now makable by blacksmiths, let me know if I missed any\par
+\b\par
+Version 0.67d (04/23/02)\b0  \par
+\f1\'b7\f0  FINALLY! Picklocks can be used to pick locks, planning on a Trap skill and a Thief Quest soon as well\par
+\f1\'b7\f0  added practice trade skill items for n00b isle, look for a place to use them on n00b isle soon\par
+\f1\'b7\f0  nerfed ICE spell\'85 it just slows the target down by about 50%\par
+\b\par
+Version 0.67c (04/18/02)\b0  \par
+\f1\'b7\f0  Made some \ldblquote light\rdblquote  changes to the client\par
+\f1\'b7\f0  added new traps: blind and triggers\par
+\f1\'b7\f0  trigger traps work like this: you step on it and it opens a door or wall\par
+\f1\'b7\f0  nerfed magic spells: Harm 15, blackhole 30, lightning 45 damage\'85 was\par
+   needed cuz mages are way too powerful at this time\par
+\b\par
+Version 0.67b (04/17/02)\b0  \par
+\f1\'b7\f0  Falcon Spear and Excalibur quests switched since the best weapon\par
+   (Excalibur) should have the hardest quest\f1\par
+\'b7\f0  added traps like: Nova, Ice, monster spawn, damage and warp\par
+\f1\'b7\f0  trap spells can not be resisted with mag def but you do get\par
+   mag def XP from them\par
+\f1\'b7\f0  Admins: trap nova ID = 11, Ice ID = 15, data1 is the severity\par
+   of the spell, make sure reset time is significant else players\par
+   will use them to train mag def\par
+\f1\'b7\f0  drake scales are now useful but I am not telling how\par
+\f1\'b7\f0  Message Of The Day command for admins:\par
+   \\MOTD#  <message>        (sets a message)\par
+   \\MOTD                              (displays all messages)\par
+\f1\'b7\f0  Admins: Please make the messages \ldblquote useful\rdblquote  heh and don\rquote t overwrite\par
+   other admins messages. I expect to see messages that tell players\par
+   of events or what you are making, etc, in the world\par
+\b\par
+Version 0.67b (04/15/02)\b0  \par
+\f1\'b7\f0  attribute potions increased to 5 minutes and 40 points\par
+\f1\'b7\f0  skill potions added; sword, melee defense, etc\par
+\f1\'b7\f0  /fixwall command added for players that can be used on \ldblquote ruins\rdblquote ,\par
+   it does cost STAMINA however\par
+\f1\'b7\f0  /addxp <name> and /addvitae <name> commands for admins to give\par
+   reward/penalty for siege/warfare/events\par
+\b\par
+Version 0.67b (04/11/02)\b0  \par
+\f1\'b7\f0  new FAST server\par
+\f1\'b7\f0  new potions: str, dex, quick, intel, wisdom, but can NOT be \par
+   made yet, only sold\par
+\b\par
+Version 0.67b (04/09/02)\b0  \par
+\f1\'b7\f0  if you get stuck in a cave type /UP to get out\par
+\f1\'b7\f0  monsters during invasions can now knock down some walls\par
+\f1\'b7\f0  AI for range attack monsters improved\par
+\b\par
+Version 0.67b (04/04/02)\b0  \par
+\f1\'b7\f0  Mana Conversion Skill Added, see HELP\par
+\f1\'b7\f0  ICE spell changed, it freezes target up to 24 seconds\par
+\b\par
+Version 0.67b (04/03/02)\b0  \par
+\f1\'b7\f0  falcon spear quest added, Grayvyn Castle added\par
+\f1\'b7\f0  Temple of Og completed\par
+\b\par
+Version 0.67b (04/01/02)\b0  \par
+\f1\'b7\f0  onyx scythe(axe quest) and mace quest added\par
+\b\par
+Version 0.67b (04/01/02)\b0  \par
+\f1\'b7\f0  cave ins now happen, but only if surface is normal\par
+   cave surface, it will not cave in on ground you have\par
+   used /surface command on, also any item in that spot gets\par
+   destroyed so better move items or surface your caves\par
+\f1\'b7\f0  limited land un-claim to 2 so limit players from claiming,\par
+   mining, unclaiming, and going on to next claim\par
+\f1\'b7\f0  red doors should be keyable now\par
+\f1\'b7\f0  group monster commands added for admins:\par
+   /monstergroup <name>, <qty>     this also has them follow\par
+   /monstergrouphome       any monster following, stays\par
+\f1\'b7\f0  /monsterstalker <monster name>, <player name> MUUUHAHAHAHA\par
+   \b\par
+Version 0.67b (03/29/02)\b0  \par
+\f1\'b7\f0  added ARMOR spell for mages\par
+\f1\'b7\f0  town and castles guards attack monsters now\par
+\b\par
+Version 0.67b (03/29/02)\b0  \par
+\f1\'b7\f0  added Un-Train skill feature\par
+\b\par
+Version 0.67a (03/27/02)\b0  \par
+\f1\'b7\f0  added \ldblquote Mastery\rdblquote  skills, see end of HELP for info,\par
+   I may tweak them some more or even take them out\par
+   So please let me know what you think, these are for\par
+   Pure warriors, mages, archer types\par
+\f1\'b7\f0  tweaked monsters, skills are little more balanced\par
+\b\par
+Version 0.67a (03/26/02)\b0  \par
+\f1\'b7\f0  2 new spells: CURE and TORCH\par
+\f1\'b7\f0  use bricks on caves to make stairs\par
+\f1\'b7\f0  more furniture and music instruments added\par
+\f1\'b7\f0  Falcon Spear quest in the making\par
+\b\par
+Version 0.67a (03/20/02)\b0  \par
+\f1\'b7\f0  player limit set to 10 to limit lag\par
+\f1\'b7\f0  multiple clients on same IP logged in are not allowed\par
+\f1\'b7\f0  \ldblquote improved\rdblquote  weapons magic will wear off with time, so\par
+   a +1 will last about 30 minutes, +2 about 60 minutes, etc\par
+\f1\'b7\f0  casting Revive, Heal, or Hero on another player gives\par
+   3 times the XP than casting on yourself thus giving \ldblquote support\rdblquote\par
+   mages better XP\par
+\b\par
+Version 0.67a (03/20/02)\b0  \par
+\f1\'b7\f0  \ldblquote Chest Zircon Armor\rdblquote  removed\par
+\f1\'b7\f0  monsters don\rquote t step on hurtful things(roses) anymore\par
+\f1\'b7\f0  /surface <number> should work underground, also use\par
+   0 to set your surface back to dirt in which will grow grass\par
+\f1\'b7\f0  Drej Potion added (don\rquote t ask, you figure it out!!!)   \par
+\b\par
+Version 0.67a (03/20/02)\b0  \par
+\f1\'b7\f0  if you have \ldblquote Chest Zircon Armor\rdblquote  then it will be\par
+   removed soon, but not \ldblquote Zircon Chest Chain\rdblquote , \par
+   \ldblquote Zircon Chest Scale\rdblquote  or \ldblquote Zircon Chest Plate\rdblquote\par
+\f1\'b7\f0  Farmer ted now accepts a regular Claw instead of \par
+   a Zircon Claw\par
+\f1\'b7\f0  blacksmith should work correct now, not off by 1\par
+\f1\'b7\f0  Un-Armed quest complete\par
+\b\par
+Version 0.67a (03/19/02)\b0  \par
+\f1\'b7\f0  Removed Full body Armor and crimson armor\par
+\f1\'b7\f0  Zircon dagger/claw now makable by blacksmiths\par
+\f1\'b7\f0  Old Skeleton Miner drops a different dagger since\par
+   Zircon Daggers are makable\par
+\f1\'b7\f0  antlers can be turned into a bow, find the right NPC\par
+\f1\'b7\f0  UA quest in the works\par
+\f1\'b7\f0  monster gold dropped less often\par
+\f1\'b7\f0  miners can dig wells with shovel\par
+\b\par
+Version 0.67a (03/18/02)\b0  \par
+\f1\'b7\f0  Blacksmith: you can now make all the ore chest armors\par
+\b\par
+Version 0.67a (03/18/02)\b0  \par
+\f1\'b7\f0  Major changes to armor are coming/here, the armor\par
+   Full Plate Armor and Crimson Armor will\par
+   be taken out soon so sell it or you risk losing it, soon\par
+   you\rquote ll be able to make all the armors from all the ores\par
+\f1\'b7\f0  Witches and Wickens changed so that only magic users\par
+   have a easy time to kill them which means they have high\par
+   melee but low magic defense\par
+\f1\'b7\f0  BTW the Phobos Staff (mage quest) is in\par
+\f1\'b7\f0  Traders don\rquote t accept ores any more, like Zircon Ore to give\par
+   items in return\par
+\f1\'b7\f0  The Old Skeleton Miner now drops the Zircon Dagger and\par
+   NOT Zircon ore\par
+\b\par
+Version 0.67a (03/14/02)\b0  \par
+\f1\'b7\f0  Locksmith is fix and \ldblquote should\rdblquote  work now\par
+\f1\'b7\f0  buying and selling Notes to traders works now\par
+\f1\'b7\f0  stack limit set to 30,000\par
+\f1\'b7\f0  you can\rquote t mine the floor anymore, you may only mine\par
+   cave walls/edge\par
+\f1\'b7\f0  I have 2 quests planned: mage and thief\par
+\b\par
+Version 0.67a (03/13/02)\b0  \par
+\f1\'b7\f0  WARNING!!!! There is a bug with NOTES and selling\par
+   them back to traders, please be careful, I have not\par
+   fully tracked it down yet but did make some code\par
+   changes that may have fixed it\f1\par
+\'b7\f0  masonry: you can build pits now and tear them down\par
+\f1\'b7\f0  carpenters can build walls with planks, use hammer\par
+   and chisel to tear them down\par
+\b\par
+Version 0.67a (03/12/02)\b0  \par
+\f1\'b7\f0  masonry: you now get a choice of what wall to make\par
+\f1\'b7\f0  carpenters: you can use wood planks to make doors,\par
+   coming soon, the ability to make red walls, yeah!\par
+\f1\'b7\f0  gold sheets can be made into gold coin with anvil\par
+\b\par
+Version 0.67a (03/11/02)\b0  \par
+\f1\'b7\f0  changed player pics that were \ldblquote stolen\rdblquote\f1\par
+\'b7\f0  Assess Skill changed, try it out, also cost is now\par
+   2 skill points so if you already had it trained,\par
+   you should get 2 skill points back\par
+\f1\'b7\f0  Tailor is now used for Tanning hides\par
+\f1\'b7\f0  added Blacksmith, you can do is smelt ore and\par
+   only make all metal weapons like swords but not\par
+   axes or spears, etc\par
+\f1\'b7\f0  added more tricks for Alchemists\f1\par
+\'b7\f0  Zircon Dagger, Armor, and Orb quest added\par
+\f1\'b7\f0  mining now produces ore, some more rare than\par
+   others, nothing you can really do with them yet\par
+   so just hold on to them, for one time I will\par
+   fill in your land so you can get ore\par
+\f1\'b7\f0  finally! Armor protects from roses, fire, etc\par
+\f1\'b7\f0  PK \ldblquote should\rdblquote  be working, if you hit the PK \par
+   ALTAR and it is NOT working then talk to \par
+   Me and I\rquote ll make you PK\par
+\b\par
+Version 0.67 (03/08/02)\b0  \par
+\f1\'b7\f0  Excalibur quest added\par
+\f1\'b7\f0  some scrolls and parchments you can read, just\par
+   right click then select \ldblquote read\rdblquote\par
+\b\par
+Version 0.67 (03/07/02)\b0  \par
+\f1\'b7\f0  added more casting wands, see traders\par
+\f1\'b7\f0  added the PK altar in a dungeon\par
+\f1\'b7\f0  WARNING: items put on your land by other\par
+   players will disappear, make sure they have\par
+   rights first\par
+\f1\'b7\f0  reduced oven burden to 1000\par
+\f1\'b7\f0  added a new shield and armor in game, but quest\par
+   items kinda, don\rquote t ask, you have to figure it out\par
+\b\par
+Version 0.67 (03/06/02)\b0  \par
+\f1\'b7\f0  player made caves in, miners use shovel and pick\par
+\b\par
+Version 0.67 (03/04/02)\b0  \par
+\f1\'b7\f0  most all traders in\par
+\f1\'b7\f0  land claim got messed, so you need to re-claim land\par
+\f1\'b7\f0  Magic Sword renamed to something else and is \par
+   now in game but I am not telling where/how\par
+\f1\'b7\f0  2 new skills added: Tailor and Carpentry\par
+\b\par
+Version 0.67 (03/02/02)\b0  \par
+\f1\'b7\f0  been working on the mainland town, look\par
+   for more traders with your goods\par
+\f1\'b7\f0  land ownership is coming soon\par
+\f1\'b7\f0  added 2 new skills: Tailor and carpentry\par
+\b\par
+Version 0.67 (02/25/02)\b0  \par
+\f1\'b7\f0  added a mayor quest and a way to get off island\par
+\f1\'b7\f0  changed catacomb quest a bit, added another door\f1\par
+\'b7\f0  new horizon image thanks to UF\par
+\f1\'b7\f0  new cave entrances by Rummager\par
+\b\par
+Version 0.67 (02/23/02)\b0  \par
+\f1\'b7\f0  NPC vendors only buy the items they sell\par
+\f1\'b7\f0  fixed the NPC double-click too fast bug\par
+\f1\'b7\f0  so far got 1 complete quest: Marble Quest\par
+\b\par
+Version 0.67 (02/21/02)\b0  \par
+\f1\'b7\f0  NPC vendors will buy and sell items now\par
+\f1\'b7\f0  weapons balanced and tweaked better\par
+\b\par
+Version 0.66 (02/19/02)\b0  \par
+\f1\'b7\f0  no land claiming for now, sorry\par
+\f1\'b7\f0  items placed on the ground have a\par
+   "time to live" which means they will\par
+    disappear in a few minutes unless picked\par
+    back up... in the future, if you own the land\par
+    the items will stay forever\b\par
+\par
+Version 0.66 (02/15/02)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  tweaked the combat XP system up, so\par
+   more XP per monster\par
+\f1\'b7\f0  Did I already mention copper wand?\par
+\f1\'b7\f0  underground added, walk on cave items, this\par
+   change was MAJOR so let me know of any\par
+   bugs that spring up immediately\par
+\f1\'b7\f0  NPC players added, double click on them \par
+   to talk to them, you can drag items to them\par
+   and get items from them, basic quests\par
+\f1\'b7\f0  Alchemy added, it is possible to make all\par
+   the potions but the methods are hidden and\par
+   not displayed in the \ldblquote Usage\'85\rdblquote  button, \par
+   Hint: roses\par
+\f1\'b7\f0  added Cure Potion for poison\par
+\f1\'b7\f0  items like Thorn bush and fire hurt right when\par
+   you touch them, there is no more delay\par
+\f1\'b7\f0  some monsters like Cows, drop normal loot,\par
+   like it will not drop gold but might drop Side\par
+   of Beef item\par
+\f1\'b7\f0  I have given values to lots of items including \par
+   weapons, so let me know if they jibe\par
+\f1\'b7\f0  parchment and scrolls are readable, right click \par
+   on them and press \ldblquote Read\rdblquote  or double click\par
+\pard\nowidctlpar\b\par
+Version 0.66 (02/05/02)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  lots of changes to combat XP system,\par
+   you now only get XP when you succeed at\par
+   attacking or defending\par
+\f1\'b7\f0  shields added\par
+\f1\'b7\f0  monster levels changed, not sure if balanced\par
+\f1\'b7\f0  added tons more monsters\par
+\f1\'b7\f0  double-click on a player to \ldblquote look\rdblquote  at them\par
+\f1\'b7\f0  Assess and Deception skills have more affect,\par
+   you can no longer see the level of a player unless\par
+   you succeed with Assess/Look\par
+\f1\'b7\f0  only some items are stackable, like gold and seeds\par
+\pard\nowidctlpar\b\par
+Version 0.66 (01/15/02)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  We lost the primary server and the data files there\par
+   so please don\rquote t ask for your player to be moved\par
+\f1\'b7\f0  added magic ability to weapons, get a mage to cast\par
+   the IMPROVE spell on your favourite weapon\par
+\pard\nowidctlpar\b\par
+Version 0.65c (01/08/02)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  User Agreement changed, READ IT!!!\par
+\f1\'b7\f0  Major Weapon changes coming soon\par
+\f1\'b7\f0  Sorry I have not been around, was on \par
+   vacation for a few weeks.\par
+\pard\nowidctlpar\b\par
+Version 0.65c (12/16/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  new Primary server should be up 24/7, it is \par
+   just a test world for now, hopefully I will \par
+   have the old player data on it very soon\par
+\pard\nowidctlpar\b\par
+Version 0.65c (12/14/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  admins have ranks, one @ is regular, two @@ \par
+   is super, and three @@@ is Ultra admin\par
+\f1\'b7\f0  clients/players can be banned temporarily now\par
+\f1\'b7\f0  the USER AGREEMENT changed, READ IT!\par
+\pard\nowidctlpar\b\par
+Version 0.65c (12/12/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  \ldblquote dark\rdblquote  sector added, no ambient light at all,\par
+   even during the day it is total dark, only \par
+   player lights work, this simulates underground\par
+\f1\'b7\f0  magic has major changes, see HELP\par
+\f1\'b7\f0  Assess and Deception skill added, see HELP\par
+\f1\'b7\f0  click on skill or attribute name to get details\par
+\f1\'b7\f0  monsters chase who ever pisses them off\par
+\pard\nowidctlpar\b\par
+Version 0.65b (12/03/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  torches and lanterns added for player light\par
+\f1\'b7\f0  signs have text now, double click them\par
+\f1\'b7\f0  vendors buy back items but only give\par
+   half the value it sells it for\par
+\f1\'b7\f0  Grayvyn Castle Quest Added\par
+\f1\'b7\f0  alternate server added, choice for players\par
+\pard\nowidctlpar\b\par
+Version 0.65a (11/28/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  /surface <number>  will charge gold to change\par
+   the surface, players can do this, look in \par
+   background0.bmp for all surfaces \f1\par
+\'b7\f0  more monster AI added, like stealth\par
+\f1\'b7\f0  lockable doors and keys\par
+\f1\'b7\f0  autoupdater gets updated now\par
+\f1\'b7\f0  an old \ldblquote friend\rdblquote  has arrived\par
+\pard\nowidctlpar\b\par
+Version 0.65a (11/26/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  scanning is affected by line of sight\par
+\f1\'b7\f0  added WOTC Flag and Skull rune\par
+\f1\'b7\f0  players now block line of sight\par
+\pard\nowidctlpar\b\par
+Version 0.65a (11/25/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  new monster AI added\par
+\f1\'b7\f0  monsters will help friends, like brigands\par
+   will help brigand captains, not all monsters\par
+   will help each other, be careful of groups\par
+\f1\'b7\f0  some monsters can cast HEAL and HERO\par
+\f1\'b7\f0  Vile Elves use a bow now\par
+\f1\'b7\f0  monsters will give chase for shorter times\par
+\f1\'b7\f0  using items changed, allows quantities above 1\par
+   try using several fillets on fire to see\par
+\pard\nowidctlpar\b\par
+Version 0.65a (11/21/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  double click now \ldblquote uses hand\rdblquote  on that item\par
+\f1\'b7\f0  to \ldblquote look\rdblquote  at an item, click on it then click\par
+   on the \ldblquote look\rdblquote  button in the PLAYER tab\par
+\f1\'b7\f0  added more flat surfaces for you, look in\par
+   background0.bmp for them\par
+\f1\'b7\f0  some walls will NOT block movement\par
+\f1\'b7\f0  added a slit wall so you can shoot through it\par
+\f1\'b7\f0  admins can now place static monster spawns\par
+\f1\'b7\f0  Maze and Santa Quests added\par
+\f1\'b7\f0  tons of vendors added that sell everything\par
+\f1\'b7\f0  MAGIC tab has buttons added\par
+\pard\nowidctlpar\b\par
+Version 0.65 (11/16/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  line of sight restrictions, line of attack to target\par
+   must be free of items that can block\par
+\f1\'b7\f0  M.O.D. Flag added\par
+\pard\nowidctlpar\b\par
+Version 0.65 (11/15/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  vendors added, use hand on them to see what they do\par
+   for example: use 5 I notes on Vendor to get scale Armor\par
+\f1\'b7\f0  also, an I Note Vendor to change gold into notes\par
+\pard\nowidctlpar\b\par
+Version 0.65 (11/15/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  pumpkin pie added\par
+\pard\nowidctlpar\f1\'b7\f0  trees are now \ldblquote pine trees\rdblquote  and can be planted\par
+\f1\'b7\f0  lettuce can be grown too\par
+\f1\'b7\f0  farmer\rquote s scythe can be used on some small plants\b\par
+\par
+Version 0.65 (11/14/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  monsters can cast spells now\par
+\pard\nowidctlpar\f1\'b7\f0  pies added\par
+\f1\'b7\f0  citrus trees added\b\par
+\par
+Version 0.65 (11/09/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  map and item wiped, player are stats OK\par
+\pard\nowidctlpar\f1\'b7\f0  many changes\'85.\par
+\f1\'b7\f0  on death players resurrect automatically\par
+\f1\'b7\f0  monsters leave behind a temporary dead body\par
+\f1\'b7\f0  monsters dynamically spawn and must be hunted\par
+\f1\'b7\f0  newbie island, high levels are not allowed there\par
+\f1\'b7\f0  warp stones are setup for players to get around\par
+\f1\'b7\f0  basic weapons are provided at 500,500\par
+\f1\'b7\f0  land claims are 2 at level 5 then 1 every 10 levels\par
+\f1\'b7\f0  no guild code or land rights code in yet\par
+\f1\'b7\f0  things grow slower\b\par
+\par
+Version 0.64 (11/04/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  the client has a button in the MENU tab called\par
+   USAGE that will show all the item usages in game\par
+\pard\nowidctlpar\b\par
+Version 0.64 (11/01/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added A LOT of content, forgot most of it\par
+\f1\'b7\f0  seeds, farmer\rquote s scythe, mostly farming stuff\par
+\f1\'b7\f0  gold dropped by monsters will fade away\par
+\f1\'b7\f0  cooking: grind wheat seeds, use flour on water,\par
+   use oven on dough to get bread\par
+\pard\nowidctlpar\b\par
+Version 0.64 (10/28/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added /ignore <name>, see HELP\par
+\f1\'b7\f0  probably no more updates until the wipe\par
+\pard\nowidctlpar\b\par
+Version 0.64 (10/28/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  optimized the client some, Elazul let me know\par
+\f1\'b7\f0  Added more Grayvyns\par
+\f1\'b7\f0  Hopefully around Nov. 9th, We will have wipe\par
+\pard\nowidctlpar\b\par
+Version 0.63 (10/25/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added dynamic item spawning\par
+\f1\'b7\f0  runes now act as keys for \ldblquote rune doors\rdblquote\par
+\f1\'b7\f0  this means better quests setup for players\par
+\pard\nowidctlpar\b\par
+Version 0.63 (10/24/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added FIRE, watch out it can spread\par
+\pard\nowidctlpar\f1\'b7\f0  use water buckets on fire to put out\par
+\f1\'b7\f0  use bucket on well or water to fill bucket\par
+\f1\'b7\f0  The Grayvyn event moves forward!\par
+\f1\'b7\f0  flags for humans and Grayvyn added\b\par
+\par
+Version 0.63 (10/20/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  admins now have @@ in their names\par
+\f1\'b7\f0  An event has started, run by me\par
+\f1\'b7\f0  The Grayvyns have come!\par
+\pard\nowidctlpar\b\par
+Version 0.63 (10/15/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  may have fixed the warp bug, let me know\par
+\f1\'b7\f0  walls block the flow of water\par
+\f1\'b7\f0  water does NOT delete items now, use a\par
+   garbage can to do it (/item 1115)\par
+\f1\'b7\f0  water sinks into the ground to make ground\par
+   water, this will come into play when plants\par
+    need water to grow, this also means water\par
+    levels are gonna drop somewhat\par
+\pard\nowidctlpar\b\par
+Version 0.63 (10/11/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added warp stones, use hand on them and it\par
+   will warp you to it's "programmed" spot\par
+   a known warp bug exists that might disconnect\par
+   players, just log back on and your player should\par
+   fine and at the new spot\par
+\pard\nowidctlpar\b\par
+Version 0.63 (10/10/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added life stones, use hand on them and that\par
+   will be your new resurrect spot\par
+\pard\nowidctlpar\f1\'b7\f0  armor might fail 100% now\par
+\f1\'b7\f0  creating a player allows any image to be choosen\par
+\b\par
+Version 0.63 (10/05/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  admins will be more strict will foul language\par
+\f1\'b7\f0  added cross bows and magic armor, ask admin\par
+   to spawn you a cross bow (/item 1135,1136,1137)\f1\par
+\b\f0\par
+\pard\nowidctlpar Version 0.63 (10/04/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added a \ldblquote use hand\rdblquote  button, use this on altars\par
+\f1\'b7\f0  PK and non-PK altars added, admins cannot\par
+   change you anymore\par
+\pard\nowidctlpar\b\par
+Version 0.63 (10/03/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  you can now use skills on your inventory,\par
+   for example, use a cooking knife on a fish\par
+\pard\nowidctlpar\b\par
+Version 0.63 (10/02/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added farming, use plough on ground,\par
+   then use clippers on bush, then cutting on\par
+   the ploughed ground\par
+\pard\nowidctlpar\b\par
+Version 0.63 (10/01/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  items lost on death have your name on them\par
+   so that only you can recover them but it times\par
+   out after a time but should be long enough\par
+   for you to recover the item\par
+\f1\'b7\f0  armor now has magic armor levels, no new armor\par
+\pard\nowidctlpar\b\par
+Version 0.63 (09/30/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  death has a new sting, item loss\par
+\f1\'b7\f0  some monsters (drakes) have range attack\par
+\f1\'b7\f0  rocks, branches, logs, garbage will fade away\par
+\pard\nowidctlpar\b\par
+Version 0.63 (09/27/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added bows, arrows not needed yet\par
+\pard\nowidctlpar\f1\'b7\f0  changes braziers a bit, they get \ldblquote low\rdblquote\par
+\f1\'b7\f0  removed trace code, may have fixed bug\b\par
+\par
+Version 0.62a (09/25/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added shovels, use them on tiny rocks,ash\par
+\f1\'b7\f0  use branches,log,fire wood on braziers\par
+\f1\'b7\f0  use pick on stumps to remove them\par
+\f1\'b7\f0  most food will rot into garbage\par
+\f1\'b7\f0  you can place items on water to destroy\par
+\f1\'b7\f0  trace code in place so might be laggy\par
+\pard\nowidctlpar\b\par
+Version 0.62a (09/22/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  using trade skills will repeat 10 times\par
+\pard\nowidctlpar\b\par
+Version 0.62 (09/16/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  fish will die and bushes grow back\par
+\pard\nowidctlpar\b\par
+Version 0.62 (09/14/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added fishing and cooking\par
+\pard\nowidctlpar\b\par
+Version 0.62 (09/12/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  item use code partly done!\par
+\f1\'b7\f0  which means, building is partially in!\par
+\f1\'b7\f0  see HELP \par
+\pard\nowidctlpar\b\par
+Version 0.61 (09/05/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  land ownership added, see HELP\par
+\pard\nowidctlpar\b\par
+Version 0.61 (08/29/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  world, items, and players all reset\par
+\f1\'b7\f0  numerous small changes\par
+\f1\'b7\f0  monster kills give less XP\par
+\f1\'b7\f0  gaining levels is more balanced\par
+\f1\'b7\f0  removed \ldblquote the force\rdblquote  and sabres\par
+\f1\'b7\f0  copper and silver removed, only gold in use\par
+\f1\'b7\f0  /skillpoint is an official cheat \par
+\f1\'b7\f0  reduced the number of starting skillpoints\par
+\f1\'b7\f0  some item manipulations don\rquote t work\par
+\f1\'b7\f0  please report bugs/comments ASAP on the board\par
+\pard\nowidctlpar\b\par
+Version 0.60a (07/31/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  poison added, some weapons can poison\par
+\pard\nowidctlpar\f1\'b7\f0  you can eat flowers, but some are poison!\par
+\f1\'b7\f0  fixed burden and eat bug with stacked items\b\par
+\par
+Version 0.60 (07/30/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  items are now stackable, see help\par
+\f1\'b7\f0  food also gives STAMINA if it is low\par
+\pard\nowidctlpar\b\par
+Version 0.59 (07/27/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  CHAT by default is NOT global\par
+\pard\nowidctlpar\f1\'b7\f0  CHAT now has a limited range, 1-2 screens\par
+\f1\'b7\f0  camp fires can burn you now\par
+\f1\'b7\f0  scorpions added at 560,560\par
+\b\par
+Version 0.59 (07/19/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added food requirements for players\par
+\f1\'b7\f0  you can starve to death\par
+\f1\'b7\f0  see HELP for more info\par
+\f1\'b7\f0  monsters drop food now\par
+\f1\'b7\f0  right click on food in inventory to eat\par
+\f1\'b7\f0  type /FOOD to see levels\par
+\f1\'b7\f0  levels 10 or less are not affected by food\par
+\f1\'b7\f0  sheep don\rquote t wander as much\par
+\pard\nowidctlpar\b\par
+Version 0.58 (07/16/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  Guard last for 5 minutes\par
+\f1\'b7\f0  animated items\par
+\f1\'b7 \f0 double click on map item  gives stats\par
+\f1\'b7 \f0 added value for some items\par
+\pard\nowidctlpar\b\par
+Version 0.58 (07/10/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added money\par
+\pard\nowidctlpar\b\par
+Version 0.58 (06/28/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added more player pics\par
+\f1\'b7 \f0 added the rest of the food\par
+\f1\'b7 \f0 added a claw, tridents, swords\par
+\b\par
+\pard\nowidctlpar Version 0.58 (06/15/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added /HERO spell and some scythe weapons\par
+\pard\nowidctlpar\b\par
+Version 0.58 (06/15/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  made extensive changes to admins, look\par
+   for \ldblquote ADMIN\rdblquote  in front of name for one\par
+\f1\'b7\f0  WARP no longer works for players\par
+\f1\'b7\f0  blocks and buildings are no longer movable\par
+\f1\'b7\f0  added some buildings, start of a town\par
+\pard\nowidctlpar\b\par
+Version 0.58 (06/11/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added snow, look for it at high elevations\par
+\pard\nowidctlpar\b\par
+Version 0.58 (06/09/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added /lightning spell\par
+\pard\nowidctlpar\f1\'b7\f0  I can now change images of players easily\b\par
+\par
+Version 0.58 (05/29/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  added a /blackhole spell\par
+\f1\'b7\f0  monsters have a mob effect in groups\par
+\pard\nowidctlpar\b\par
+Version 0.58 (05/22/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7\f0  chat text is now dynamic and supports up to \par
+   230 characters (it\rquote s about time Mickey!)\par
+\f1\'b7\f0  made some storage changes on the server,\par
+   hopefully I didn\rquote t screw anything up!\par
+\pard\nowidctlpar\b\par
+Version 0.57 (05/18/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7 \f0 /LIFERENEWAL and /STAMINARENEWAL \par
+   spells (not cheats either)\par
+\f1\'b7 \f0 added more armor, bug an admin for some cos \par
+   it isn\rquote t in the world\par
+\f1\'b7 \f0 added \ldblquote the force\rdblquote  skill\par
+\f1\'b7 \f0 added Drakes and some monsters SCAN now\f1\par
+\pard\nowidctlpar\b\f0\par
+Version 0.57 (05/14/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7 \f0 /MANARENEWAL for you whiny mages\f1\par
+\'b7 \f0 added ARMOR\par
+\pard\nowidctlpar\f1\'b7 \f0 HARM can do criticals\par
+\f1\'b7 \f0 added HARM to guard mode, see MENU tab\par
+\f1\'b7 \f0 redid skill rolls, reduced \ldblquote sloppiness\rdblquote  at high levels\par
+\f1\'b7 \f0 combat criticals are different now too\b\par
+\par
+Version 0.57 (05/14/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7 \f0 you control if you can attack players, look\par
+   in MENU tab for \ldblquote Attack Players\rdblquote\par
+\f1\'b7 \f0 reseted the map\par
+\pard\nowidctlpar\b\par
+Version 0.56 (05/09/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7 \f0 added player names, can be controlled in \par
+   MENU tab\par
+\pard\nowidctlpar\f1\'b7 \f0 player files get saved in a folder that matches \par
+   their name\b\par
+\par
+Version 0.56 (05/07/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7 \f0 added MAGIC DEFENSE skill\par
+\pard\nowidctlpar\f1\'b7 \f0 heal and revive do 10-15 instead of 5-10\par
+\f1\'b7 \f0 got rid of /REST, it was buggy and wasn\rquote t the \par
+   what I wanted\par
+\f1\'b7 \f0 right-click on items to VIEW them in VIEW tab\par
+\f1\'b7 \f0 weapons have a speed, like 1 attack per 1 seconds \par
+   is fast and 1 attack per 2 seconds is slow\par
+\f1\'b7 \f0 RUN is a default skill\par
+\f1\'b7 \f0 added a level 150 and 100 and more rabbit monsters\b\par
+\par
+Version 0.56 (05/04/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7 \f0 added more, better weapons! The monsters are \par
+   guarding them.\par
+\f1\'b7 \f0 added another weapon skill, FLAIL.\par
+\pard\nowidctlpar\b\par
+Version 0.56 (05/01/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7 \f0 added weapons! Anyone can use them but you\par
+   need the skill to use them well\par
+\pard\nowidctlpar\f1\'b7 \f0 added player burden, players can carry only so\par
+   much according to STRENGTH\b\par
+\b0\f1\'b7 \f0 added a Gold Golem, level 100\b\par
+\par
+Version 0.55 (04/22/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7 \f0 added tons of monsters, from the center of the map 500,500, \par
+   look at the radius 50 and 100\par
+\f1\'b7 \f0 changed the monster AI around, look for some surprises and \par
+   let me know if a monter does not match it's level\par
+\f1\'b7 \f0 updated the autoupdater, it should be version 1.0\f1\par
+\par
+\b\f0 Version 0.55 (04/18/01)\b0  \par
+\f1\'b7 \f0 fort located at 550,550 or so\par
+\f1\'b7 \f0 added flies and moles, moles sneak!\par
+\pard\nowidctlpar\b\par
+Version 0.54 (04/13/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7 \f0 reduced power of the HARM spell\par
+\f1\'b7 \f0 check out the website on ABOUT and DESIGN NOTES, \par
+   {\field{\*\fldinst{HYPERLINK "www.ccinet.com/~kudlo"}}{\fldrslt{\ul\cf1 www.ccinet.com/~kudlo}}}\f0\fs20\par
+\pard\nowidctlpar\b\par
+Version 0.54 (04/11/01)\b0  \par
+\pard\nowidctlpar\ri-1768\f1\'b7 \f0 added /HARM spell, select target and type in chat, closer to \par
+   target the more damage, higher level monsters may resist\par
+\f1\'b7 \f0 added /REST to regain LIFE, STAM, and MANA faster,\par
+   disallows combat for 1 second\par
+\pard\nowidctlpar\b  \par
+Version 0.54 (04/09/01)\b0  \par
+\f1\'b7 \f0 large map support, this one is 400x400, look at sector\par
+\f1\'b7 \f0 use /WARP X,Y does not use MANA or SKILL so \par
+   everyone can use it\par
+\f1\'b7 \f0 i don\rquote t remember so don\rquote t ask! OK, you can ask.\par
+\b\par
+Version 0.53 (03/29/01)\b0  \par
+\f1\'b7\f0  adding LIFE also adds to STAMINA: this allows a 1:2 ratio\par
+   on LIFE : STAMINA\par
+\f1\'b7 \f0 adding WISDOM gives MANA\par
+\f1\'b7 \f0 player creation: LIFE affects STAMINA, WISDOM affect \par
+  MANA, more points to spend too\par
+\f1\'b7\f0  you can give players items from your inventory \par
+\b\par
+Version 0.53 (03/27/01)\b0  \par
+\f1\'b7\f0  swapped mouse buttons: left to manipulate, right to move\par
+\f1\'b7\f0  you can now drop items and move them around on the map\par
+\f1\'b7\f0  you can drag items to PLAYER tab\par
+\f1\'b7\f0  reindeer have been spotted!\par
+\f1\'b7\f0  orange messages show up in lower chat\par
+\f1\'b7\f0  for now, skills can not be directly raised, raising comes from attributes and usage\par
+\b\par
+Version 0.52 (03/23/01)\b0  \par
+\f1\'b7\f0  to pick up objects: right click on it and drag to player in the view\par
+\f1\'b7\f0  sneaking uses stamina\par
+\b\par
+Version 0.52 (03/19/01)\b0  \par
+\f1\'b7\f0  to pick up objects: right click on it then select \ldblquote search\rdblquote\par
+\f1\'b7\f0  item code not complete yet and still buggy? let me know\par
+\f1\'b7\f0  /XP is not longer a \f1\'93\f0 cheat\f1\'94\f0\par
+\f1\'b7\f0  /GRASS should work now\par
+\f1\'b7\f0  added a VIEW tab for items, etc\par
+\f1\'b7\f0  isolated system messages are larger and have BOLD for better viewing\par
+\b\par
+Version 0.51 (03/09/01)\b0  \par
+\f1\'b7\f0  fixed \ldblquote train\rdblquote  skill bug that didn\rquote t save your skill\par
+\f1\'b7\f0  system messages can be displayed in tactical map\par
+\f1\'b7\f0  warp animation used for enter/exit world\par
+\f1\'b7\f0  bug fix on monsters not getting STAM when they respawn\par
+\f1\'b7\f0  server saves world faster and less often\par
+\f1\'b7\f0  tweaked XP in combat\par
+\f1\'b7\f0  thinking about not allowing skill improvement via spending XP\par
+\b\par
+Version 0.51 (03/02/01)\b0  \par
+\f1\'b7\f0  /REVIVE spell increases STAMINA\par
+\f1\'b7\f0  /HEAL <player> and /REVIVE <player> spells\par
+\f1\'b7\f0  animations for /HEAL and /REVIVE\par
+\b\par
+Version 0.51 (03/02/01)\b0  \par
+\f1\'b7\f0  players wiped\par
+\f1\'b7\f0  re-fined skills system\par
+\f1\'b7\f0  added CAST SPELL(Intel and Wisdom) and RUN(quick)\par
+\f1\'b7\f0  RUN actually controls how fast you move on map\par
+\f1\'b7\f0  monsters don\f1\'92\f0 t pause every now and then so watch out, heh\par
+\f1\'b7\f0  2 spells: /WARP x,y   and  /HEAL    both use CAST SPELL skill\par
+\f1\'b7\f0  you can Train skills in the MENU tab\par
+\b\par
+Version 0.50 (02/20/01)\b0  \par
+\f1\'b7\f0   players wiped, sorry, I lost a level 19 guy so don\rquote t cry\par
+\f1\'b7\f0   new AutoUpdater.exe, get if you are having trouble with updating\par
+\f1\'b7\f0   redid skills system\par
+\f1\'b7\f0   added 2 new skills: Stealth (DEX, INTEL) and Scan (INTEL, WISDOM)\par
+\f1\'b7\f0   let me know how the interface is, not sure how to deal with it yet\par
+\f1\'b7\f0   see HELP tab for new skill help\par
+\f1\'b7\f0   reorganized a lot of code on the server so I may have broke stuff, beware\par
+\b\par
+Version 0.49 (02/14/01)\b0  \par
+\f1\'b7\f0   still screwing with weather, will be for a while\par
+\f1\'b7\f0  added objects, they just display for now, a lot more work to do there still\par
+\b\par
+Version 0.48 (01/29/01)\b0  \par
+\f1\'b7\f0   added some weather effects on the server, not sure if working\par
+\b\par
+Version 0.48 (01/26/01)\b0  \par
+\f1\'b7\f0   right-click on world map for goto and warp\par
+\f1\'b7\f0   beep on new message only beeps for WHITE and BRIGHT WHITE messages\par
+\f1\'b7\f0   G button for guarding\par
+\b\par
+Version 0.48 (01/19/01)\b0  \par
+\f1\'b7\f0   added an auto-updater as separate program\par
+\f1\'b7\f0  redid grass and added tons of graphics for it, including elevations\par
+\f1\'b7\f0  redid animation engine, look out for bugs and weird lag issues, still needs some work too\par
+\f1\'b7\f0  elevation.bmp no longer used, background#.bmp is used\par
+\f1\'b7\f0  sounds and graphics much easier to add dynamically\par
+\f1\'b7\f0  /WARP <x>,<y>\f1  \f0 (costs 10 Mana)\par
+\f1\'b7\f0  monsters have better pathfinding but still not perfect\par
+\f1\'b7\f0  players have better pathfinding but still not perfect\par
+\f1\'b7\f0  death protection for 60 seconds, cancelled if you attack\par
+\f1\'b7\f0  cheaters will no longer able to attack non-cheater players but can still attack monsters\b\par
+\par
+Version 0.47 (01/11/01)\b0  \par
+\f1\'b7\f0   client only update\par
+\f1\'b7\f0   vitae display as circle dot, click on it to see %\par
+\f1\'b7\f0    click on time picture to get time\par
+\f1\'b7\f0    Target button works on all not the nearest\par
+\f1\'b7\f0    grass grows and can be walk down with time to make a path\par
+\f1\'b7\f0    mouse over world map shows cords\par
+\f1\'b7\f0    cheats can be disabled on the server, muahahaha\par
+\f1\'b7\f0    better client disconnect handling\par
+\f1\'b7\f0    target cursor doesn\rquote t track off view\par
+\f1\'b7\f0    moved current map cords out of MAP tab for better visibility\par
+\pard\nowidctlpar\ri-1797\f1\'b7\f0    if you make a player with a monster name, you get that image automatically (unless someone has it already)\par
+\pard\nowidctlpar\f1\'b7\f0    client chat messages uses rich text box now, allows wrapping\par
+\f1\'b7\f0    chat messages can be time stamped, see MENU tab for switch\par
+\f1\'b7\f0    new monsters (kinda): zombie, mutant, golem, etc.\par
+\f1\'b7\f0    player name shows up in title bar (easy to find with multiple clients open)\par
+\f1\'b7\f0    more robust auto-updater\par
+\f1\'b7   \f0 clicking on LIFE/STAMINA/MANA bars toggles display mode\par
+\b\par
+Version 0.47 (01/05/01)\b0  \par
+\f1\'b7\f0   /reply <message> \par
+\f1\'b7\f0   /retell <message> \par
+\f1\'b7\f0  auto-update added, just small files for now\par
+\f1\'b7\f0  client \ldblquote subscript\rdblquote  bugs fixed, let me know if you still get them\par
+\f1\'b7\f0  chat messages wrap (kindof)\b\par
+\par
+Version 0.46 (12/29/00)\b0  \par
+\f1\'b7\f0   /tell <player name>, <message> \par
+\f1\'b7\f0   XP: you get skill XP when you use the skill and depends on target level\par
+\f1\'b7\f0   adjusted  levels of monsters somewhat\par
+\b\par
+Version 0.46 (12/27/00)\b0  \par
+\f1\'b7\f0   circular light\par
+\f1\'b7\f0   critical attacks\par
+\f1\'b7\f0   monsters: elf, sheep, reindeer, etc\par
+\f1\'b7\f0   XP changes: you get more from higher level targets\b\par
+\par
+Version 0.43.1 (12/09/00)\b0  \par
+\f1\'b7\f0   the world was reset, again, expect this often during development \par
+\f1\'b7\f0   \cf3 RESURRECTION\cf0  after death, just exit world and re-enter \par
+\f1\'b7\f0   day/night effects \par
+\f1\'b7\f0   client list in main menu is updated in real time \par
+\f1\'b7\f0   players get a vitae penalty upon death (see Help in world) \par
+\f1\'b7\f0   optimized map data over the wire (uses way less bandwidth) \par
+\f1\'b7\f0   may have rid the world map "white dot" bug \par
+\f1\'b7\f0   chatting does not cancel a script, movement keys do still cancel it \par
+\f1\'b7\f0   user agreement \line\line\b Version 0.42 (12/04/00)\b0  \par
+\f1\'b7\f0   the world was reset \par
+\f1\'b7\f0   attacking improved, defend and attack skills play a role \par
+\f1\'b7\f0   attributes and skills can be raised \par
+\f1\'b7\f0   swimming added \par
+\f1\'b7\f0   added player icons \line\line\b Version 0.40 (11/23/00)\b0  \par
+\f1\'b7\f0   the world was recreated: new map, all players deleted, etc \par
+\f1\'b7\f0   attacking added, see help while in world \par
+\f1\'b7\f0   colored text for easy identification \par
+\f1\'b7\f0   system beep upon new text message (turn off in options) \par
+\f1\'b7\f0   skills and experience \par
+\f1\'b7\f0   main menu shows other clients \par
+\f1\'b7\f0   display of life and stamina redone \line\line\b Version 0.37 (11/17/00)\b0  \par
+\f1\'b7\f0   stategic map can be saved, controlled in Menu->Options \par
+\f1\'b7\f0   rework UI to fit in 800x600 res easier \par
+\f1\'b7\f0   upon entering the world, you get a list of players online \par
+\f1\'b7\f0   you have the option of saving chat text to file \par
+\f1\'b7\f0   fixed bugs in "goto" scripting \line\line\b Version 0.36 (11/15/00)\b0  \par
+\f1\'b7\f0   Create player: added points, life, and stamina \par
+\f1\'b7\f0   Help: added web browser to help page in "Help" tab \par
+\f1\'b7\f0   View skewing: See "Map" tab and try arrows \par
+\f1\'b7\f0   not moving restores stamina \par
+\f1\'b7\f0   swimming and drowning uses stamina then life\par
+}
+ 
