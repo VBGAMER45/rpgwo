@@ -1,14 +1,14 @@
 Type=Exe
 Form=frmMain.frm
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\WINDOWS\System32\stdole2.tlb#OLE Automation
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\WINDOWS\system32\stdole2.tlb#OLE Automation
 Form=frmFileSource.frm
 Module=modGlobals; modGlobals.bas
 Form=frmSearch.frm
 IconForm="frmMain"
 Startup="frmFileSource"
 HelpFile=""
-ExeName32="Item Viewer Admin Dan.exe"
-Path32="..\..\..\..\..\..\Phobosclient"
+ExeName32="Item Viewer.exe"
+Path32="..\..\clientTest"
 Command32=""
 Name="ItemViewer"
 HelpContextID="0"

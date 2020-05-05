@@ -24,6 +24,7 @@ Begin VB.Form frmMain
       Left            =   3960
       TabIndex        =   36
       Top             =   120
+      Visible         =   0   'False
       Width           =   1095
    End
    Begin VB.CommandButton cmdSearch 
@@ -333,225 +334,225 @@ Dim TileX As Integer, TileY As Integer, ImageFile As Integer
 
 Private Sub cmdMakeIni_Click()
 
-Open PathLocation & "\item.ini" For Output As #1
-For i = 0 To 2500
-    If Items(i).Class <> 0 Then
-     Print #1, "Item=" & i + 1
-     Print #1, "Name=" & Items(i).ItemName
-     Print #1, "Class=" & ReturnClassName(Items(i).Class)
-     If ReturnSize(Items(i).Size) <> "" Then
-        Print #1, "Size=" & ReturnSize(Items(i).Size)
+Open PathLocation & "item.ini" For Output As #1
+For I = 0 To UBound(Items)
+    If Items(I).Class <> 0 Then
+     Print #1, "Item=" & I + 1
+     Print #1, "Name=" & Items(I).ItemName
+     Print #1, "Class=" & ReturnClassName(Items(I).Class)
+     If ReturnSize(Items(I).Size) <> "" Then
+        Print #1, "Size=" & ReturnSize(Items(I).Size)
      End If
      
-     If Items(i).ImageType <> 0 Then
-        Print #1, "ImageType=" & Items(i).ImageType
+     If Items(I).ImageType <> 0 Then
+        Print #1, "ImageType=" & Items(I).ImageType
      End If
         
-     If Trim(Items(i).ClassSubType) <> "" Then
-        Print #1, "SubType=" & Items(i).ClassSubType
+     If Trim(Items(I).ClassSubType) <> "" Then
+        Print #1, "SubType=" & Items(I).ClassSubType
      End If
      '###Animation
-     Print #1, "Animation0=" & Items(i).Image
-     If Items(i).Animation1 <> 0 Then
-        Print #1, "Animation1=" & Items(i).Animation1
+     Print #1, "Animation0=" & Items(I).Image
+     If Items(I).Animation1 <> 0 Then
+        Print #1, "Animation1=" & Items(I).Animation1
      End If
-     If Items(i).Animation2 <> 0 Then
-        Print #1, "Animation2=" & Items(i).Animation2
+     If Items(I).Animation2 <> 0 Then
+        Print #1, "Animation2=" & Items(I).Animation2
      End If
-     If Items(i).Animation3 <> 0 Then
-        Print #1, "Animation3=" & Items(i).Animation3
+     If Items(I).Animation3 <> 0 Then
+        Print #1, "Animation3=" & Items(I).Animation3
      End If
-     If Items(i).Animation4 <> 0 Then
-        Print #1, "Animation4=" & Items(i).Animation4
+     If Items(I).Animation4 <> 0 Then
+        Print #1, "Animation4=" & Items(I).Animation4
      End If
-     If Items(i).Animation5 <> 0 Then
-        Print #1, "Animation5=" & Items(i).Animation5
+     If Items(I).Animation5 <> 0 Then
+        Print #1, "Animation5=" & Items(I).Animation5
      End If
-     If Items(i).Animation6 <> 0 Then
-        Print #1, "Animation6=" & Items(i).Animation6
+     If Items(I).Animation6 <> 0 Then
+        Print #1, "Animation6=" & Items(I).Animation6
      End If
-     If Items(i).Animation7 <> 0 Then
-        Print #1, "Animation7=" & Items(i).Animation7
+     If Items(I).Animation7 <> 0 Then
+        Print #1, "Animation7=" & Items(I).Animation7
      End If
-     If Items(i).Animation8 <> 0 Then
-        Print #1, "Animation8=" & Items(i).Animation8
+     If Items(I).Animation8 <> 0 Then
+        Print #1, "Animation8=" & Items(I).Animation8
      End If
-     If Items(i).Animation9 <> 0 Then
-        Print #1, "Animation9=" & Items(i).Animation9
+     If Items(I).Animation9 <> 0 Then
+        Print #1, "Animation9=" & Items(I).Animation9
      End If
      'End animation
-     Print #1, "Burden=" & Items(i).Burden
-     If Items(i).Light <> 0 Then
-        Print #1, "Light=" & Items(i).Light
+     Print #1, "Burden=" & Items(I).Burden
+     If Items(I).Light <> 0 Then
+        Print #1, "Light=" & Items(I).Light
      End If
-     Print #1, "Value=" & Items(i).Value
-     Print #1, "Group=" & Items(i).Group
-     If Items(i).WearImage <> 0 Then
-        Print #1, "WearImage=" & Items(i).WearImage
+     Print #1, "Value=" & Items(I).Value
+     Print #1, "Group=" & Items(I).Group
+     If Items(I).WearImage <> 0 Then
+        Print #1, "WearImage=" & Items(I).WearImage
      End If
-     If Items(i).AttackSpeed <> 0 Then
-        Print #1, "AttackSpeed=" & Items(i).AttackSpeed
+     If Items(I).AttackSpeed <> 0 Then
+        Print #1, "AttackSpeed=" & Items(I).AttackSpeed
      End If
-     If Items(i).SkillReq <> 0 Then
-        Print #1, "SkillReq=" & Items(i).SkillReq
+     If Items(I).SkillReq <> 0 Then
+        Print #1, "SkillReq=" & Items(I).SkillReq
      End If
-     If Items(i).CombatSkill <> 0 Then
-        Print #1, "CombatSkill=" & Items(i).CombatSkill
+     If Items(I).CombatSkill <> 0 Then
+        Print #1, "CombatSkill=" & Items(I).CombatSkill
      End If
-     If Items(i).DamageLow <> 0 Then
-        Print #1, "DamageLow=" & Items(i).DamageLow
+     If Items(I).DamageLow <> 0 Then
+        Print #1, "DamageLow=" & Items(I).DamageLow
      End If
-     If Items(i).DamageHigh <> 0 Then
-        Print #1, "DamageHigh=" & Items(i).DamageHigh
+     If Items(I).DamageHigh <> 0 Then
+        Print #1, "DamageHigh=" & Items(I).DamageHigh
      End If
-     If Items(i).Ammo <> 0 Then
-        Print #1, "Ammo=" & Items(i).Ammo
+     If Items(I).Ammo <> 0 Then
+        Print #1, "Ammo=" & Items(I).Ammo
      End If
-     If Items(i).STARTERSKILL <> 0 Then
-        Print #1, "StarterSkill=" & Items(i).STARTERSKILL
+     If Items(I).STARTERSKILL <> 0 Then
+        Print #1, "StarterSkill=" & Items(I).STARTERSKILL
      End If
-     If Items(i).ArmorLevel <> 0 Then
-        Print #1, "ArmorLevel=" & Items(i).ArmorLevel
+     If Items(I).ArmorLevel <> 0 Then
+        Print #1, "ArmorLevel=" & Items(I).ArmorLevel
      End If
-     If Items(i).ArmorDurability <> 0 Then
-        Print #1, "ArmorDurability=" & Items(i).ArmorDurability
+     If Items(I).ArmorDurability <> 0 Then
+        Print #1, "ArmorDurability=" & Items(I).ArmorDurability
      End If
-     If Items(i).ATTACKANIMATION <> 0 Then
-        Print #1, "AttackAnimation=" & Items(i).ATTACKANIMATION
+     If Items(I).ATTACKANIMATION <> 0 Then
+        Print #1, "AttackAnimation=" & Items(I).ATTACKANIMATION
      End If
-     If Items(i).WeaponMaxRange <> 1 Then
-        Print #1, "WeaponMaxRange=" & Items(i).WeaponMaxRange
+     If Items(I).WeaponMaxRange <> 1 Then
+        Print #1, "WeaponMaxRange=" & Items(I).WeaponMaxRange
      End If
-     If Items(i).WeaponDurability <> 0 Then
-        Print #1, "WeaponDurability=" & Items(i).WeaponDurability
+     If Items(I).WeaponDurability <> 0 Then
+        Print #1, "WeaponDurability=" & Items(I).WeaponDurability
      End If
-     If Items(i).PROJECTILEANIMATION <> 0 Then
-        Print #1, "PROJECTILEANIMATION=" & Items(i).PROJECTILEANIMATION
+     If Items(I).PROJECTILEANIMATION <> 0 Then
+        Print #1, "PROJECTILEANIMATION=" & Items(I).PROJECTILEANIMATION
      End If
-     If Items(i).Food <> 0 Then
-        Print #1, "Food=" & Items(i).Food
+     If Items(I).Food <> 0 Then
+        Print #1, "Food=" & Items(I).Food
      End If
-     If Items(i).Water <> 0 Then
-        Print #1, "Water=" & Items(i).Water
+     If Items(I).Water <> 0 Then
+        Print #1, "Water=" & Items(I).Water
      End If
-     If Items(i).FoodMana <> 0 Then
-        Print #1, "FoodMana=" & Items(i).FoodMana
+     If Items(I).FoodMana <> 0 Then
+        Print #1, "FoodMana=" & Items(I).FoodMana
      End If
-     If Items(i).FoodStamina <> 0 Then
-        Print #1, "FoodStamina=" & Items(i).FoodStamina
+     If Items(I).FoodStamina <> 0 Then
+        Print #1, "FoodStamina=" & Items(I).FoodStamina
      End If
-     If Items(i).FoodLife <> 0 Then
-        Print #1, "FoodLife=" & Items(i).FoodLife
+     If Items(I).FoodLife <> 0 Then
+        Print #1, "FoodLife=" & Items(I).FoodLife
      End If
-     If Items(i).StandDamage <> 0 Then
-        Print #1, "StandDamage=" & Items(i).StandDamage
+     If Items(I).StandDamage <> 0 Then
+        Print #1, "StandDamage=" & Items(I).StandDamage
      End If
-     If Items(i).HoldDamage <> 0 Then
-        Print #1, "HoldDamage=" & Items(i).HoldDamage
+     If Items(I).HoldDamage <> 0 Then
+        Print #1, "HoldDamage=" & Items(I).HoldDamage
      End If
-     If Items(i).PoisonDamage <> 0 Then
-        Print #1, "PoisonDamage=" & Items(i).PoisonDamage
+     If Items(I).PoisonDamage <> 0 Then
+        Print #1, "PoisonDamage=" & Items(I).PoisonDamage
      End If
-     If Items(i).PoisonCure <> 0 Then
-        Print #1, "PoisonCure=" & Items(i).PoisonCure
+     If Items(I).PoisonCure <> 0 Then
+        Print #1, "PoisonCure=" & Items(I).PoisonCure
      End If
-     If Items(i).TraderMax <> 0 Then
-        Print #1, "TraderMax=" & Items(i).TraderMax
+     If Items(I).TraderMax <> 0 Then
+        Print #1, "TraderMax=" & Items(I).TraderMax
      End If
-     If Items(i).MagicPower <> 0 Then
-        Print #1, "MagicPower=" & Items(i).MagicPower
+     If Items(I).MagicPower <> 0 Then
+        Print #1, "MagicPower=" & Items(I).MagicPower
      End If
-     If Items(i).MagicBreakChance <> 0 Then
-        Print #1, "MagicBreakChance=" & Items(i).MagicBreakChance
+     If Items(I).MagicBreakChance <> 0 Then
+        Print #1, "MagicBreakChance=" & Items(I).MagicBreakChance
      End If
-     If Items(i).MagicBreakItemID <> 0 Then
-        Print #1, "MagicBreakItemID=" & Items(i).MagicBreakItemID
+     If Items(I).MagicBreakItemID <> 0 Then
+        Print #1, "MagicBreakItemID=" & Items(I).MagicBreakItemID
      End If
-     If Items(i).MagicBreakDamage <> 0 Then
-        Print #1, "MagicBreakDamage=" & Items(i).MagicBreakDamage
+     If Items(I).MagicBreakDamage <> 0 Then
+        Print #1, "MagicBreakDamage=" & Items(I).MagicBreakDamage
      End If
-     If Items(i).MAGICSTABILITY <> 0 Then
-        Print #1, "MAGICSTABILITY=" & Items(i).MAGICSTABILITY
+     If Items(I).MAGICSTABILITY <> 0 Then
+        Print #1, "MAGICSTABILITY=" & Items(I).MAGICSTABILITY
      End If
-     If Items(i).FireAL <> 0 Then
-        Print #1, "FireAL=" & Items(i).FireAL
+     If Items(I).FireAL <> 0 Then
+        Print #1, "FireAL=" & Items(I).FireAL
      End If
-     If Items(i).ColdAL <> 0 Then
-        Print #1, "ColdAL=" & Items(i).ColdAL
+     If Items(I).ColdAL <> 0 Then
+        Print #1, "ColdAL=" & Items(I).ColdAL
      End If
-     If Items(i).ElectricAL <> 0 Then
-        Print #1, "ElectricAL=" & Items(i).ElectricAL
+     If Items(I).ElectricAL <> 0 Then
+        Print #1, "ElectricAL=" & Items(I).ElectricAL
      End If
-     If Items(i).TOTALUSES <> 0 Then
-        Print #1, "TOTALUSES=" & Items(i).TOTALUSES
+     If Items(I).TOTALUSES <> 0 Then
+        Print #1, "TOTALUSES=" & Items(I).TOTALUSES
      End If
-     If Items(i).Warmth <> 0 Then
-        Print #1, "WARMTH=" & Items(i).Warmth
+     If Items(I).Warmth <> 0 Then
+        Print #1, "WARMTH=" & Items(I).Warmth
      End If
-     If Items(i).WarmthRadius <> 0 Then
-        Print #1, "WARMTHRADIUS=" & Items(i).WarmthRadius
+     If Items(I).WarmthRadius <> 0 Then
+        Print #1, "WARMTHRADIUS=" & Items(I).WarmthRadius
      End If
-     If Items(i).RESTGAIN <> 0 Then
-        Print #1, "RESTGAIN=" & Items(i).RESTGAIN
+     If Items(I).RESTGAIN <> 0 Then
+        Print #1, "RESTGAIN=" & Items(I).RESTGAIN
      End If
-     If Items(i).CRITICALBONUS <> 0 Then
-        Print #1, "CRITICALBONUS=" & Items(i).CRITICALBONUS
+     If Items(I).CRITICALBONUS <> 0 Then
+        Print #1, "CRITICALBONUS=" & Items(I).CRITICALBONUS
      End If
-     If Items(i).Rarity <> 0 Then
-        Print #1, "Rarity=" & Items(i).Rarity
+     If Items(I).Rarity <> 0 Then
+        Print #1, "Rarity=" & Items(I).Rarity
      End If
-     If Items(i).DegradeItem <> 0 Then
-        Print #1, "DegradeItem=" & Items(i).DegradeItem
+     If Items(I).DegradeItem <> 0 Then
+        Print #1, "DegradeItem=" & Items(I).DegradeItem
      End If
-     If Items(i).DegradeDelta <> 0 Then
-        Print #1, "DegradeDelta=" & Items(i).DegradeDelta
+     If Items(I).DegradeDelta <> 0 Then
+        Print #1, "DegradeDelta=" & Items(I).DegradeDelta
      End If
-     If Items(i).GrowthItem <> 0 Then
-        Print #1, "GrowthItem=" & Items(i).GrowthItem
+     If Items(I).GrowthItem <> 0 Then
+        Print #1, "GrowthItem=" & Items(I).GrowthItem
      End If
-     If Items(i).GrowthDelta <> 0 Then
-        Print #1, "GrowthDelta=" & Items(i).GrowthDelta
+     If Items(I).GrowthDelta <> 0 Then
+        Print #1, "GrowthDelta=" & Items(I).GrowthDelta
      End If
-     If Items(i).GrowthWater <> 0 Then
-        Print #1, "GrowthWater=" & Items(i).GrowthWater
+     If Items(I).GrowthWater <> 0 Then
+        Print #1, "GrowthWater=" & Items(I).GrowthWater
      End If
-     If Items(i).GROWTHSPROUTITEM <> 0 Then
-        Print #1, "GROWTHSPROUTITEM=" & Items(i).GROWTHSPROUTITEM
+     If Items(I).GROWTHSPROUTITEM <> 0 Then
+        Print #1, "GROWTHSPROUTITEM=" & Items(I).GROWTHSPROUTITEM
      End If
-     If Items(i).WEAPONAL <> 0 Then
-        Print #1, "WEAPONAL=" & Items(i).WEAPONAL
+     If Items(I).WEAPONAL <> 0 Then
+        Print #1, "WEAPONAL=" & Items(I).WEAPONAL
      End If
      'Booleans
-     If Items(i).EXPLODESHELL = True Then Print #1, "EXPLODESHELL"
-     If Items(i).FASTPROJECTILE = True Then Print #1, "FASTPROJECTILE"
-     If Items(i).NotMovable = True Then Print #1, "NotMovable"
-     If Items(i).BlockMovement = True Then Print #1, "BlockMovement=1"
-     If Items(i).Stackable = True Then Print #1, "Stackable"
-     If Items(i).TwoHandWeapon = True Then Print #1, "2handweapon"
-     If Items(i).MissileWeapon = True Then Print #1, "MissleWeapon=True"
-     If Items(i).OneAllowed = True Then Print #1, "OneAllowed"
-     If Items(i).Postable = True Then Print #1, "Postable"
-     If Items(i).Readable = True Then Print #1, "Readable"
-     If Items(i).Forest = True Then Print #1, "Forest"
-     If Items(i).NoDeathDrop = True Then Print #1, "NoDeathDrop"
-     If Items(i).NoEconomyValueDrop = True Then Print #1, "NoEconomyValueDrop"
-     If Items(i).OpenLineofSight = True Then Print #1, "OPENSIGHTLINE"
-     If Items(i).LOCKABLE = True Then Print #1, "LOCKABLE"
-     If Items(i).NODROP = True Then Print #1, "NODROP"
-     If Items(i).IGNORESHIELDS = True Then Print #1, "IGNORESHIELDS"
-     If Items(i).INNKEY = True Then Print #1, "INNKEY"
-     If Items(i).DESTROYABLE = True Then Print #1, "DESTROYABLE"
-     If Items(i).INNDOOR = True Then Print #1, "INNDOOR"
-     If Items(i).PKDAMAGE = True Then Print #1, "PKDAMAGE"
-     If Items(i).REFLECT = True Then Print #1, "REFLECT"
-     If Items(i).INVISIBLE = True Then Print #1, "INVISIBLE"
-     If Items(i).SHIELDBREAK = True Then Print #1, "SHIELDBREAK"
-     If Items(i).STAMINADAMAGE = True Then Print #1, "STAMINADAMAGE"
-     If Items(i).AlwaysStock = True Then Print #1, "ALWAYSSTOCK"
-     If Items(i).NOTPICKUPABLE = True Then Print #1, "NOTPICKUPABLE"
-     If Items(i).NOTCONTAINERABLE = True Then Print #1, "NOTCONTAINERABLE"
-     If Items(i).APARTMENTMARKER = True Then Print #1, "APARTMENTMARKER"
-     If Items(i).APARTMENTRENTER = True Then Print #1, "APARTMENTRENTER"
+     If Items(I).EXPLODESHELL = True Then Print #1, "EXPLODESHELL"
+     If Items(I).FASTPROJECTILE = True Then Print #1, "FASTPROJECTILE"
+     If Items(I).NotMovable = True Then Print #1, "NotMovable"
+     If Items(I).BlockMovement = True Then Print #1, "BlockMovement=1"
+     If Items(I).Stackable = True Then Print #1, "Stackable"
+     If Items(I).TwoHandWeapon = True Then Print #1, "2handweapon"
+     If Items(I).MissileWeapon = True Then Print #1, "MissleWeapon=True"
+     If Items(I).OneAllowed = True Then Print #1, "OneAllowed"
+     If Items(I).Postable = True Then Print #1, "Postable"
+     If Items(I).Readable = True Then Print #1, "Readable"
+     If Items(I).Forest = True Then Print #1, "Forest"
+     If Items(I).NoDeathDrop = True Then Print #1, "NoDeathDrop"
+     If Items(I).NoEconomyValueDrop = True Then Print #1, "NoEconomyValueDrop"
+     If Items(I).OpenLineofSight = True Then Print #1, "OPENSIGHTLINE"
+     If Items(I).LOCKABLE = True Then Print #1, "LOCKABLE"
+     If Items(I).NODROP = True Then Print #1, "NODROP"
+     If Items(I).IGNORESHIELDS = True Then Print #1, "IGNORESHIELDS"
+     If Items(I).INNKEY = True Then Print #1, "INNKEY"
+     If Items(I).DESTROYABLE = True Then Print #1, "DESTROYABLE"
+     If Items(I).INNDOOR = True Then Print #1, "INNDOOR"
+     If Items(I).PKDAMAGE = True Then Print #1, "PKDAMAGE"
+     If Items(I).REFLECT = True Then Print #1, "REFLECT"
+     If Items(I).INVISIBLE = True Then Print #1, "INVISIBLE"
+     If Items(I).SHIELDBREAK = True Then Print #1, "SHIELDBREAK"
+     If Items(I).STAMINADAMAGE = True Then Print #1, "STAMINADAMAGE"
+     If Items(I).AlwaysStock = True Then Print #1, "ALWAYSSTOCK"
+     If Items(I).NOTPICKUPABLE = True Then Print #1, "NOTPICKUPABLE"
+     If Items(I).NOTCONTAINERABLE = True Then Print #1, "NOTCONTAINERABLE"
+     If Items(I).APARTMENTMARKER = True Then Print #1, "APARTMENTMARKER"
+     If Items(I).APARTMENTRENTER = True Then Print #1, "APARTMENTRENTER"
      
      
      Print #1, ""
@@ -561,6 +562,8 @@ For i = 0 To 2500
     
 Next
 Close #1
+    MsgBox "Item.ini generated at " & PathLocation & "\item.ini", vbInformation
+    
 End Sub
 
 Private Sub cmdSearch_Click()
@@ -571,10 +574,10 @@ End Sub
 
 Private Sub Command1_Click()
 
-For i = 0 To UBound(Items)
- Items(i).OpenLineofSight = True
- Items(i).Light = 10
- Items(i).INVISIBLE = False
+For I = 0 To UBound(Items)
+ Items(I).OpenLineofSight = True
+ Items(I).Light = 10
+ Items(I).INVISIBLE = False
  'Items(i).Class = 8
  'Items(i).BlockMovement = False
  'Items(i).Group = 30
@@ -590,7 +593,7 @@ Dim pcName As String
 pcName = GetPcName
 Dim code As Long
 code = 0
-For i = 0 To Len(pcName)
+For I = 0 To Len(pcName)
 code = Asc(pcName)
 Next
 
@@ -678,12 +681,12 @@ Sub PaintItem()
      '   BitBlt frmMain.picItem.hDC, 0, 0, 96, 96, frmMain.pbxItem(ImageFile).hDC, TileX, TileY, SRCCOPY
   '  End If
 End Sub
-Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
+Public Sub CacluateItemXY(I As Integer)  '(Imin As Integer, Imax As Integer)
        ' For i = Imin To Imax
-        If Items(i).Image >= 0 And Items(i).Image < 100 Then
+        If Items(I).Image >= 0 And Items(I).Image < 100 Then
             
             ImageFile = 0
-            s = (Items(i).Image)
+            s = (Items(I).Image)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -698,10 +701,10 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             Exit Sub
         End If
                
-        If Items(i).Image >= 100 And Items(i).Image < 200 Then
+        If Items(I).Image >= 100 And Items(I).Image < 200 Then
             
             ImageFile = 1
-            s = (Items(i).Image - 100)
+            s = (Items(I).Image - 100)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -715,9 +718,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 200 And Items(i).Image < 300 Then
+        If Items(I).Image >= 200 And Items(I).Image < 300 Then
             ImageFile = 2
-            s = (Items(i).Image - 200)
+            s = (Items(I).Image - 200)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -731,9 +734,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 300 And Items(i).Image < 400 Then
+        If Items(I).Image >= 300 And Items(I).Image < 400 Then
             ImageFile = 3
-            s = (Items(i).Image - 300)
+            s = (Items(I).Image - 300)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -747,9 +750,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 400 And Items(i).Image < 500 Then
+        If Items(I).Image >= 400 And Items(I).Image < 500 Then
             ImageFile = 4
-            s = (Items(i).Image - 400)
+            s = (Items(I).Image - 400)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -763,9 +766,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 500 And Items(i).Image < 600 Then
+        If Items(I).Image >= 500 And Items(I).Image < 600 Then
             ImageFile = 5
-            s = (Items(i).Image - 500)
+            s = (Items(I).Image - 500)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -778,9 +781,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 600 And Items(i).Image < 700 Then
+        If Items(I).Image >= 600 And Items(I).Image < 700 Then
             ImageFile = 6
-            s = (Items(i).Image - 600)
+            s = (Items(I).Image - 600)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -793,9 +796,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 700 And Items(i).Image < 800 Then
+        If Items(I).Image >= 700 And Items(I).Image < 800 Then
             ImageFile = 7
-            s = (Items(i).Image - 700)
+            s = (Items(I).Image - 700)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -808,9 +811,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 800 And Items(i).Image < 900 Then
+        If Items(I).Image >= 800 And Items(I).Image < 900 Then
             ImageFile = 8
-            s = (Items(i).Image - 800)
+            s = (Items(I).Image - 800)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -823,9 +826,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 900 And Items(i).Image < 1000 Then
+        If Items(I).Image >= 900 And Items(I).Image < 1000 Then
             ImageFile = 9
-            s = (Items(i).Image - 900)
+            s = (Items(I).Image - 900)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -838,9 +841,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 1000 And Items(i).Image < 1100 Then
+        If Items(I).Image >= 1000 And Items(I).Image < 1100 Then
             ImageFile = 10
-            s = (Items(i).Image - 1000)
+            s = (Items(I).Image - 1000)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -853,9 +856,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 1100 And Items(i).Image < 1200 Then
+        If Items(I).Image >= 1100 And Items(I).Image < 1200 Then
             ImageFile = 11
-            s = (Items(i).Image - 1100)
+            s = (Items(I).Image - 1100)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -868,9 +871,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 1200 And Items(i).Image < 1300 Then
+        If Items(I).Image >= 1200 And Items(I).Image < 1300 Then
             ImageFile = 12
-            s = (Items(i).Image - 1200)
+            s = (Items(I).Image - 1200)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -883,9 +886,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 1300 And Items(i).Image < 1400 Then
+        If Items(I).Image >= 1300 And Items(I).Image < 1400 Then
             ImageFile = 13
-            s = (Items(i).Image - 1300)
+            s = (Items(I).Image - 1300)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -898,9 +901,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 1400 And Items(i).Image < 1500 Then
+        If Items(I).Image >= 1400 And Items(I).Image < 1500 Then
             ImageFile = 14
-            s = (Items(i).Image - 1400)
+            s = (Items(I).Image - 1400)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -913,9 +916,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
           '  Exit Sub
         End If
-        If Items(i).Image >= 1500 And Items(i).Image < 1600 Then
+        If Items(I).Image >= 1500 And Items(I).Image < 1600 Then
             ImageFile = 15
-            s = (Items(i).Image - 1500)
+            s = (Items(I).Image - 1500)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -928,9 +931,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 1600 And Items(i).Image < 1700 Then
+        If Items(I).Image >= 1600 And Items(I).Image < 1700 Then
             ImageFile = 16
-            s = (Items(i).Image - 1600)
+            s = (Items(I).Image - 1600)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -943,9 +946,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 1700 And Items(i).Image < 1800 Then
+        If Items(I).Image >= 1700 And Items(I).Image < 1800 Then
             ImageFile = 17
-            s = (Items(i).Image - 1700)
+            s = (Items(I).Image - 1700)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -958,9 +961,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 1800 And Items(i).Image < 1900 Then
+        If Items(I).Image >= 1800 And Items(I).Image < 1900 Then
             ImageFile = 18
-            s = (Items(i).Image - 1800)
+            s = (Items(I).Image - 1800)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -973,9 +976,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 1900 And Items(i).Image < 2000 Then
+        If Items(I).Image >= 1900 And Items(I).Image < 2000 Then
             ImageFile = 19
-            s = (Items(i).Image - 1900)
+            s = (Items(I).Image - 1900)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -988,9 +991,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 2000 And Items(i).Image < 2100 Then
+        If Items(I).Image >= 2000 And Items(I).Image < 2100 Then
             ImageFile = 20
-            s = (Items(i).Image - 2000)
+            s = (Items(I).Image - 2000)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -1003,9 +1006,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-        If Items(i).Image >= 2100 And Items(i).Image < 2200 Then
+        If Items(I).Image >= 2100 And Items(I).Image < 2200 Then
             ImageFile = 21
-            s = (Items(i).Image - 2100)
+            s = (Items(I).Image - 2100)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -1018,9 +1021,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-          If Items(i).Image >= 2200 And Items(i).Image < 2300 Then
+          If Items(I).Image >= 2200 And Items(I).Image < 2300 Then
             ImageFile = 22
-            s = (Items(i).Image - 2200)
+            s = (Items(I).Image - 2200)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -1033,9 +1036,9 @@ Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
             End If
             Exit Sub
         End If
-If Items(i).Image >= 2300 And Items(i).Image < 2400 Then
+If Items(I).Image >= 2300 And Items(I).Image < 2400 Then
             ImageFile = 23
-            s = (Items(i).Image - 2300)
+            s = (Items(I).Image - 2300)
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -1095,32 +1098,40 @@ Sub DoValues()
     Call PaintItem
 End Sub
 Private Sub LoadItems(Path As String)
-Dim i As Integer, Index As Integer
+Dim I As Integer, Index As Integer
 On Error GoTo nofile
 pbxItem(0).Picture = LoadPicture(Path & "item0.bmp")
-    For i = 1 To 24
-        Index = pbxItem.ubound + 1
-        Load pbxItem(Index)
-        With pbxItem(Index)
-            .Enabled = True
-            .Top = pbxItem(0).Top
-            .Left = pbxItem(i - 1).Left + 530
-            .Height = pbxItem(0).Height
-            .Width = pbxItem(0).Width
-            .Visible = False
-            .AutoRedraw = True
-            .Picture = LoadPicture(Path & "item" & i & ".bmp")
-        End With
-    Next i
+    For I = 1 To 50
+    
+        If FileExists(Path & "item" & I & ".bmp") Then
+        
+            Index = pbxItem.ubound + 1
+            Load pbxItem(Index)
+            With pbxItem(Index)
+                .Enabled = True
+                .Top = pbxItem(0).Top
+                .Left = pbxItem(I - 1).Left + 530
+                .Height = pbxItem(0).Height
+                .Width = pbxItem(0).Width
+                .Visible = False
+                .AutoRedraw = True
+                .Picture = LoadPicture(Path & "item" & I & ".bmp")
+            End With
+        End If
+        
+        DoEvents
+    Next I
     Exit Sub
 nofile:
     If Err.number = 76 Then
-      '  MsgBox "File not found: " & Path & "item*.bmp", vbExclamation
+        MsgBox "File not found: " & Path & "item*.bmp", vbExclamation
     End If
 Exit Sub
 End Sub
 
-
+Public Function FileExists(filename As String) As Boolean
+    FileExists = Len(Dir(filename, vbNormal)) > 0
+End Function
 
 
 Private Sub HScroll1_Scroll()
