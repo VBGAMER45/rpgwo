@@ -17,6 +17,7 @@ Begin VB.Form frmMain
       Left            =   5640
       TabIndex        =   16
       Top             =   2160
+      Visible         =   0   'False
       Width           =   495
    End
    Begin VB.CommandButton cmdMakeINI 
@@ -412,7 +413,9 @@ On Error Resume Next
                 Print #1, ""
             End If
         Next
+        DoEvents
     Close #1
+    MsgBox "Itemuse.ini generated at: " & PathLocation & "\itemuse.ini", vbInformation
     
 End Sub
 
@@ -432,8 +435,20 @@ End Sub
 Private Sub Form_Load()
 
 'ReDim Uses(2000)
-    Call LoadItemIni(App.Path & "\item.ini")
-    Call LoadSkillIni(App.Path & "\skill.ini")
+    If FileExists(PathLocation & "item.ini") = True Then
+         Call LoadItemIni(PathLocation & "item.ini")
+    Else
+         Call LoadItemIni(App.Path & "\item.ini")
+    End If
+    
+    If FileExists(PathLocation & "skill.ini") = True Then
+         Call LoadItemIni(PathLocation & "skill.ini")
+    Else
+         Call LoadItemIni(App.Path & "\skill.ini")
+    End If
+
+    
+    
     Open PathLocation & "\itemuse.dat" For Binary As #1
      ReDim Uses(LOF(1) / 453)
         Get #1, , Uses
@@ -466,31 +481,29 @@ End Sub
 Private Sub HScroll1_Change()
     Call UpdateValues
 End Sub
-Private Sub LoadItemIni(Filename As String)
-'Ways to make this better is to use lcase or ucase on the data
-'so it does not matter how the admin typed it.
-Dim Data
+Private Sub LoadItemIni(filename As String)
+Dim Data As String
 
 Dim ItemNum As Integer
 ItemNum = 0
 On Error GoTo nofile:
-Open Filename For Input As #1
+Open filename For Input As #1
 Do While Not EOF(1)
     
     Line Input #1, Data
     
-    If Left(Data, 1) = ";" Then
+    If Left$(Data, 1) = ";" Then
     'Line is a comment ignore it
     Else
-        If Left(Data, 5) = "Item=" Then
+        If Left$(UCase(Data), 5) = "ITEM=" Then
         'begin new item
   
              
              
              ReDim Preserve Items(Right(Data, Len(Data) - 5))
         End If
-        If Left(Data, 5) = "Name=" Then
-            Items(UBound(Items)) = Right(Data, Len(Data) - 5)
+        If Left$(UCase(Data), 5) = "NAME=" Then
+            Items(UBound(Items)) = Right$(Data, Len(Data) - 5)
         End If
 
 
@@ -502,42 +515,46 @@ Loop
 Close #1
 Exit Sub
 nofile:
-MsgBox "Item.ini not found this needs to be in the directory of where Item.ini is located", vbExclamation
+MsgBox "Item.ini not found this needs to be in the directory of where this program is located " & Err.Description, vbExclamation
 End
 End Sub
-Private Sub LoadSkillIni(Filename As String)
-Dim Data
+Private Sub LoadSkillIni(filename As String)
+Dim Data As String
 Dim SkillNum As Integer
 SkillNum = 0
 ReDim Skills(0)
 On Error GoTo nofile:
-Open Filename For Input As #1
+Open filename For Input As #1
 Do While Not EOF(1)
  
     Line Input #1, Data
     
-    If Left(Data, 1) = ";" Then
+    If Left$(Data, 1) = ";" Then
     'Line is a comment ignore it
     Else
-        If Left(Data, 6) = "Skill=" Then
+        If Left$(UCase(Data), 6) = "SKILL=" Then
 
              ReDim Preserve Skills(Right(Data, Len(Data) - 6))
         End If
-        If Left(Data, 5) = "Name=" Then
-             Skills(UBound(Skills)) = Right(Data, Len(Data) - 5)
+        If Left$(Data, 5) = "Name=" Then
+             Skills(UBound(Skills)) = Right$(Data, Len(Data) - 5)
         End If
         
     End If
+    DoEvents
 Loop
 
 Close #1
 
 Exit Sub
 nofile:
-MsgBox "Skill.ini not found this needs to be in the directory of where skill.ini is located", vbExclamation
+MsgBox "Skill.ini not found this needs to be in the directory of where this programis located", vbExclamation
 End
 End Sub
 
 Private Sub HScroll1_Scroll()
     Call UpdateValues
 End Sub
+Public Function FileExists(filename As String) As Boolean
+    FileExists = Len(Dir(filename, vbNormal)) > 0
+End Function

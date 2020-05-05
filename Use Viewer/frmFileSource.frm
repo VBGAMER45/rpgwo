@@ -100,16 +100,16 @@ End Sub
 
 Private Sub Form_Load()
 On Error GoTo nofile:
-Dim Data
+Dim Data As String
 'Open connect.ini
 Open App.Path & "\connect.ini" For Input As #1
     Do While Not EOF(1)
         Line Input #1, Data
     
-        If Left(Data, 1) = ";" Then
+        If Left$(Data, 1) = ";" Then
         'Line is a comment ignore it
         Else
-            If Left(Data, 5) = "Name=" Then
+            If Left$(Data, 5) = "Name=" Then
                 List1.AddItem (Right(Data, Len(Data) - 5) & ".files")
             End If
         End If
