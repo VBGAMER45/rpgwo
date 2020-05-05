@@ -165,7 +165,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 '########################################
 'Rpgwo Use Viewer
-'Jonathan Valentin 2003
+'Jonathan Valentin 2003-2020
 '########################################
 Private Type UseType
    d As Boolean
@@ -259,154 +259,154 @@ Dim Skills() As String
 Private Sub cmdMakeINI_Click()
 On Error Resume Next
     Open PathLocation & "\itemuse.ini" For Output As #1
-        For i = 0 To UBound(Uses)
-            If Uses(i).Itemfocus <> 0 Then
+        For I = 0 To UBound(Uses)
+            If Uses(I).Itemfocus <> 0 Then
                 Print #1, "Itemuse"
-                Print #1, "Itemtool=" & Trim(Items(Uses(i).ItemTool))
-                Print #1, "Itemfocus=" & Trim(Items(Uses(i).Itemfocus))
-                If Trim(Uses(i).FocusSubType) <> "" Then
-                    Print #1, "FocusSubType=" & Uses(i).FocusSubType
+                Print #1, "Itemtool=" & Trim(Items(Uses(I).ItemTool))
+                Print #1, "Itemfocus=" & Trim(Items(Uses(I).Itemfocus))
+                If Trim(Uses(I).FocusSubType) <> "" Then
+                    Print #1, "FocusSubType=" & Uses(I).FocusSubType
                 End If
                 
-                If Items(Uses(i).SuccessFocus) <> "" Then
-                    Print #1, "SuccessFocus=" & Items(Uses(i).SuccessFocus)
+                If Items(Uses(I).SuccessFocus) <> "" Then
+                    Print #1, "SuccessFocus=" & Items(Uses(I).SuccessFocus)
                 End If
-                If Items(Uses(i).SuccessTool) <> "" Then
-                    Print #1, "SuccessTool=" & Items(Uses(i).SuccessTool)
+                If Items(Uses(I).SuccessTool) <> "" Then
+                    Print #1, "SuccessTool=" & Items(Uses(I).SuccessTool)
                 End If
                 For g = 0 To 9
-                    If Uses(i).SuccessItem(g) <> 0 Then
-                        Print #1, "SuccessItem" & g & "=" & Trim(Items(Uses(i).SuccessItem(g)))
+                    If Uses(I).SuccessItem(g) <> 0 Then
+                        Print #1, "SuccessItem" & g & "=" & Trim(Items(Uses(I).SuccessItem(g)))
                     End If
-                    If Uses(i).SuccessItemQty(g) <> 1 Then
-                        Print #1, "SuccessItemQty" & g & "=" & Uses(i).SuccessItemQty(g)
+                    If Uses(I).SuccessItemQty(g) <> 1 Then
+                        Print #1, "SuccessItemQty" & g & "=" & Uses(I).SuccessItemQty(g)
                     End If
-                    If Uses(i).FailedItem(g + 1) <> 0 Then
-                        Print #1, "FailedItem" & g + 1 & "=" & Trim(Items(Uses(i).FailedItem(g + 1)))
+                    If Uses(I).FailedItem(g + 1) <> 0 Then
+                        Print #1, "FailedItem" & g + 1 & "=" & Trim(Items(Uses(I).FailedItem(g + 1)))
                     End If
-                    If Uses(i).FailedItemQty(g + 1) <> 0 Then
-                        Print #1, "FailedItemQty" & g + 1 & "=" & Uses(i).FailedItemQty(g + 1)
+                    If Uses(I).FailedItemQty(g + 1) <> 0 Then
+                        Print #1, "FailedItemQty" & g + 1 & "=" & Uses(I).FailedItemQty(g + 1)
                     End If
                 Next
-                If Items(Uses(i).FailedTool) <> "" Then
-                    Print #1, "FailedTool=" & Items(Uses(i).FailedTool)
+                If Items(Uses(I).FailedTool) <> "" Then
+                    Print #1, "FailedTool=" & Items(Uses(I).FailedTool)
                 End If
-                If Items(Uses(i).FailedFocus) <> "" Then
-                    Print #1, "FailedFocus=" & Items(Uses(i).FailedFocus)
+                If Items(Uses(I).FailedFocus) <> "" Then
+                    Print #1, "FailedFocus=" & Items(Uses(I).FailedFocus)
                 End If
 
-                If Uses(i).Skill <> 0 Then
-                    Print #1, "Skill=" & Skills(Uses(i).Skill)
-                    Print #1, "SkillMin=" & Uses(i).SkillMin
-                    Print #1, "SkillMax=" & Uses(i).SkillMax
-                    Print #1, "SkillXPSuccess=" & Uses(i).SkillXPSuccess
-                    Print #1, "SkillXPFailure=" & Uses(i).SkillXPFailure
+                If Uses(I).Skill <> 0 Then
+                    Print #1, "Skill=" & Skills(Uses(I).Skill)
+                    Print #1, "SkillMin=" & Uses(I).SkillMin
+                    Print #1, "SkillMax=" & Uses(I).SkillMax
+                    Print #1, "SkillXPSuccess=" & Uses(I).SkillXPSuccess
+                    Print #1, "SkillXPFailure=" & Uses(I).SkillXPFailure
                     
                 End If
 
-                If Trim(Uses(i).SuccessMsg) <> "0" Then
-                    Print #1, "SuccessMsg=" & Trim(Uses(i).SuccessMsg)
+                If Trim(Uses(I).SuccessMsg) <> "0" Then
+                    Print #1, "SuccessMsg=" & Trim(Uses(I).SuccessMsg)
                 End If
-                If Trim(Uses(i).FailedMsg) <> "0" Then
-                    Print #1, "FailedMsg=" & Trim(Uses(i).FailedMsg)
+                If Trim(Uses(I).FailedMsg) <> "0" Then
+                    Print #1, "FailedMsg=" & Trim(Uses(I).FailedMsg)
                 End If
 
-                If Uses(i).StaminaCost <> 1 Then
-                    Print #1, "StaminaCost=" & Uses(i).StaminaCost
+                If Uses(I).StaminaCost <> 1 Then
+                    Print #1, "StaminaCost=" & Uses(I).StaminaCost
                 End If
-                If Uses(i).SurfaceWater <> 0 Then
-                    Print #1, "SurfaceWater=" & Uses(i).SurfaceWater
+                If Uses(I).SurfaceWater <> 0 Then
+                    Print #1, "SurfaceWater=" & Uses(I).SurfaceWater
                 End If
-                If Uses(i).Range <> 1 Then
-                    Print #1, "Range=" & Uses(i).Range
+                If Uses(I).Range <> 1 Then
+                    Print #1, "Range=" & Uses(I).Range
                 End If
-                If Uses(i).KeyFocus <> 0 Then
-                    Print #1, "KeyFocus=" & Uses(i).KeyFocus
+                If Uses(I).KeyFocus <> 0 Then
+                    Print #1, "KeyFocus=" & Uses(I).KeyFocus
                 End If
-                If Uses(i).PickLock <> 0 Then
-                    Print #1, "PickLock=" & Uses(i).PickLock
+                If Uses(I).PickLock <> 0 Then
+                    Print #1, "PickLock=" & Uses(I).PickLock
                 End If
-                If Uses(i).SetFocusData8 <> 0 Then
-                    Print #1, "SetFocusData8=" & Uses(i).SetFocusData8
+                If Uses(I).SetFocusData8 <> 0 Then
+                    Print #1, "SetFocusData8=" & Uses(I).SetFocusData8
                 End If
-                If Uses(i).FailedDamage <> 0 Then
-                    Print #1, "FailedDamage=" & Uses(i).FailedDamage
+                If Uses(I).FailedDamage <> 0 Then
+                    Print #1, "FailedDamage=" & Uses(I).FailedDamage
                 End If
-                If Uses(i).FishVariance <> 0 Then
-                    Print #1, "FishVariance=" & Uses(i).FishVariance
+                If Uses(I).FishVariance <> 0 Then
+                    Print #1, "FishVariance=" & Uses(I).FishVariance
                 End If
-                If Uses(i).GiveSkillBonus <> 0 Then
-                    Print #1, "GiveSkillBonus=" & Uses(i).GiveSkillBonus
+                If Uses(I).GiveSkillBonus <> 0 Then
+                    Print #1, "GiveSkillBonus=" & Uses(I).GiveSkillBonus
                 End If
-                If Uses(i).ReverseTool <> 0 Then
-                    Print #1, "ReverseTool=" & Trim(Items(Uses(i).ReverseTool))
+                If Uses(I).ReverseTool <> 0 Then
+                    Print #1, "ReverseTool=" & Trim(Items(Uses(I).ReverseTool))
                 End If
-                If Uses(i).Heal <> 0 Then
-                    Print #1, "Heal=" & Uses(i).Heal
+                If Uses(I).Heal <> 0 Then
+                    Print #1, "Heal=" & Uses(I).Heal
                 End If
-                If Uses(i).HealPoison <> 0 Then
-                    Print #1, "HealPoison=" & Uses(i).HealPoison
+                If Uses(I).HealPoison <> 0 Then
+                    Print #1, "HealPoison=" & Uses(I).HealPoison
                 End If
-                If Uses(i).PlayerUsageTimeout <> 0 Then
-                    Print #1, "PlayerUsageTimeout=" & Uses(i).PlayerUsageTimeout
+                If Uses(I).PlayerUsageTimeout <> 0 Then
+                    Print #1, "PlayerUsageTimeout=" & Uses(I).PlayerUsageTimeout
                 End If
-                If Uses(i).MonsterID <> 0 Then
-                    Print #1, "MonsterID=" & Uses(i).MonsterID
+                If Uses(I).MonsterID <> 0 Then
+                    Print #1, "MonsterID=" & Uses(I).MonsterID
                 End If
-                If Uses(i).SurfaceGround <> 0 Then
-                    Print #1, "SurfaceGround=" & Uses(i).SurfaceGround
+                If Uses(I).SurfaceGround <> 0 Then
+                    Print #1, "SurfaceGround=" & Uses(I).SurfaceGround
                 End If
-                If Uses(i).Animation <> 0 Then
-                    Print #1, "Animation=" & Uses(i).Animation
+                If Uses(I).Animation <> 0 Then
+                    Print #1, "Animation=" & Uses(I).Animation
                 End If
-                If Uses(i).Drunk <> 0 Then
-                     Print #1, "Drunk=" & Uses(i).Drunk
+                If Uses(I).Drunk <> 0 Then
+                     Print #1, "Drunk=" & Uses(I).Drunk
                 End If
-                If Uses(i).Revive <> 0 Then
-                    Print #1, "Revive=" & Uses(i).Revive
+                If Uses(I).Revive <> 0 Then
+                    Print #1, "Revive=" & Uses(I).Revive
                 End If
-                If Uses(i).Mana <> 0 Then
-                    Print #1, "Mana=" & Uses(i).Mana
+                If Uses(I).Mana <> 0 Then
+                    Print #1, "Mana=" & Uses(I).Mana
                 End If
-                If Uses(i).Mortardamage <> 0 Then
-                    Print #1, "Mortardamage=" & Uses(i).Mortardamage
+                If Uses(I).Mortardamage <> 0 Then
+                    Print #1, "Mortardamage=" & Uses(I).Mortardamage
                 End If
-                If Uses(i).Mortarspeed <> 0 Then
-                    Print #1, "Mortarspeed=" & Uses(i).Mortarspeed
+                If Uses(I).Mortarspeed <> 0 Then
+                    Print #1, "Mortarspeed=" & Uses(I).Mortarspeed
                 End If
                 
                 
                 'Print booleans
-                If Uses(i).SetResurrectSpot = True Then Print #1, "SetResurrectSpot"
-                If Uses(i).PublicUse = True Then Print #1, "PublicUse"
-                If Uses(i).Warp = True Then Print #1, "Warp"
-                If Uses(i).NeedFlatSurface = True Then Print #1, "NeedFlatSurface=True"
-                If Uses(i).UsePlayerPosition = True Then Print #1, "UsePlayerPosition=True"
-                If Uses(i).NeedUnLevelSurface = True Then Print #1, "NeedUnLevelSurface=True"
-                If Uses(i).LockFocus = True Then Print #1, "LockFocus"
-                If Uses(i).ShowWriting = True Then Print #1, "ShowWriting"
-                If Uses(i).DispKeyFocus = True Then Print #1, "DispKeyFocus"
-                If Uses(i).PreserveData = True Then Print #1, "PreserveData"
-                If Uses(i).OwnLand = True Then Print #1, "OwnLand"
-                If Uses(i).DigUnderGround = True Then Print #1, "DigUnderGround"
-                If Uses(i).SurfaceOnly = True Then Print #1, "SurfaceOnly"
-                If Uses(i).UnderGroundOnly = True Then Print #1, "UnderGroundOnly"
-                If Uses(i).SetWriting = True Then Print #1, "SetWriting"
-                If Uses(i).flgSetFocusData8 = True Then Print #1, "SetFocusData8"
-                If Uses(i).UseAllQty = True Then Print #1, "UseAllQty"
-                If Uses(i).DisarmTrap = True Then Print #1, "DisarmTrap"
-                If Uses(i).PlotUse = True Then Print #1, "PlotUse"
-                If Uses(i).ResetItemUse = True Then Print #1, "ResetItemUse"
-                If Uses(i).ResetWeapon = True Then Print #1, "ResetWeapon"
-                If Uses(i).ResetArmor = True Then Print #1, "ResetArmor"
-                If Uses(i).RaiseLand = True Then Print #1, "RaiseLand"
-                If Uses(i).LowerLand = True Then Print #1, "LowerLand"
-                If Uses(i).RenewInnRoom = True Then Print #1, "RenewInnRoom"
-                If Uses(i).NotOnPlayer = True Then Print #1, "NotOnPlayer"
-                If Uses(i).flgPk = 1 Then
+                If Uses(I).SetResurrectSpot = True Then Print #1, "SetResurrectSpot"
+                If Uses(I).PublicUse = True Then Print #1, "PublicUse"
+                If Uses(I).Warp = True Then Print #1, "Warp"
+                If Uses(I).NeedFlatSurface = True Then Print #1, "NeedFlatSurface=True"
+                If Uses(I).UsePlayerPosition = True Then Print #1, "UsePlayerPosition=True"
+                If Uses(I).NeedUnLevelSurface = True Then Print #1, "NeedUnLevelSurface=True"
+                If Uses(I).LockFocus = True Then Print #1, "LockFocus"
+                If Uses(I).ShowWriting = True Then Print #1, "ShowWriting"
+                If Uses(I).DispKeyFocus = True Then Print #1, "DispKeyFocus"
+                If Uses(I).PreserveData = True Then Print #1, "PreserveData"
+                If Uses(I).OwnLand = True Then Print #1, "OwnLand"
+                If Uses(I).DigUnderGround = True Then Print #1, "DigUnderGround"
+                If Uses(I).SurfaceOnly = True Then Print #1, "SurfaceOnly"
+                If Uses(I).UnderGroundOnly = True Then Print #1, "UnderGroundOnly"
+                If Uses(I).SetWriting = True Then Print #1, "SetWriting"
+                If Uses(I).flgSetFocusData8 = True Then Print #1, "SetFocusData8"
+                If Uses(I).UseAllQty = True Then Print #1, "UseAllQty"
+                If Uses(I).DisarmTrap = True Then Print #1, "DisarmTrap"
+                If Uses(I).PlotUse = True Then Print #1, "PlotUse"
+                If Uses(I).ResetItemUse = True Then Print #1, "ResetItemUse"
+                If Uses(I).ResetWeapon = True Then Print #1, "ResetWeapon"
+                If Uses(I).ResetArmor = True Then Print #1, "ResetArmor"
+                If Uses(I).RaiseLand = True Then Print #1, "RaiseLand"
+                If Uses(I).LowerLand = True Then Print #1, "LowerLand"
+                If Uses(I).RenewInnRoom = True Then Print #1, "RenewInnRoom"
+                If Uses(I).NotOnPlayer = True Then Print #1, "NotOnPlayer"
+                If Uses(I).flgPk = 1 Then
                     Print #1, "MakePk"
                 End If
-                If Uses(i).flgPk = 2 Then
+                If Uses(I).flgPk = 2 Then
                     Print #1, "MakeNonPK"
                     
                 End If
@@ -420,11 +420,11 @@ On Error Resume Next
 End Sub
 
 Private Sub Command1_Click()
-    For i = 0 To UBound(Uses)
-        Uses(i).SuccessItem(0) = 3124
-        Uses(i).SkillMin = 0
-        Uses(i).SkillMax = 10
-    Next i
+    For I = 0 To UBound(Uses)
+        Uses(I).SuccessItem(0) = 3124
+        Uses(I).SkillMin = 0
+        Uses(I).SkillMax = 10
+    Next I
     Dim f As Long
     f = FreeFile
     Open App.Path & "\itemuse.dat" For Binary Access Write As #f

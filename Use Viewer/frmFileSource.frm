@@ -110,11 +110,22 @@ Open App.Path & "\connect.ini" For Input As #1
         'Line is a comment ignore it
         Else
             If Left$(Data, 5) = "Name=" Then
-                List1.AddItem (Right(Data, Len(Data) - 5) & ".files")
+              ' List1.AddItem(Right(Data, Len(Data) - 5) & ".files")
             End If
         End If
     Loop
 Close #1
+
+Dir1.Path = App.Path
+Dim I As Integer
+
+For I = 0 To Dir1.ListCount - 1
+    If Right$(Dir1.List(I), 6) = ".files" Then
+        Data = Replace(Dir1.List(I), App.Path & "\", "")
+        
+        List1.AddItem (Data)
+    End If
+Next I
 
 Exit Sub
 nofile:
