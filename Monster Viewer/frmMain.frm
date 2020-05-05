@@ -1,15 +1,23 @@
 VERSION 5.00
 Begin VB.Form frmMain 
    Caption         =   "Monster Viewer By: Jon The Great"
-   ClientHeight    =   3090
+   ClientHeight    =   3495
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   4680
+   ClientWidth     =   4740
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
-   ScaleHeight     =   3090
-   ScaleWidth      =   4680
+   ScaleHeight     =   3495
+   ScaleWidth      =   4740
    StartUpPosition =   3  'Windows Default
+   Begin VB.CommandButton cmdMakeIni 
+      Caption         =   "Make Ini"
+      Height          =   495
+      Left            =   1320
+      TabIndex        =   8
+      Top             =   2880
+      Width           =   1935
+   End
    Begin VB.PictureBox pbxMonster 
       AutoRedraw      =   -1  'True
       AutoSize        =   -1  'True
@@ -102,6 +110,41 @@ Dim Size As Integer
 Dim test As String * 133
 Dim Monsters() As Montype
 Dim TileX As Integer, TileY As Integer, ImageFile As Integer
+
+Private Sub cmdMakeIni_Click()
+On Error Resume Next
+    Open PathLocation & "\monster.ini" For Output As #1
+        For I = 0 To UBound(Monsters)
+            Print #1, "Monster=" & (I + 1)
+            
+            If Trim(Monsters(I).MonsterName) <> "" Then
+                
+                Print #1, "Name=" & Monsters(I).MonsterName
+                
+                If Monsters(I).Level <> 0 Then
+                    Print #1, "Level=" & Monsters(I).Level
+                End If
+                
+                
+                Print #1, "Image=" & Monsters(I).Image
+                If Monsters(I).ImageType <> 0 Then
+                    Print #1, "ImageType=" & Monsters(I).ImageType
+                End If
+    
+                
+    
+                Print #1, ""
+            
+            End If
+        
+        Next I
+        DoEvents
+    Close #1
+    
+    MsgBox "monster.ini generated at: " & PathLocation & "\monster.ini", vbInformation
+        
+End Sub
+
 Private Sub Form_Load()
 Call LoadMonsters(PathLocation)
 
@@ -143,12 +186,12 @@ Sub PaintMonster()
         BitBlt frmMain.picMonster.hDC, 0, 0, 96, 96, frmMain.pbxMonster(ImageFile).hDC, TileX, TileY, SRCCOPY
     End If
 End Sub
-Public Sub CacluateMonsterXY(i As Integer)
+Public Sub CacluateMonsterXY(I As Integer)
 Dim skip As Boolean
-If Monsters(i).Image >= 0 And Monsters(i).Image <= 100 Then
+If Monsters(I).Image >= 0 And Monsters(I).Image <= 100 Then
             skip = False
            ImageFile = 0
-            s = (Monsters(i).Image)
+            s = (Monsters(I).Image)
             If 32 * Int(Right(s, 1)) <= 0 Then
                TileX = 288
                TileY = 32 * Int(Left(s, 1)) '((ItemMap(X, Y).ImageNumber) \ 10)
@@ -164,15 +207,15 @@ If Monsters(i).Image >= 0 And Monsters(i).Image <= 100 Then
                    TileY = 0
                 End If
             End If
-            If Monsters(i).Image = 100 Then
+            If Monsters(I).Image = 100 Then
                TileY = 32 * 9
             End If
             Exit Sub
         End If
-         If Monsters(i).Image >= 101 And Monsters(i).Image <= 200 Then
+         If Monsters(I).Image >= 101 And Monsters(I).Image <= 200 Then
             skip = False
            ImageFile = 1
-            s = (Monsters(i).Image - 100)
+            s = (Monsters(I).Image - 100)
             If 32 * Int(Right(s, 1)) <= 0 Then
                TileX = 288
                TileY = 32 * Int(Left(s, 1)) '((ItemMap(X, Y).ImageNumber) \ 10)
@@ -188,15 +231,15 @@ If Monsters(i).Image >= 0 And Monsters(i).Image <= 100 Then
                    TileY = 0
                 End If
             End If
-            If Monsters(i).Image = 200 Then
+            If Monsters(I).Image = 200 Then
                TileY = 32 * 9
             End If
             Exit Sub
         End If
-         If Monsters(i).Image >= 201 And Monsters(i).Image <= 300 Then
+         If Monsters(I).Image >= 201 And Monsters(I).Image <= 300 Then
             skip = False
            ImageFile = 2
-            s = (Monsters(i).Image - 200)
+            s = (Monsters(I).Image - 200)
             If 32 * Int(Right(s, 1)) <= 0 Then
                TileX = 288
                TileY = 32 * Int(Left(s, 1)) '((ItemMap(X, Y).ImageNumber) \ 10)
@@ -212,15 +255,15 @@ If Monsters(i).Image >= 0 And Monsters(i).Image <= 100 Then
                    TileY = 0
                 End If
             End If
-            If Monsters(i).Image = 300 Then
+            If Monsters(I).Image = 300 Then
                TileY = 32 * 9
             End If
             Exit Sub
         End If
-         If Monsters(i).Image >= 301 And Monsters(i).Image <= 400 Then
+         If Monsters(I).Image >= 301 And Monsters(I).Image <= 400 Then
             skip = False
            ImageFile = 3
-            s = (Monsters(i).Image - 300)
+            s = (Monsters(I).Image - 300)
             If 32 * Int(Right(s, 1)) <= 0 Then
                TileX = 288
                TileY = 32 * Int(Left(s, 1)) '((ItemMap(X, Y).ImageNumber) \ 10)
@@ -238,10 +281,10 @@ If Monsters(i).Image >= 0 And Monsters(i).Image <= 100 Then
             End If
             Exit Sub
         End If
-         If Monsters(i).Image >= 401 And Monsters(i).Image <= 500 Then
+         If Monsters(I).Image >= 401 And Monsters(I).Image <= 500 Then
             skip = False
            ImageFile = 4
-            s = (Monsters(i).Image - 400)
+            s = (Monsters(I).Image - 400)
             If 32 * Int(Right(s, 1)) <= 0 Then
                TileX = 288
                TileY = 32 * Int(Left(s, 1)) '((ItemMap(X, Y).ImageNumber) \ 10)
@@ -257,7 +300,7 @@ If Monsters(i).Image >= 0 And Monsters(i).Image <= 100 Then
                    TileY = 0
                 End If
             End If
-            If Monsters(i).Image = 400 Then
+            If Monsters(I).Image = 400 Then
                TileY = 32 * 9
             End If
             Exit Sub
@@ -273,31 +316,38 @@ Private Sub HScroll1_Change()
     Call PaintMonster
 End Sub
 Private Sub LoadMonsters(Path As String)
-Dim i As Integer, Index As Integer
+Dim I As Integer, Index As Integer
 On Error GoTo nofile
 pbxMonster(0).Picture = LoadPicture(Path & "player0.bmp")
-    For i = 1 To 4
-        Index = pbxMonster.UBound + 1
-        Load pbxMonster(Index)
-        With pbxMonster(Index)
-            .Enabled = True
-            .Top = pbxMonster(0).Top
-            .Left = pbxMonster(i - 1).Left + 530
-            .Height = pbxMonster(0).Height
-            .Width = pbxMonster(0).Width
-            .Visible = False
-            .AutoRedraw = True
-            .Picture = LoadPicture(Path & "player" & i & ".bmp")
-        End With
-    Next i
+    For I = 1 To 50
+    
+        If FileExists(Path & "player" & I & ".bmp") Then
+            
+            Index = pbxMonster.UBound + 1
+            Load pbxMonster(Index)
+            With pbxMonster(Index)
+                .Enabled = True
+                .Top = pbxMonster(0).Top
+                .Left = pbxMonster(I - 1).Left + 530
+                .Height = pbxMonster(0).Height
+                .Width = pbxMonster(0).Width
+                .Visible = False
+                .AutoRedraw = True
+                .Picture = LoadPicture(Path & "player" & I & ".bmp")
+            End With
+        End If
+        DoEvents
+    Next I
     Exit Sub
 nofile:
     If Err.Number = 76 Then
-        MsgBox "File not found: " & Path & "player*.bmp", vbExclamation
+     '   MsgBox "File not found: " & Path & "player*.bmp", vbExclamation
     End If
 Exit Sub
 End Sub
-
+Public Function FileExists(filename As String) As Boolean
+    FileExists = Len(Dir(filename, vbNormal)) > 0
+End Function
 Private Sub HScroll1_Scroll()
     lblLevel.Caption = "Level: " & Monsters(HScroll1.Value).Level
     lblName.Caption = "MonsterName: " & Monsters(HScroll1.Value).MonsterName
