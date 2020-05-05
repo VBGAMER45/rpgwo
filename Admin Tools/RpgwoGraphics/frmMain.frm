@@ -2,19 +2,42 @@ VERSION 5.00
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Begin VB.Form frmMain 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Rpgwo Image Editor XP 1.0 by: Jon The Great"
-   ClientHeight    =   7020
+   Caption         =   "Rpgwo Image Editor XP 2.0 by: Jon The Great"
+   ClientHeight    =   7245
    ClientLeft      =   45
    ClientTop       =   615
-   ClientWidth     =   10365
+   ClientWidth     =   15030
    Icon            =   "frmMain.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   468
+   ScaleHeight     =   483
    ScaleMode       =   3  'Pixel
-   ScaleWidth      =   691
+   ScaleWidth      =   1002
    StartUpPosition =   2  'CenterScreen
+   Begin VB.TextBox txtPath 
+      Height          =   285
+      Left            =   10080
+      TabIndex        =   23
+      Top             =   0
+      Width           =   3735
+   End
+   Begin VB.CommandButton cmdUpdatePath 
+      Caption         =   "Update Path"
+      Height          =   375
+      Left            =   13920
+      TabIndex        =   22
+      Top             =   0
+      Width           =   1095
+   End
+   Begin VB.FileListBox File1 
+      Height          =   4575
+      Left            =   10200
+      Pattern         =   "*.bmp"
+      TabIndex        =   21
+      Top             =   480
+      Width           =   4815
+   End
    Begin VB.CheckBox chkSelectXY 
       Caption         =   "Select Exact XY"
       Height          =   255
@@ -36,7 +59,7 @@ Begin VB.Form frmMain
       Height          =   855
       Left            =   1680
       TabIndex        =   13
-      Top             =   6000
+      Top             =   6240
       Width           =   5295
       Begin VB.OptionButton OptTrans 
          Caption         =   "Transperant"
@@ -88,9 +111,9 @@ Begin VB.Form frmMain
    Begin VB.CheckBox chkDrawGrid 
       Caption         =   "Draw Grid"
       Height          =   375
-      Left            =   240
+      Left            =   120
       TabIndex        =   10
-      Top             =   6240
+      Top             =   6480
       Visible         =   0   'False
       Width           =   1815
    End
@@ -237,7 +260,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-'Jonathan Valentin 2004
+'Jonathan Valentin 2004-2020
 
 Dim Saved As Boolean
 Dim RpgwoPic As New clsBitmap
@@ -259,8 +282,49 @@ BitBlt pbxRpgwo.hdc, 0, 0, 320, 320, picStorage.hdc, 0, 0, SRCCOPY
 pbxRpgwo.Refresh
 End Sub
 
+Private Sub cmdUpdatePath_Click()
+On Error GoTo nofile
+    File1.path = txtPath.Text
+    File1.Refresh
+    
+
+Exit Sub
+
+nofile:
+
+MsgBox "Error: " & Err.Description, vbCritical
+
+
+End Sub
+
+Private Sub File1_Click()
+On Error GoTo nofile
+
+If File1.ListIndex <> -1 Then
+
+    pbxRpgwo2.Cls
+    RpgwoPic2.LoadBitmap File1.path & "\" & File1.List(File1.ListIndex)
+    BitBlt pbxRpgwo2.hdc, 0, 0, RpgwoPic2.Width, RpgwoPic2.Height, RpgwoPic2.ImageDC, 0, 0, SRCCOPY
+    pbxRpgwo2.Refresh
+    pbxRpgwo2.Height = RpgwoPic2.Height
+    pbxRpgwo2.Width = RpgwoPic2.Width
+    pbxRpgwo2.ToolTipText = File1.path & File1.List(File1.ListIndex)
+    
+    lblInfo2.Caption = "Height: " & RpgwoPic2.Height & " Width: " & RpgwoPic2.Width
+    Saved = False
+    
+End If
+
+Exit Sub
+nofile:
+
+End Sub
+
 Private Sub Form_Load()
     Saved = True
+    
+    txtPath.Text = App.path
+    File1.path = txtPath.Text
     
 End Sub
 
@@ -314,8 +378,12 @@ Sub LoadSecond()
     CommonDialog1.Filter = "Bmp Files *.bmp |*.bmp"
     CommonDialog1.DialogTitle = "Select Bitmap File for Secondary"
     CommonDialog1.ShowOpen
-    
+   
     If CommonDialog1.FileName = "" Then Exit Sub
+    
+    txtPath.Text = GetDirectoryFromPathFilename(CommonDialog1.FileName)
+    cmdUpdatePath_Click
+    
     pbxRpgwo2.Cls
     RpgwoPic2.LoadBitmap CommonDialog1.FileName
     BitBlt pbxRpgwo2.hdc, 0, 0, RpgwoPic2.Width, RpgwoPic2.Height, RpgwoPic2.ImageDC, 0, 0, SRCCOPY
@@ -358,7 +426,7 @@ Public Function ExitProgram() As Boolean
 
 End Function
 
-Private Sub pbxRpgwo_DragDrop(Source As Control, X As Single, Y As Single)
+Private Sub pbxRpgwo_DragDrop(Source As Control, x As Single, y As Single)
    Dim CurX As Long
    Dim CurY As Long
    Dim rHeight As Integer
@@ -376,24 +444,24 @@ Private Sub pbxRpgwo_DragDrop(Source As Control, X As Single, Y As Single)
   ' MsgBox X
   ' MsgBox Y
    
- CurX = (Snap(X, 32)) / 32
- CurY = (Snap(Y, 32)) / 32
+ CurX = (Snap(x, 32)) / 32
+ CurY = (Snap(y, 32)) / 32
  
  Number = CurX + (CurY * 10)
  lblNumber.Caption = "Player Number: " & (Number + 1) & " Item Number: " & Number
 BitBlt picStorage.hdc, 0, 0, 320, 320, pbxRpgwo.hdc, 0, 0, SRCCOPY
 picStorage.Refresh
 If optNormal.Value = True Then
-    BitBlt pbxRpgwo.hdc, (Snap(X, 32)), (Snap(Y, 32)), rWidth, rHeight, RpgwoPic2.ImageDC, rXpos, rYpos, SRCCOPY
+    BitBlt pbxRpgwo.hdc, (Snap(x, 32)), (Snap(y, 32)), rWidth, rHeight, RpgwoPic2.ImageDC, rXpos, rYpos, SRCCOPY
 End If
 If optInvert.Value = True Then
-    BitBlt pbxRpgwo.hdc, (Snap(X, 32)), (Snap(Y, 32)), rWidth, rHeight, RpgwoPic2.ImageDC, rXpos, rYpos, SRCINVERT
+    BitBlt pbxRpgwo.hdc, (Snap(x, 32)), (Snap(y, 32)), rWidth, rHeight, RpgwoPic2.ImageDC, rXpos, rYpos, SRCINVERT
 End If
 If OptTrans.Value = True Then
   ' BitBlt pbxRpgwo.hdc, (Snap(X, 32)), (Snap(Y, 32)), rWidth, rHeight, RpgwoPic2.MaskDC, rXpos, rYpos, SRCAND
    ' BitBlt pbxRpgwo.hdc, (Snap(X, 32)), (Snap(Y, 32)), rWidth, rHeight, RpgwoPic2.InvertImageDC, rXpos, rYpos, SRCPAINT
-     BitBlt pbxRpgwo.hdc, (Snap(X, 32)), (Snap(Y, 32)), rWidth, rHeight, RpgwoPic2.InvertImageDC, rXpos, rYpos, vbSrcPaint
-     BitBlt pbxRpgwo.hdc, (Snap(X, 32)), (Snap(Y, 32)), rWidth, rHeight, RpgwoPic2.ImageDC, rXpos, rYpos, vbSrcAnd
+     BitBlt pbxRpgwo.hdc, (Snap(x, 32)), (Snap(y, 32)), rWidth, rHeight, RpgwoPic2.InvertImageDC, rXpos, rYpos, vbSrcPaint
+     BitBlt pbxRpgwo.hdc, (Snap(x, 32)), (Snap(y, 32)), rWidth, rHeight, RpgwoPic2.ImageDC, rXpos, rYpos, vbSrcAnd
 
     ' BitBlt pbxRpgwo.hdc, (Snap(X, 32)), (Snap(Y, 32)), rWidth, rHeight, RpgwoPic2.InvertImageDC, rXpos, rYpos, vbSrcPaint
    
@@ -411,35 +479,35 @@ Private Sub pbxRpgwo_Paint()
 End Sub
 
 
-Private Sub pbxRpgwo2_DragDrop(Source As Control, X As Single, Y As Single)
+Private Sub pbxRpgwo2_DragDrop(Source As Control, x As Single, y As Single)
     If chkSelectXY.Value = vbChecked Then
-        rXpos = X
-        rYpos = Y
+        rXpos = x
+        rYpos = y
     Else
-        rXpos = Snap(X, 32)
-        rYpos = Snap(Y, 32)
+        rXpos = Snap(x, 32)
+        rYpos = Snap(y, 32)
     End If
 
 End Sub
 
-Private Sub pbxRpgwo2_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub pbxRpgwo2_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
     If chkSelectXY.Value = vbChecked Then
-        rXpos = X
-        rYpos = Y
+        rXpos = x
+        rYpos = y
     Else
-        rXpos = Snap(X, 32)
-        rYpos = Snap(Y, 32)
+        rXpos = Snap(x, 32)
+        rYpos = Snap(y, 32)
     End If
 
 End Sub
 
-Private Sub pbxRpgwo2_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub pbxRpgwo2_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
     If chkSelectXY.Value = vbChecked Then
-        rXpos = X
-        rYpos = Y
+        rXpos = x
+        rYpos = y
     Else
-        rXpos = Snap(X, 32)
-        rYpos = Snap(Y, 32)
+        rXpos = Snap(x, 32)
+        rYpos = Snap(y, 32)
     End If
     'MsgBox rXpos
   '  MsgBox rYpos
@@ -448,3 +516,13 @@ End Sub
 Private Sub pbxRpgwo2_Paint()
 BitBlt pbxRpgwo2.hdc, 0, 0, RpgwoPic2.Width, RpgwoPic2.Height, RpgwoPic2.ImageDC, 0, 0, SRCCOPY
 End Sub
+
+Public Function GetDirectoryFromPathFilename(path As String) As String
+    Dim pos As Integer
+    pos = InStrRev(path, "\")
+    If pos > 0 Then
+        GetDirectoryFromPathFilename = Left$(path, pos)
+    Else
+        GetDirectoryFromPathFilename = ""
+    End If
+End Function
