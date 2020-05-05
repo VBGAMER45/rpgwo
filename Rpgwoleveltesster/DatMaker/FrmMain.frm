@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin VB.Form Form1 
-   Caption         =   "Form1"
+   Caption         =   "RPGWO Level Tester Dat File"
    ClientHeight    =   3090
    ClientLeft      =   60
    ClientTop       =   450
@@ -9,6 +9,22 @@ Begin VB.Form Form1
    ScaleHeight     =   3090
    ScaleWidth      =   4680
    StartUpPosition =   3  'Windows Default
+   Begin VB.CommandButton cmdCreateDatFile 
+      Caption         =   "Create Moster batte Dat File"
+      Height          =   495
+      Left            =   1440
+      TabIndex        =   0
+      Top             =   1200
+      Width           =   1695
+   End
+   Begin VB.Label Label1 
+      Caption         =   "Creates the battle2.dat file requires monster.ini to be located in same directory"
+      Height          =   615
+      Left            =   720
+      TabIndex        =   1
+      Top             =   360
+      Width           =   3375
+   End
 End
 Attribute VB_Name = "Form1"
 Attribute VB_GlobalNameSpace = False
@@ -171,22 +187,28 @@ End Type
 Private Sub LoadMonsterIni(Filename As String)
 'Ways to make this better is to use lcase or ucase on the data
 'so it does not matter how the admin typed it.
-Dim Data
+Dim Data As String
 Dim LineCount As Integer
 Dim SkillNum As Integer
 Dim Length As Integer
 Dim MonNum As Integer
 MonNum = 0
-On Error GoTo nofile:
-Open Filename For Input As #1
+ReDim Preserve Monsters(0)
+Dim EnableFullLoadMonsters As Boolean
+
+EnableFullLoadMonsters = True
+Dim f2 As Long
+f2 = FreeFile
+'On Error GoTo nofile:
+Open Filename For Input As #f2
 Do While Not EOF(1)
     LineCount = LineCount + 1
-    Line Input #1, Data
+    Line Input #f2, Data
     
-    If Left(Data, 1) = ";" Then
+    If Left$(Data, 1) = ";" Then
     'Line is a comment ignore it
     Else
-        If Left(Data, 8) = "Monster=" Then
+        If Left$(Data, 8) = "Monster=" Then
         'begin new monster
              MonNum = MonNum + 1
              TotalMon = TotalMon + 1
@@ -196,96 +218,96 @@ Do While Not EOF(1)
              'set the last monster number
              LastMonsterNumber = Right(Data, Len(Data) - 8)
         End If
-        If Left(Data, 5) = "Name=" Then
+        If Left$(Data, 5) = "Name=" Then
             Monsters(MonNum).MonsterName = Right(Data, Len(Data) - 5)
         End If
         'Ok now if you want to be able to edit all monsters it will run this
         If EnableFullLoadMonsters = True Then
-            If Left(Data, 6) = "Level=" Then
+            If Left$(Data, 6) = "Level=" Then
                 Monsters(MonNum).Level = Right(Data, Len(Data) - 6)
             End If
-            If Left(Data, 6) = "Image=" Then
+            If Left$(Data, 6) = "Image=" Then
                 Monsters(MonNum).Image = Right(Data, Len(Data) - 6)
             End If
-            If Left(Data, 13) = "NotAttackable" Then
+            If Left$(Data, 13) = "NotAttackable" Then
                 Monsters(MonNum).NotAttackable = True
             End If
-            If Left(Data, 9) = "Catagory=" Then
+            If Left$(Data, 9) = "Catagory=" Then
                 Monsters(MonNum).Catagory = Right(Data, Len(Data) - 9)
             End If
-            If Left(Data, 9) = "DeadItem=" Then
+            If Left$(Data, 9) = "DeadItem=" Then
                 Monsters(MonNum).Deaditem = Right(Data, Len(Data) - 9)
             End If
-            If Left(Data, 5) = "Life=" Then
+            If Left$(Data, 5) = "Life=" Then
                 Monsters(MonNum).Deaditem = Right(Data, Len(Data) - 5)
             End If
-            If Left(Data, 8) = "Stamina=" Then
+            If Left$(Data, 8) = "Stamina=" Then
                 Monsters(MonNum).Stamina = Right(Data, Len(Data) - 8)
             End If
-            If Left(Data, 5) = "Mana=" Then
+            If Left$(Data, 5) = "Mana=" Then
                 Monsters(MonNum).Mana = Right(Data, Len(Data) - 5)
             End If
-            If Left(Data, 5) = "Type=" Then
+            If Left$(Data, 5) = "Type=" Then
                 Monsters(MonNum).Type = Right(Data, Len(Data) - 5)
             End If
-            If Left(Data, 13) = "MeleeDefense=" Then
+            If Left$(Data, 13) = "MeleeDefense=" Then
                 Monsters(MonNum).MeleeDefense = Right(Data, Len(Data) - 13)
             End If
-            If Left(Data, 13) = "MagicDefense=" Then
+            If Left$(Data, 13) = "MagicDefense=" Then
                 Monsters(MonNum).MagicDefense = Right(Data, Len(Data) - 13)
             End If
-            If Left(Data, 13) = "MissleDefense=" Then
+            If Left$(Data, 13) = "MissleDefense=" Then
                 Monsters(MonNum).MissleDefense = Right(Data, Len(Data) - 13)
             End If
             '####Skills
-            If Left(Data, 12) = "CastSpell=" Then
+            If Left$(Data, 12) = "CastSpell=" Then
                 Monsters(MonNum).CastSpell = Right(Data, Len(Data) - 10)
             End If
-            If Left(Data, 12) = "Stealth=" Then
+            If Left$(Data, 12) = "Stealth=" Then
                 Monsters(MonNum).Stealth = Right(Data, Len(Data) - 8)
             End If
-            If Left(Data, 12) = "Scan=" Then
+            If Left$(Data, 12) = "Scan=" Then
                 Monsters(MonNum).Scan = Right(Data, Len(Data) - 5)
             End If
-            If Left(Data, 12) = "Run=" Then
+            If Left$(Data, 12) = "Run=" Then
                 Monsters(MonNum).Run = Right(Data, Len(Data) - 4)
             End If
-            If Left(Data, 12) = "Swim=" Then
+            If Left$(Data, 12) = "Swim=" Then
                 Monsters(MonNum).Swim = Right(Data, Len(Data) - 5)
             End If
             '###End of Skills
-            If Left(Data, 9) = "AttackLow" Then
+            If Left$(Data, 9) = "AttackLow" Then
                 Monsters(MonNum).AttackLow = True
             End If
-            If Left(Data, 9) = "AttackMid" Then
+            If Left$(Data, 9) = "AttackMid" Then
                 Monsters(MonNum).AttackMid = True
             End If
-            If Left(Data, 10) = "AttackHigh" Then
+            If Left$(Data, 10) = "AttackHigh" Then
                 Monsters(MonNum).AttackHigh = True
             End If
-            If Left(Data, 9) = "Tameness=" Then
+            If Left$(Data, 9) = "Tameness=" Then
                 Monsters(MonNum).Tameness = Right(Data, Len(Data) - 9)
             End If
-            If Left(Data, 13) = "SpawnMonster=" Then
+            If Left$(Data, 13) = "SpawnMonster=" Then
                 Monsters(MonNum).SpawnMonster = Right(Data, Len(Data) - 13)
             End If
-            If Left(Data, 10) = "SpawnTime=" Then
+            If Left$(Data, 10) = "SpawnTime=" Then
                 Monsters(MonNum).SpawnTime = Right(Data, Len(Data) - 10)
             End If
             'Begin Weapons And Armor
-            If Left(Data, 7) = "Weapon=" Then
+            If Left$(Data, 7) = "Weapon=" Then
                 Monsters(MonNum).Weapon = Right(Data, Len(Data) - 7)
             End If
-            If Left(Data, 7) = "Sheild=" Then
+            If Left$(Data, 7) = "Sheild=" Then
                 Monsters(MonNum).Sheild = Right(Data, Len(Data) - 7)
             End If
-            If Left(Data, 11) = "ChestArmor=" Then
+            If Left$(Data, 11) = "ChestArmor=" Then
                 Monsters(MonNum).ChestArmor = Right(Data, Len(Data) - 11)
             End If
-            If Left(Data, 9) = "LegArmor=" Then
+            If Left$(Data, 9) = "LegArmor=" Then
                 Monsters(MonNum).LegArmor = Right(Data, Len(Data) - 9)
             End If
-            If Left(Data, 10) = "HeadArmor=" Then
+            If Left$(Data, 10) = "HeadArmor=" Then
                 Monsters(MonNum).HeadArmor = Right(Data, Len(Data) - 10)
             End If
             'Begin Treasure
@@ -298,10 +320,21 @@ Do While Not EOF(1)
     DoEvents
 Loop
 
-Close #1
+Close #f2
+Dim f As Long
+f = FreeFile
+    Open App.Path & "\battle2.dat" For Binary Access Write Lock Write As #f
+        Put #f, , Monsters
+    Close #f
 
+MsgBox "File battle2.dat Done!"
 Exit Sub
 nofile:
-MsgBox "Monster.ini not found this needs to be in the directory of where Monster.ini is located", vbExclamation
+MsgBox "Monster.ini not found this needs to be in the directory of where Monster.ini is located " & Err.Description, vbExclamation
 End
+End Sub
+
+Private Sub cmdCreateDatFile_Click()
+Call LoadMonsterIni(App.Path & "\monster.ini")
+
 End Sub

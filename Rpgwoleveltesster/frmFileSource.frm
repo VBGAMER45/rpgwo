@@ -103,20 +103,33 @@ Private Sub Form_Load()
     Dim Data As String
     Dim f As Long
     'Open connect.ini
-    f = FreeFile
-    Open App.Path & "\connect.ini" For Input As #f
-        Do While Not EOF(f)
-            Line Input #f, Data
+  '  f = FreeFile
+ '   Open App.Path & "\connect.ini" For Input As #f
+ '       Do While Not EOF(f)
+  '          Line Input #f, Data
         
-            If Left$(Data, 1) = ";" Then
+ '           If Left$(Data, 1) = ";" Then
             'Line is a comment ignore it
-            Else
-                If Left$(Data, 5) = "Name=" Then
-                    List1.AddItem (Right$(Data, Len(Data) - 5) & ".files")
-                End If
-            End If
-        Loop
-    Close #f
+'            Else
+ '               If Left$(Data, 5) = "Name=" Then
+                '    List1.AddItem (Right$(Data, Len(Data) - 5) & ".files")
+ '               End If
+'            End If
+'        Loop
+'    Close #f
+    
+Dir1.Path = App.Path
+Dim I As Integer
+
+For I = 0 To Dir1.ListCount - 1
+    If Right$(Dir1.List(I), 6) = ".files" Then
+        Data = Replace(Dir1.List(I), App.Path & "\", "")
+        
+        List1.AddItem (Data)
+    End If
+Next I
+
+    
     
     Exit Sub
 nofile:

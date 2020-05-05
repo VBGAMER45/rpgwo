@@ -1,8 +1,8 @@
 Attribute VB_Name = "modGlobals"
 Option Explicit
 Global pbxAnimation As New clsBitmap
-Global pbxItem(25) As New clsBitmap
-Global pbxMonster(6) As New clsBitmap
+Global pbxItem() As New clsBitmap
+Global pbxMonster() As New clsBitmap
 Global RefreshMini As Boolean
 
 Global ScriptLoaded As Boolean
