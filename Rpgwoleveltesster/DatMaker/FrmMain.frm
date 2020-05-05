@@ -202,7 +202,7 @@ f2 = FreeFile
 'On Error GoTo nofile:
 Open Filename For Input As #f2
 Do While Not EOF(1)
-    LineCount = LineCount + 1
+  '  LineCount = LineCount + 1
     Line Input #f2, Data
     
     If Left$(Data, 1) = ";" Then
@@ -219,15 +219,15 @@ Do While Not EOF(1)
              LastMonsterNumber = Right(Data, Len(Data) - 8)
         End If
         If Left$(Data, 5) = "Name=" Then
-            Monsters(MonNum).MonsterName = Right(Data, Len(Data) - 5)
+            Monsters(MonNum).MonsterName = Right$(Data, Len(Data) - 5)
         End If
         'Ok now if you want to be able to edit all monsters it will run this
         If EnableFullLoadMonsters = True Then
             If Left$(Data, 6) = "Level=" Then
-                Monsters(MonNum).Level = Right(Data, Len(Data) - 6)
+                Monsters(MonNum).Level = Right$(Data, Len(Data) - 6)
             End If
             If Left$(Data, 6) = "Image=" Then
-                Monsters(MonNum).Image = Right(Data, Len(Data) - 6)
+                Monsters(MonNum).Image = Right$(Data, Len(Data) - 6)
             End If
             If Left$(Data, 13) = "NotAttackable" Then
                 Monsters(MonNum).NotAttackable = True
@@ -319,6 +319,7 @@ Do While Not EOF(1)
     End If
     DoEvents
 Loop
+MsgBox "here"
 
 Close #f2
 Dim f As Long
