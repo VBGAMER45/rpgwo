@@ -2,14 +2,13 @@ VERSION 5.00
 Begin VB.Form frmMain 
    Caption         =   "Item Viewer (Admin Version) By: Jon The Great"
    ClientHeight    =   5805
-   ClientLeft      =   60
-   ClientTop       =   450
+   ClientLeft      =   11010
+   ClientTop       =   4890
    ClientWidth     =   6150
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    ScaleHeight     =   5805
    ScaleWidth      =   6150
-   StartUpPosition =   3  'Windows Default
    Begin VB.CommandButton cmdMakeIni 
       Caption         =   "Make Ini"
       Height          =   615
@@ -592,6 +591,8 @@ Private Sub Form_Load()
 Dim pcName As String
 pcName = GetPcName
 Dim code As Long
+Dim f As Long
+
 code = 0
 For I = 0 To Len(pcName)
 code = Asc(pcName)
@@ -618,11 +619,52 @@ Dim password As String
 
 
 Call LoadItems(PathLocation)
+f = FreeFile
+If FileExists(PathLocation & "\itemdef.dat") Then
+Open PathLocation & "\itemdef.dat" For Binary As f
+ ReDim Items(LOF(f) / 440)
+Get f, , Items
+Close f
+End If
 
-Open PathLocation & "\itemdef.dat" For Binary As #1
- ReDim Items(LOF(1) / 440)
-Get #1, , Items
-Close #1
+If FileExists(PathLocation & "\itemdef2.dat") Then
+'MsgBox "here"
+Dim iRecordSize As Integer
+Dim iUnknown As Integer
+Dim iNumberOfRecords As Integer
+f = FreeFile
+Open PathLocation & "\itemdef2.dat" For Binary As f
+    Get f, , iRecordSize
+    Get f, , iUnknown
+    Get f, , iNumberOfRecords
+    Get f, , iUnknown
+ ReDim Items2(iNumberOfRecords + 1)
+ ReDim Items(iNumberOfRecords + 1)
+ 'Debug.Print iNumberOfRecords
+ 
+Get f, , Items2
+Close f
+
+For I = 0 To iNumberOfRecords
+Items(I).ItemName = Items2(I).ItemName
+Items(I).Image = Items2(I).Image
+Items(I).Animation1 = Items2(I).Animation1
+Items(I).Animation2 = Items2(I).Animation2
+Items(I).Animation3 = Items2(I).Animation3
+Items(I).Animation4 = Items2(I).Animation4
+Items(I).Animation5 = Items2(I).Animation5
+Items(I).Animation6 = Items2(I).Animation6
+Items(I).Animation7 = Items2(I).Animation7
+Items(I).Animation8 = Items2(I).Animation8
+Items(I).Animation9 = Items2(I).Animation9
+Items(I).Class = Items2(I).Class
+ 
+Next I
+
+
+
+End If
+
 HScroll1.Max = UBound(Items)
     'lblLevel.Caption = "Level: " & Monsters(HScroll1.Value).Level
     lblName.Caption = "ItemName: " & Items(HScroll1.Value).ItemName
@@ -665,6 +707,7 @@ End Sub
 
 
 Sub PaintItem()
+On Error Resume Next
    ' Me.Caption = Items(HScroll1.Value).MagicBreakDamage
    ' Label2.Caption = Items(HScroll1.Value).Burden
     picItem.Cls
@@ -682,378 +725,31 @@ Sub PaintItem()
   '  End If
 End Sub
 Public Sub CacluateItemXY(I As Integer)  '(Imin As Integer, Imax As Integer)
-       ' For i = Imin To Imax
-        If Items(I).Image >= 0 And Items(I).Image < 100 Then
-            
-            ImageFile = 0
-            s = (Items(I).Image)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            ' (Map(X, Y).ImageNumber - 100) - ((Map(X, Y).ImageNumber - 100) \ 10)
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-               
-        If Items(I).Image >= 100 And Items(I).Image < 200 Then
-            
-            ImageFile = 1
-            s = (Items(I).Image - 100)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            ' (Map(X, Y).ImageNumber - 100) - ((Map(X, Y).ImageNumber - 100) \ 10)
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 200 And Items(I).Image < 300 Then
-            ImageFile = 2
-            s = (Items(I).Image - 200)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            ' (Map(X, Y).ImageNumber - 100) - ((Map(X, Y).ImageNumber - 100) \ 10)
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 300 And Items(I).Image < 400 Then
-            ImageFile = 3
-            s = (Items(I).Image - 300)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            ' (Map(X, Y).ImageNumber - 100) - ((Map(X, Y).ImageNumber - 100) \ 10)
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 400 And Items(I).Image < 500 Then
-            ImageFile = 4
-            s = (Items(I).Image - 400)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            ' (Map(X, Y).ImageNumber - 100) - ((Map(X, Y).ImageNumber - 100) \ 10)
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 500 And Items(I).Image < 600 Then
-            ImageFile = 5
-            s = (Items(I).Image - 500)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 600 And Items(I).Image < 700 Then
-            ImageFile = 6
-            s = (Items(I).Image - 600)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 700 And Items(I).Image < 800 Then
-            ImageFile = 7
-            s = (Items(I).Image - 700)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 800 And Items(I).Image < 900 Then
-            ImageFile = 8
-            s = (Items(I).Image - 800)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 900 And Items(I).Image < 1000 Then
-            ImageFile = 9
-            s = (Items(I).Image - 900)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 1000 And Items(I).Image < 1100 Then
-            ImageFile = 10
-            s = (Items(I).Image - 1000)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 1100 And Items(I).Image < 1200 Then
-            ImageFile = 11
-            s = (Items(I).Image - 1100)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 1200 And Items(I).Image < 1300 Then
-            ImageFile = 12
-            s = (Items(I).Image - 1200)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 1300 And Items(I).Image < 1400 Then
-            ImageFile = 13
-            s = (Items(I).Image - 1300)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 1400 And Items(I).Image < 1500 Then
-            ImageFile = 14
-            s = (Items(I).Image - 1400)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-          '  Exit Sub
-        End If
-        If Items(I).Image >= 1500 And Items(I).Image < 1600 Then
-            ImageFile = 15
-            s = (Items(I).Image - 1500)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 1600 And Items(I).Image < 1700 Then
-            ImageFile = 16
-            s = (Items(I).Image - 1600)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 1700 And Items(I).Image < 1800 Then
-            ImageFile = 17
-            s = (Items(I).Image - 1700)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 1800 And Items(I).Image < 1900 Then
-            ImageFile = 18
-            s = (Items(I).Image - 1800)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 1900 And Items(I).Image < 2000 Then
-            ImageFile = 19
-            s = (Items(I).Image - 1900)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 2000 And Items(I).Image < 2100 Then
-            ImageFile = 20
-            s = (Items(I).Image - 2000)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-        If Items(I).Image >= 2100 And Items(I).Image < 2200 Then
-            ImageFile = 21
-            s = (Items(I).Image - 2100)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-          If Items(I).Image >= 2200 And Items(I).Image < 2300 Then
-            ImageFile = 22
-            s = (Items(I).Image - 2200)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-If Items(I).Image >= 2300 And Items(I).Image < 2400 Then
-            ImageFile = 23
-            s = (Items(I).Image - 2300)
-            If 32 * Int(Right(s, 1)) <= 0 Then
-                TileX = 0
-            Else
-                TileX = 32 * Int(Right(s, 1))
-            End If
-            If Len(s) >= 2 Then
-                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
-            Else
-                TileY = 0
-            End If
-            Exit Sub
-        End If
-      ' Next i
-End Sub
+Dim k As Integer
+For k = 0 To pbxItem.UBound
 
+        If Items(I).Image >= (100 * k) And Items(I).Image < ((k * 100) + 100) Then
+            
+            ImageFile = k
+            s = (Items(I).Image - (k * 100))
+            If 32 * Int(Right(s, 1)) <= 0 Then
+                TileX = 0
+            Else
+                TileX = 32 * Int(Right(s, 1))
+            End If
+            ' (Map(X, Y).ImageNumber - 100) - ((Map(X, Y).ImageNumber - 100) \ 10)
+            If Len(s) >= 2 Then
+                TileY = 32 * Int(Left(s, 1)) '((Items(i).image) \ 10)
+            Else
+                TileY = 0
+            End If
+            Exit Sub
+        End If
+        
+ 
+Next k
+
+End Sub
 
 Private Sub HScroll1_Change()
    Call DoValues
@@ -1105,7 +801,7 @@ pbxItem(0).Picture = LoadPicture(Path & "item0.bmp")
     
         If FileExists(Path & "item" & I & ".bmp") Then
         
-            Index = pbxItem.ubound + 1
+            Index = pbxItem.UBound + 1
             Load pbxItem(Index)
             With pbxItem(Index)
                 .Enabled = True
