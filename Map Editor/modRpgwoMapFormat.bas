@@ -42,11 +42,19 @@ Private Type mMonsterType
     Timeout As Integer
     Junk10 As String * 31
 End Type
+
+Private Type mMapDataType
+    Xpos As Integer
+    Ypos As Integer
+    Surface As Integer
+End Type
+
     
 Dim mMap() As Integer
 Dim mItems() As mItemType
 Dim mMonsters() As mMonsterType
-
+ Dim tempmMapData() As mMapDataType
+ 
 Sub LoadRpgwoMap(filename As String)
 
 On Error Resume Next
@@ -69,8 +77,12 @@ Open filename For Binary Access Read Lock Read As f
     
 
     Get f, , mMapExtra
-    
-
+    Dim mapElements As Integer
+    Dim un1 As Integer
+   ' MsgBox "Loc: " & Loc(f)
+    Get f, , mapElements
+    Get f, , un1
+   'MsgBox mapElements
     
     
 Dim Response As String
@@ -84,15 +96,44 @@ Dim Response As String
    
    
    
+   ReDim mMap(1 To mMapWidth, 1 To mMapHeight)
+   ' Setup map
+     Dim x As Integer
+     Dim y As Integer
+     For x = 1 To mMapWidth
+        For y = 1 To mapheight
+            mMap(x, y) = 0
+        Next y
+     Next x
    
-    'Get Tile Id
-    ReDim mMap(1 To mMapWidth, 1 To mMapHeight)
-    Get f, , mMap
-    
 
+    Dim mMapData() As mMapDataType
+    Dim j As Integer
+    
     If v2Map = False Then
     
+   
+  
+        
+    
+        'Get Tile Id
+        ReDim mMapData(1 To mapElements)
+        Get f, , mMapData
+        
+       ' MsgBox mMapData(1).Xpos & " " & mMapData(1).Ypos & " " & mMapData(1).Surface
+        
+        For j = 1 To mapElements
+            mMap(mMapData(j).Xpos, mMapData(j).Ypos) = mMapData(j).Surface
+        Next j
+        
+       ' MsgBox "LOC:" & Loc(f)
+   
+        'Get Tile Id
+        'ReDim mMap(1 To mMapWidth, 1 To mMapHeight)
+        'Get f, , mMap
+    
         Get f, , mNumberOfItems
+      '  MsgBox mNumberOfItems
         ReDim mItems(1 To mNumberOfItems)
         Get f, , mItems
         
@@ -102,6 +143,19 @@ Dim Response As String
     
     Else
     
+    
+      
+    
+        'Get Tile Id
+        ReDim mMapData(1 To mapElements)
+        Get f, , mMapData
+        
+       ' MsgBox mMapData(1).Xpos & " " & mMapData(1).Ypos & " " & mMapData(1).Surface
+    
+        For j = 1 To mapElements
+            mMap(mMapData(j).Xpos, mMapData(j).Ypos) = mMapData(j).Surface
+        Next j
+        
         Get f, , mv2NumberOfItems
         'MsgBox mv2NumberOfItems
         ReDim mItems(1 To mv2NumberOfItems)
@@ -337,7 +391,36 @@ Open filename For Binary Access Write Lock Write As #1
     mNumberOfItems = mNumberOfItems - 1
     'Get Tile Id
     'ReDim mMap(1 To mMapWidth, 1 To mMapHeight)
-    Put #1, , mMap
+    
+    Dim MapSizeTotalCount As Integer
+    Dim unk1 As Integer
+    Dim countSurfaceItems As Integer
+    countSurfaceItems = 1
+    
+   
+    ReDim tempmMapData(1 To countSurfaceItems)
+    MapSizeTotalCount = 0
+    Dim x As Integer
+     Dim y As Integer
+     For x = 1 To mMapWidth
+        For y = 1 To mMapHeight
+            If mMap(x, y) <> 0 Then
+                
+                tempmMapData(UBound(tempmMapData)).Xpos = x
+                tempmMapData(UBound(tempmMapData)).Ypos = y
+                tempmMapData(UBound(tempmMapData)).Surface = mMap(x, y)
+                MapSizeTotalCount = MapSizeTotalCount + 1
+                ReDim Preserve tempmMapData(1 To UBound(tempmMapData) + 1)
+            End If
+        Next y
+     Next x
+     ReDim Preserve tempmMapData(1 To UBound(tempmMapData) - 1)
+    
+    Put #1, , MapSizeTotalCount
+    Put #1, , unk1
+    
+    
+    Put #1, , tempmMapData
     
     If v2Map = False Then
     
