@@ -32,9 +32,12 @@ Public Type ItemData
     Data5 As Integer
     Data6 As Integer  ''Item Reset
     Data7 As Integer ''Item Trigger
+    Uses As Integer
+    PutIn As Integer
     ItemText As String
     ItemSpawn As Byte
     ItemTimeOut As Integer
+    
 End Type
 Public Type MonsterData
     TileX As Integer
@@ -169,6 +172,14 @@ Next y
             frmMain.pbxView.CurrentY = 16 + Snap2(y, 32) - Snap2(viewYpos, 32)
             frmMain.pbxView.Print "T"
         End If
+        
+         If frmMain.mnuViewItemType.Checked = True And ItemMap(x, y).Data6 <> 0 Then
+            frmMain.pbxView.ForeColor = RGB(128, 0, 128)
+            frmMain.pbxView.CurrentX = 16 + Snap2(x, 32) - Snap2(viewXpos, 32)
+            frmMain.pbxView.CurrentY = 16 + Snap2(y, 32) - Snap2(viewYpos, 32)
+            frmMain.pbxView.Print "R"
+        End If
+        
     End If
 
     
@@ -197,7 +208,7 @@ Public Function TransBMP(ByVal DstDC As Long, ByVal DstX As Long, ByVal DstY As 
     ' create transparent bitmap
     If DstW = 0 Or DstH = 0 Then Exit Function
     
-    Dim B As Long, h As Long, F As Long, i As Long
+    Dim B As Long, h As Long, f As Long, i As Long
     Dim TmpDC As Long, tmpBMP As Long, TmpObj As Long
     Dim Sr2DC As Long, Sr2Bmp As Long, Sr2Obj As Long
     Dim Data1() As Long, Data2() As Long
@@ -224,9 +235,9 @@ Public Function TransBMP(ByVal DstDC As Long, ByVal DstX As Long, ByVal DstY As 
     Call GetDIBits(Sr2DC, Sr2Bmp, 0, DstH, Data2(0), Info, 0)
     
     For h = 0 To DstH - 1
-        F = h * DstW
+        f = h * DstW
         For B = 0 To DstW - 1
-            i = F + B
+            i = f + B
             If (Data2(i) And &HFFFFFF) = TransColor Then
             Else
                 Data1(i) = Data2(i)
@@ -286,6 +297,15 @@ Public Sub RedrawMapTileXY(x As Integer, y As Integer)
             frmMain.pbxView.CurrentY = 16 + Snap2(y, 32) - Snap2(viewYpos, 32)
             frmMain.pbxView.Print "T"
         End If
+        
+         If frmMain.mnuViewItemType.Checked = True And ItemMap(x, y).Data6 <> 0 Then
+            frmMain.pbxView.ForeColor = RGB(128, 0, 128)
+            frmMain.pbxView.CurrentX = 16 + Snap2(x, 32) - Snap2(viewXpos, 32)
+            frmMain.pbxView.CurrentY = 16 + Snap2(y, 32) - Snap2(viewYpos, 32)
+            frmMain.pbxView.Print "R"
+        End If
+        
+        
     End If
 
     
@@ -300,3 +320,7 @@ Public Sub RedrawMapTileXY(x As Integer, y As Integer)
 End If
 
 End Sub
+
+Public Function FileExists(filename As String) As Boolean
+    FileExists = Len(Dir(filename, vbNormal)) > 0
+End Function

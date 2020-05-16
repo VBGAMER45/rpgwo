@@ -101,22 +101,36 @@ End Sub
 Private Sub Form_Load()
 On Error GoTo nofile:
     Dim Data As String
-    Dim f As Long
-    f = FreeFile
+    Dim F As Long
+    'F = FreeFile
     'Open connect.ini
-    Open App.Path & "\connect.ini" For Input As #f
-        Do While Not EOF(f)
-            Line Input #f, Data
+    'Open App.Path & "\connect.ini" For Input As #F
+   '     Do While Not EOF(F)
+   '         Line Input #F, Data
         
-            If Left$(Data, 1) = ";" Then
+  '          If Left$(Data, 1) = ";" Then
             'Line is a comment ignore it
-            Else
-                If Left$(Data, 5) = "Name=" Then
-                    List1.AddItem (Right$(Data, Len(Data) - 5) & ".files")
-                End If
-            End If
-        Loop
-    Close #f
+  '          Else
+ '               If Left$(Data, 5) = "Name=" Then
+ '                   List1.AddItem (Right$(Data, Len(Data) - 5) & ".files")
+'                End If
+'            End If
+'        Loop
+'    Close #F
+
+Dir1.Path = App.Path
+Dim I As Integer
+
+For I = 0 To Dir1.ListCount - 1
+    If Right$(Dir1.List(I), 6) = ".files" Then
+        Data = Replace(Dir1.List(I), App.Path & "\", "")
+        
+        List1.AddItem (Data)
+    End If
+Next I
+
+
+
 
 Exit Sub
 nofile:

@@ -1,9 +1,9 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "Tabctl32.ocx"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Begin VB.Form frmMain 
-   Caption         =   "RPGWO Editor  (Version 1.0)"
+   Caption         =   "RPGWO Editor  (Version 2.0)"
    ClientHeight    =   7035
    ClientLeft      =   165
    ClientTop       =   555
@@ -107,62 +107,78 @@ Begin VB.Form frmMain
       _ExtentY        =   11324
       _Version        =   393216
       Tabs            =   4
+      Tab             =   1
       TabsPerRow      =   4
       TabHeight       =   520
       TabCaption(0)   =   "Surface"
       TabPicture(0)   =   "frmMain.frx":1030
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Label1"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "lblSurfaceNotes"
-      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "txtSurfacePencilWidth"
-      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "vsPencilWidth"
-      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "chkSurfaceFill"
-      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).Control(5)=   "Frame1"
-      Tab(0).Control(5).Enabled=   0   'False
       Tab(0).Control(6)=   "Frame2"
-      Tab(0).Control(6).Enabled=   0   'False
       Tab(0).Control(7)=   "cmdWater"
-      Tab(0).Control(7).Enabled=   0   'False
       Tab(0).ControlCount=   8
       TabCaption(1)   =   "Item"
       TabPicture(1)   =   "frmMain.frx":104C
-      Tab(1).ControlEnabled=   0   'False
+      Tab(1).ControlEnabled=   -1  'True
       Tab(1).Control(0)=   "lblitemSpawnTimeout"
+      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "lblItemSpawnTimeout2"
+      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "Label2(0)"
+      Tab(1).Control(2).Enabled=   0   'False
       Tab(1).Control(3)=   "Label2(1)"
+      Tab(1).Control(3).Enabled=   0   'False
       Tab(1).Control(4)=   "Label2(2)"
+      Tab(1).Control(4).Enabled=   0   'False
       Tab(1).Control(5)=   "Label2(3)"
+      Tab(1).Control(5).Enabled=   0   'False
       Tab(1).Control(6)=   "Label2(4)"
+      Tab(1).Control(6).Enabled=   0   'False
       Tab(1).Control(7)=   "Label3"
+      Tab(1).Control(7).Enabled=   0   'False
       Tab(1).Control(8)=   "Label4"
+      Tab(1).Control(8).Enabled=   0   'False
       Tab(1).Control(9)=   "Label5"
+      Tab(1).Control(9).Enabled=   0   'False
       Tab(1).Control(10)=   "Frame3"
+      Tab(1).Control(10).Enabled=   0   'False
       Tab(1).Control(11)=   "chkItemSpawn"
+      Tab(1).Control(11).Enabled=   0   'False
       Tab(1).Control(12)=   "txtItemSpawnTimeout"
+      Tab(1).Control(12).Enabled=   0   'False
       Tab(1).Control(13)=   "cmdItemWriting"
+      Tab(1).Control(13).Enabled=   0   'False
       Tab(1).Control(14)=   "txtItemData1(0)"
+      Tab(1).Control(14).Enabled=   0   'False
       Tab(1).Control(15)=   "txtItemData1(1)"
+      Tab(1).Control(15).Enabled=   0   'False
       Tab(1).Control(16)=   "txtItemData1(2)"
+      Tab(1).Control(16).Enabled=   0   'False
       Tab(1).Control(17)=   "txtItemData1(3)"
+      Tab(1).Control(17).Enabled=   0   'False
       Tab(1).Control(18)=   "txtItemData1(4)"
+      Tab(1).Control(18).Enabled=   0   'False
       Tab(1).Control(19)=   "txtItemReset"
+      Tab(1).Control(19).Enabled=   0   'False
       Tab(1).Control(20)=   "txtItemUses"
+      Tab(1).Control(20).Enabled=   0   'False
       Tab(1).Control(21)=   "txtItemTrigger"
+      Tab(1).Control(21).Enabled=   0   'False
       Tab(1).Control(22)=   "cmdItemSelect"
+      Tab(1).Control(22).Enabled=   0   'False
       Tab(1).ControlCount=   23
       TabCaption(2)   =   "Monster"
       TabPicture(2)   =   "frmMain.frx":1068
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdMonsterSelect"
-      Tab(2).Control(1)=   "txtMonsterTimeout"
-      Tab(2).Control(2)=   "Frame4"
-      Tab(2).Control(3)=   "lblTimeout"
+      Tab(2).Control(0)=   "lblTimeout"
+      Tab(2).Control(1)=   "Frame4"
+      Tab(2).Control(2)=   "txtMonsterTimeout"
+      Tab(2).Control(3)=   "cmdMonsterSelect"
       Tab(2).ControlCount=   4
       TabCaption(3)   =   "Map"
       TabPicture(3)   =   "frmMain.frx":1084
@@ -172,7 +188,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdWater 
          Caption         =   "Water"
          Height          =   315
-         Left            =   2160
+         Left            =   -72840
          TabIndex        =   114
          Top             =   6000
          Width           =   1335
@@ -188,7 +204,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdItemSelect 
          Caption         =   "Item Select"
          Height          =   255
-         Left            =   -73080
+         Left            =   1920
          TabIndex        =   112
          Top             =   5640
          Width           =   1275
@@ -207,7 +223,7 @@ Begin VB.Form frmMain
       Begin VB.Frame Frame2 
          Caption         =   "Flat"
          Height          =   3345
-         Left            =   1560
+         Left            =   -73440
          TabIndex        =   94
          Top             =   2280
          Width           =   1860
@@ -444,7 +460,7 @@ Begin VB.Form frmMain
       Begin VB.Frame Frame1 
          Caption         =   "Elevational"
          Height          =   3345
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   87
          Top             =   2280
          Width           =   1185
@@ -586,14 +602,14 @@ Begin VB.Form frmMain
             Strikethrough   =   0   'False
          EndProperty
          Height          =   285
-         Left            =   2520
+         Left            =   -72480
          TabIndex        =   86
          Top             =   5640
          Width           =   600
       End
       Begin VB.VScrollBar vsPencilWidth 
          Height          =   315
-         Left            =   1800
+         Left            =   -73200
          Max             =   0
          Min             =   1000
          TabIndex        =   85
@@ -603,7 +619,7 @@ Begin VB.Form frmMain
       End
       Begin VB.TextBox txtSurfacePencilWidth 
          Height          =   285
-         Left            =   1320
+         Left            =   -73680
          MaxLength       =   2
          TabIndex        =   84
          Text            =   "1"
@@ -1301,7 +1317,7 @@ Begin VB.Form frmMain
       End
       Begin VB.TextBox txtItemTrigger 
          Height          =   285
-         Left            =   -72720
+         Left            =   2280
          TabIndex        =   49
          Text            =   "0"
          Top             =   5280
@@ -1309,7 +1325,7 @@ Begin VB.Form frmMain
       End
       Begin VB.TextBox txtItemUses 
          Height          =   285
-         Left            =   -72720
+         Left            =   2280
          MaxLength       =   5
          TabIndex        =   47
          Text            =   "0"
@@ -1318,7 +1334,7 @@ Begin VB.Form frmMain
       End
       Begin VB.TextBox txtItemReset 
          Height          =   285
-         Left            =   -72720
+         Left            =   2280
          MaxLength       =   5
          TabIndex        =   46
          Text            =   "0"
@@ -1328,7 +1344,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtItemData1 
          Height          =   285
          Index           =   4
-         Left            =   -74280
+         Left            =   720
          MaxLength       =   5
          TabIndex        =   43
          Text            =   "0"
@@ -1338,7 +1354,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtItemData1 
          Height          =   285
          Index           =   3
-         Left            =   -74280
+         Left            =   720
          MaxLength       =   5
          TabIndex        =   41
          Text            =   "0"
@@ -1348,7 +1364,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtItemData1 
          Height          =   285
          Index           =   2
-         Left            =   -74280
+         Left            =   720
          MaxLength       =   5
          TabIndex        =   38
          Text            =   "0"
@@ -1358,7 +1374,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtItemData1 
          Height          =   285
          Index           =   1
-         Left            =   -74280
+         Left            =   720
          MaxLength       =   5
          TabIndex        =   37
          Text            =   "0"
@@ -1368,7 +1384,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtItemData1 
          Height          =   285
          Index           =   0
-         Left            =   -74280
+         Left            =   720
          MaxLength       =   5
          TabIndex        =   36
          Text            =   "0"
@@ -1378,7 +1394,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdItemWriting 
          Caption         =   "Writing"
          Height          =   285
-         Left            =   -73080
+         Left            =   1920
          TabIndex        =   34
          Top             =   6000
          Width           =   1275
@@ -1386,7 +1402,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtItemSpawnTimeout 
          Enabled         =   0   'False
          Height          =   285
-         Left            =   -72960
+         Left            =   2040
          MaxLength       =   2
          TabIndex        =   32
          Text            =   "1"
@@ -1396,7 +1412,7 @@ Begin VB.Form frmMain
       Begin VB.CheckBox chkItemSpawn 
          Caption         =   "Spawn"
          Height          =   255
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   30
          Top             =   4200
          Width           =   855
@@ -1404,7 +1420,7 @@ Begin VB.Form frmMain
       Begin VB.Frame Frame3 
          Caption         =   "Items"
          Height          =   3705
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   7
          Top             =   360
          Width           =   3075
@@ -1879,7 +1895,7 @@ Begin VB.Form frmMain
          BorderStyle     =   1  'Fixed Single
          Caption         =   "lblSurfaceNotes"
          Height          =   1785
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   107
          Top             =   480
          Width           =   3120
@@ -1888,7 +1904,7 @@ Begin VB.Form frmMain
          Alignment       =   1  'Right Justify
          Caption         =   "Trigger:"
          Height          =   240
-         Left            =   -73440
+         Left            =   1560
          TabIndex        =   106
          Top             =   5280
          Width           =   600
@@ -1905,7 +1921,7 @@ Begin VB.Form frmMain
             Strikethrough   =   0   'False
          EndProperty
          Height          =   240
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   83
          Top             =   6000
          Width           =   1185
@@ -1922,7 +1938,7 @@ Begin VB.Form frmMain
          Alignment       =   1  'Right Justify
          Caption         =   "Uses:"
          Height          =   285
-         Left            =   -73320
+         Left            =   1680
          TabIndex        =   48
          Top             =   4920
          Width           =   465
@@ -1931,7 +1947,7 @@ Begin VB.Form frmMain
          Alignment       =   1  'Right Justify
          Caption         =   "Reset:"
          Height          =   240
-         Left            =   -73440
+         Left            =   1560
          TabIndex        =   45
          Top             =   4560
          Width           =   600
@@ -1941,7 +1957,7 @@ Begin VB.Form frmMain
          Caption         =   "Data5:"
          Height          =   195
          Index           =   4
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   44
          Top             =   6000
          Width           =   465
@@ -1951,7 +1967,7 @@ Begin VB.Form frmMain
          Caption         =   "Data4:"
          Height          =   195
          Index           =   3
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   42
          Top             =   5640
          Width           =   465
@@ -1961,7 +1977,7 @@ Begin VB.Form frmMain
          Caption         =   "Data3:"
          Height          =   195
          Index           =   2
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   40
          Top             =   5280
          Width           =   465
@@ -1971,7 +1987,7 @@ Begin VB.Form frmMain
          Caption         =   "Data2:"
          Height          =   195
          Index           =   1
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   39
          Top             =   4920
          Width           =   465
@@ -1981,7 +1997,7 @@ Begin VB.Form frmMain
          Caption         =   "Data1:"
          Height          =   195
          Index           =   0
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   35
          Top             =   4560
          Width           =   465
@@ -1990,7 +2006,7 @@ Begin VB.Form frmMain
          Caption         =   "x 20 seconds"
          Enabled         =   0   'False
          Height          =   195
-         Left            =   -72600
+         Left            =   2400
          TabIndex        =   33
          Top             =   4200
          Width           =   975
@@ -2000,7 +2016,7 @@ Begin VB.Form frmMain
          Caption         =   "Timeout:"
          Enabled         =   0   'False
          Height          =   195
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   31
          Top             =   4200
          Width           =   615
@@ -2239,7 +2255,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 '########################################
 'Rpgwo Map Editor
-'Jonathan Valentin 2003-2004 aka Jon The Great
+'Jonathan Valentin 2003-20202 aka Jon The Great
 '########################################
 Option Explicit
 Dim ItemWriting As String
@@ -2267,8 +2283,10 @@ Dim LastMonster As Integer
 Dim LastMonsterName As String
 Dim LastItem As Integer
 Dim LastItemName As String
+
+
 Private Sub chkItemSpawn_Click()
-    If chkItemSpawn.Value = vbChecked Then
+    If chkItemSpawn.value = vbChecked Then
         lblItemSpawnTimeout2.Enabled = True
         lblitemSpawnTimeout.Enabled = True
         txtItemSpawnTimeout.Enabled = True
@@ -2362,7 +2380,7 @@ End Sub
 
 Private Sub hsMap_Change()
     If MapLoaded = False Then Exit Sub
-    viewXpos = hsMap.Value
+    viewXpos = hsMap.value
     Call modMain.RedrawMap
 
 
@@ -2370,7 +2388,7 @@ End Sub
 
 Private Sub hsMap_Scroll()
     If MapLoaded = False Then Exit Sub
-    viewXpos = hsMap.Value
+    viewXpos = hsMap.value
     Call modMain.RedrawMap
 End Sub
 
@@ -2413,7 +2431,7 @@ For y = 0 To UBound(Map, 2)
             ItemMap(x, y).TileY = ItemBoxes(SelectedItem).TileY
             ItemMap(x, y).ImageNumber = ItemBoxes(SelectedItem).ImageNumber
             ItemMap(x, y).ItemText = ItemWriting
-            ItemMap(x, y).ItemSpawn = chkItemSpawn.Value
+            ItemMap(x, y).ItemSpawn = chkItemSpawn.value
             ItemMap(x, y).ItemTimeOut = txtItemSpawnTimeout.Text
             ItemMap(x, y).Data1 = txtItemData1(0).Text
             ItemMap(x, y).Data2 = txtItemData1(1).Text
@@ -2442,9 +2460,9 @@ Private Sub mnuEditFindItem_Click()
                 'Show item tab
                 MFD.Tab = 1
                 LastItem = i
-                vsItem.Value = i
+                vsItem.value = i
                 For g = 0 To 19
-                    picItem(g).Tag = vsItem.Value + g
+                    picItem(g).Tag = vsItem.value + g
                 Next g
                 Call modItemDef.RedrawItemBoxes
                 'click on it
@@ -2456,9 +2474,9 @@ Private Sub mnuEditFindItem_Click()
                   'Show item tab
                 MFD.Tab = 1
                 LastItem = i
-                vsItem.Value = i
+                vsItem.value = i
                 For g = 0 To 19
-                    picItem(g).Tag = vsItem.Value + g
+                    picItem(g).Tag = vsItem.value + g
                 Next g
                 Call modItemDef.RedrawItemBoxes
                 'click on it
@@ -2488,9 +2506,9 @@ LastMonsterName = MonsterName
                 'Show monster tab
                 MFD.Tab = 2
                 LastMonster = i
-                vsMonster.Value = i
+                vsMonster.value = i
                 For g = 0 To 27
-                    picMonster(g).Tag = vsMonster.Value + g
+                    picMonster(g).Tag = vsMonster.value + g
                 Next g
                 Call modMonsterDef.RedrawMonsterBoxes
                 'click on it
@@ -2501,10 +2519,10 @@ LastMonsterName = MonsterName
              If InStr(1, UCase$(Trim$(Monsters(i).MonsterName)), UCase$(MonsterName), vbBinaryCompare) Then '(Trim(Monsters(i).MonsterName)) = UCase$(MonsterName) Then
                 'Show monster tab
                 MFD.Tab = 2
-                vsMonster.Value = i
+                vsMonster.value = i
                 LastMonster = i
                 For g = 0 To 27
-                    picMonster(g).Tag = vsMonster.Value + g
+                    picMonster(g).Tag = vsMonster.value + g
                 Next g
                 Call modMonsterDef.RedrawMonsterBoxes
                 'click on it
@@ -2528,9 +2546,9 @@ Private Sub mnuEditFindNextItem_Click()
                 'Show item tab
                 MFD.Tab = 1
                 LastItem = i
-                vsItem.Value = i
+                vsItem.value = i
                 For g = 0 To 19
-                    picItem(g).Tag = vsItem.Value + g
+                    picItem(g).Tag = vsItem.value + g
                 Next g
                 Call modItemDef.RedrawItemBoxes
                 'click on it
@@ -2543,10 +2561,10 @@ Private Sub mnuEditFindNextItem_Click()
                 MFD.Tab = 1
                 LastItem = i
               
-                vsItem.Value = i
+                vsItem.value = i
            
                 For g = 0 To 19
-                    picItem(g).Tag = vsItem.Value + g
+                    picItem(g).Tag = vsItem.value + g
                 Next g
                 Call modItemDef.RedrawItemBoxes
                 'click on it
@@ -2571,9 +2589,9 @@ Private Sub mnuEditFindNextMonster_Click()
                 'Show monster tab
                 MFD.Tab = 2
                 LastMonster = i
-                vsMonster.Value = i
+                vsMonster.value = i
                 For g = 0 To 27
-                    picMonster(g).Tag = vsMonster.Value + g
+                    picMonster(g).Tag = vsMonster.value + g
                 Next g
                 Call modMonsterDef.RedrawMonsterBoxes
                 'click on it
@@ -2584,10 +2602,10 @@ Private Sub mnuEditFindNextMonster_Click()
              If InStr(1, UCase$(Trim$(Monsters(i).MonsterName)), UCase$(LastMonsterName), vbBinaryCompare) Then '(Trim(Monsters(i).MonsterName)) = UCase$(MonsterName) Then
                 'Show monster tab
                 MFD.Tab = 2
-                vsMonster.Value = i
+                vsMonster.value = i
                 LastMonster = i
                 For g = 0 To 27
-                    picMonster(g).Tag = vsMonster.Value + g
+                    picMonster(g).Tag = vsMonster.value + g
                 Next g
                 Call modMonsterDef.RedrawMonsterBoxes
                 'click on it
@@ -2681,7 +2699,7 @@ Private Sub mnuFileClose_Click()
             MapSaved = False
             MapLoaded = False
             MapName = ""
-            Me.Caption = "RPGWO Editor (Version 1.0)"
+            Me.Caption = "RPGWO Editor (Version 2.0)"
             StatusBar.SimpleText = "Please open or create a new map to begin."
         End If
         If Response = vbNo Then
@@ -2691,7 +2709,7 @@ Private Sub mnuFileClose_Click()
             MapSaved = False
             MapLoaded = False
             MapName = ""
-            Me.Caption = "RPGWO Editor (Version 1.0)"
+            Me.Caption = "RPGWO Editor (Version 2.0)"
             StatusBar.SimpleText = "Please open or create a new map to begin."
         End If
         
@@ -2700,7 +2718,7 @@ Private Sub mnuFileClose_Click()
         MapSaved = False
         MapLoaded = False
         MapName = ""
-        Me.Caption = "RPGWO Editor (Version 1.0)"
+        Me.Caption = "RPGWO Editor (Version 2.0)"
     End If
     
 End Sub
@@ -2811,11 +2829,11 @@ Private Sub mnuFileImport_Click()
         End If
         If Response = vbNo Then
               With CommonDialog1
-                .Filename = ""
+                .filename = ""
                 .DialogTitle = "Open Map..."
                 .Filter = "Binary Towns (*.btm)|*.btm| Compact Binary Towns (*.cbt)|*.cbt"
                 .ShowOpen
-                If Len(.Filename) = 0 Then
+                If Len(.filename) = 0 Then
                     Exit Sub
                 End If
           
@@ -2823,11 +2841,11 @@ Private Sub mnuFileImport_Click()
         End If
         Else
             With CommonDialog1
-               .Filename = ""
+               .filename = ""
                .DialogTitle = "Open Map..."
                .Filter = "Binary Towns (*.btm)|*.btm| Compact Binary Towns (*.cbt)|*.cbt"
                 .ShowOpen
-                If Len(.Filename) = 0 Then
+                If Len(.filename) = 0 Then
                     Exit Sub
                 End If
              
@@ -2835,11 +2853,11 @@ Private Sub mnuFileImport_Click()
         End If
     Else
         With CommonDialog1
-           .Filename = ""
+           .filename = ""
            .DialogTitle = "Open Map..."
            .Filter = "Binary Towns (*.btm)|*.btm| Compact Binary Towns (*.cbt)|*.cbt"
             .ShowOpen
-            If Len(.Filename) = 0 Then
+            If Len(.filename) = 0 Then
                 Exit Sub
             End If
          
@@ -2847,13 +2865,13 @@ Private Sub mnuFileImport_Click()
     End If
     
     'Load cbt
-    If Right$(UCase$(CommonDialog1.Filename), 3) = "CBT" Then
+    If Right$(UCase$(CommonDialog1.filename), 3) = "CBT" Then
         Dim ItemCount As Long
         ReDim ArrayCbt(0)
         ReDim Map(210, 210)
         ReDim ItemMap(210, 210)
         ReDim MonsterMap(210, 210)
-        Open CommonDialog1.Filename For Binary Access Read Lock Read As #1
+        Open CommonDialog1.filename For Binary Access Read Lock Read As #1
             Get #1, , ItemCount
           
             ReDim Preserve ArrayCbt(ItemCount)
@@ -2875,19 +2893,19 @@ Private Sub mnuFileImport_Click()
         MapName = CommonDialog1.FileTitle
     
         frmMain.Caption = "RPGWO Edit [" & MapName & "][" & UBound(Map, 1) & " x " & UBound(Map, 2) & "]"
-        viewXpos = frmMain.hsMap.Value
-        viewYpos = frmMain.vsMap.Value
+        viewXpos = frmMain.hsMap.value
+        viewYpos = frmMain.vsMap.value
         RedrawMap
         MapLoaded = True
     End If
  'Load BTM
-    If Right$(UCase$(CommonDialog1.Filename), 3) = "BTM" Then
+    If Right$(UCase$(CommonDialog1.filename), 3) = "BTM" Then
 
       
         ReDim Map(255, 255)
         ReDim ItemMap(255, 255)
         ReDim MonsterMap(255, 255)
-        Open CommonDialog1.Filename For Binary Access Read Lock Read As #1
+        Open CommonDialog1.filename For Binary Access Read Lock Read As #1
             ReDim BinaryTown(1 To 201, 1 To 201)
             Get #1, , BinaryTown
     
@@ -2912,8 +2930,8 @@ Private Sub mnuFileImport_Click()
         MapName = CommonDialog1.FileTitle
     
         frmMain.Caption = "RPGWO Edit [" & MapName & "][" & UBound(Map, 1) & " x " & UBound(Map, 2) & "]"
-        viewXpos = frmMain.hsMap.Value
-        viewYpos = frmMain.vsMap.Value
+        viewXpos = frmMain.hsMap.value
+        viewYpos = frmMain.vsMap.value
         RedrawMap
         MapLoaded = True
     End If
@@ -2944,27 +2962,27 @@ Private Sub mnuFileNew_Click()
 End Sub
 
 Private Sub mnuFileOpen_Click()
-Dim Filename As String
+Dim filename As String
 Dim MapSize As Integer
 
 
     With CommonDialog1
-        .Filename = ""
+        .filename = ""
         .Filter = "Rpgwo Map Files (*.map)|*.map"
          .DialogTitle = "Open Map..."
         .ShowOpen
-        If Len(.Filename) = 0 Then
+        If Len(.filename) = 0 Then
             Exit Sub
         End If
-        Filename = .Filename
+        filename = .filename
     End With
     
 
     MapName = Left$(CommonDialog1.FileTitle, Len(CommonDialog1.FileTitle) - 4)
-    Call modRpgwoMapFormat.LoadRpgwoMap(Filename)
+    Call modRpgwoMapFormat.LoadRpgwoMap(filename)
    
     MapLoaded = True
-    MapSaved = False
+    MapSaved = True
     
     Call modMain.RedrawMap
     
@@ -2990,18 +3008,124 @@ Public Sub Init(Path As String)
 
     ReDim Monsters(750)
     ReDim Items(2100)
+    
+    Dim f As Long
+    
+    f = FreeFile
+    v2Map = False
+    
+    If FileExists(Path & "itemdef2.dat") = True Then
+    v2Map = True
+    
+    
+        'MsgBox "here"
+        Dim iRecordSize As Integer
+        Dim iUnknown As Integer
+        Dim iNumberOfRecords As Integer
+        f = FreeFile
+        Open Path & "\itemdef2.dat" For Binary As f
+            Get f, , iRecordSize
+            Get f, , iUnknown
+            Get f, , iNumberOfRecords
+            Get f, , iUnknown
+         ReDim Items2(iNumberOfRecords + 1)
+         ReDim Items(iNumberOfRecords + 1)
+         'Debug.Print iNumberOfRecords
+         
+        Get f, , Items2
+        Close f
+        Dim i As Integer
+        For i = 0 To iNumberOfRecords
+        Items(i).ItemName = Items2(i).ItemName
+        Items(i).Image = Items2(i).Image
+        Items(i).Animation1 = Items2(i).Animation1
+        Items(i).Animation2 = Items2(i).Animation2
+        Items(i).Animation3 = Items2(i).Animation3
+        Items(i).Animation4 = Items2(i).Animation4
+        Items(i).Animation5 = Items2(i).Animation5
+        Items(i).Animation6 = Items2(i).Animation6
+        Items(i).Animation7 = Items2(i).Animation7
+        Items(i).Animation8 = Items2(i).Animation8
+        Items(i).Animation9 = Items2(i).Animation9
+        Items(i).Class = Items2(i).Class
+        Items(i).ArmorLevel = Items2(i).ArmorLevel
+        'Items(I).ArmorSpot = Items2(I).ArmorSpot
+        Items(i).AttackSpeed = Items2(i).AttackSpeed
+        Items(i).BlockMovement = Items2(i).BlockMovement
+        Items(i).Burden = Items2(i).Burden
+        Items(i).ColdAL = Items2(i).ColdAL
+        'items(I).CombatSkill = Items2(I).CombatSkill
+        Items(i).CRITICALBONUS = Items2(i).CRITICALBONUS
+        Items(i).DamageHigh = Items2(i).DamageHigh
+        Items(i).DamageLow = Items2(i).DamageLow
+        Items(i).ElectricAL = Items2(i).ElectricAL
+        'Items(I).EssenceSteal = Items2(I).EssenceSteal
+        Items(i).FireAL = Items2(i).FireAL
+        Items(i).Food = Items2(i).Food
+        Items(i).FoodLife = Items2(i).FoodLife
+        Items(i).FoodMana = Items2(i).FoodMana
+        Items(i).FoodStamina = Items2(i).FoodStamina
+        Items(i).IgnoreShields = Items2(i).IgnoreShields
+        Items(i).ImageType = Items2(i).ImageType
+        Items(i).MagicArmorLevel = Items2(i).MagicArmorLevel
+        Items(i).MagicPower = Items2(i).MagicPower
+        Items(i).MissileWeapon = Items2(i).MissleWeapon
+        Items(i).PoisonCure = Items2(i).PoisonCure
+        Items(i).PoisonDamage = Items2(i).PoisonDamage
+        Items(i).Rarity = Items2(i).Rarity
+        Items(i).SHIELDBREAK = Items2(i).SHIELDBREAK
+        Items(i).SkillReq = Items2(i).SkillReq
+        Items(i).Stackable = Items2(i).Stackable
+        Items(i).STAMINADAMAGE = Items2(i).STAMINADAMAGE
+        Items(i).Twohandweapon = Items2(i).Twohandweapon
+        Items(i).value = Items2(i).value
+        Items(i).Warmth = Items2(i).Warmth
+        Items(i).Water = Items2(i).Water
+        Items(i).WeaponAl = Items2(i).WeaponAl
+        Items(i).WeaponMaxRange = Items2(i).WeaponMaxRange
+        
+         
+        Next i
 
-    Open Path & "itemdef.dat" For Binary As #1
-        ReDim Items(LOF(1) / 440)
-        Get #1, , Items
-    Close #1
-    Open Path & "monsterdef.dat" For Binary As #1
-        Get #1, , num
-        Get #1, , test
-        ReDim Monsters(num)
-        Get #1, , Monsters
-    Close #1
-  
+    
+        Dim test2 As String * 164
+        Dim size As Integer
+        f = FreeFile
+        Open Path & "\monsterdef.dat" For Binary As f
+            Get f, , size
+            ReDim Monsters2(size)
+            ReDim Monsters(size)
+      
+            Get f, , test2
+            Get f, , Monsters2
+        Close f
+        
+
+        For i = 0 To UBound(Monsters2)
+        Monsters(i).MonsterName = Monsters2(i).MonsterName
+        Monsters(i).Image = Monsters2(i).Image
+        Monsters(i).ImageType = Monsters2(i).ImageType
+        Monsters(i).Level = Monsters2(i).Level
+        Next
+    
+    
+    Else
+    
+    
+        Open Path & "itemdef.dat" For Binary As f
+            ReDim Items(LOF(f) / 440)
+            Get f, , Items
+        Close f
+        
+        f = FreeFile
+        Open Path & "monsterdef.dat" For Binary As f
+            Get f, , num
+            Get f, , test
+            ReDim Monsters(num)
+            Get f, , Monsters
+        Close f
+        
+     End If
 
     'Load Graphics
     StatusBar.SimpleText = "Loading Graphics"
@@ -3164,8 +3288,8 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
 If MapLoaded = False Then Exit Sub
 RefreshMini = True
 Dim CurX As Integer, CurY As Integer
-CurX = (Snap(x, 32) \ 32) + hsMap.Value
-CurY = (Snap(y, 32) \ 32) + vsMap.Value
+CurX = (Snap(x, 32) \ 32) + hsMap.value
+CurY = (Snap(y, 32) \ 32) + vsMap.value
 frmMain.Caption = "RPGWO Edit [" & MapName & "][" & UBound(Map, 1) & " x " & UBound(Map, 2) & "] *"
 'If button pressed paint tile
 If Button = 1 And SelectedTool = "Item Paint" Then
@@ -3177,7 +3301,7 @@ If Button = 1 And SelectedTool = "Item Paint" Then
     ItemMap(CurX, CurY).TileY = ItemBoxes(SelectedItem).TileY
     ItemMap(CurX, CurY).ImageNumber = ItemBoxes(SelectedItem).ImageNumber
     ItemMap(CurX, CurY).ItemText = ItemWriting
-    ItemMap(CurX, CurY).ItemSpawn = chkItemSpawn.Value
+    ItemMap(CurX, CurY).ItemSpawn = chkItemSpawn.value
     ItemMap(CurX, CurY).ItemTimeOut = txtItemSpawnTimeout.Text
     ItemMap(CurX, CurY).Data1 = txtItemData1(0).Text
     ItemMap(CurX, CurY).Data2 = txtItemData1(1).Text
@@ -3280,7 +3404,7 @@ If Button = 1 And SelectedTool = "Ground Paint" Then
    End If
 End If
 'Fill screen
-If Button = 1 And SelectedTool = "Ground Paint" And chkSurfaceFill.Value = vbChecked Then
+If Button = 1 And SelectedTool = "Ground Paint" And chkSurfaceFill.value = vbChecked Then
 For y = viewYpos To viewYpos + frmMain.pbxView.ScaleHeight \ 32
     For x = viewXpos To viewXpos + frmMain.pbxView.ScaleWidth \ 32
         If WaterOn = True Then
@@ -3339,10 +3463,10 @@ Shape1.Left = Snap(x, 32): Shape1.Top = Snap(y, 32)
     End If
 
 
-lblCursor.Caption = (Snap(x, 32) \ 32) + hsMap.Value & "," & (Snap(y, 32) \ 32) + vsMap.Value
+lblCursor.Caption = (Snap(x, 32) \ 32) + hsMap.value & "," & (Snap(y, 32) \ 32) + vsMap.value
 Dim CurX As Integer, CurY As Integer
-CurX = (Snap(x, 32) \ 32) + hsMap.Value
-CurY = (Snap(y, 32) \ 32) + vsMap.Value
+CurX = (Snap(x, 32) \ 32) + hsMap.value
+CurY = (Snap(y, 32) \ 32) + vsMap.value
 RangeX = CurX
 RangeY = CurY
 Dim OldX As Integer, OldY As Integer
@@ -3384,7 +3508,7 @@ If Button = 1 And SelectedTool = "Item Paint" Then
     ItemMap(CurX, CurY).TileX = ItemBoxes(SelectedItem).TileX
     ItemMap(CurX, CurY).TileY = ItemBoxes(SelectedItem).TileY
     ItemMap(CurX, CurY).ImageNumber = ItemBoxes(SelectedItem).ImageNumber
-    ItemMap(CurX, CurY).ItemSpawn = chkItemSpawn.Value
+    ItemMap(CurX, CurY).ItemSpawn = chkItemSpawn.value
     ItemMap(CurX, CurY).ItemTimeOut = txtItemSpawnTimeout.Text
     ItemMap(CurX, CurY).Data1 = txtItemData1(0).Text
     ItemMap(CurX, CurY).Data2 = txtItemData1(1).Text
@@ -3634,7 +3758,7 @@ End Sub
 Private Sub vsItem_Change()
     Dim i As Integer
     For i = 0 To 19
-        picItem(i).Tag = (vsItem.Value) + i
+        picItem(i).Tag = (vsItem.value) + i
     Next i
     Call modItemDef.RedrawItemBoxes
 End Sub
@@ -3642,21 +3766,21 @@ End Sub
 Private Sub vsItem_Scroll()
     Dim i As Integer
     For i = 0 To 19
-       picItem(i).Tag = (vsItem.Value) + i
+       picItem(i).Tag = (vsItem.value) + i
     Next i
     Call modItemDef.RedrawItemBoxes
 End Sub
 
 Private Sub vsMap_Change()
     If MapLoaded = False Then Exit Sub
-    viewYpos = vsMap.Value
+    viewYpos = vsMap.value
 
     Call modMain.RedrawMap
 End Sub
 
 Private Sub vsMap_Scroll()
     If MapLoaded = False Then Exit Sub
-    viewYpos = vsMap.Value
+    viewYpos = vsMap.value
 
     Call modMain.RedrawMap
 End Sub
@@ -3664,30 +3788,30 @@ End Sub
 Private Sub vsMonster_Change()
     Dim i As Integer
     For i = 0 To 27
-        picMonster(i).Tag = (vsMonster.Value) + i
+        picMonster(i).Tag = (vsMonster.value) + i
     Next i
     Call modMonsterDef.RedrawMonsterBoxes
 End Sub
 Public Sub SaveMap()
-Dim Filename As String
+Dim filename As String
 If MapLoaded = False Then
     MsgBox "No map loaded to save!"
     Exit Sub
 End If
     
     With CommonDialog1
-        .Filename = ""
+        .filename = ""
         .Filter = "Rpgwo Map (*.map)|*.map"
 
         .ShowSave
-        If Len(.Filename) = 0 Then
+        If Len(.filename) = 0 Then
             Exit Sub
         End If
-        Filename = .Filename
+        filename = .filename
     End With
 'Now write the map
 
-    Call modRpgwoMapFormat.SaveRpgwoMap(Filename)
+    Call modRpgwoMapFormat.SaveRpgwoMap(filename)
 
     frmMain.Caption = "RPGWO Edit [" & MapName & "][" & UBound(Map, 1) & " x " & UBound(Map, 2) & "] "
  
@@ -3696,19 +3820,19 @@ End Sub
 Private Sub vsMonster_Scroll()
     Dim i As Integer
     For i = 0 To 27
-        picMonster(i).Tag = (vsMonster.Value) + i
+        picMonster(i).Tag = (vsMonster.value) + i
     Next i
     Call modMonsterDef.RedrawMonsterBoxes
 End Sub
 
 Private Sub vsPencilWidth_Change()
-    txtSurfacePencilWidth = vsPencilWidth.Value
+    txtSurfacePencilWidth = vsPencilWidth.value
 End Sub
 
 Private Sub vsSurfaceElevational_Change()
     Dim i As Integer
     For i = 0 To 4
-        picSurfaceElevational(i).Tag = vsSurfaceElevational.Value + i
+        picSurfaceElevational(i).Tag = vsSurfaceElevational.value + i
     Next i
     Call modGround.RedrawElevationBoxes
 End Sub
@@ -3716,7 +3840,7 @@ End Sub
 Private Sub vsSurfaceElevational_Scroll()
     Dim i As Integer
     For i = 0 To 4
-        picSurfaceElevational(i).Tag = vsSurfaceElevational.Value + i
+        picSurfaceElevational(i).Tag = vsSurfaceElevational.value + i
     Next i
     Call modGround.RedrawElevationBoxes
 End Sub
@@ -3724,7 +3848,7 @@ End Sub
 Private Sub vsSurfaceFlat_Change()
     Dim i As Integer
     For i = 0 To 9
-        picSurfaceFlat(i).Tag = vsSurfaceFlat.Value + i
+        picSurfaceFlat(i).Tag = vsSurfaceFlat.value + i
     Next i
     Call modGround.RedrawGroundBoxes
 End Sub
@@ -3777,7 +3901,7 @@ End Function
 Private Sub vsSurfaceFlat_Scroll()
     Dim i As Integer
     For i = 0 To 9
-        picSurfaceFlat(i).Tag = vsSurfaceFlat.Value + i
+        picSurfaceFlat(i).Tag = vsSurfaceFlat.value + i
     Next i
     Call modGround.RedrawGroundBoxes
 End Sub
@@ -3831,23 +3955,23 @@ Private Function ReturnElevationIndex(Number As Integer) As Integer
 End Function
 Sub DoScrolling(x As Integer, y As Integer)
     If x < 0 Then
-        If hsMap.Value > hsMap.Min Then
-            hsMap.Value = hsMap.Value - 1
+        If hsMap.value > hsMap.Min Then
+            hsMap.value = hsMap.value - 1
         End If
     End If
     If x > pbxView.ScaleWidth Then
-        If hsMap.Value < hsMap.Max Then
-            hsMap.Value = hsMap.Value + 1
+        If hsMap.value < hsMap.Max Then
+            hsMap.value = hsMap.value + 1
         End If
     End If
     If y < 0 Then
-        If vsMap.Value > vsMap.Min Then
-            vsMap.Value = vsMap.Value - 1
+        If vsMap.value > vsMap.Min Then
+            vsMap.value = vsMap.value - 1
         End If
     End If
     If y > pbxView.ScaleHeight Then
-        If vsMap.Value < vsMap.Max Then
-            vsMap.Value = vsMap.Value + 1
+        If vsMap.value < vsMap.Max Then
+            vsMap.value = vsMap.value + 1
         End If
     End If
 End Sub

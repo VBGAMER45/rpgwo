@@ -1,4 +1,68 @@
 Attribute VB_Name = "modItemDef"
+Private Type Itemstype2
+   flgInUse As Boolean
+   ItemName As String * 30
+   Image As Integer
+   Animation1 As Integer
+   Animation2 As Integer
+   Animation3 As Integer
+   Animation4 As Integer
+   Animation5 As Integer
+   Animation6 As Integer
+   Animation7 As Integer
+   Animation8 As Integer
+   Animation9 As Integer
+   ImageType As Byte
+   Class As Integer
+   Burden As Integer
+   value As Integer
+   un1 As Integer
+   un2 As Integer
+   BlockMovement As Boolean
+   Food As Integer ' food
+   Water As Integer
+   FoodLife  As Integer
+   FoodStamina As Integer
+   FoodMana As Integer
+   PoisonCure As Integer
+   PoisonDamage As Integer
+   junk2 As String * 2
+   Stackable As Boolean
+   Rarity As Integer
+   junk3 As String * 4
+   CombatSkill As Integer
+   WeaponMaxRange As Integer
+   DamageLow As Integer
+   DamageHigh As Integer
+   AttackSpeed As Single
+   MissleWeapon As Boolean
+   MagicPower As Single
+   EssenceSteal As Integer
+   Twohandweapon As Boolean
+   IgnoreShields As Boolean
+   un56 As Integer
+   WeaponAl As Integer
+   SHIELDBREAK As Boolean
+   STAMINADAMAGE As Boolean
+   CRITICALBONUS  As Integer
+   SkillReq As Integer
+   ArmorSpot As Integer
+   ArmorLevel As Integer
+   MagicArmorLevel As Integer
+   junk5 As String * 8
+   FireAL  As Integer
+   ColdAL As Integer
+   ElectricAL As Integer
+   Warmth As Integer
+   
+   junk As String * 102
+
+End Type
+Global Items2() As Itemstype2
+
+
+
+
 
 Global Items() As Itemstype
 Private Type ItemBox
@@ -26,7 +90,7 @@ Private Type Itemstype
    Animation8 As Integer
    Animation9 As Integer
    Class As Integer
-   Value  As Integer
+   value  As Integer
    d2 As Integer ' ?
    Size As Integer '?
    Burden As Integer
@@ -76,10 +140,10 @@ Private Type Itemstype
     k7 As Integer
     k8 As Integer
   NODROP As Boolean
-  TwoHandWeapon As Boolean
+  Twohandweapon As Boolean
   Readable As Boolean
   STARTERSKILL As Integer
-  IGNORESHIELDS As Boolean
+  IgnoreShields As Boolean
   NoDeathDrop As Boolean
   Group As Integer
   MAGICSTABILITY As Integer
@@ -117,7 +181,7 @@ Private Type Itemstype
  INVISIBLE As Boolean
  TraderMax As Integer
  AlwaysStock As Boolean
- WEAPONAL As Integer
+ WeaponAl As Integer
  SHIELDBREAK As Boolean
  STAMINADAMAGE As Boolean
  NOTPICKUPABLE As Boolean
