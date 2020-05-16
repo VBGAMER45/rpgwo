@@ -330,12 +330,14 @@ Attribute VB_Exposed = False
 Private Const MAX_COMPUTERNAME_LENGTH As Long = 31
 Private Declare Function GetComputerName Lib "kernel32" Alias "GetComputerNameA" (ByVal lpBuffer As String, nSize As Long) As Long
 Dim TileX As Integer, TileY As Integer, ImageFile As Integer
+Dim v2 As Boolean
+
 
 Private Sub cmdMakeIni_Click()
-
+Dim emptyItemName As String * 30
 Open PathLocation & "item.ini" For Output As #1
 For I = 0 To UBound(Items)
-    If Items(I).Class <> 0 Then
+    If Items(I).ItemName <> "" And Items(I).ItemName <> emptyItemName Then
      Print #1, "Item=" & I + 1
      Print #1, "Name=" & Items(I).ItemName
      Print #1, "Class=" & ReturnClassName(Items(I).Class)
@@ -347,7 +349,7 @@ For I = 0 To UBound(Items)
         Print #1, "ImageType=" & Items(I).ImageType
      End If
         
-     If Trim(Items(I).ClassSubType) <> "" Then
+     If Trim(Items(I).ClassSubType) <> "" And v2 = False Then
         Print #1, "SubType=" & Items(I).ClassSubType
      End If
      '###Animation
@@ -380,12 +382,24 @@ For I = 0 To UBound(Items)
         Print #1, "Animation9=" & Items(I).Animation9
      End If
      'End animation
+     
+     If Items(I).Burden <> 0 Then
      Print #1, "Burden=" & Items(I).Burden
+     End If
+     
      If Items(I).Light <> 0 Then
         Print #1, "Light=" & Items(I).Light
      End If
-     Print #1, "Value=" & Items(I).Value
+     
+     If Items(I).value <> 0 Then
+     Print #1, "Value=" & Items(I).value
+     
+     End If
+     
+     If Items(I).Group <> 0 Then
      Print #1, "Group=" & Items(I).Group
+     End If
+     
      If Items(I).WearImage <> 0 Then
         Print #1, "WearImage=" & Items(I).WearImage
      End If
@@ -410,6 +424,14 @@ For I = 0 To UBound(Items)
      If Items(I).STARTERSKILL <> 0 Then
         Print #1, "StarterSkill=" & Items(I).STARTERSKILL
      End If
+     
+     If v2 = True Then
+     
+        If Items2(I).ArmorSpot <> 0 Then
+           Print #1, "ArmorSpot=" & Items2(I).ArmorSpot
+        End If
+     End If
+     
      If Items(I).ArmorLevel <> 0 Then
         Print #1, "ArmorLevel=" & Items(I).ArmorLevel
      End If
@@ -419,7 +441,7 @@ For I = 0 To UBound(Items)
      If Items(I).ATTACKANIMATION <> 0 Then
         Print #1, "AttackAnimation=" & Items(I).ATTACKANIMATION
      End If
-     If Items(I).WeaponMaxRange <> 1 Then
+     If Items(I).WeaponMaxRange <> 1 And Items(I).WeaponMaxRange <> 0 Then
         Print #1, "WeaponMaxRange=" & Items(I).WeaponMaxRange
      End If
      If Items(I).WeaponDurability <> 0 Then
@@ -518,16 +540,24 @@ For I = 0 To UBound(Items)
      If Items(I).GROWTHSPROUTITEM <> 0 Then
         Print #1, "GROWTHSPROUTITEM=" & Items(I).GROWTHSPROUTITEM
      End If
-     If Items(I).WEAPONAL <> 0 Then
-        Print #1, "WEAPONAL=" & Items(I).WEAPONAL
+     If Items(I).WeaponAl <> 0 Then
+        Print #1, "WEAPONAL=" & Items(I).WeaponAl
      End If
+     If v2 = True Then
+     
+        If Items2(I).EssenceSteal <> 0 Then
+           Print #1, "EssenceSteal=" & Items2(I).EssenceSteal
+        End If
+     End If
+     
+
      'Booleans
      If Items(I).EXPLODESHELL = True Then Print #1, "EXPLODESHELL"
      If Items(I).FASTPROJECTILE = True Then Print #1, "FASTPROJECTILE"
      If Items(I).NotMovable = True Then Print #1, "NotMovable"
      If Items(I).BlockMovement = True Then Print #1, "BlockMovement=1"
      If Items(I).Stackable = True Then Print #1, "Stackable"
-     If Items(I).TwoHandWeapon = True Then Print #1, "2handweapon"
+     If Items(I).Twohandweapon = True Then Print #1, "2handweapon"
      If Items(I).MissileWeapon = True Then Print #1, "MissleWeapon=True"
      If Items(I).OneAllowed = True Then Print #1, "OneAllowed"
      If Items(I).Postable = True Then Print #1, "Postable"
@@ -538,7 +568,7 @@ For I = 0 To UBound(Items)
      If Items(I).OpenLineofSight = True Then Print #1, "OPENSIGHTLINE"
      If Items(I).LOCKABLE = True Then Print #1, "LOCKABLE"
      If Items(I).NODROP = True Then Print #1, "NODROP"
-     If Items(I).IGNORESHIELDS = True Then Print #1, "IGNORESHIELDS"
+     If Items(I).IgnoreShields = True Then Print #1, "IGNORESHIELDS"
      If Items(I).INNKEY = True Then Print #1, "INNKEY"
      If Items(I).DESTROYABLE = True Then Print #1, "DESTROYABLE"
      If Items(I).INNDOOR = True Then Print #1, "INNDOOR"
@@ -628,6 +658,8 @@ Close f
 End If
 
 If FileExists(PathLocation & "\itemdef2.dat") Then
+v2 = True
+
 'MsgBox "here"
 Dim iRecordSize As Integer
 Dim iUnknown As Integer
@@ -658,6 +690,42 @@ Items(I).Animation7 = Items2(I).Animation7
 Items(I).Animation8 = Items2(I).Animation8
 Items(I).Animation9 = Items2(I).Animation9
 Items(I).Class = Items2(I).Class
+Items(I).ArmorLevel = Items2(I).ArmorLevel
+'Items(I).ArmorSpot = Items2(I).ArmorSpot
+Items(I).AttackSpeed = Items2(I).AttackSpeed
+Items(I).BlockMovement = Items2(I).BlockMovement
+Items(I).Burden = Items2(I).Burden
+Items(I).ColdAL = Items2(I).ColdAL
+'items(I).CombatSkill = Items2(I).CombatSkill
+Items(I).CRITICALBONUS = Items2(I).CRITICALBONUS
+Items(I).DamageHigh = Items2(I).DamageHigh
+Items(I).DamageLow = Items2(I).DamageLow
+Items(I).ElectricAL = Items2(I).ElectricAL
+'Items(I).EssenceSteal = Items2(I).EssenceSteal
+Items(I).FireAL = Items2(I).FireAL
+Items(I).Food = Items2(I).Food
+Items(I).FoodLife = Items2(I).FoodLife
+Items(I).FoodMana = Items2(I).FoodMana
+Items(I).FoodStamina = Items2(I).FoodStamina
+Items(I).IgnoreShields = Items2(I).IgnoreShields
+Items(I).ImageType = Items2(I).ImageType
+Items(I).MagicArmorLevel = Items2(I).MagicArmorLevel
+Items(I).MagicPower = Items2(I).MagicPower
+Items(I).MissileWeapon = Items2(I).MissleWeapon
+Items(I).PoisonCure = Items2(I).PoisonCure
+Items(I).PoisonDamage = Items2(I).PoisonDamage
+Items(I).Rarity = Items2(I).Rarity
+Items(I).SHIELDBREAK = Items2(I).SHIELDBREAK
+Items(I).SkillReq = Items2(I).SkillReq
+Items(I).Stackable = Items2(I).Stackable
+Items(I).STAMINADAMAGE = Items2(I).STAMINADAMAGE
+Items(I).Twohandweapon = Items2(I).Twohandweapon
+Items(I).value = Items2(I).value
+Items(I).Warmth = Items2(I).Warmth
+Items(I).Water = Items2(I).Water
+Items(I).WeaponAl = Items2(I).WeaponAl
+Items(I).WeaponMaxRange = Items2(I).WeaponMaxRange
+
  
 Next I
 
@@ -667,40 +735,40 @@ End If
 
 HScroll1.Max = UBound(Items)
     'lblLevel.Caption = "Level: " & Monsters(HScroll1.Value).Level
-    lblName.Caption = "ItemName: " & Items(HScroll1.Value).ItemName
-    lbNumber.Caption = "ItemID: " & HScroll1.Value + 1
-    lblBurden.Caption = "Burden:" & Items(HScroll1.Value).Burden
-    lblValue.Caption = "Value:" & Items(HScroll1.Value).Value
-    lblanimation.Caption = "Animation0: " & Items(HScroll1.Value).Image & " Animation1: " & Items(HScroll1.Value).Animation1 & " Animation2: " & Items(HScroll1.Value).Animation2 & " Animation3: " & Items(HScroll1.Value).Animation3 & " Animation4: " & Items(HScroll1.Value).Animation4
-    lblanimation.Caption = lblanimation.Caption & "Animation5: " & Items(HScroll1.Value).Animation5 & " Animation6: " & Items(HScroll1.Value).Animation6 & " Animation7: " & Items(HScroll1.Value).Animation7 & " Animation8: " & Items(HScroll1.Value).Animation8 & " Animation9: " & Items(HScroll1.Value).Animation9
-    lblArmorLevel.Caption = "ArmorLevel:" & Items(HScroll1.Value).ArmorLevel
-    lblattackspeed.Caption = "Attack Speed:" & Items(HScroll1.Value).AttackSpeed
-    lbllow.Caption = "Damage Low:" & Items(HScroll1.Value).DamageLow
-    lblhigh.Caption = "Damage High:" & Items(HScroll1.Value).DamageHigh
-    lblDegradeItem.Caption = "DegradeItem:" & Items(HScroll1.Value).DegradeItem
-    lblDegradeDelta.Caption = "DegradeDelta:" & Items(HScroll1.Value).DegradeDelta
-    lblGrowthDelta.Caption = "GrowthDelta:" & Items(HScroll1.Value).GrowthDelta
-    lblGrowthItem.Caption = "GrowthItem:" & Items(HScroll1.Value).GrowthItem
-    lblGrowthWater.Caption = "GrowthWater:" & Items(HScroll1.Value).GrowthWater
-    lblWeaponMaxRange.Caption = "WeaponMaxRange:" & Items(HScroll1.Value).WeaponMaxRange
-    lblFood.Caption = "Food:" & Items(HScroll1.Value).Food
-    lblWater.Caption = "Water:" & Items(HScroll1.Value).Water
-    lblFoodLife.Caption = "FoodLife:" & Items(HScroll1.Value).FoodLife
-    lblFoodStamina.Caption = "FoodStamina:" & Items(HScroll1.Value).FoodStamina
-    lblFoodMana.Caption = "FoodMana:" & Items(HScroll1.Value).FoodMana
-    lblPoisonCure.Caption = "PoisonCure:" & Items(HScroll1.Value).PoisonCure
-    lblPoisonDamage.Caption = "PoisonDamage:" & Items(HScroll1.Value).PoisonDamage
-    lblLight.Caption = "Light:" & Items(HScroll1.Value).Light
-    lblMagicArmorLevel.Caption = "MagicArmorLevel:" & Items(HScroll1.Value).MagicArmorLevel
-    lblHoldDamage.Caption = "HoldDamage:" & Items(HScroll1.Value).HoldDamage
-    lblStandDamage.Caption = "StandDamage:" & Items(HScroll1.Value).StandDamage
-    lblMagicPower.Caption = "MagicPower:" & Items(HScroll1.Value).MagicPower
-    lblMagicBreakChance.Caption = "MagicBreakChance:" & Items(HScroll1.Value).MagicBreakChance
-    lblMagicBreakItemID.Caption = "MagicBreakItemID:" & Items(HScroll1.Value).MagicBreakItemID
-    lblMagicBreakDamage.Caption = "MagicBreakDamage:" & Items(HScroll1.Value).MagicBreakDamage
-    lblblock.Caption = "BlockMovement:" & Items(HScroll1.Value).BlockMovement
+    lblName.Caption = "ItemName: " & Items(HScroll1.value).ItemName
+    lbNumber.Caption = "ItemID: " & HScroll1.value + 1
+    lblBurden.Caption = "Burden:" & Items(HScroll1.value).Burden
+    lblValue.Caption = "Value:" & Items(HScroll1.value).value
+    lblanimation.Caption = "Animation0: " & Items(HScroll1.value).Image & " Animation1: " & Items(HScroll1.value).Animation1 & " Animation2: " & Items(HScroll1.value).Animation2 & " Animation3: " & Items(HScroll1.value).Animation3 & " Animation4: " & Items(HScroll1.value).Animation4
+    lblanimation.Caption = lblanimation.Caption & "Animation5: " & Items(HScroll1.value).Animation5 & " Animation6: " & Items(HScroll1.value).Animation6 & " Animation7: " & Items(HScroll1.value).Animation7 & " Animation8: " & Items(HScroll1.value).Animation8 & " Animation9: " & Items(HScroll1.value).Animation9
+    lblArmorLevel.Caption = "ArmorLevel:" & Items(HScroll1.value).ArmorLevel
+    lblattackspeed.Caption = "Attack Speed:" & Items(HScroll1.value).AttackSpeed
+    lbllow.Caption = "Damage Low:" & Items(HScroll1.value).DamageLow
+    lblhigh.Caption = "Damage High:" & Items(HScroll1.value).DamageHigh
+    lblDegradeItem.Caption = "DegradeItem:" & Items(HScroll1.value).DegradeItem
+    lblDegradeDelta.Caption = "DegradeDelta:" & Items(HScroll1.value).DegradeDelta
+    lblGrowthDelta.Caption = "GrowthDelta:" & Items(HScroll1.value).GrowthDelta
+    lblGrowthItem.Caption = "GrowthItem:" & Items(HScroll1.value).GrowthItem
+    lblGrowthWater.Caption = "GrowthWater:" & Items(HScroll1.value).GrowthWater
+    lblWeaponMaxRange.Caption = "WeaponMaxRange:" & Items(HScroll1.value).WeaponMaxRange
+    lblFood.Caption = "Food:" & Items(HScroll1.value).Food
+    lblWater.Caption = "Water:" & Items(HScroll1.value).Water
+    lblFoodLife.Caption = "FoodLife:" & Items(HScroll1.value).FoodLife
+    lblFoodStamina.Caption = "FoodStamina:" & Items(HScroll1.value).FoodStamina
+    lblFoodMana.Caption = "FoodMana:" & Items(HScroll1.value).FoodMana
+    lblPoisonCure.Caption = "PoisonCure:" & Items(HScroll1.value).PoisonCure
+    lblPoisonDamage.Caption = "PoisonDamage:" & Items(HScroll1.value).PoisonDamage
+    lblLight.Caption = "Light:" & Items(HScroll1.value).Light
+    lblMagicArmorLevel.Caption = "MagicArmorLevel:" & Items(HScroll1.value).MagicArmorLevel
+    lblHoldDamage.Caption = "HoldDamage:" & Items(HScroll1.value).HoldDamage
+    lblStandDamage.Caption = "StandDamage:" & Items(HScroll1.value).StandDamage
+    lblMagicPower.Caption = "MagicPower:" & Items(HScroll1.value).MagicPower
+    lblMagicBreakChance.Caption = "MagicBreakChance:" & Items(HScroll1.value).MagicBreakChance
+    lblMagicBreakItemID.Caption = "MagicBreakItemID:" & Items(HScroll1.value).MagicBreakItemID
+    lblMagicBreakDamage.Caption = "MagicBreakDamage:" & Items(HScroll1.value).MagicBreakDamage
+    lblblock.Caption = "BlockMovement:" & Items(HScroll1.value).BlockMovement
     
-    Call CacluateItemXY(HScroll1.Value)
+    Call CacluateItemXY(HScroll1.value)
     Call PaintItem
 End Sub
 
@@ -756,41 +824,41 @@ Private Sub HScroll1_Change()
 End Sub
 Sub DoValues()
  
-    lblName.Caption = "ItemName: " & Items(HScroll1.Value).ItemName
-    lbNumber.Caption = "ItemID: " & HScroll1.Value + 1
-    lblBurden.Caption = "Burden:" & Items(HScroll1.Value).Burden
-    lblValue.Caption = "Value:" & Items(HScroll1.Value).Value
-    lblArmorLevel.Caption = "ArmorLevel:" & Items(HScroll1.Value).ArmorLevel
-    lblattackspeed.Caption = "Attack Speed:" & Items(HScroll1.Value).AttackSpeed
-    lblanimation.Caption = "Animation0: " & Items(HScroll1.Value).Image & " Animation1: " & Items(HScroll1.Value).Animation1 & " Animation2: " & Items(HScroll1.Value).Animation2 & " Animation3: " & Items(HScroll1.Value).Animation3 & " Animation4: " & Items(HScroll1.Value).Animation4
-    lblanimation.Caption = lblanimation.Caption & "Animation5: " & Items(HScroll1.Value).Animation5 & " Animation6: " & Items(HScroll1.Value).Animation6 & " Animation7: " & Items(HScroll1.Value).Animation7 & " Animation8: " & Items(HScroll1.Value).Animation8 & " Animation9: " & Items(HScroll1.Value).Animation9
-    lbllow.Caption = "Damage Low:" & Items(HScroll1.Value).DamageLow
-    lblhigh.Caption = "Damage High:" & Items(HScroll1.Value).DamageHigh
-    lblDegradeItem.Caption = "DegradeItem:" & Items(HScroll1.Value).DegradeItem
-    lblDegradeDelta.Caption = "DegradeDelta:" & Items(HScroll1.Value).DegradeDelta
-    lblGrowthDelta.Caption = "GrowthDelta:" & Items(HScroll1.Value).GrowthDelta
-    lblGrowthItem.Caption = "GrowthItem:" & Items(HScroll1.Value).GrowthItem
-    lblGrowthWater.Caption = "GrowthWater:" & Items(HScroll1.Value).GrowthWater
-    lblWeaponMaxRange.Caption = "WeaponMaxRange:" & Items(HScroll1.Value).WeaponMaxRange
-    lblFood.Caption = "Food:" & Items(HScroll1.Value).Food
-    lblWater.Caption = "Water:" & Items(HScroll1.Value).Water
-    lblFoodLife.Caption = "FoodLife:" & Items(HScroll1.Value).FoodLife
-    lblFoodStamina.Caption = "FoodStamina:" & Items(HScroll1.Value).FoodStamina
-    lblFoodMana.Caption = "FoodMana:" & Items(HScroll1.Value).FoodMana
-    lblPoisonCure.Caption = "PoisonCure:" & Items(HScroll1.Value).PoisonCure
-    lblPoisonDamage.Caption = "PoisonDamage:" & Items(HScroll1.Value).PoisonDamage
-    lblLight.Caption = "Light:" & Items(HScroll1.Value).Light
-    lblMagicArmorLevel.Caption = "MagicArmorLevel:" & Items(HScroll1.Value).MagicArmorLevel
-    lblHoldDamage.Caption = "HoldDamage:" & Items(HScroll1.Value).HoldDamage
-    lblStandDamage.Caption = "StandDamage:" & Items(HScroll1.Value).StandDamage
-    lblMagicPower.Caption = "MagicPower:" & Items(HScroll1.Value).MagicPower
-    lblMagicBreakChance.Caption = "MagicBreakChance:" & Items(HScroll1.Value).MagicBreakChance
-    lblMagicBreakItemID.Caption = "MagicBreakItemID:" & Items(HScroll1.Value).MagicBreakItemID
-    lblMagicBreakDamage.Caption = "MagicBreakDamage:" & Items(HScroll1.Value).MagicBreakDamage
-    lblblock.Caption = "BlockMovement:" & Items(HScroll1.Value).BlockMovement
+    lblName.Caption = "ItemName: " & Items(HScroll1.value).ItemName
+    lbNumber.Caption = "ItemID: " & HScroll1.value + 1
+    lblBurden.Caption = "Burden:" & Items(HScroll1.value).Burden
+    lblValue.Caption = "Value:" & Items(HScroll1.value).value
+    lblArmorLevel.Caption = "ArmorLevel:" & Items(HScroll1.value).ArmorLevel
+    lblattackspeed.Caption = "Attack Speed:" & Items(HScroll1.value).AttackSpeed
+    lblanimation.Caption = "Animation0: " & Items(HScroll1.value).Image & " Animation1: " & Items(HScroll1.value).Animation1 & " Animation2: " & Items(HScroll1.value).Animation2 & " Animation3: " & Items(HScroll1.value).Animation3 & " Animation4: " & Items(HScroll1.value).Animation4
+    lblanimation.Caption = lblanimation.Caption & "Animation5: " & Items(HScroll1.value).Animation5 & " Animation6: " & Items(HScroll1.value).Animation6 & " Animation7: " & Items(HScroll1.value).Animation7 & " Animation8: " & Items(HScroll1.value).Animation8 & " Animation9: " & Items(HScroll1.value).Animation9
+    lbllow.Caption = "Damage Low:" & Items(HScroll1.value).DamageLow
+    lblhigh.Caption = "Damage High:" & Items(HScroll1.value).DamageHigh
+    lblDegradeItem.Caption = "DegradeItem:" & Items(HScroll1.value).DegradeItem
+    lblDegradeDelta.Caption = "DegradeDelta:" & Items(HScroll1.value).DegradeDelta
+    lblGrowthDelta.Caption = "GrowthDelta:" & Items(HScroll1.value).GrowthDelta
+    lblGrowthItem.Caption = "GrowthItem:" & Items(HScroll1.value).GrowthItem
+    lblGrowthWater.Caption = "GrowthWater:" & Items(HScroll1.value).GrowthWater
+    lblWeaponMaxRange.Caption = "WeaponMaxRange:" & Items(HScroll1.value).WeaponMaxRange
+    lblFood.Caption = "Food:" & Items(HScroll1.value).Food
+    lblWater.Caption = "Water:" & Items(HScroll1.value).Water
+    lblFoodLife.Caption = "FoodLife:" & Items(HScroll1.value).FoodLife
+    lblFoodStamina.Caption = "FoodStamina:" & Items(HScroll1.value).FoodStamina
+    lblFoodMana.Caption = "FoodMana:" & Items(HScroll1.value).FoodMana
+    lblPoisonCure.Caption = "PoisonCure:" & Items(HScroll1.value).PoisonCure
+    lblPoisonDamage.Caption = "PoisonDamage:" & Items(HScroll1.value).PoisonDamage
+    lblLight.Caption = "Light:" & Items(HScroll1.value).Light
+    lblMagicArmorLevel.Caption = "MagicArmorLevel:" & Items(HScroll1.value).MagicArmorLevel
+    lblHoldDamage.Caption = "HoldDamage:" & Items(HScroll1.value).HoldDamage
+    lblStandDamage.Caption = "StandDamage:" & Items(HScroll1.value).StandDamage
+    lblMagicPower.Caption = "MagicPower:" & Items(HScroll1.value).MagicPower
+    lblMagicBreakChance.Caption = "MagicBreakChance:" & Items(HScroll1.value).MagicBreakChance
+    lblMagicBreakItemID.Caption = "MagicBreakItemID:" & Items(HScroll1.value).MagicBreakItemID
+    lblMagicBreakDamage.Caption = "MagicBreakDamage:" & Items(HScroll1.value).MagicBreakDamage
+    lblblock.Caption = "BlockMovement:" & Items(HScroll1.value).BlockMovement
     
         
-    Call CacluateItemXY(HScroll1.Value)
+    Call CacluateItemXY(HScroll1.value)
     Call PaintItem
 End Sub
 Private Sub LoadItems(Path As String)
