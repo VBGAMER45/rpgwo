@@ -59,10 +59,10 @@ On Error Resume Next
     Dim x As Long, y As Long, i As Long
     Dim f As Long
     f = FreeFile
-    Open Filename For Binary Access Read Lock Read As #f
-        Get #f, , mMapWidth
-        Get #f, , mMapHeight
-        Get #f, , mMapVersion
+    Open Filename For Binary Access Read Lock Read As f
+        Get f, , mMapWidth
+        Get f, , mMapHeight
+        Get f, , mMapVersion
             
         If mMapVersion = "2.0       RPGWO Edit          " Then
             v2Map = True
@@ -138,7 +138,7 @@ On Error Resume Next
         
         
         'Get Notes
-    Close #f
+    Close f
 
 
     'Do all the resizing and moving arrays

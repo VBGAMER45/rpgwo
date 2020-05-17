@@ -71,11 +71,11 @@ Global mMonsters() As mMonsterType
 Sub SaveRpgwoMap(Filename As String)
 Dim f As Long
 f = FreeFile
-Open Filename For Binary Access Write Lock Write As #1
-    Put #f, , mMapWidth
-    Put #f, , mMapHeight
-    Put #f, , mMapVersion
-    Put #f, , mMapExtra
+Open Filename For Binary Access Write Lock Write As f
+    Put f, , mMapWidth
+    Put f, , mMapHeight
+    Put f, , mMapVersion
+    Put f, , mMapExtra
     mNumberOfMonsters = mNumberOfMonsters - 1
     mNumberOfItems = mNumberOfItems - 1
     
@@ -110,52 +110,52 @@ Open Filename For Binary Access Write Lock Write As #1
      Next x
      ReDim Preserve tempmMapData(1 To UBound(tempmMapData) - 1)
     
-    Put #1, , MapSizeTotalCount
-    Put #1, , unk1
+    Put f, , MapSizeTotalCount
+    Put f, , unk1
     
     
-    Put #1, , tempmMapData
+    Put f, , tempmMapData
     
     
     If v2Map = True Then
     
     
-     Put #f, , mv2NumberOfItems
+     Put f, , mv2NumberOfItems
     ' MsgBox mNumberOfItems
      'ReDim mItems(1 To mNumberOfItems)
      If mv2NumberOfItems > 0 Then
      ReDim Preserve mItems(1 To modRpgwoMapFormat.mNumberOfItems)
-     Put #f, , mItems
+     Put f, , mItems
      End If
      'MsgBox Loc(1)
-     Put #f, , mv2NumberOfMonsters
+     Put f, , mv2NumberOfMonsters
      'MsgBox mNumberOfMonsters
      'ReDim mMonsters(1 To mNumberOfMonsters)
      If mv2NumberOfMonsters > 0 Then
        ReDim Preserve mMonsters(1 To modRpgwoMapFormat.mNumberOfMonsters)
-        Put #f, , mMonsters
+        Put f, , mMonsters
      End If
     
     
     Else
     
-     Put #f, , mNumberOfItems
+     Put f, , mNumberOfItems
     ' MsgBox mNumberOfItems
      'ReDim mItems(1 To mNumberOfItems)
      If mNumberOfItems > 0 Then
         ReDim Preserve mItems(1 To modRpgwoMapFormat.mNumberOfItems)
-        Put #f, , mItems
+        Put f, , mItems
      End If
      
      
      'MsgBox Loc(1)
-     Put #f, , mNumberOfMonsters
+     Put f, , mNumberOfMonsters
      
      'MsgBox mNumberOfMonsters
      'ReDim mMonsters(1 To mNumberOfMonsters)
      If mNumberOfMonsters > 0 Then
        ReDim Preserve mMonsters(1 To modRpgwoMapFormat.mNumberOfMonsters)
-        Put #f, , mMonsters
+        Put f, , mMonsters
      End If
     
     
@@ -163,10 +163,10 @@ Open Filename For Binary Access Write Lock Write As #1
     
     Dim k As Integer
     k = 5000
-    Put #f, , k
+    Put f, , k
     Dim notes As String
     notes = Space(k)
-    Put #f, , notes
+    Put f, , notes
     'Get Notes
-Close #f
+Close f
 End Sub
