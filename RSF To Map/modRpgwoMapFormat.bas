@@ -7,6 +7,12 @@ Global mMapNotes As String * 5000
 Global mNumberOfItems As Integer
 Global mNumberOfMonsters As Integer
 
+Global mv2NumberOfItems  As Long
+Global mv2NumberOfMonsters As Long
+
+
+Global v2Map As Boolean
+
 Private Type mItemType
     a As Boolean
     c As Integer
@@ -35,7 +41,27 @@ Private Type mMonsterType
     Timeout As Integer
     Junk10 As String * 31
 End Type
-    
+
+
+'V2/v3 RPGWO
+Private Type Montype2
+   d As String * 4
+   MonsterName As String * 50
+   Image As Integer
+   ImageType As Integer
+   Level As Integer
+   test As String * 102
+End Type
+Global Monsters2() As Montype2
+
+
+Private Type mMapDataType
+    Xpos As Integer
+    Ypos As Integer
+    Surface As Integer
+End Type
+Dim tempmMapData() As mMapDataType
+
 Global mMap() As Integer
 Global mItems() As mItemType
 Global mMonsters() As mMonsterType
@@ -43,34 +69,104 @@ Global mMonsters() As mMonsterType
 
 
 Sub SaveRpgwoMap(Filename As String)
+Dim f As Long
+f = FreeFile
 Open Filename For Binary Access Write Lock Write As #1
-    Put #1, , mMapWidth
-    Put #1, , mMapHeight
-    Put #1, , mMapVersion
-    Put #1, , mMapExtra
+    Put #f, , mMapWidth
+    Put #f, , mMapHeight
+    Put #f, , mMapVersion
+    Put #f, , mMapExtra
     mNumberOfMonsters = mNumberOfMonsters - 1
     mNumberOfItems = mNumberOfItems - 1
+    
+    mv2NumberOfItems = mv2NumberOfItems - 1
+    mv2NumberOfMonsters = mv2NumberOfMonsters - 1
     'Get Tile Id
     'ReDim mMap(1 To mMapWidth, 1 To mMapHeight)
-    Put #1, , mMap
+    'Put #f, , mMap
     
-    Put #1, , mNumberOfItems
-   ' MsgBox mNumberOfItems
-    'ReDim mItems(1 To mNumberOfItems)
-    ReDim Preserve mItems(1 To modRpgwoMapFormat.mNumberOfItems)
-    Put #1, , mItems
-    'MsgBox Loc(1)
-    Put #1, , mNumberOfMonsters
-    'MsgBox mNumberOfMonsters
-    'ReDim mMonsters(1 To mNumberOfMonsters)
-      ReDim Preserve mMonsters(1 To modRpgwoMapFormat.mNumberOfMonsters)
-    Put #1, , mMonsters
+    
+    Dim MapSizeTotalCount As Integer
+    Dim unk1 As Integer
+    Dim countSurfaceItems As Integer
+    countSurfaceItems = 1
+    
+   
+    ReDim tempmMapData(1 To countSurfaceItems)
+    MapSizeTotalCount = 0
+    Dim x As Integer
+     Dim y As Integer
+     For x = 1 To mMapWidth
+        For y = 1 To mMapHeight
+            If mMap(x, y) <> 0 Then
+                
+                tempmMapData(UBound(tempmMapData)).Xpos = x
+                tempmMapData(UBound(tempmMapData)).Ypos = y
+                tempmMapData(UBound(tempmMapData)).Surface = mMap(x, y)
+                MapSizeTotalCount = MapSizeTotalCount + 1
+                ReDim Preserve tempmMapData(1 To UBound(tempmMapData) + 1)
+            End If
+        Next y
+     Next x
+     ReDim Preserve tempmMapData(1 To UBound(tempmMapData) - 1)
+    
+    Put #1, , MapSizeTotalCount
+    Put #1, , unk1
+    
+    
+    Put #1, , tempmMapData
+    
+    
+    If v2Map = True Then
+    
+    
+     Put #f, , mv2NumberOfItems
+    ' MsgBox mNumberOfItems
+     'ReDim mItems(1 To mNumberOfItems)
+     If mv2NumberOfItems > 0 Then
+     ReDim Preserve mItems(1 To modRpgwoMapFormat.mNumberOfItems)
+     Put #f, , mItems
+     End If
+     'MsgBox Loc(1)
+     Put #f, , mv2NumberOfMonsters
+     'MsgBox mNumberOfMonsters
+     'ReDim mMonsters(1 To mNumberOfMonsters)
+     If mv2NumberOfMonsters > 0 Then
+       ReDim Preserve mMonsters(1 To modRpgwoMapFormat.mNumberOfMonsters)
+        Put #f, , mMonsters
+     End If
+    
+    
+    Else
+    
+     Put #f, , mNumberOfItems
+    ' MsgBox mNumberOfItems
+     'ReDim mItems(1 To mNumberOfItems)
+     If mNumberOfItems > 0 Then
+        ReDim Preserve mItems(1 To modRpgwoMapFormat.mNumberOfItems)
+        Put #f, , mItems
+     End If
+     
+     
+     'MsgBox Loc(1)
+     Put #f, , mNumberOfMonsters
+     
+     'MsgBox mNumberOfMonsters
+     'ReDim mMonsters(1 To mNumberOfMonsters)
+     If mNumberOfMonsters > 0 Then
+       ReDim Preserve mMonsters(1 To modRpgwoMapFormat.mNumberOfMonsters)
+        Put #f, , mMonsters
+     End If
+    
+    
+    End If
+    
     Dim k As Integer
     k = 5000
-    Put #1, , k
+    Put #f, , k
     Dim notes As String
     notes = Space(k)
-    Put #1, , notes
+    Put #f, , notes
     'Get Notes
-Close #1
+Close #f
 End Sub

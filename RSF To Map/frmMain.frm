@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Begin VB.Form frmMain 
    Caption         =   "Rsf To Map converter by Jon"
    ClientHeight    =   3090
@@ -11,6 +11,16 @@ Begin VB.Form frmMain
    ScaleHeight     =   3090
    ScaleWidth      =   5265
    StartUpPosition =   2  'CenterScreen
+   Begin VB.ComboBox cboVersion 
+      Height          =   315
+      ItemData        =   "frmMain.frx":0000
+      Left            =   2280
+      List            =   "frmMain.frx":000A
+      TabIndex        =   4
+      Text            =   "V1"
+      Top             =   1560
+      Width           =   1935
+   End
    Begin MSComDlg.CommonDialog CommonDialog1 
       Left            =   360
       Top             =   1560
@@ -33,6 +43,14 @@ Begin VB.Form frmMain
       TabIndex        =   1
       Top             =   960
       Width           =   2175
+   End
+   Begin VB.Label Label2 
+      Caption         =   "RPGWO Edit Version: "
+      Height          =   495
+      Left            =   600
+      TabIndex        =   3
+      Top             =   1560
+      Width           =   1575
    End
    Begin VB.Label Label1 
       Caption         =   "Purpose if you loose your map file but still have the .rsf this will attempt to recrate the map fie"
@@ -67,7 +85,20 @@ Dim Filename As String
     Dim data As String
     modRpgwoMapFormat.mNumberOfItems = 1
     modRpgwoMapFormat.mNumberOfMonsters = 1
-modRpgwoMapFormat.mMapVersion = "1.0       RPGWO Edit"
+    
+    modRpgwoMapFormat.mv2NumberOfItems = 1
+    modRpgwoMapFormat.mv2NumberOfMonsters = 1
+    
+    If cboVersion.Text = "V1" Then
+        v2Map = False
+        modRpgwoMapFormat.mMapVersion = "1.0       RPGWO Edit"
+    Else
+        v2Map = True
+        modRpgwoMapFormat.mMapVersion = "2.0       RPGWO Edit"
+    
+    End If
+
+
 Open Filename For Input As #1
     Do While Not EOF(1)
         Line Input #1, data
@@ -76,8 +107,8 @@ Open Filename For Input As #1
             Dim Ypos As Integer
             Dim ImageNumber As Integer
             Dim SpawnSeconds As Integer
-            If Left(data, 14) = "/MAPITEMCLEAR " Then
-                data = Right(data, Len(data) - 14)
+            If Left$(data, 14) = "/MAPITEMCLEAR " Then
+                data = Right$(data, Len(data) - 14)
                 DataArray = Tokenize(data)
                 mMapHeight = DataArray(0)
                 mMapWidth = DataArray(0)
@@ -90,10 +121,10 @@ Open Filename For Input As #1
            
             End If
             'Load Items
-            If Left(data, 9) = "/ITEMIXY " Then
+            If Left$(data, 9) = "/ITEMIXY " Then
                 'Now tokenize the remaining data and break into the parts of image# and x and y position
       
-                data = Right(data, Len(data) - 9)
+                data = Right$(data, Len(data) - 9)
                 DataArray = Tokenize(data)
                
                 ImageNumber = Int(DataArray(0))
@@ -115,11 +146,12 @@ Open Filename For Input As #1
                ' mItems(mNumberOfItems).Trigger = Int(DataArray(10))
                 
                 modRpgwoMapFormat.mNumberOfItems = modRpgwoMapFormat.mNumberOfItems + 1
+                mv2NumberOfItems = mv2NumberOfItems + 1
             
             End If
             'Spawn items
-            If Left(data, 14) = "/ITEMSPAWNIXY " Then
-                data = Right(data, Len(data) - 14)
+            If Left$(data, 14) = "/ITEMSPAWNIXY " Then
+                data = Right$(data, Len(data) - 14)
                 DataArray = Tokenize(data)
                       ImageNumber = Int(DataArray(0))
                 
@@ -140,11 +172,12 @@ Open Filename For Input As #1
                 mItems(mNumberOfItems).Uses = Int(DataArray(9))
                 
                 modRpgwoMapFormat.mNumberOfItems = modRpgwoMapFormat.mNumberOfItems + 1
+                mv2NumberOfItems = mv2NumberOfItems + 1
             
             End If
             'Text on item
-            If Left(data, 13) = "/ITEMTEXTIXY " Then
-                data = Right(data, Len(data) - 13)
+            If Left$(data, 13) = "/ITEMTEXTIXY " Then
+                data = Right$(data, Len(data) - 13)
                 DataArray = Tokenize(data)
                 Xpos = Int(DataArray(0))
                 Ypos = Int(DataArray(1))
@@ -152,10 +185,10 @@ Open Filename For Input As #1
             End If
             
             'Surface the ground
-            If Left(data, 12) = "/SURFACEIXY " Then
+            If Left$(data, 12) = "/SURFACEIXY " Then
                 'Now tokenize the remaining data and break into the parts of image# and x and y position
            
-                data = Right(data, Len(data) - 12)
+                data = Right$(data, Len(data) - 12)
                 DataArray = Tokenize(data)
                
                 ImageNumber = Int(DataArray(0))
@@ -166,8 +199,8 @@ Open Filename For Input As #1
             
             End If
            'Load Monsters
-           If Left(data, 19) = "/MONSTERSPAWNADDXY " Then
-                data = Right(data, Len(data) - 19)
+           If Left$(data, 19) = "/MONSTERSPAWNADDXY " Then
+                data = Right$(data, Len(data) - 19)
                 DataArray = Tokenize(data)
                
                 ImageNumber = Int(DataArray(2))
@@ -181,6 +214,7 @@ Open Filename For Input As #1
                 mMonsters(modRpgwoMapFormat.mNumberOfMonsters).Timeout = SpawnSeconds
                 mMonsters(modRpgwoMapFormat.mNumberOfMonsters).a = True
                 modRpgwoMapFormat.mNumberOfMonsters = modRpgwoMapFormat.mNumberOfMonsters + 1
+                mv2NumberOfMonsters = mv2NumberOfMonsters + 1
                 'MonsterMap(Xpos, Ypos).ImageNumber = ImageNumber
                 'MonsterMap(Xpos, Ypos).MonsterArrayID = GetMonsterArrayId(ImageNumber)
                 'MonsterMap(Xpos, Ypos).MonsterId = Monsters(MonsterMap(Xpos, Ypos).MonsterArrayID).MonsterId 'ImageNumber
@@ -200,8 +234,12 @@ Open Filename For Input As #1
 Close #1
 
 'save the file
-Call modRpgwoMapFormat.SaveRpgwoMap(Filename & ".map")
+If v2Map = True Then
 
+Call modRpgwoMapFormat.SaveRpgwoMap(Filename & "v2-3.map")
+Else
+Call modRpgwoMapFormat.SaveRpgwoMap(Filename & "v1.map")
+End If
  'End of rsf file
 
 MsgBox "Done!"
@@ -210,5 +248,5 @@ End Sub
 
 Private Sub Form_Load()
 Dim datam As String
-datam = "Jonathan Valentin 2004"
+datam = "Jonathan Valentin 2004-2020"
 End Sub
