@@ -1256,6 +1256,7 @@ End Sub
 
 
 Private Sub LoadItemsByClass(ByVal Class As Integer)
+On Error Resume Next
     Dim i As Long
     ReDim ItemList(0)
     
@@ -1315,79 +1316,79 @@ Dim TagNum As Integer
 End Sub
 
 Private Sub SelectLoadNumber()
-    If optPlant.Value = True Then
+    If optPlant.value = True Then
       Call LoadItemsByClass(1)
     End If
-    If optWall.Value = True Then
+    If optWall.value = True Then
         Call LoadItemsByClass(3)
     End If
-    If optArmor.Value = True Then
+    If optArmor.value = True Then
          Call LoadItemsByClass(5)
     End If
-    If optFire.Value = True Then
+    If optFire.value = True Then
         Call LoadItemsByClass(7)
     End If
-    If optNormal.Value = True Then
+    If optNormal.value = True Then
         Call LoadItemsByClass(8)
     End If
-    If optMoney.Value = True Then
+    If optMoney.value = True Then
         Call LoadItemsByClass(9)
     End If
-    If optFood.Value = True Then
+    If optFood.value = True Then
         Call LoadItemsByClass(6)
     End If
-    If optWeapon.Value = True Then
+    If optWeapon.value = True Then
         Call LoadItemsByClass(4)
     End If
-    If optVendor.Value = True Then
+    If optVendor.value = True Then
         Call LoadItemsByClass(10)
     End If
-    If optWand.Value = True Then
+    If optWand.value = True Then
         Call LoadItemsByClass(11)
     End If
-    If optSheild.Value = True Then
+    If optSheild.value = True Then
         Call LoadItemsByClass(12)
     End If
-    If optStairsUp.Value = True Then
+    If optStairsUp.value = True Then
         Call LoadItemsByClass(13)
     End If
-    If optStairsDown.Value = True Then
+    If optStairsDown.value = True Then
         Call LoadItemsByClass(14)
     End If
-    If optOre.Value = True Then
+    If optOre.value = True Then
         Call LoadItemsByClass(15)
     End If
-    If optMissile.Value = True Then
+    If optMissile.value = True Then
         Call LoadItemsByClass(16)
     End If
-    If optJewerly.Value = True Then
+    If optJewerly.value = True Then
         Call LoadItemsByClass(17)
     End If
-    If optBracelets.Value = True Then
+    If optBracelets.value = True Then
         Call LoadItemsByClass(18)
     End If
-    If optRings.Value = True Then
+    If optRings.value = True Then
         Call LoadItemsByClass(19)
     End If
-    If optSlot.Value = True Then
+    If optSlot.value = True Then
         Call LoadItemsByClass(20)
     End If
-    If optRune.Value = True Then
+    If optRune.value = True Then
         Call LoadItemsByClass(21)
     End If
-    If optRaft.Value = True Then
+    If optRaft.value = True Then
         Call LoadItemsByClass(22)
     End If
-    If optBridge.Value = True Then
+    If optBridge.value = True Then
         Call LoadItemsByClass(23)
     End If
-    If optTrap.Value = True Then
+    If optTrap.value = True Then
         Call LoadItemsByClass(24)
     End If
-    If optContainer.Value = True Then
+    If optContainer.value = True Then
         Call LoadItemsByClass(25)
     End If
-    If optCloth.Value = True Then
+    If optCloth.value = True Then
         Call LoadItemsByClass(27)
     End If
 End Sub
@@ -1524,7 +1525,7 @@ End Sub
 Private Sub vsItem_Change()
     Dim i As Integer
     For i = 0 To 43
-        picItem(i).Tag = (vsItem.Value * 11) + i
+        picItem(i).Tag = (vsItem.value * 11) + i
     Next i
     Call RedrawItemList
 End Sub
@@ -1533,7 +1534,7 @@ Private Sub vsItem_Scroll()
     Dim i As Integer
     
     For i = 0 To 43
-        picItem(i).Tag = (vsItem.Value * 11) + i
+        picItem(i).Tag = (vsItem.value * 11) + i
     Next i
     Call RedrawItemList
 End Sub

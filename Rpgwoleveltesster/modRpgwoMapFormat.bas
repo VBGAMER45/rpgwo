@@ -1,5 +1,6 @@
 Attribute VB_Name = "modRpgwoMapFormat"
 Option Explicit
+Global v2Map As Boolean
 Dim mMapWidth As Integer
 Dim mMapHeight As Integer
 Dim mMapVersion As String * 30
@@ -7,6 +8,9 @@ Dim mMapExtra As String * 66
 Dim mMapNotes As String * 5000
 Dim mNumberOfItems As Integer
 Dim mNumberOfMonsters As Integer
+
+Dim mv2NumberOfItems  As Long
+Dim mv2NumberOfMonsters As Long
 
 Private Type mItemType
     a As Boolean
@@ -36,10 +40,19 @@ Private Type mMonsterType
     Timeout As Integer
     Junk10 As String * 31
 End Type
+
+
+Private Type mMapDataType
+    Xpos As Integer
+    Ypos As Integer
+    Surface As Integer
+End Type
+
     
 Dim mMap() As Integer
 Dim mItems() As mItemType
 Dim mMonsters() As mMonsterType
+Dim tempmMapData() As mMapDataType
 
 Sub LoadRpgwoMap(ByVal Filename As String)
 On Error Resume Next
@@ -50,11 +63,51 @@ On Error Resume Next
         Get #f, , mMapWidth
         Get #f, , mMapHeight
         Get #f, , mMapVersion
+            
+        If mMapVersion = "2.0       RPGWO Edit          " Then
+            v2Map = True
+            
+        Else
+            v2Map = False
+            
+        End If
+    
+      
         Get #f, , mMapExtra
+        
+    Dim mapElements As Integer
+    Dim un1 As Integer
+   ' MsgBox "Loc: " & Loc(f)
+    Get f, , mapElements
+    Get f, , un1
+   'MsgBox mapElements
+        
         'Get Tile Id
         ReDim mMap(1 To mMapWidth, 1 To mMapHeight)
-        Get #f, , mMap
         
+        
+
+     For x = 1 To mMapWidth
+        For y = 1 To mMapHeight
+            mMap(x, y) = 0
+        Next y
+     Next x
+   
+
+    Dim mMapData() As mMapDataType
+        ReDim mMapData(1 To mapElements)
+        Get f, , mMapData
+        
+       ' MsgBox mMapData(1).Xpos & " " & mMapData(1).Ypos & " " & mMapData(1).Surface
+        Dim j As Integer
+        For j = 1 To mapElements
+            mMap(mMapData(j).Xpos, mMapData(j).Ypos) = mMapData(j).Surface
+        Next j
+        
+        
+       ' Get #f, , mMap
+        
+     If v2Map = False Then
         Get #f, , mNumberOfItems
         ReDim mItems(1 To mNumberOfItems)
         Get #f, , mItems
@@ -62,6 +115,28 @@ On Error Resume Next
         Get #f, , mNumberOfMonsters
         ReDim mMonsters(1 To mNumberOfMonsters)
         Get #f, , mMonsters
+        
+    Else
+    
+        Get f, , mv2NumberOfItems
+       ' MsgBox mv2NumberOfItems
+        ReDim mItems(1 To mv2NumberOfItems)
+        Get f, , mItems
+        
+        Get f, , mv2NumberOfMonsters
+      '  MsgBox "Number of monsters! " & mv2NumberOfMonsters
+
+        ReDim mMonsters(1 To mv2NumberOfMonsters)
+   
+        Get f, , mMonsters
+        
+        
+ 
+    
+    End If
+        
+        
+        
         'Get Notes
     Close #f
 

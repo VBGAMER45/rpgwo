@@ -67,6 +67,7 @@ Public Const SRCERASE = &H4400328
 Public Const SRCINVERT = &H660046
 
 Public Sub RedrawMap()
+On Error Resume Next
 If ScriptLoaded = False Then Exit Sub
 
 Dim y As Long, x As Long
@@ -146,7 +147,7 @@ For y = viewYpos To viewYpos + 13
 
 Next y
 
-If frmClient.chkShowPlayerNames.Value = vbChecked Then
+If frmClient.chkShowPlayerNames.value = vbChecked Then
 
     For y = viewYpos To viewYpos + 13
         For x = viewXpos To viewXpos + 15

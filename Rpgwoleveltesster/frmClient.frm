@@ -3,7 +3,7 @@ Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "Tabctl32.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
 Begin VB.Form frmClient 
-   Caption         =   "Rpgwo Level Tester XP SP1 By: Jon The Great"
+   Caption         =   "Rpgwo Level Tester 2020 By: Jon The Great"
    ClientHeight    =   7995
    ClientLeft      =   165
    ClientTop       =   465
@@ -418,8 +418,8 @@ Begin VB.Form frmClient
       TabCaption(0)   =   "Stats"
       TabPicture(0)   =   "frmClient.frx":0614
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Frame3"
-      Tab(0).Control(1)=   "Frame2"
+      Tab(0).Control(0)=   "Frame2"
+      Tab(0).Control(1)=   "Frame3"
       Tab(0).ControlCount=   2
       TabCaption(1)   =   "Spells"
       TabPicture(1)   =   "frmClient.frx":0630
@@ -434,8 +434,8 @@ Begin VB.Form frmClient
       TabCaption(3)   =   "Mini Map"
       TabPicture(3)   =   "frmClient.frx":0668
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "picMiniMap"
-      Tab(3).Control(1)=   "lblMiniMapNote"
+      Tab(3).Control(0)=   "lblMiniMapNote"
+      Tab(3).Control(1)=   "picMiniMap"
       Tab(3).ControlCount=   2
       TabCaption(4)   =   "Admin"
       TabPicture(4)   =   "frmClient.frx":0684
@@ -1387,7 +1387,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 '#################################################
 '### Rpgwo Quest and Map Tester
-'### Jonathan Valentin 2003 aka Jon The Great
+'### Jonathan Valentin 2003-2020 aka Jon The Great
 '#################################################
 Option Explicit
 'Used for player movement
@@ -1409,7 +1409,7 @@ Dim dMonX As Integer, dMonY As Integer
 Dim DragSource As String
 
 Private Sub chkAdminMode_Click()
-    If chkAdminMode.Value = vbChecked Then
+    If chkAdminMode.value = vbChecked Then
         bAdminMode = True
     Else
         bAdminMode = False
@@ -1421,16 +1421,16 @@ Private Sub chkShowPlayerNames_Click()
 End Sub
 
 Private Sub cmdAttack_Click()
-    If cmdGuard.Value = vbChecked Then
-        cmdGuard.Value = vbUnchecked
+    If cmdGuard.value = vbChecked Then
+        cmdGuard.value = vbUnchecked
         tmrGuard.Enabled = False
     End If
     
     If ScriptLoaded = False Then Exit Sub
-    If optMelee.Value = True Then
+    If optMelee.value = True Then
         Call AttackMonsterMelee
     End If
-    If optMis.Value = True Then
+    If optMis.value = True Then
         Call AttackMonsterMissile
     End If
 End Sub
@@ -1444,7 +1444,7 @@ End Sub
 Private Sub cmdGuard_Click()
     If ScriptLoaded = False Then Exit Sub
     '    If cmdAttack.Value = vbChecked Then cmdAttack.Value = vbUnchecked
-    If cmdGuard.Value = vbChecked Then
+    If cmdGuard.value = vbChecked Then
         tmrGuard.Enabled = True
     Else
         tmrGuard.Enabled = False
@@ -1597,8 +1597,9 @@ Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Public Sub Init(ByVal Path As String)
-On Error GoTo errHandle
+'On Error GoTo errHandle
     Dim f As Long
+    Dim i As Integer
     mnuOpenFile.Enabled = True
     'Load Stats on items, spells and monsters
     StatusBar.SimpleText = "Loading Data"
@@ -1610,45 +1611,165 @@ On Error GoTo errHandle
     WeaponMax = 20
     WeaponMin = 1
     MisRange = 5
-
-    f = FreeFile
-    Open Path & "itemdef.dat" For Binary Access Read Lock Read As #f
-        ' MsgBox LOF(2)
-        ReDim Items(LOF(f) / 440)
-        Get #f, , Items
-        'MsgBox LOF(2) / 440
-    Close #f
     
+    If FileExists(Path & "\itemdef2.dat") Then
+     v2Map = True
+     
+
+        
+        'MsgBox "here"
+        Dim iRecordSize As Integer
+        Dim iUnknown As Integer
+        Dim iNumberOfRecords As Integer
+        f = FreeFile
+        Open Path & "\itemdef2.dat" For Binary As f
+            Get f, , iRecordSize
+            Get f, , iUnknown
+            Get f, , iNumberOfRecords
+            Get f, , iUnknown
+         ReDim Items2(iNumberOfRecords + 1)
+         ReDim Items(iNumberOfRecords + 1)
+         'Debug.Print iNumberOfRecords
+         
+        Get f, , Items2
+        Close f
+        
+        For i = 0 To iNumberOfRecords
+        Items(i).ItemName = Items2(i).ItemName
+        Items(i).Animation(0) = Items2(i).Image
+        Items(i).Animation(1) = Items2(i).Animation1
+        Items(i).Animation(2) = Items2(i).Animation2
+        Items(i).Animation(3) = Items2(i).Animation3
+        Items(i).Animation(4) = Items2(i).Animation4
+        Items(i).Animation(5) = Items2(i).Animation5
+        Items(i).Animation(6) = Items2(i).Animation6
+        Items(i).Animation(7) = Items2(i).Animation7
+        Items(i).Animation(8) = Items2(i).Animation8
+        Items(i).Animation(9) = Items2(i).Animation9
+        Items(i).Class = Items2(i).Class
+        Items(i).ArmorLevel = Items2(i).ArmorLevel
+        'Items(I).ArmorSpot = Items2(I).ArmorSpot
+        Items(i).AttackSpeed = Items2(i).AttackSpeed
+        Items(i).BlockMovement = Items2(i).BlockMovement
+        Items(i).Burden = Items2(i).Burden
+        Items(i).ColdAL = Items2(i).ColdAL
+        'items(I).CombatSkill = Items2(I).CombatSkill
+        Items(i).CRITICALBONUS = Items2(i).CRITICALBONUS
+        Items(i).DamageHigh = Items2(i).DamageHigh
+        Items(i).DamageLow = Items2(i).DamageLow
+        Items(i).ElectricAL = Items2(i).ElectricAL
+        'Items(I).EssenceSteal = Items2(I).EssenceSteal
+        Items(i).FireAL = Items2(i).FireAL
+        Items(i).Food = Items2(i).Food
+        Items(i).FoodLife = Items2(i).FoodLife
+        Items(i).FoodMana = Items2(i).FoodMana
+        Items(i).FoodStamina = Items2(i).FoodStamina
+        Items(i).IgnoreShields = Items2(i).IgnoreShields
+        Items(i).ImageType = Items2(i).ImageType
+        Items(i).MagicArmorLevel = Items2(i).MagicArmorLevel
+        Items(i).MagicPower = Items2(i).MagicPower
+        Items(i).MissileWeapon = Items2(i).MissleWeapon
+        Items(i).PoisonCure = Items2(i).PoisonCure
+        Items(i).PoisonDamage = Items2(i).PoisonDamage
+        Items(i).Rarity = Items2(i).Rarity
+        Items(i).SHIELDBREAK = Items2(i).SHIELDBREAK
+        Items(i).SkillReq = Items2(i).SkillReq
+        Items(i).Stackable = Items2(i).Stackable
+        Items(i).STAMINADAMAGE = Items2(i).STAMINADAMAGE
+        Items(i).Twohandweapon = Items2(i).Twohandweapon
+        Items(i).value = Items2(i).value
+        Items(i).Warmth = Items2(i).Warmth
+        Items(i).Water = Items2(i).Water
+        Items(i).WeaponAl = Items2(i).WeaponAl
+        Items(i).WeaponMaxRange = Items2(i).WeaponMaxRange
+        
+         
+        Next i
+
+  
+     
+     
+    Else
+
+        f = FreeFile
+        Open Path & "itemdef.dat" For Binary Access Read Lock Read As #f
+            ' MsgBox LOF(2)
+            ReDim Items(LOF(f) / 440)
+            Get #f, , Items
+            'MsgBox LOF(2) / 440
+        Close #f
+    
+    
+    End If
+
     f = FreeFile
     Open App.Path & "\battle2.dat" For Binary Access Read Lock Read As #f
         Get #f, , Monsters
     Close #f
-
     Dim Size As Integer
-    Dim test As String * 133
-    f = FreeFile
-    Open Path & "monsterdef.dat" For Binary As #f
-        Get #f, , Size
-        ReDim Monsters2(Size)
-        Get #f, , test
-        Get #f, , Monsters2
-    Close #f
-    'MsgBox Size
-    'Copy extra data
-    ReDim Preserve Monsters(Size)
-    Dim I As Integer
+    ' load monsters v2
+    If FileExists(Path & "\itemdef2.dat") Then
+     v2Map = True
+     
+        Dim test2 As String * 164
 
-    For I = 1 To UBound(Monsters)
+        f = FreeFile
+        Open Path & "\monsterdef.dat" For Binary As f
+            Get f, , Size
+            ReDim v2Monsters2(Size)
+            ReDim Monsters(Size)
+            ReDim Monsters2(Size)
+      
+            Get f, , test2
+            Get f, , v2Monsters2
+        Close f
+        
 
-        If Monsters(I).Level = 0 Then
+        For i = 0 To UBound(v2Monsters2)
+        Monsters2(i).MonsterName = Trim(v2Monsters2(i).MonsterName)
+        Monsters2(i).Image = v2Monsters2(i).Image
+        Monsters2(i).ImageType = v2Monsters2(i).ImageType
+        Monsters2(i).Level = v2Monsters2(i).Level
+        Next
+         
+     
+     
+     
+     Else
+         
+        
+        Dim test As String * 133
+        f = FreeFile
+        Open Path & "monsterdef.dat" For Binary As #f
+            Get #f, , Size
+            ReDim Monsters2(Size)
+            Get #f, , test
+            Get #f, , Monsters2
+        Close #f
+        
+        
+        
+        'MsgBox Size
+        'Copy extra data
+        ReDim Preserve Monsters(Size)
+    
+    
+    End If
+
+
+    For i = 1 To UBound(Monsters)
+
+        If Monsters(i).Level = 0 Then
            ' MsgBox Monsters2(i).MonsterName
-            Monsters(I).MonsterName = Monsters2(I - 1).MonsterName
-            Monsters(I).Image = Monsters2(I - 1).Image
-            Monsters(I).Level = Monsters2(I - 1).Level
-            Monsters(I).ImageType = Monsters2(I - 1).ImageType
-            Monsters(I).MonsterId = I
+            Monsters(i).MonsterName = Trim(Monsters2(i - 1).MonsterName)
+            Monsters(i).Image = Monsters2(i - 1).Image
+            Monsters(i).Level = Monsters2(i - 1).Level
+            Monsters(i).ImageType = Monsters2(i - 1).ImageType
+            Monsters(i).MonsterId = i
         End If
     Next
+    
+    
 
     
     f = FreeFile
@@ -1667,7 +1788,7 @@ On Error GoTo errHandle
     Call LoadAnimation(Path)
     picTime.Picture = LoadPicture(Path & "\util0.bmp")
     'Load Skills
-    optMelee.Value = True
+    optMelee.value = True
     Call LoadSkill("Melee Attack")
     Call LoadSkill("Melee Defense")
     Call LoadSkill("Magic Attack")
@@ -1692,17 +1813,18 @@ Private Sub Form_Paint()
 End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
+On Error Resume Next
 Dim Response As VbMsgBoxResult
     Response = MsgBox("Are you sure you want to quit?", vbYesNo, "Quit?")
 
     If Response = vbYes Then
     'Clean up memory
-    Dim I As Long
-        For I = 0 To UBound(pbxItem)
-            Set pbxItem(I) = Nothing
+    Dim i As Long
+        For i = 0 To UBound(pbxItem)
+            Set pbxItem(i) = Nothing
         Next
-        For I = 0 To UBound(pbxMonster)
-            Set pbxMonster(I) = Nothing
+        For i = 0 To UBound(pbxMonster)
+            Set pbxMonster(i) = Nothing
         Next
         End
     Else
@@ -1716,12 +1838,12 @@ Private Sub mnuexit_Click()
     
     If Response = vbYes Then
     'Clean up memory
-    Dim I As Long
-        For I = 0 To UBound(pbxItem)
-            Set pbxItem(I) = Nothing
+    Dim i As Long
+        For i = 0 To UBound(pbxItem)
+            Set pbxItem(i) = Nothing
         Next
-        For I = 0 To UBound(pbxMonster)
-            Set pbxMonster(I) = Nothing
+        For i = 0 To UBound(pbxMonster)
+            Set pbxMonster(i) = Nothing
         Next
         End
     End If
@@ -1730,18 +1852,18 @@ End Sub
 
 Private Sub mnuFileLoadPlayer_Click()
 
-    CommonDialog1.filename = ""
+    CommonDialog1.Filename = ""
     CommonDialog1.InitDir = App.Path
     CommonDialog1.DialogTitle = "Load Player"
     CommonDialog1.DefaultExt = "pla"
     CommonDialog1.Filter = ""
     CommonDialog1.ShowOpen
-    If CommonDialog1.filename = "" Then Exit Sub
+    If CommonDialog1.Filename = "" Then Exit Sub
     
     Dim f As Long
     f = FreeFile
     
-    Open CommonDialog1.filename For Binary Access Read As #f
+    Open CommonDialog1.Filename For Binary Access Read As #f
         Get #f, , Player
     Close #f
     
@@ -1752,29 +1874,29 @@ End Sub
 
 Private Sub mnuFileSavePlayer_Click()
 
-    CommonDialog1.filename = ""
+    CommonDialog1.Filename = ""
     CommonDialog1.InitDir = App.Path
     CommonDialog1.DialogTitle = "Save Player"
     CommonDialog1.Filter = ""
     CommonDialog1.DefaultExt = "pla"
     CommonDialog1.ShowSave
-    If CommonDialog1.filename = "" Then Exit Sub
+    If CommonDialog1.Filename = "" Then Exit Sub
     
     Dim f As Long
     f = FreeFile
     
-    Open CommonDialog1.filename For Binary Access Write As #f
+    Open CommonDialog1.Filename For Binary Access Write As #f
         Put #f, , Player
     Close #f
 End Sub
 
 Private Sub mnuHelp_Click()
-    MsgBox "Jonathan Valentin June 23, 2003 Revised Oct 31, 2003 Revised April 23, 2004 Revised April 2, 2005 Credits: Mickey Kudlo creator of Rpgwo which can be found at http://www.rpgwo.com", vbInformation, "About Rpgwo Level Tester"
+    MsgBox "Jonathan Valentin June 23, 2003 Revised Oct 31, 2003 Revised April 23, 2004 Revised April 2, 2005 Updated May 16, 2020 Credits: Mickey Kudlo creator of Rpgwo which can be found at http://www.rpgwo.com", vbInformation, "About Rpgwo Level Tester"
     
 End Sub
 
 Private Sub mnuOpenFile_Click()
-Dim filename As String
+Dim Filename As String
 Dim Data As String
     With CommonDialog1
        ' .Filter = "Script/Map Files (*.map)|*.map "
@@ -1784,15 +1906,15 @@ Dim Data As String
         .DefaultExt = ""
         .InitDir = App.Path
         .ShowOpen
-        If Len(.filename) = 0 Then
+        If Len(.Filename) = 0 Then
             Exit Sub
         End If
-        filename = .filename
+        Filename = .Filename
     End With
     RefreshMini = True
-If Right$(UCase$(filename), 3) = "MAP" Then
+If Right$(UCase$(Filename), 3) = "MAP" Then
     StatusBar.SimpleText = "Map File"
-    Call modRpgwoMapFormat.LoadRpgwoMap(filename)
+    Call modRpgwoMapFormat.LoadRpgwoMap(Filename)
     
 Else
 On Error Resume Next
@@ -1800,7 +1922,7 @@ StatusBar.SimpleText = "Loading Script"
 'Open Scirpt File
 Dim f As Long
 f = FreeFile
-Open filename For Input As #f
+Open Filename For Input As #f
     Do While Not EOF(f)
         Line Input #f, Data
             Dim DataArray() As String
@@ -1927,13 +2049,13 @@ End If 'End of rsf file
     StatusBar.SimpleText = "Script Loaded"
 End Sub
 Public Function GetMonsterArrayId(ByVal MonsterId As Integer) As Integer
-    Dim I As Long
-    For I = 0 To UBound(Monsters)
-        If Monsters(I).MonsterId = MonsterId Then
-            GetMonsterArrayId = I
+    Dim i As Long
+    For i = 0 To UBound(Monsters)
+        If Monsters(i).MonsterId = MonsterId Then
+            GetMonsterArrayId = i
             Exit For
         End If
-    Next I
+    Next i
 
 End Function
 Public Function GetItemArrayID(ItemId As Integer) As Integer
@@ -2061,7 +2183,7 @@ Next
     Call RedrawMap
 End Sub
 Public Function GetRealImageNumber(ByVal ItemId As Integer)
-    Dim I As Integer
+    Dim i As Integer
     If ItemId = -1 Then
         GetRealImageNumber = -1
         Exit Function
@@ -2070,13 +2192,13 @@ Public Function GetRealImageNumber(ByVal ItemId As Integer)
 GetRealImageNumber = Items(ItemId).Animation(0)
 End Function
 Private Function GetRealImageNumberMonster(ByVal MonsterId As Integer)
-    Dim I As Long
-    For I = 0 To UBound(Monsters)
-        If Monsters(I).MonsterId = MonsterId Then
-            GetRealImageNumberMonster = Monsters(I).Image
+    Dim i As Long
+    For i = 0 To UBound(Monsters)
+        If Monsters(i).MonsterId = MonsterId Then
+            GetRealImageNumberMonster = Monsters(i).Image
             Exit Function
         End If
-    Next I
+    Next i
 
 End Function
 Private Sub SetupPlayer()
@@ -2217,13 +2339,13 @@ Public Sub UpdateStats()
     
 End Sub
 Private Sub UpdateSkill(ByVal SkillName As String, ByVal SkillValue As Integer)
-    Dim I As Long
-    For I = 0 To lblSkillValue.UBound
-        If lblSkillValue(I).Tag = SkillName Then
-            lblSkillValue(I).Caption = SkillValue
+    Dim i As Long
+    For i = 0 To lblSkillValue.UBound
+        If lblSkillValue(i).Tag = SkillName Then
+            lblSkillValue(i).Caption = SkillValue
             Exit For
         End If
-    Next I
+    Next i
 End Sub
 
 Private Sub LoadSkill(ByVal SkillName As String)
@@ -2304,18 +2426,18 @@ Private Sub mnuPicWorldMapWarp_Click()
 End Sub
 
 Private Sub mnuQuickLoad_Click()
-    Dim filename As String
+    Dim Filename As String
     Dim MapSize As Integer
 
     With CommonDialog1
-        .filename = ""
+        .Filename = ""
         .Filter = "QuickLoad Map (*.qmap)|*.qmap"
         .DefaultExt = ""
         .ShowOpen
-        If Len(.filename) = 0 Then
+        If Len(.Filename) = 0 Then
             Exit Sub
         End If
-        filename = .filename
+        Filename = .Filename
     End With
     ScriptLoaded = False
     'Open The Quick Map
@@ -2324,7 +2446,7 @@ Private Sub mnuQuickLoad_Click()
         ReDim MonsterMap(25, 25)
     Dim f As Long
     f = FreeFile
-    Open filename For Binary Access Read Lock Read As #f
+    Open Filename For Binary Access Read Lock Read As #f
         Get #f, , MapSize
         ReDim Map(MapSize, MapSize)
         ReDim ItemMap(MapSize, MapSize)
@@ -2356,7 +2478,7 @@ End Sub
 
 Private Sub mnuSaveQuickLoad_Click()
 
-    Dim filename As String
+    Dim Filename As String
     Dim Size As Integer
     If ScriptLoaded = False Then
         MsgBox "No script loaded to save!"
@@ -2364,19 +2486,19 @@ Private Sub mnuSaveQuickLoad_Click()
     End If
     
     With CommonDialog1
-        .filename = ""
+        .Filename = ""
         .Filter = "QuickLoad Map (*.qmap)|*.qmap"
         .DefaultExt = ""
         .ShowSave
-        If Len(.filename) = 0 Then
+        If Len(.Filename) = 0 Then
             Exit Sub
         End If
-        filename = .filename
+        Filename = .Filename
     End With
 'Now write the map
 Dim f As Long
 f = FreeFile
-Open filename For Binary Access Write Lock Write As #f
+Open Filename For Binary Access Write Lock Write As #f
 Size = UBound(Map)
     Put #f, , Size
     
@@ -2395,62 +2517,62 @@ End Sub
 
 
 Private Sub optAimHigh_Click()
-    If optAimHigh.Value = vbChecked Then
-        optAimLow.Value = vbUnchecked
-        optAimMedium.Value = vbUnchecked
+    If optAimHigh.value = vbChecked Then
+        optAimLow.value = vbUnchecked
+        optAimMedium.value = vbUnchecked
     End If
 End Sub
 
 Private Sub optAimLow_Click()
-    If optAimLow.Value = vbChecked Then
-        optAimHigh.Value = vbUnchecked
-        optAimMedium.Value = vbUnchecked
+    If optAimLow.value = vbChecked Then
+        optAimHigh.value = vbUnchecked
+        optAimMedium.value = vbUnchecked
     End If
 End Sub
 
 Private Sub optAimMedium_Click()
-    If optAimMedium.Value = vbChecked Then
-        optAimHigh.Value = vbUnchecked
-        optAimLow.Value = vbUnchecked
+    If optAimMedium.value = vbChecked Then
+        optAimHigh.value = vbUnchecked
+        optAimLow.value = vbUnchecked
     End If
 End Sub
 Private Sub LoadGround(Path As String)
-    Dim I As Long, Index As Integer
+    Dim i As Long, Index As Integer
     On Error GoTo nofile
     pbxGround(0).Picture = LoadPicture(Path & "background0.bmp")
-        For I = 1 To 5
+        For i = 1 To 5
             Index = pbxGround.UBound + 1
             Load pbxGround(Index)
             With pbxGround(Index)
                 .Enabled = True
                 .Top = pbxGround(0).Top
-                .Left = pbxGround(I - 1).Left + 530
+                .Left = pbxGround(i - 1).Left + 530
                 .Height = pbxGround(0).Height
                 .Width = pbxGround(0).Width
                 .Visible = False
                 .AutoRedraw = True
-                .Picture = LoadPicture(Path & "background" & I & ".bmp")
+                .Picture = LoadPicture(Path & "background" & i & ".bmp")
             End With
-        Next I
+        Next i
         Exit Sub
 nofile:
         If Err.Number = 76 Then
-            MsgBox "File not found: " & Path & "background" & I & ".bmp", vbExclamation
+            MsgBox "File not found: " & Path & "background" & i & ".bmp", vbExclamation
         End If
 Exit Sub
 End Sub
 Private Sub LoadItems(Path As String)
-Dim I As Integer, Index As Integer
+Dim i As Integer, Index As Integer
 On Error GoTo nofile
 ReDim Preserve pbxItem(1)
 'pbxItem(0).Picture = LoadPicture(Path & "item0.bmp")
 pbxItem(0).LoadBitmap (Path & "item0.bmp")
-    For I = 1 To 50
-    If FileExists(Path & "item" & I & ".bmp") Then
+    For i = 1 To 50
+    If FileExists(Path & "item" & i & ".bmp") Then
             Index = UBound(pbxItem)
             ReDim Preserve pbxItem(Index + 1)
            ' MsgBox Index & " item" & I & ".bmp"
-            pbxItem(Index).LoadBitmap (Path & "item" & I & ".bmp")
+            pbxItem(Index).LoadBitmap (Path & "item" & i & ".bmp")
                 
     End If
     DoEvents
@@ -2467,7 +2589,7 @@ pbxItem(0).LoadBitmap (Path & "item0.bmp")
           '  .AutoRedraw = True
          '   .Picture = LoadPicture(Path & "item" & i & ".bmp")
        ' End With
-    Next I
+    Next i
     Exit Sub
 nofile:
 'MsgBox Err.Description
@@ -2478,8 +2600,8 @@ nofile:
 Exit Sub
 End Sub
 
-Public Function FileExists(filename As String) As Boolean
-    FileExists = Len(Dir(filename, vbNormal)) > 0
+Public Function FileExists(Filename As String) As Boolean
+    FileExists = Len(Dir(Filename, vbNormal)) > 0
 End Function
 Private Sub LoadAnimation(ByVal strPath As String)
     On Error GoTo nofile
@@ -2491,18 +2613,18 @@ nofile:
     Exit Sub
 End Sub
 Private Sub LoadMonsters(ByVal Path As String)
-Dim I As Integer, Index As Integer
+Dim i As Integer, Index As Integer
 On Error GoTo nofile
 ReDim Preserve pbxMonster(1)
 'pbxMonster(0).Picture = LoadPicture(Path & "player0.bmp")
   pbxMonster(0).LoadBitmap (Path & "player0.bmp")
-    For I = 1 To 50
+    For i = 1 To 50
     
-    If FileExists(Path & "player" & I & ".bmp") Then
+    If FileExists(Path & "player" & i & ".bmp") Then
             Index = UBound(pbxMonster)
             ReDim Preserve pbxMonster(Index + 1)
            ' MsgBox Index & " item" & I & ".bmp"
-            pbxMonster(Index).LoadBitmap (Path & "player" & I & ".bmp")
+            pbxMonster(Index).LoadBitmap (Path & "player" & i & ".bmp")
                 
     End If
     
@@ -2519,7 +2641,7 @@ ReDim Preserve pbxMonster(1)
            ' .AutoRedraw = True
            ' .Picture = LoadPicture(Path & "player" & i & ".bmp")
       '  End With
-    Next I
+    Next i
     Exit Sub
 nofile:
     If Err.Number = 76 Then
@@ -2574,8 +2696,8 @@ Private Sub MoveUnit(Direction As CompassEnum)
         End If
     End If
     'Undo Guard if it is checked
-    If cmdGuard.Value = vbChecked Then
-        cmdGuard.Value = vbUnchecked
+    If cmdGuard.value = vbChecked Then
+        cmdGuard.value = vbUnchecked
         tmrGuard.Enabled = False
     End If
     
@@ -2624,7 +2746,7 @@ Public Function Map_Check(Xpos As Integer, Ypos As Integer) As Boolean
         End If
     End If
     
-    If chkGodMode.Value = vbChecked Then
+    If chkGodMode.value = vbChecked Then
     Else
         If ItemMap(Xpos, Ypos).TileType = "True" Then Exit Function
         
@@ -2747,7 +2869,7 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
     Dim ItemName As String
     Dim ItemNum As Integer
     Dim MonsterName As String
-    Dim I As Long
+    Dim i As Long
     If ScriptLoaded = False Then Exit Sub
     
     
@@ -2856,14 +2978,14 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
     
     End If
     
-    For I = 0 To UBound(Items)
+    For i = 0 To UBound(Items)
     On Error Resume Next
         If CurX < LBound(ItemMap) Or CurY < LBound(ItemMap) Then Exit For
         'If Items(i).ItemID = ItemMap(CurX, CurY).ItemID Then
-        If I = ItemMap(CurX, CurY).ItemId Then
+        If i = ItemMap(CurX, CurY).ItemId Then
             If ItemMap(CurX, CurY).ImageNumber <> -1 Then
-                ItemName = Trim$(Items(I).ItemName)
-                ItemNum = I
+                ItemName = Trim$(Items(i).ItemName)
+                ItemNum = i
                 If Trim$(ItemMap(CurX, CurY).ItemText) <> "" Then MsgBox Trim$(ItemMap(CurX, CurY).ItemText), vbInformation, ItemName
                 
                 Exit For
@@ -2872,10 +2994,10 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
     Next
 
     
-    For I = 0 To UBound(Monsters)
+    For i = 0 To UBound(Monsters)
     If CurX < LBound(ItemMap) Or CurY < LBound(ItemMap) Then Exit For
-        If Monsters(I).MonsterId = MonsterMap(CurX, CurY).MonsterId Then
-            MonsterName = Trim$(Monsters(I).MonsterName)
+        If Monsters(i).MonsterId = MonsterMap(CurX, CurY).MonsterId Then
+            MonsterName = Trim$(Monsters(i).MonsterName)
             lblStatus.Caption = MonsterName & "- Life:" & MonsterMap(CurX, CurY).Life & " Stamina:" & MonsterMap(CurX, CurY).Stamina & " Mana:" & MonsterMap(CurX, CurY).Mana
             Exit For
         End If
@@ -2883,7 +3005,7 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
         'Checks if player is near the item
     If CurX < LBound(ItemMap) Or CurY < LBound(ItemMap) Then
     Else
-        If chkGodMode.Value = vbChecked Or modUses.ItemNearPlayer(CurX, CurY) = True Then
+        If chkGodMode.value = vbChecked Or modUses.ItemNearPlayer(CurX, CurY) = True Then
            ' Call modUses.UseItem("hand", ItemName, CurX, CurY, ItemMap(CurX, CurY).Data1, ItemMap(CurX, CurY).Data2, ItemMap(CurX, CurY).Data3, ItemMap(CurX, CurY).Data4, ItemMap(CurX, CurY).Data5, ItemMap(CurX, CurY).Data6, ItemMap(CurX, CurY).Data7)
            Call modUses.UseItem(0, ItemNum, CurX, CurY, ItemMap(CurX, CurY).Data1, ItemMap(CurX, CurY).Data2, ItemMap(CurX, CurY).Data3, ItemMap(CurX, CurY).Data4, ItemMap(CurX, CurY).Data5, ItemMap(CurX, CurY).Data6, ItemMap(CurX, CurY).Data7)
         End If
@@ -3018,7 +3140,7 @@ End Sub
 
 Private Sub tmrAI_Timer()
     If ScriptLoaded = False Then Exit Sub
-    If chkGodMode.Value = vbChecked Then Exit Sub
+    If chkGodMode.value = vbChecked Then Exit Sub
     'Begin AI
     Call modAI.MonstersScan
     
@@ -3026,7 +3148,7 @@ Private Sub tmrAI_Timer()
     
     Call modAI.RestoreMonsters
     
-    If chkNoMonsterMove.Value = vbUnchecked Then
+    If chkNoMonsterMove.value = vbUnchecked Then
         Call modAI.MoveMonster
     End If
     
@@ -3043,7 +3165,7 @@ End Sub
 
 Private Sub tmrAnimation_Timer()
     If ScriptLoaded = False Then Exit Sub
-    If chkEnableAnimations.Value = vbChecked Then
+    If chkEnableAnimations.value = vbChecked Then
         Call ModMap.TileAnimation
     End If
 End Sub
@@ -3055,10 +3177,10 @@ Private Sub tmrBattleText_Timer()
 End Sub
 
 Private Sub tmrGuard_Timer()
-    If optMelee.Value = True Then
+    If optMelee.value = True Then
         Call modAI.AttackMonsterMelee
     End If
-    If optMis.Value = True Then
+    If optMis.value = True Then
         Call AttackMonsterMissile
     End If
 End Sub
