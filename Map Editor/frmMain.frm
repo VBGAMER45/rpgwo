@@ -2430,6 +2430,7 @@ For y = 0 To UBound(Map, 2)
             ItemMap(x, y).TileX = ItemBoxes(SelectedItem).TileX
             ItemMap(x, y).TileY = ItemBoxes(SelectedItem).TileY
             ItemMap(x, y).ImageNumber = ItemBoxes(SelectedItem).ImageNumber
+            ItemMap(x, y).ImageType = ItemBoxes(SelectedItem).ImageType
             ItemMap(x, y).ItemText = ItemWriting
             ItemMap(x, y).ItemSpawn = chkItemSpawn.value
             ItemMap(x, y).ItemTimeOut = txtItemSpawnTimeout.Text
@@ -2648,6 +2649,7 @@ Private Sub mnuEditPaste_Click()
                 ItemMap(RangeX + x, RangeY + y).TileType = ItemMapRange(x, y).TileType
                 ItemMap(RangeX + x, RangeY + y).TileX = ItemMapRange(x, y).TileX
                 ItemMap(RangeX + x, RangeY + y).TileY = ItemMapRange(x, y).TileY
+                ItemMap(RangeX + x, RangeY + y).ImageType = ItemMapRange(x, y).ImageType
                 MonsterMap(RangeX + x, RangeY + y).ImageFile = MonsterMapRange(x, y).ImageFile
                 MonsterMap(RangeX + x, RangeY + y).ImageNumber = MonsterMapRange(x, y).ImageNumber
                 MonsterMap(RangeX + x, RangeY + y).ImageType = MonsterMapRange(x, y).ImageType
@@ -3089,12 +3091,12 @@ Public Sub Init(Path As String)
 
     
         Dim test2 As String * 164
-        Dim size As Integer
+        Dim Size As Integer
         f = FreeFile
         Open Path & "\monsterdef.dat" For Binary As f
-            Get f, , size
-            ReDim Monsters2(size)
-            ReDim Monsters(size)
+            Get f, , Size
+            ReDim Monsters2(Size)
+            ReDim Monsters(Size)
       
             Get f, , test2
             Get f, , Monsters2
@@ -3149,7 +3151,8 @@ Private Sub LoadGround(Path As String)
 Dim i As Integer, Index As Integer
 On Error GoTo nofile
 pbxGround(0).Picture = LoadPicture(Path & "background0.bmp")
-    For i = 1 To 5
+    For i = 1 To 50
+    If FileExists(Path & "background" & i & ".bmp") Then
         Index = pbxGround.UBound + 1
         Load pbxGround(Index)
         With pbxGround(Index)
@@ -3162,6 +3165,7 @@ pbxGround(0).Picture = LoadPicture(Path & "background0.bmp")
             .AutoRedraw = True
             .Picture = LoadPicture(Path & "background" & i & ".bmp")
         End With
+     End If
     Next i
     Exit Sub
 nofile:
@@ -3174,7 +3178,8 @@ Private Sub LoadItems(Path As String)
 Dim i As Integer, Index As Integer
 On Error GoTo nofile
 pbxItem(0).Picture = LoadPicture(Path & "item0.bmp")
-    For i = 1 To 23
+    For i = 1 To 50
+    If FileExists(Path & "item" & i & ".bmp") Then
         Index = pbxItem.UBound + 1
         Load pbxItem(Index)
         With pbxItem(Index)
@@ -3187,6 +3192,8 @@ pbxItem(0).Picture = LoadPicture(Path & "item0.bmp")
             .AutoRedraw = True
             .Picture = LoadPicture(Path & "item" & i & ".bmp")
         End With
+    End If
+        
     Next i
     Exit Sub
 nofile:
@@ -3198,7 +3205,9 @@ Private Sub LoadMonsters(Path As String)
 Dim i As Integer, Index As Integer
 On Error GoTo nofile
 pbxMonster(0).Picture = LoadPicture(Path & "player0.bmp")
-    For i = 1 To 4
+    For i = 1 To 50
+    
+    If FileExists(Path & "player" & i & ".bmp") Then
         Index = pbxMonster.UBound + 1
         Load pbxMonster(Index)
         With pbxMonster(Index)
@@ -3211,6 +3220,7 @@ pbxMonster(0).Picture = LoadPicture(Path & "player0.bmp")
             .AutoRedraw = True
             .Picture = LoadPicture(Path & "player" & i & ".bmp")
         End With
+       End If
     Next i
     Exit Sub
 nofile:
@@ -3297,6 +3307,7 @@ If Button = 1 And SelectedTool = "Item Paint" Then
     Else
     ItemMap(CurX, CurY).ItemId = ItemBoxes(SelectedItem).ItemId
     ItemMap(CurX, CurY).ImageFile = ItemBoxes(SelectedItem).ImageFile
+    ItemMap(CurX, CurY).ImageType = ItemBoxes(SelectedItem).ImageType
     ItemMap(CurX, CurY).TileX = ItemBoxes(SelectedItem).TileX
     ItemMap(CurX, CurY).TileY = ItemBoxes(SelectedItem).TileY
     ItemMap(CurX, CurY).ImageNumber = ItemBoxes(SelectedItem).ImageNumber
@@ -3323,6 +3334,7 @@ If Button = 2 And SelectedTool = "Item Paint" Then
     ItemMap(CurX, CurY).ImageFile = 0
     ItemMap(CurX, CurY).TileX = 0
     ItemMap(CurX, CurY).TileY = 0
+    ItemMap(CurX, CurY).ImageType = 0
     ItemMap(CurX, CurY).ImageNumber = 0
     ItemMap(CurX, CurY).ItemText = ""
     ItemMap(CurX, CurY).Data1 = 0
@@ -3505,6 +3517,7 @@ If Button = 1 And SelectedTool = "Item Paint" Then
     Else
     ItemMap(CurX, CurY).ItemId = ItemBoxes(SelectedItem).ItemId
     ItemMap(CurX, CurY).ImageFile = ItemBoxes(SelectedItem).ImageFile
+    ItemMap(CurX, CurY).ImageType = ItemBoxes(SelectedItem).ImageType
     ItemMap(CurX, CurY).TileX = ItemBoxes(SelectedItem).TileX
     ItemMap(CurX, CurY).TileY = ItemBoxes(SelectedItem).TileY
     ItemMap(CurX, CurY).ImageNumber = ItemBoxes(SelectedItem).ImageNumber
@@ -3530,6 +3543,7 @@ If Button = 2 And SelectedTool = "Item Paint" Then
     ItemMap(CurX, CurY).TileX = 0
     ItemMap(CurX, CurY).TileY = 0
     ItemMap(CurX, CurY).ImageNumber = 0
+    ItemMap(CurX, CurY).ImageType = 0
     ItemMap(CurX, CurY).ItemText = ""
     ItemMap(CurX, CurY).Data1 = 0
     ItemMap(CurX, CurY).Data2 = 0
@@ -3870,6 +3884,7 @@ For y = 0 To UBound(Map, 2)
         ItemMap(x, y).Data7 = 0
         ItemMap(x, y).ImageFile = 0
         ItemMap(x, y).ImageNumber = 0
+        ItemMap(x, y).ImageType = 0
         ItemMap(x, y).ItemId = 0
         ItemMap(x, y).TileType = 0
         ItemMap(x, y).TileX = 0

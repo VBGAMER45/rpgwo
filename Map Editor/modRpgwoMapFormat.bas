@@ -101,7 +101,7 @@ Dim Response As String
      Dim x As Integer
      Dim y As Integer
      For x = 1 To mMapWidth
-        For y = 1 To mapheight
+        For y = 1 To mMapHeight
             mMap(x, y) = 0
         Next y
      Next x

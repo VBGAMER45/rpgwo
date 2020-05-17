@@ -23,6 +23,7 @@ Public Type ItemData
     TileY As Integer
     TileType As String  'Is now class
     ImageNumber As Integer
+    ImageType As Integer
     ItemId As Integer
     ImageFile As Integer
     Data1 As Integer
@@ -117,6 +118,7 @@ Public Declare Function SetDIBitsToDevice Lib "gdi32" (ByVal hdc As Long, ByVal 
 Public Declare Function SelectObject Lib "gdi32" (ByVal hdc As Long, ByVal hObject As Long) As Long
 
 Public Sub RedrawMap()
+On Error Resume Next
 If MapLoaded = False Then Exit Sub
 frmMain.pbxView.Cls
    For y = viewYpos To viewYpos + frmMain.pbxView.ScaleHeight \ 32
@@ -150,10 +152,40 @@ Next y
             frmMain.pbxView.Print "f"
         End If
     End If
-    If ItemMap(x, y).ItemId <> 0 And frmMain.mnuViewItem.Checked = True Then
+
+    
+    End If
+   Next
+   Next
+    
+    For y = viewYpos To viewYpos + frmMain.pbxView.ScaleHeight \ 32
+   For x = viewXpos To viewXpos + frmMain.pbxView.ScaleWidth \ 32
+
+    If x > UBound(Map) Or y > UBound(Map) Then Exit For
+  
+    If x < LBound(Map) Or y < LBound(Map) Then
+
+    Else
+        
+        If ItemMap(x, y).ItemId <> 0 And frmMain.mnuViewItem.Checked = True Then
+ 
+    
+            ' Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 32, frmMain.pbxItem(ItemMap(x, y).ImageFile).hdc, ItemMap(x, y).TileX, ItemMap(x, y).TileY, vbWhite)
 
     'Draw Items
-    Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 32, frmMain.pbxItem(ItemMap(x, y).ImageFile).hdc, ItemMap(x, y).TileX, ItemMap(x, y).TileY, vbWhite)
+ '   MsgBox ItemMap(x, y).TileType
+    If ItemMap(x, y).ImageType = 0 Then
+        Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 32, frmMain.pbxItem(ItemMap(x, y).ImageFile).hdc, ItemMap(x, y).TileX, ItemMap(x, y).TileY, vbWhite)
+    ElseIf ItemMap(x, y).ImageType = 1 Then
+         Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 64, frmMain.pbxItem(ItemMap(x, y).ImageFile).hdc, ItemMap(x, y).TileX, ItemMap(x, y).TileY, vbWhite)
+    ElseIf ItemMap(x, y).ImageType = 2 Then
+         Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 64, 64, frmMain.pbxItem(ItemMap(x, y).ImageFile).hdc, ItemMap(x, y).TileX, ItemMap(x, y).TileY, vbWhite)
+    ElseIf ItemMap(x, y).ImageType = 3 Then
+        Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 96, 96, frmMain.pbxItem(ItemMap(x, y).ImageFile).hdc, ItemMap(x, y).TileX, ItemMap(x, y).TileY, vbWhite)
+   End If
+    
+        
+        
         If ItemMap(x, y).ItemSpawn = 1 And frmMain.mnuViewItemType.Checked = True Then
             frmMain.pbxView.ForeColor = vbYellow
             frmMain.pbxView.CurrentX = Snap2(x, 32) - Snap2(viewXpos, 32)
@@ -180,16 +212,50 @@ Next y
             frmMain.pbxView.Print "R"
         End If
         
-    End If
-
+        End If
     
+     End If
+    Next x
+Next y
+   For y = viewYpos To viewYpos + frmMain.pbxView.ScaleHeight \ 32
+   For x = viewXpos To viewXpos + frmMain.pbxView.ScaleWidth \ 32
+   If x < UBound(MonsterMap, 1) And y < UBound(MonsterMap, 2) And x > LBound(MonsterMap, 1) And y > LBound(MonsterMap, 2) Then
     If MonsterMap(x, y).ImageNumber <> 0 And frmMain.mnuViewMonster.Checked = True Then
-        Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 32, frmMain.pbxMonster(MonsterMap(x, y).ImageFile).hdc, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbWhite)
+       ' Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 32, frmMain.pbxMonster(MonsterMap(x, y).ImageFile).hdc, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbWhite)
+'MsgBox Monsters(MonsterMap(x, y).MonsterId).ImageType
+
+            If Monsters(MonsterMap(x, y).MonsterId).ImageType = 0 Then
+               Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 32, frmMain.pbxMonster(MonsterMap(x, y).ImageFile).hdc, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbWhite)
+
+            ElseIf Monsters(MonsterMap(x, y).MonsterId).ImageType = 1 Then
+                Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 64, 64, frmMain.pbxMonster(MonsterMap(x, y).ImageFile).hdc, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbWhite)
+
+                
+                'Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 64, pbxMonster(MonsterMap(x, y).ImageFile).MaskDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcPaint)
+                'Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 64, pbxMonster(MonsterMap(x, y).ImageFile).ImageDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcAnd)
+                'Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 64, pbxMonster(MonsterMap(x, y).ImageFile).InvertImageDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcPaint)
+            ElseIf Monsters(MonsterMap(x, y).MonsterId).ImageType = 2 Then
+                Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 64, 64, frmMain.pbxMonster(MonsterMap(x, y).ImageFile).hdc, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbWhite)
+
+
+                'Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 64, 64, pbxMonster(MonsterMap(x, y).ImageFile).MaskDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcPaint)
+               ' Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 64, 64, pbxMonster(MonsterMap(x, y).ImageFile).ImageDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcAnd)
+                'Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 64, 64, pbxMonster(MonsterMap(x, y).ImageFile).InvertImageDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcPaint)
+            ElseIf Monsters(MonsterMap(x, y).MonsterId).ImageType = 3 Then
+             Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 96, 96, frmMain.pbxMonster(MonsterMap(x, y).ImageFile).hdc, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbWhite)
+
+                'Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 96, 96, pbxMonster(MonsterMap(x, y).ImageFile).MaskDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcPaint)
+                'Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 96, 96, pbxMonster(MonsterMap(x, y).ImageFile).ImageDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcAnd)
+               ' Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 96, 96, pbxMonster(MonsterMap(x, y).ImageFile).InvertImageDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcPaint)
+         
+            End If
+
+
 
     End If
           
     
-    End If
+   End If
     
    Next
 Next
@@ -257,7 +323,7 @@ End Function
 
 Public Sub RedrawMapTileXY(x As Integer, y As Integer)
 
-
+On Error Resume Next
         
     If x > UBound(Map) Or y > UBound(Map) Then
     Else
@@ -278,7 +344,18 @@ Public Sub RedrawMapTileXY(x As Integer, y As Integer)
     If ItemMap(x, y).ItemId <> 0 And frmMain.mnuViewItem.Checked = True Then
 
     'Draw Items
-    Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 32, frmMain.pbxItem(ItemMap(x, y).ImageFile).hdc, ItemMap(x, y).TileX, ItemMap(x, y).TileY, vbWhite)
+   ' Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 32, frmMain.pbxItem(ItemMap(x, y).ImageFile).hdc, ItemMap(x, y).TileX, ItemMap(x, y).TileY, vbWhite)
+        
+         If ItemMap(x, y).ImageType = 0 Then
+             Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 32, frmMain.pbxItem(ItemMap(x, y).ImageFile).hdc, ItemMap(x, y).TileX, ItemMap(x, y).TileY, vbWhite)
+         ElseIf ItemMap(x, y).ImageType = 1 Then
+              Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 64, frmMain.pbxItem(ItemMap(x, y).ImageFile).hdc, ItemMap(x, y).TileX, ItemMap(x, y).TileY, vbWhite)
+         ElseIf ItemMap(x, y).ImageType = 2 Then
+              Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 64, 64, frmMain.pbxItem(ItemMap(x, y).ImageFile).hdc, ItemMap(x, y).TileX, ItemMap(x, y).TileY, vbWhite)
+         ElseIf ItemMap(x, y).ImageType = 3 Then
+             Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 96, 96, frmMain.pbxItem(ItemMap(x, y).ImageFile).hdc, ItemMap(x, y).TileX, ItemMap(x, y).TileY, vbWhite)
+        End If
+        
         If ItemMap(x, y).ItemSpawn = 1 And frmMain.mnuViewItemType.Checked = True Then
             frmMain.pbxView.ForeColor = vbYellow
             frmMain.pbxView.CurrentX = Snap2(x, 32) - Snap2(viewXpos, 32)
@@ -310,7 +387,35 @@ Public Sub RedrawMapTileXY(x As Integer, y As Integer)
 
     
     If MonsterMap(x, y).ImageNumber <> 0 And frmMain.mnuViewMonster.Checked = True Then
-        Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 32, frmMain.pbxMonster(MonsterMap(x, y).ImageFile).hdc, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbWhite)
+       ' Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 32, frmMain.pbxMonster(MonsterMap(x, y).ImageFile).hdc, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbWhite)
+            
+            If Monsters(MonsterMap(x, y).MonsterId).ImageType = 0 Then
+               Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 32, frmMain.pbxMonster(MonsterMap(x, y).ImageFile).hdc, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbWhite)
+
+            ElseIf Monsters(MonsterMap(x, y).MonsterId).ImageType = 1 Then
+                Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 64, 64, frmMain.pbxMonster(MonsterMap(x, y).ImageFile).hdc, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbWhite)
+
+                
+                'Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 64, pbxMonster(MonsterMap(x, y).ImageFile).MaskDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcPaint)
+                'Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 64, pbxMonster(MonsterMap(x, y).ImageFile).ImageDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcAnd)
+                'Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 32, 64, pbxMonster(MonsterMap(x, y).ImageFile).InvertImageDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcPaint)
+            ElseIf Monsters(MonsterMap(x, y).MonsterId).ImageType = 2 Then
+              Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 64, 64, frmMain.pbxMonster(MonsterMap(x, y).ImageFile).hdc, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbWhite)
+               ' MsgBox "here:" & Monsters(MonsterMap(x, y).MonsterId).ImageType
+
+                'Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 64, 64, pbxMonster(MonsterMap(x, y).ImageFile).MaskDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcPaint)
+               ' Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 64, 64, pbxMonster(MonsterMap(x, y).ImageFile).ImageDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcAnd)
+                'Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 64, 64, pbxMonster(MonsterMap(x, y).ImageFile).InvertImageDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcPaint)
+            ElseIf Monsters(MonsterMap(x, y).MonsterId).ImageType = 3 Then
+             Call TransBMP(frmMain.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 96, 96, frmMain.pbxMonster(MonsterMap(x, y).ImageFile).hdc, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbWhite)
+
+                'Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 96, 96, pbxMonster(MonsterMap(x, y).ImageFile).MaskDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcPaint)
+                'Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 96, 96, pbxMonster(MonsterMap(x, y).ImageFile).ImageDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcAnd)
+               ' Call BitBlt(frmClient.pbxView.hdc, Snap2(x, 32) - Snap2(viewXpos, 32), Snap2(y, 32) - Snap2(viewYpos, 32), 96, 96, pbxMonster(MonsterMap(x, y).ImageFile).InvertImageDC, MonsterMap(x, y).TileX, MonsterMap(x, y).TileY, vbSrcPaint)
+         
+            End If
+
+
 
     End If
           

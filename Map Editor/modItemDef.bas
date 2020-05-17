@@ -72,6 +72,8 @@ Private Type ItemBox
     ImageNumber As Integer
     ItemName As String
     ItemId As Integer
+    ImageType As Integer
+    
 End Type
 
 
@@ -242,6 +244,9 @@ Dim i As Integer
         ItemBoxes(i).ImageNumber = Items(i).Image ' Items(i).Animation(0)
         ItemBoxes(i).ItemName = Trim$(Items(i).ItemName) 'Items(i).ItemName
         ItemBoxes(i).ItemId = i + 1 'Items(i).ItemId
+        ItemBoxes(i).ImageType = Items(i).ImageType
+
+        
         If i <= 19 Then
             frmMain.picItem(i).Tag = i
         End If
