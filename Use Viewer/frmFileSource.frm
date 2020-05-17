@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmFileSource 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Resource Folder"
-   ClientHeight    =   2850
+   ClientHeight    =   3135
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   2985
@@ -10,7 +10,7 @@ Begin VB.Form frmFileSource
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   2850
+   ScaleHeight     =   3135
    ScaleWidth      =   2985
    StartUpPosition =   1  'CenterOwner
    Begin VB.DirListBox Dir1 
@@ -36,7 +36,7 @@ Begin VB.Form frmFileSource
       Height          =   510
       Left            =   120
       TabIndex        =   2
-      Top             =   2280
+      Top             =   2520
       Width           =   1185
    End
    Begin VB.CommandButton cmdCancel 
@@ -54,7 +54,7 @@ Begin VB.Form frmFileSource
       Height          =   510
       Left            =   1710
       TabIndex        =   1
-      Top             =   2250
+      Top             =   2520
       Width           =   1185
    End
    Begin VB.ListBox List1 
@@ -63,6 +63,20 @@ Begin VB.Form frmFileSource
       TabIndex        =   0
       Top             =   315
       Width           =   2850
+   End
+   Begin VB.Label lblRecord 
+      Height          =   255
+      Left            =   120
+      TabIndex        =   6
+      Top             =   2160
+      Width           =   735
+   End
+   Begin VB.Label lblStatus 
+      Height          =   255
+      Left            =   1080
+      TabIndex        =   5
+      Top             =   2160
+      Width           =   2175
    End
    Begin VB.Label Label1 
       Alignment       =   2  'Center
@@ -102,30 +116,30 @@ Private Sub Form_Load()
 On Error GoTo nofile:
 Dim Data As String
 'Open connect.ini
-Open App.Path & "\connect.ini" For Input As #1
-    Do While Not EOF(1)
-        Line Input #1, Data
+'Open App.Path & "\connect.ini" For Input As #1
+ '   Do While Not EOF(1)
+ '       Line Input #1, Data
     
-        If Left$(Data, 1) = ";" Then
-        'Line is a comment ignore it
-        Else
-            If Left$(Data, 5) = "Name=" Then
-              ' List1.AddItem(Right(Data, Len(Data) - 5) & ".files")
-            End If
-        End If
-    Loop
-Close #1
+'        If Left$(Data, 1) = ";" Then
+'        'Line is a comment ignore it
+'        Else
+'            If Left$(Data, 5) = "Name=" Then
+'              ' List1.AddItem(Right(Data, Len(Data) - 5) & ".files")
+'            End If
+'        End If
+'    Loop
+'Close #1
 
 Dir1.Path = App.Path
-Dim I As Integer
+Dim i As Integer
 
-For I = 0 To Dir1.ListCount - 1
-    If Right$(Dir1.List(I), 6) = ".files" Then
-        Data = Replace(Dir1.List(I), App.Path & "\", "")
+For i = 0 To Dir1.ListCount - 1
+    If Right$(Dir1.List(i), 6) = ".files" Then
+        Data = Replace(Dir1.List(i), App.Path & "\", "")
         
         List1.AddItem (Data)
     End If
-Next I
+Next i
 
 Exit Sub
 nofile:
