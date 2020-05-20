@@ -1611,7 +1611,7 @@ Public Sub Init(ByVal Path As String)
     WeaponMax = 20
     WeaponMin = 1
     MisRange = 5
-    
+    StatusBar.SimpleText = "Loading Items"
     If FileExists(Path & "\itemdef2.dat") Then
      v2Map = True
      
@@ -1701,7 +1701,7 @@ Public Sub Init(ByVal Path As String)
     
     
     End If
-
+    StatusBar.SimpleText = "Loading Monsters"
     f = FreeFile
     Open App.Path & "\battle2.dat" For Binary Access Read Lock Read As #f
         Get #f, , Monsters
@@ -1765,21 +1765,128 @@ Public Sub Init(ByVal Path As String)
             Monsters(i).Image = Monsters2(i - 1).Image
             Monsters(i).Level = Monsters2(i - 1).Level
             Monsters(i).ImageType = Monsters2(i - 1).ImageType
-            Monsters(i).MonsterId = i
+            Monsters(i).MonsterID = i
         End If
     Next
     
+  StatusBar.SimpleText = "Loading Usages"
+Dim iUseecount As Integer
+iUseecount = 0
+Dim totalUsages As Long
+ Dim tempUse As modUses.UseType2
+    If v2Map = True Then
     
-
+        Open Path & "\itemuse.dat" For Binary As f
     
-    f = FreeFile
-    Open Path & "itemuse.dat" For Binary Access Read Lock Read As #f
-        'MsgBox LOF(2)
-        ReDim Uses(LOF(f) / 453)
-        Get #f, , Uses
-        'MsgBox LOF(2) / 453
+           
+            ReDim Uses(LOF(f) / 495)
+            ReDim Uses2(LOF(f) / 495)
+    
         
-    Close #f
+         totalUsages = LOF(f) / 495
+         Do While Not EOF(f)
+         Get f, , tempUse
+            Uses2(iUseecount) = tempUse
+            iUseecount = iUseecount + 1
+            
+            If iUseecount Mod 10 Then
+                StatusBar.SimpleText = "Loading Usages: " & iUseecount & "/" & totalUsages
+            End If
+         Loop
+    
+        Close f
+        
+        StatusBar.SimpleText = "Loading Usages"
+    Dim n As Integer
+    For i = 0 To UBound(Uses2)
+        Uses(i).Animation = Uses2(i).Animation
+        Uses(i).DigUnderGround = Uses2(i).DigUnderGround
+        Uses(i).DisarmTrap = Uses2(i).DisarmTrap
+        Uses(i).DispKeyFocus = Uses2(i).DispKeyFocus
+        Uses(i).Drunk = Uses2(i).Drunk
+        Uses(i).FailedDamage = Uses2(i).FailedDamage
+        Uses(i).FailedFocus = Uses2(i).FailedFocus
+        For n = 1 To 10
+            Uses(i).FailedItem(n) = Uses2(i).FailedItem(n)
+            Uses(i).FailedItemQty(n) = Uses2(i).FailedItemQty(n)
+            
+        Next n
+        
+        Uses(i).FailedMsg = Uses2(i).FailedMsg
+        Uses(i).FailedTool = Uses2(i).FailedTool
+        Uses(i).FishVariance = Uses2(i).FishVariance
+        Uses(i).flgPk = Uses2(i).flgPk
+        Uses(i).FocusSubType = Uses2(i).FocusSubType
+        Uses(i).GiveSkillBonus = Uses2(i).GiveSkillBonus
+        
+        Uses(i).Heal = Uses2(i).Heal
+        Uses(i).HealPoison = Uses2(i).HealPoison
+        Uses(i).Itemfocus = Uses2(i).Itemfocus
+        Uses(i).ItemTool = Uses2(i).ItemTool
+        Uses(i).KeyFocus = Uses2(i).KeyFocus
+        Uses(i).LockFocus = Uses2(i).LockFocus
+        Uses(i).LowerLand = Uses2(i).LowerLand
+        Uses(i).Mana = Uses2(i).Mana
+        Uses(i).MonsterID = Uses2(i).MonsterID
+        Uses(i).Mortardamage = Uses2(i).Mortardamage
+        Uses(i).Mortarspeed = Uses2(i).Mortarspeed
+        Uses(i).NeedFlatSurface = Uses2(i).NeedFlatSurface
+        Uses(i).NeedUnLevelSurface = Uses2(i).NeedUnLevelSurface
+        Uses(i).NotOnPlayer = Uses2(i).NotOnPlayer
+        Uses(i).OwnLand = Uses2(i).OwnLand
+        Uses(i).PickLock = Uses2(i).PickLock
+        Uses(i).PlayerUsageTimeout = Uses2(i).PlayerUsageTimeout
+        Uses(i).PlotUse = Uses2(i).PlotUse
+        Uses(i).PreserveData = Uses2(i).PreserveData
+        Uses(i).RaiseLand = Uses2(i).RaiseLand
+        Uses(i).Range = Uses2(i).Range
+        Uses(i).RenewInnRoom = Uses2(i).RenewInnRoom
+        Uses(i).ResetArmor = Uses2(i).ResetArmor
+        Uses(i).ResetItemUse = Uses2(i).ResetItemUse
+        Uses(i).ResetWeapon = Uses2(i).ResetWeapon
+        Uses(i).ReverseTool = Uses2(i).ReverseTool
+        Uses(i).Revive = Uses2(i).Revive
+        Uses(i).SetAim = Uses2(i).SetAim
+        Uses(i).SetFocusData8 = Uses2(i).SetFocusData8
+        Uses(i).SetResurrectSpot = Uses2(i).SetResurrectSpot
+        Uses(i).SetWriting = Uses2(i).SetWriting
+        Uses(i).ShowWriting = Uses2(i).ShowWriting
+        Uses(i).Skill = Uses2(i).Skill
+        Uses(i).SkillMax = Uses2(i).SkillMax
+        Uses(i).SkillMin = Uses2(i).SkillMin
+        Uses(i).SkillXPFailure = Uses2(i).SkillXPFailure
+        Uses(i).SkillXPSuccess = Uses2(i).SkillXPSuccess
+        Uses(i).StaminaCost = Uses2(i).StaminaCost
+        Uses(i).SuccessFocus = Uses2(i).SuccessFocus
+        For n = 0 To 9
+            Uses(i).SuccessItem(n) = Uses2(i).SuccessItem(n)
+            Uses(i).SuccessItemQty(n) = Uses2(i).SuccessItemQty(n)
+            
+        Next n
+        Uses(i).SuccessMsg = Uses2(i).SuccessMsg
+        Uses(i).SuccessTool = Uses2(i).SuccessTool
+        Uses(i).SurfaceGround = Uses2(i).SurfaceGround
+        Uses(i).SurfaceWater = Uses2(i).SurfaceWater
+        Uses(i).UnderGroundOnly = Uses2(i).UnderGroundOnly
+        Uses(i).UseAllQty = Uses2(i).UseAllQty
+        Uses(i).UsePlayerPosition = Uses2(i).UsePlayerPosition
+        Uses(i).Warp = Uses2(i).Warp
+    Next i
+        
+        
+    Else
+    
+        f = FreeFile
+        Open Path & "itemuse.dat" For Binary Access Read Lock Read As #f
+            'MsgBox LOF(2)
+            ReDim Uses(LOF(f) / 453)
+            Get #f, , Uses
+            'MsgBox LOF(2) / 453
+            
+        Close #f
+        
+    
+    End If
     'Load Graphics
     StatusBar.SimpleText = "Loading Graphics"
     Call LoadGround(Path)
@@ -1789,6 +1896,7 @@ Public Sub Init(ByVal Path As String)
     picTime.Picture = LoadPicture(Path & "\util0.bmp")
     'Load Skills
     optMelee.value = True
+    StatusBar.SimpleText = "Loading Skills"
     Call LoadSkill("Melee Attack")
     Call LoadSkill("Melee Defense")
     Call LoadSkill("Magic Attack")
@@ -2005,7 +2113,7 @@ Open Filename For Input As #f
                 SpawnSeconds = Int(DataArray(3))
                 MonsterMap(Xpos, Ypos).ImageNumber = ImageNumber
                 MonsterMap(Xpos, Ypos).MonsterArrayID = GetMonsterArrayId(ImageNumber)
-                MonsterMap(Xpos, Ypos).MonsterId = Monsters(MonsterMap(Xpos, Ypos).MonsterArrayID).MonsterId 'ImageNumber
+                MonsterMap(Xpos, Ypos).MonsterID = Monsters(MonsterMap(Xpos, Ypos).MonsterArrayID).MonsterID 'ImageNumber
                 MonsterMap(Xpos, Ypos).Life = Monsters(MonsterMap(Xpos, Ypos).MonsterArrayID).Life
                 MonsterMap(Xpos, Ypos).Stamina = Monsters(MonsterMap(Xpos, Ypos).MonsterArrayID).Stamina
                 MonsterMap(Xpos, Ypos).Mana = Monsters(MonsterMap(Xpos, Ypos).MonsterArrayID).Mana
@@ -2048,10 +2156,10 @@ End If 'End of rsf file
     
     StatusBar.SimpleText = "Script Loaded"
 End Sub
-Public Function GetMonsterArrayId(ByVal MonsterId As Integer) As Integer
+Public Function GetMonsterArrayId(ByVal MonsterID As Integer) As Integer
     Dim i As Long
     For i = 0 To UBound(Monsters)
-        If Monsters(i).MonsterId = MonsterId Then
+        If Monsters(i).MonsterID = MonsterID Then
             GetMonsterArrayId = i
             Exit For
         End If
@@ -2191,10 +2299,10 @@ Public Function GetRealImageNumber(ByVal ItemId As Integer)
 
 GetRealImageNumber = Items(ItemId).Animation(0)
 End Function
-Private Function GetRealImageNumberMonster(ByVal MonsterId As Integer)
+Private Function GetRealImageNumberMonster(ByVal MonsterID As Integer)
     Dim i As Long
     For i = 0 To UBound(Monsters)
-        If Monsters(i).MonsterId = MonsterId Then
+        If Monsters(i).MonsterID = MonsterID Then
             GetRealImageNumberMonster = Monsters(i).Image
             Exit Function
         End If
@@ -2540,7 +2648,8 @@ Private Sub LoadGround(Path As String)
     Dim i As Long, Index As Integer
     On Error GoTo nofile
     pbxGround(0).Picture = LoadPicture(Path & "background0.bmp")
-        For i = 1 To 5
+    For i = 1 To 10
+        If FileExists(Path & "background" & i & ".bmp") Then
             Index = pbxGround.UBound + 1
             Load pbxGround(Index)
             With pbxGround(Index)
@@ -2553,7 +2662,8 @@ Private Sub LoadGround(Path As String)
                 .AutoRedraw = True
                 .Picture = LoadPicture(Path & "background" & i & ".bmp")
             End With
-        Next i
+          End If
+    Next i
         Exit Sub
 nofile:
         If Err.Number = 76 Then
@@ -2567,7 +2677,7 @@ On Error GoTo nofile
 ReDim Preserve pbxItem(1)
 'pbxItem(0).Picture = LoadPicture(Path & "item0.bmp")
 pbxItem(0).LoadBitmap (Path & "item0.bmp")
-    For i = 1 To 50
+    For i = 1 To 100
     If FileExists(Path & "item" & i & ".bmp") Then
             Index = UBound(pbxItem)
             ReDim Preserve pbxItem(Index + 1)
@@ -2618,7 +2728,7 @@ On Error GoTo nofile
 ReDim Preserve pbxMonster(1)
 'pbxMonster(0).Picture = LoadPicture(Path & "player0.bmp")
   pbxMonster(0).LoadBitmap (Path & "player0.bmp")
-    For i = 1 To 50
+    For i = 1 To 100
     
     If FileExists(Path & "player" & i & ".bmp") Then
             Index = UBound(pbxMonster)
@@ -2733,7 +2843,7 @@ Public Function Map_Check(Xpos As Integer, Ypos As Integer) As Boolean
     If Ypos < 0 Or Ypos > UBound(Map) Then Exit Function
     
     'Checks if there is a monster on that positon
-    If MonsterMap(Xpos, Ypos).MonsterId <> 0 Then
+    If MonsterMap(Xpos, Ypos).MonsterID <> 0 Then
        If MonsterMap(Xpos, Ypos).Dead = True Then
        Else
         If Player.IsInStealth = True Then
@@ -2819,7 +2929,7 @@ Private Sub pbxView_DragDrop(Source As Control, x As Single, y As Single)
         End If
         
         If DragSource = "monster" And bAdminMode = True Then
-            If MonsterMap(CurX, CurY).MonsterId = 0 Then
+            If MonsterMap(CurX, CurY).MonsterID = 0 Then
                 MonsterMap(CurX, CurY).Dead = MonsterMap(dMonX, dMonY).Dead
                 MonsterMap(CurX, CurY).ImageFile = MonsterMap(dMonX, dMonY).ImageFile
                 MonsterMap(CurX, CurY).ImageNumber = MonsterMap(dMonX, dMonY).ImageNumber
@@ -2827,7 +2937,7 @@ Private Sub pbxView_DragDrop(Source As Control, x As Single, y As Single)
                 MonsterMap(CurX, CurY).Life = MonsterMap(dMonX, dMonY).Life
                 MonsterMap(CurX, CurY).Mana = MonsterMap(dMonX, dMonY).Mana
                 MonsterMap(CurX, CurY).MonsterArrayID = MonsterMap(dMonX, dMonY).MonsterArrayID
-                MonsterMap(CurX, CurY).MonsterId = MonsterMap(dMonX, dMonY).MonsterId
+                MonsterMap(CurX, CurY).MonsterID = MonsterMap(dMonX, dMonY).MonsterID
                 MonsterMap(CurX, CurY).OldMonsterArrayID = MonsterMap(dMonX, dMonY).OldMonsterArrayID
                 MonsterMap(CurX, CurY).OldX = MonsterMap(dMonX, dMonY).OldX
                 MonsterMap(CurX, CurY).OldY = MonsterMap(dMonX, dMonY).OldY
@@ -2844,7 +2954,7 @@ Private Sub pbxView_DragDrop(Source As Control, x As Single, y As Single)
                 MonsterMap(dMonX, dMonY).Life = 0
                 MonsterMap(dMonX, dMonY).Mana = 0
                 MonsterMap(dMonX, dMonY).MonsterArrayID = 0
-                MonsterMap(dMonX, dMonY).MonsterId = 0
+                MonsterMap(dMonX, dMonY).MonsterID = 0
                 MonsterMap(dMonX, dMonY).OldMonsterArrayID = 0
                 MonsterMap(dMonX, dMonY).OldX = 0
                 MonsterMap(dMonX, dMonY).OldY = 0
@@ -2884,7 +2994,7 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
             If Player.Xpos = CurX And Player.Ypos = CurY Then Exit Sub
             MonsterMap(CurX, CurY).ImageNumber = Monsters(SelectedMonster).Image
             MonsterMap(CurX, CurY).Dead = False
-            MonsterMap(CurX, CurY).MonsterId = SelectedMonster
+            MonsterMap(CurX, CurY).MonsterID = SelectedMonster
             MonsterMap(CurX, CurY).Life = Monsters(SelectedMonster).Life
             MonsterMap(CurX, CurY).Stamina = Monsters(SelectedMonster).Stamina
             MonsterMap(CurX, CurY).Mana = Monsters(SelectedMonster).Mana
@@ -2926,7 +3036,7 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
                 IsDrag = True
             Else
 
-                If MonsterMap(CurX, CurY).MonsterId <> 0 And bAdminMode = True Then
+                If MonsterMap(CurX, CurY).MonsterID <> 0 And bAdminMode = True Then
                     dMonX = CurX
                     dMonY = CurY
                     DragSource = "monster"
@@ -2949,7 +3059,7 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
             If Player.Xpos = CurX And Player.Ypos = CurY Then Exit Sub
             MonsterMap(CurX, CurY).ImageNumber = 0
             MonsterMap(CurX, CurY).Dead = False
-            MonsterMap(CurX, CurY).MonsterId = 0
+            MonsterMap(CurX, CurY).MonsterID = 0
             MonsterMap(CurX, CurY).Life = 0
             MonsterMap(CurX, CurY).Stamina = 0
             MonsterMap(CurX, CurY).Mana = 0
@@ -2996,7 +3106,7 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
     
     For i = 0 To UBound(Monsters)
     If CurX < LBound(ItemMap) Or CurY < LBound(ItemMap) Then Exit For
-        If Monsters(i).MonsterId = MonsterMap(CurX, CurY).MonsterId Then
+        If Monsters(i).MonsterID = MonsterMap(CurX, CurY).MonsterID Then
             MonsterName = Trim$(Monsters(i).MonsterName)
             lblStatus.Caption = MonsterName & "- Life:" & MonsterMap(CurX, CurY).Life & " Stamina:" & MonsterMap(CurX, CurY).Stamina & " Mana:" & MonsterMap(CurX, CurY).Mana
             Exit For
@@ -3013,7 +3123,7 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
     
     If CurX < LBound(ItemMap) Or CurY < LBound(ItemMap) Then
     Else
-    StatusBar.SimpleText = "Surface=" & Map(CurX, CurY).ImageNumber & " Item: " & ItemName & "(" & ItemMap(CurX, CurY).ItemId & ")" & " Monster: " & MonsterName & "(" & MonsterMap(CurX, CurY).MonsterId & ")"
+    StatusBar.SimpleText = "Surface=" & Map(CurX, CurY).ImageNumber & " Item: " & ItemName & "(" & ItemMap(CurX, CurY).ItemId & ")" & " Monster: " & MonsterName & "(" & MonsterMap(CurX, CurY).MonsterID & ")"
     End If
 End Sub
 
@@ -3029,7 +3139,7 @@ Private Sub pbxView_MouseMove(Button As Integer, Shift As Integer, x As Single, 
             If Player.Xpos = CurX And Player.Ypos = CurY Then Exit Sub
             MonsterMap(CurX, CurY).ImageNumber = Monsters(SelectedMonster).Image
             MonsterMap(CurX, CurY).Dead = False
-            MonsterMap(CurX, CurY).MonsterId = SelectedMonster
+            MonsterMap(CurX, CurY).MonsterID = SelectedMonster
             MonsterMap(CurX, CurY).Life = Monsters(SelectedMonster).Life
             MonsterMap(CurX, CurY).Stamina = Monsters(SelectedMonster).Stamina
             MonsterMap(CurX, CurY).Mana = Monsters(SelectedMonster).Mana
@@ -3068,7 +3178,7 @@ Private Sub pbxView_MouseMove(Button As Integer, Shift As Integer, x As Single, 
             If Player.Xpos = CurX And Player.Ypos = CurY Then Exit Sub
             MonsterMap(CurX, CurY).ImageNumber = 0
             MonsterMap(CurX, CurY).Dead = False
-            MonsterMap(CurX, CurY).MonsterId = 0
+            MonsterMap(CurX, CurY).MonsterID = 0
             MonsterMap(CurX, CurY).Life = 0
             MonsterMap(CurX, CurY).Stamina = 0
             MonsterMap(CurX, CurY).Mana = 0
@@ -3197,7 +3307,7 @@ For y = 0 To UBound(Map, 1)
                 MonsterMap(x, y).ImageNumber = Monsters(MonsterMap(x, y).OldMonsterArrayID).Image
                 
                 MonsterMap(x, y).MonsterArrayID = MonsterMap(x, y).OldMonsterArrayID
-                MonsterMap(x, y).MonsterId = Monsters(MonsterMap(x, y).OldMonsterArrayID).MonsterId
+                MonsterMap(x, y).MonsterID = Monsters(MonsterMap(x, y).OldMonsterArrayID).MonsterID
                 
                 MonsterMap(x, y).Dead = False
                 Call modAI.MoveMonsterToNewSquare(x, y, MonsterMap(x, y).OldX, MonsterMap(x, y).OldY)
@@ -3216,7 +3326,7 @@ For y = 0 To UBound(Map, 1)
                 MonsterMap(x, y).ImageNumber = Monsters(MonsterMap(x, y).OldMonsterArrayID).Image
                 
                 MonsterMap(x, y).MonsterArrayID = MonsterMap(x, y).OldMonsterArrayID
-                MonsterMap(x, y).MonsterId = Monsters(MonsterMap(x, y).OldMonsterArrayID).MonsterId
+                MonsterMap(x, y).MonsterID = Monsters(MonsterMap(x, y).OldMonsterArrayID).MonsterID
                 
                 MonsterMap(x, y).Dead = False
                 'MsgBox "hi"
