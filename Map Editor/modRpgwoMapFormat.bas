@@ -53,7 +53,7 @@ End Type
 Dim mMap() As Integer
 Dim mItems() As mItemType
 Dim mMonsters() As mMonsterType
- Dim tempmMapData() As mMapDataType
+Dim tempmMapData() As mMapDataType
  
 Sub LoadRpgwoMap(filename As String)
 

@@ -2255,7 +2255,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 '########################################
 'Rpgwo Map Editor
-'Jonathan Valentin 2003-20202 aka Jon The Great
+'Jonathan Valentin 2003-2020 aka Jon The Great
 '########################################
 Option Explicit
 Dim ItemWriting As String
@@ -3178,7 +3178,7 @@ Private Sub LoadItems(Path As String)
 Dim i As Integer, Index As Integer
 On Error GoTo nofile
 pbxItem(0).Picture = LoadPicture(Path & "item0.bmp")
-    For i = 1 To 50
+    For i = 1 To 100
     If FileExists(Path & "item" & i & ".bmp") Then
         Index = pbxItem.UBound + 1
         Load pbxItem(Index)
@@ -3205,7 +3205,7 @@ Private Sub LoadMonsters(Path As String)
 Dim i As Integer, Index As Integer
 On Error GoTo nofile
 pbxMonster(0).Picture = LoadPicture(Path & "player0.bmp")
-    For i = 1 To 50
+    For i = 1 To 100
     
     If FileExists(Path & "player" & i & ".bmp") Then
         Index = pbxMonster.UBound + 1
