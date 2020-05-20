@@ -335,263 +335,266 @@ Dim v2 As Boolean
 
 Private Sub cmdMakeIni_Click()
 Dim emptyItemName As String * 30
-Open PathLocation & "item.ini" For Output As #1
-For I = 0 To UBound(Items)
-    If Items(I).ItemName <> "" And Items(I).ItemName <> emptyItemName Then
-     Print #1, "Item=" & I + 1
-     Print #1, "Name=" & Items(I).ItemName
-     Print #1, "Class=" & ReturnClassName(Items(I).Class)
-     If ReturnSize(Items(I).Size) <> "" Then
-        Print #1, "Size=" & ReturnSize(Items(I).Size)
+Dim i As Integer
+Dim f As Long
+f = FreeFile
+Open PathLocation & "item.ini" For Output As #f
+For i = 0 To UBound(Items)
+    If Items(i).ItemName <> "" And Items(i).ItemName <> emptyItemName Then
+     Print #f, "Item=" & i + 1
+     Print #f, "Name=" & Items(i).ItemName
+     Print #f, "Class=" & ReturnClassName(Items(i).Class)
+     If ReturnSize(Items(i).Size) <> "" Then
+        Print #f, "Size=" & ReturnSize(Items(i).Size)
      End If
      
-     If Items(I).ImageType <> 0 Then
-        Print #1, "ImageType=" & Items(I).ImageType
+     If Items(i).ImageType <> 0 Then
+        Print #f, "ImageType=" & Items(i).ImageType
      End If
         
-     If Trim(Items(I).ClassSubType) <> "" And v2 = False Then
-        Print #1, "SubType=" & Items(I).ClassSubType
+     If Trim(Items(i).ClassSubType) <> "" And v2 = False Then
+        Print #f, "SubType=" & Items(i).ClassSubType
      End If
      '###Animation
-     Print #1, "Animation0=" & Items(I).Image
-     If Items(I).Animation1 <> 0 Then
-        Print #1, "Animation1=" & Items(I).Animation1
+     Print #f, "Animation0=" & Items(i).Image
+     If Items(i).Animation1 <> 0 Then
+        Print #f, "Animation1=" & Items(i).Animation1
      End If
-     If Items(I).Animation2 <> 0 Then
-        Print #1, "Animation2=" & Items(I).Animation2
+     If Items(i).Animation2 <> 0 Then
+        Print #f, "Animation2=" & Items(i).Animation2
      End If
-     If Items(I).Animation3 <> 0 Then
-        Print #1, "Animation3=" & Items(I).Animation3
+     If Items(i).Animation3 <> 0 Then
+        Print #f, "Animation3=" & Items(i).Animation3
      End If
-     If Items(I).Animation4 <> 0 Then
-        Print #1, "Animation4=" & Items(I).Animation4
+     If Items(i).Animation4 <> 0 Then
+        Print #f, "Animation4=" & Items(i).Animation4
      End If
-     If Items(I).Animation5 <> 0 Then
-        Print #1, "Animation5=" & Items(I).Animation5
+     If Items(i).Animation5 <> 0 Then
+        Print #f, "Animation5=" & Items(i).Animation5
      End If
-     If Items(I).Animation6 <> 0 Then
-        Print #1, "Animation6=" & Items(I).Animation6
+     If Items(i).Animation6 <> 0 Then
+        Print #f, "Animation6=" & Items(i).Animation6
      End If
-     If Items(I).Animation7 <> 0 Then
-        Print #1, "Animation7=" & Items(I).Animation7
+     If Items(i).Animation7 <> 0 Then
+        Print #f, "Animation7=" & Items(i).Animation7
      End If
-     If Items(I).Animation8 <> 0 Then
-        Print #1, "Animation8=" & Items(I).Animation8
+     If Items(i).Animation8 <> 0 Then
+        Print #f, "Animation8=" & Items(i).Animation8
      End If
-     If Items(I).Animation9 <> 0 Then
-        Print #1, "Animation9=" & Items(I).Animation9
+     If Items(i).Animation9 <> 0 Then
+        Print #f, "Animation9=" & Items(i).Animation9
      End If
      'End animation
      
-     If Items(I).Burden <> 0 Then
-     Print #1, "Burden=" & Items(I).Burden
+     If Items(i).Burden <> 0 Then
+     Print #f, "Burden=" & Items(i).Burden
      End If
      
-     If Items(I).Light <> 0 Then
-        Print #1, "Light=" & Items(I).Light
+     If Items(i).Light <> 0 Then
+        Print #f, "Light=" & Items(i).Light
      End If
      
-     If Items(I).value <> 0 Then
-     Print #1, "Value=" & Items(I).value
+     If Items(i).value <> 0 Then
+     Print #f, "Value=" & Items(i).value
      
      End If
      
-     If Items(I).Group <> 0 Then
-     Print #1, "Group=" & Items(I).Group
+     If Items(i).Group <> 0 Then
+     Print #f, "Group=" & Items(i).Group
      End If
      
-     If Items(I).WearImage <> 0 Then
-        Print #1, "WearImage=" & Items(I).WearImage
+     If Items(i).WearImage <> 0 Then
+        Print #f, "WearImage=" & Items(i).WearImage
      End If
-     If Items(I).AttackSpeed <> 0 Then
-        Print #1, "AttackSpeed=" & Items(I).AttackSpeed
+     If Items(i).AttackSpeed <> 0 Then
+        Print #f, "AttackSpeed=" & Items(i).AttackSpeed
      End If
-     If Items(I).SkillReq <> 0 Then
-        Print #1, "SkillReq=" & Items(I).SkillReq
+     If Items(i).SkillReq <> 0 Then
+        Print #f, "SkillReq=" & Items(i).SkillReq
      End If
-     If Items(I).CombatSkill <> 0 Then
-        Print #1, "CombatSkill=" & Items(I).CombatSkill
+     If Items(i).CombatSkill <> 0 Then
+        Print #f, "CombatSkill=" & Items(i).CombatSkill
      End If
-     If Items(I).DamageLow <> 0 Then
-        Print #1, "DamageLow=" & Items(I).DamageLow
+     If Items(i).DamageLow <> 0 Then
+        Print #f, "DamageLow=" & Items(i).DamageLow
      End If
-     If Items(I).DamageHigh <> 0 Then
-        Print #1, "DamageHigh=" & Items(I).DamageHigh
+     If Items(i).DamageHigh <> 0 Then
+        Print #f, "DamageHigh=" & Items(i).DamageHigh
      End If
-     If Items(I).Ammo <> 0 Then
-        Print #1, "Ammo=" & Items(I).Ammo
+     If Items(i).Ammo <> 0 Then
+        Print #f, "Ammo=" & Items(i).Ammo
      End If
-     If Items(I).STARTERSKILL <> 0 Then
-        Print #1, "StarterSkill=" & Items(I).STARTERSKILL
+     If Items(i).STARTERSKILL <> 0 Then
+        Print #f, "StarterSkill=" & Items(i).STARTERSKILL
      End If
      
      If v2 = True Then
      
-        If Items2(I).ArmorSpot <> 0 Then
-           Print #1, "ArmorSpot=" & Items2(I).ArmorSpot
+        If Items2(i).ArmorSpot <> 0 Then
+           Print #f, "ArmorSpot=" & Items2(i).ArmorSpot
         End If
      End If
      
-     If Items(I).ArmorLevel <> 0 Then
-        Print #1, "ArmorLevel=" & Items(I).ArmorLevel
+     If Items(i).ArmorLevel <> 0 Then
+        Print #f, "ArmorLevel=" & Items(i).ArmorLevel
      End If
-     If Items(I).ArmorDurability <> 0 Then
-        Print #1, "ArmorDurability=" & Items(I).ArmorDurability
+     If Items(i).ArmorDurability <> 0 Then
+        Print #f, "ArmorDurability=" & Items(i).ArmorDurability
      End If
-     If Items(I).ATTACKANIMATION <> 0 Then
-        Print #1, "AttackAnimation=" & Items(I).ATTACKANIMATION
+     If Items(i).ATTACKANIMATION <> 0 Then
+        Print #f, "AttackAnimation=" & Items(i).ATTACKANIMATION
      End If
-     If Items(I).WeaponMaxRange <> 1 And Items(I).WeaponMaxRange <> 0 Then
-        Print #1, "WeaponMaxRange=" & Items(I).WeaponMaxRange
+     If Items(i).WeaponMaxRange <> 1 And Items(i).WeaponMaxRange <> 0 Then
+        Print #f, "WeaponMaxRange=" & Items(i).WeaponMaxRange
      End If
-     If Items(I).WeaponDurability <> 0 Then
-        Print #1, "WeaponDurability=" & Items(I).WeaponDurability
+     If Items(i).WeaponDurability <> 0 Then
+        Print #f, "WeaponDurability=" & Items(i).WeaponDurability
      End If
-     If Items(I).PROJECTILEANIMATION <> 0 Then
-        Print #1, "PROJECTILEANIMATION=" & Items(I).PROJECTILEANIMATION
+     If Items(i).PROJECTILEANIMATION <> 0 Then
+        Print #f, "PROJECTILEANIMATION=" & Items(i).PROJECTILEANIMATION
      End If
-     If Items(I).Food <> 0 Then
-        Print #1, "Food=" & Items(I).Food
+     If Items(i).Food <> 0 Then
+        Print #f, "Food=" & Items(i).Food
      End If
-     If Items(I).Water <> 0 Then
-        Print #1, "Water=" & Items(I).Water
+     If Items(i).Water <> 0 Then
+        Print #f, "Water=" & Items(i).Water
      End If
-     If Items(I).FoodMana <> 0 Then
-        Print #1, "FoodMana=" & Items(I).FoodMana
+     If Items(i).FoodMana <> 0 Then
+        Print #f, "FoodMana=" & Items(i).FoodMana
      End If
-     If Items(I).FoodStamina <> 0 Then
-        Print #1, "FoodStamina=" & Items(I).FoodStamina
+     If Items(i).FoodStamina <> 0 Then
+        Print #f, "FoodStamina=" & Items(i).FoodStamina
      End If
-     If Items(I).FoodLife <> 0 Then
-        Print #1, "FoodLife=" & Items(I).FoodLife
+     If Items(i).FoodLife <> 0 Then
+        Print #f, "FoodLife=" & Items(i).FoodLife
      End If
-     If Items(I).StandDamage <> 0 Then
-        Print #1, "StandDamage=" & Items(I).StandDamage
+     If Items(i).StandDamage <> 0 Then
+        Print #f, "StandDamage=" & Items(i).StandDamage
      End If
-     If Items(I).HoldDamage <> 0 Then
-        Print #1, "HoldDamage=" & Items(I).HoldDamage
+     If Items(i).HoldDamage <> 0 Then
+        Print #f, "HoldDamage=" & Items(i).HoldDamage
      End If
-     If Items(I).PoisonDamage <> 0 Then
-        Print #1, "PoisonDamage=" & Items(I).PoisonDamage
+     If Items(i).PoisonDamage <> 0 Then
+        Print #f, "PoisonDamage=" & Items(i).PoisonDamage
      End If
-     If Items(I).PoisonCure <> 0 Then
-        Print #1, "PoisonCure=" & Items(I).PoisonCure
+     If Items(i).PoisonCure <> 0 Then
+        Print #f, "PoisonCure=" & Items(i).PoisonCure
      End If
-     If Items(I).TraderMax <> 0 Then
-        Print #1, "TraderMax=" & Items(I).TraderMax
+     If Items(i).TraderMax <> 0 Then
+        Print #f, "TraderMax=" & Items(i).TraderMax
      End If
-     If Items(I).MagicPower <> 0 Then
-        Print #1, "MagicPower=" & Items(I).MagicPower
+     If Items(i).MagicPower <> 0 Then
+        Print #f, "MagicPower=" & Items(i).MagicPower
      End If
-     If Items(I).MagicBreakChance <> 0 Then
-        Print #1, "MagicBreakChance=" & Items(I).MagicBreakChance
+     If Items(i).MagicBreakChance <> 0 Then
+        Print #f, "MagicBreakChance=" & Items(i).MagicBreakChance
      End If
-     If Items(I).MagicBreakItemID <> 0 Then
-        Print #1, "MagicBreakItemID=" & Items(I).MagicBreakItemID
+     If Items(i).MagicBreakItemID <> 0 Then
+        Print #f, "MagicBreakItemID=" & Items(i).MagicBreakItemID
      End If
-     If Items(I).MagicBreakDamage <> 0 Then
-        Print #1, "MagicBreakDamage=" & Items(I).MagicBreakDamage
+     If Items(i).MagicBreakDamage <> 0 Then
+        Print #f, "MagicBreakDamage=" & Items(i).MagicBreakDamage
      End If
-     If Items(I).MAGICSTABILITY <> 0 Then
-        Print #1, "MAGICSTABILITY=" & Items(I).MAGICSTABILITY
+     If Items(i).MAGICSTABILITY <> 0 Then
+        Print #f, "MAGICSTABILITY=" & Items(i).MAGICSTABILITY
      End If
-     If Items(I).FireAL <> 0 Then
-        Print #1, "FireAL=" & Items(I).FireAL
+     If Items(i).FireAL <> 0 Then
+        Print #f, "FireAL=" & Items(i).FireAL
      End If
-     If Items(I).ColdAL <> 0 Then
-        Print #1, "ColdAL=" & Items(I).ColdAL
+     If Items(i).ColdAL <> 0 Then
+        Print #f, "ColdAL=" & Items(i).ColdAL
      End If
-     If Items(I).ElectricAL <> 0 Then
-        Print #1, "ElectricAL=" & Items(I).ElectricAL
+     If Items(i).ElectricAL <> 0 Then
+        Print #f, "ElectricAL=" & Items(i).ElectricAL
      End If
-     If Items(I).TOTALUSES <> 0 Then
-        Print #1, "TOTALUSES=" & Items(I).TOTALUSES
+     If Items(i).TOTALUSES <> 0 Then
+        Print #f, "TOTALUSES=" & Items(i).TOTALUSES
      End If
-     If Items(I).Warmth <> 0 Then
-        Print #1, "WARMTH=" & Items(I).Warmth
+     If Items(i).Warmth <> 0 Then
+        Print #f, "WARMTH=" & Items(i).Warmth
      End If
-     If Items(I).WarmthRadius <> 0 Then
-        Print #1, "WARMTHRADIUS=" & Items(I).WarmthRadius
+     If Items(i).WarmthRadius <> 0 Then
+        Print #f, "WARMTHRADIUS=" & Items(i).WarmthRadius
      End If
-     If Items(I).RESTGAIN <> 0 Then
-        Print #1, "RESTGAIN=" & Items(I).RESTGAIN
+     If Items(i).RESTGAIN <> 0 Then
+        Print #f, "RESTGAIN=" & Items(i).RESTGAIN
      End If
-     If Items(I).CRITICALBONUS <> 0 Then
-        Print #1, "CRITICALBONUS=" & Items(I).CRITICALBONUS
+     If Items(i).CRITICALBONUS <> 0 Then
+        Print #f, "CRITICALBONUS=" & Items(i).CRITICALBONUS
      End If
-     If Items(I).Rarity <> 0 Then
-        Print #1, "Rarity=" & Items(I).Rarity
+     If Items(i).Rarity <> 0 Then
+        Print #f, "Rarity=" & Items(i).Rarity
      End If
-     If Items(I).DegradeItem <> 0 Then
-        Print #1, "DegradeItem=" & Items(I).DegradeItem
+     If Items(i).DegradeItem <> 0 Then
+        Print #f, "DegradeItem=" & Items(i).DegradeItem
      End If
-     If Items(I).DegradeDelta <> 0 Then
-        Print #1, "DegradeDelta=" & Items(I).DegradeDelta
+     If Items(i).DegradeDelta <> 0 Then
+        Print #f, "DegradeDelta=" & Items(i).DegradeDelta
      End If
-     If Items(I).GrowthItem <> 0 Then
-        Print #1, "GrowthItem=" & Items(I).GrowthItem
+     If Items(i).GrowthItem <> 0 Then
+        Print #f, "GrowthItem=" & Items(i).GrowthItem
      End If
-     If Items(I).GrowthDelta <> 0 Then
-        Print #1, "GrowthDelta=" & Items(I).GrowthDelta
+     If Items(i).GrowthDelta <> 0 Then
+        Print #f, "GrowthDelta=" & Items(i).GrowthDelta
      End If
-     If Items(I).GrowthWater <> 0 Then
-        Print #1, "GrowthWater=" & Items(I).GrowthWater
+     If Items(i).GrowthWater <> 0 Then
+        Print #f, "GrowthWater=" & Items(i).GrowthWater
      End If
-     If Items(I).GROWTHSPROUTITEM <> 0 Then
-        Print #1, "GROWTHSPROUTITEM=" & Items(I).GROWTHSPROUTITEM
+     If Items(i).GROWTHSPROUTITEM <> 0 Then
+        Print #f, "GROWTHSPROUTITEM=" & Items(i).GROWTHSPROUTITEM
      End If
-     If Items(I).WeaponAl <> 0 Then
-        Print #1, "WEAPONAL=" & Items(I).WeaponAl
+     If Items(i).WeaponAl <> 0 Then
+        Print #f, "WEAPONAL=" & Items(i).WeaponAl
      End If
      If v2 = True Then
      
-        If Items2(I).EssenceSteal <> 0 Then
-           Print #1, "EssenceSteal=" & Items2(I).EssenceSteal
+        If Items2(i).EssenceSteal <> 0 Then
+           Print #f, "EssenceSteal=" & Items2(i).EssenceSteal
         End If
      End If
      
 
      'Booleans
-     If Items(I).EXPLODESHELL = True Then Print #1, "EXPLODESHELL"
-     If Items(I).FASTPROJECTILE = True Then Print #1, "FASTPROJECTILE"
-     If Items(I).NotMovable = True Then Print #1, "NotMovable"
-     If Items(I).BlockMovement = True Then Print #1, "BlockMovement=1"
-     If Items(I).Stackable = True Then Print #1, "Stackable"
-     If Items(I).Twohandweapon = True Then Print #1, "2handweapon"
-     If Items(I).MissileWeapon = True Then Print #1, "MissleWeapon=True"
-     If Items(I).OneAllowed = True Then Print #1, "OneAllowed"
-     If Items(I).Postable = True Then Print #1, "Postable"
-     If Items(I).Readable = True Then Print #1, "Readable"
-     If Items(I).Forest = True Then Print #1, "Forest"
-     If Items(I).NoDeathDrop = True Then Print #1, "NoDeathDrop"
-     If Items(I).NoEconomyValueDrop = True Then Print #1, "NoEconomyValueDrop"
-     If Items(I).OpenLineofSight = True Then Print #1, "OPENSIGHTLINE"
-     If Items(I).LOCKABLE = True Then Print #1, "LOCKABLE"
-     If Items(I).NODROP = True Then Print #1, "NODROP"
-     If Items(I).IgnoreShields = True Then Print #1, "IGNORESHIELDS"
-     If Items(I).INNKEY = True Then Print #1, "INNKEY"
-     If Items(I).DESTROYABLE = True Then Print #1, "DESTROYABLE"
-     If Items(I).INNDOOR = True Then Print #1, "INNDOOR"
-     If Items(I).PKDAMAGE = True Then Print #1, "PKDAMAGE"
-     If Items(I).REFLECT = True Then Print #1, "REFLECT"
-     If Items(I).INVISIBLE = True Then Print #1, "INVISIBLE"
-     If Items(I).SHIELDBREAK = True Then Print #1, "SHIELDBREAK"
-     If Items(I).STAMINADAMAGE = True Then Print #1, "STAMINADAMAGE"
-     If Items(I).AlwaysStock = True Then Print #1, "ALWAYSSTOCK"
-     If Items(I).NOTPICKUPABLE = True Then Print #1, "NOTPICKUPABLE"
-     If Items(I).NOTCONTAINERABLE = True Then Print #1, "NOTCONTAINERABLE"
-     If Items(I).APARTMENTMARKER = True Then Print #1, "APARTMENTMARKER"
-     If Items(I).APARTMENTRENTER = True Then Print #1, "APARTMENTRENTER"
+     If Items(i).EXPLODESHELL = True Then Print #f, "EXPLODESHELL"
+     If Items(i).FASTPROJECTILE = True Then Print #f, "FASTPROJECTILE"
+     If Items(i).NotMovable = True Then Print #f, "NotMovable"
+     If Items(i).BlockMovement = True Then Print #f, "BlockMovement=1"
+     If Items(i).Stackable = True Then Print #f, "Stackable"
+     If Items(i).Twohandweapon = True Then Print #f, "2handweapon"
+     If Items(i).MissileWeapon = True Then Print #f, "MissleWeapon=True"
+     If Items(i).OneAllowed = True Then Print #f, "OneAllowed"
+     If Items(i).Postable = True Then Print #f, "Postable"
+     If Items(i).Readable = True Then Print #f, "Readable"
+     If Items(i).Forest = True Then Print #f, "Forest"
+     If Items(i).NoDeathDrop = True Then Print #f, "NoDeathDrop"
+     If Items(i).NoEconomyValueDrop = True Then Print #f, "NoEconomyValueDrop"
+     If Items(i).OpenLineofSight = True Then Print #f, "OPENSIGHTLINE"
+     If Items(i).LOCKABLE = True Then Print #f, "LOCKABLE"
+     If Items(i).NODROP = True Then Print #f, "NODROP"
+     If Items(i).IgnoreShields = True Then Print #f, "IGNORESHIELDS"
+     If Items(i).INNKEY = True Then Print #f, "INNKEY"
+     If Items(i).DESTROYABLE = True Then Print #f, "DESTROYABLE"
+     If Items(i).INNDOOR = True Then Print #f, "INNDOOR"
+     If Items(i).PKDAMAGE = True Then Print #f, "PKDAMAGE"
+     If Items(i).REFLECT = True Then Print #f, "REFLECT"
+     If Items(i).INVISIBLE = True Then Print #f, "INVISIBLE"
+     If Items(i).SHIELDBREAK = True Then Print #f, "SHIELDBREAK"
+     If Items(i).STAMINADAMAGE = True Then Print #f, "STAMINADAMAGE"
+     If Items(i).AlwaysStock = True Then Print #f, "ALWAYSSTOCK"
+     If Items(i).NOTPICKUPABLE = True Then Print #f, "NOTPICKUPABLE"
+     If Items(i).NOTCONTAINERABLE = True Then Print #f, "NOTCONTAINERABLE"
+     If Items(i).APARTMENTMARKER = True Then Print #f, "APARTMENTMARKER"
+     If Items(i).APARTMENTRENTER = True Then Print #f, "APARTMENTRENTER"
      
      
-     Print #1, ""
+     Print #f, ""
      
     End If
     
     
 Next
-Close #1
-    MsgBox "Item.ini generated at " & PathLocation & "\item.ini", vbInformation
+Close #f
+    MsgBox "Item.ini generated at " & PathLocation & "item.ini", vbInformation
     
 End Sub
 
@@ -602,18 +605,19 @@ End Sub
 
 
 Private Sub Command1_Click()
-
-For I = 0 To UBound(Items)
- Items(I).OpenLineofSight = True
- Items(I).Light = 10
- Items(I).INVISIBLE = False
+Dim f As Long
+f = FreeFile
+For i = 0 To UBound(Items)
+ Items(i).OpenLineofSight = True
+ Items(i).Light = 10
+ Items(i).INVISIBLE = False
  'Items(i).Class = 8
  'Items(i).BlockMovement = False
  'Items(i).Group = 30
 Next
-Open PathLocation & "\itemdef.dat" For Binary Access Write Lock Write As #1
-Put #1, , Items
-Close #1
+Open PathLocation & "\itemdef.dat" For Binary Access Write Lock Write As #f
+Put #f, , Items
+Close #f
 
 End Sub
 
@@ -624,7 +628,7 @@ Dim code As Long
 Dim f As Long
 
 code = 0
-For I = 0 To Len(pcName)
+For i = 0 To Len(pcName)
 code = Asc(pcName)
 Next
 
@@ -677,57 +681,57 @@ Open PathLocation & "\itemdef2.dat" For Binary As f
 Get f, , Items2
 Close f
 
-For I = 0 To iNumberOfRecords
-Items(I).ItemName = Items2(I).ItemName
-Items(I).Image = Items2(I).Image
-Items(I).Animation1 = Items2(I).Animation1
-Items(I).Animation2 = Items2(I).Animation2
-Items(I).Animation3 = Items2(I).Animation3
-Items(I).Animation4 = Items2(I).Animation4
-Items(I).Animation5 = Items2(I).Animation5
-Items(I).Animation6 = Items2(I).Animation6
-Items(I).Animation7 = Items2(I).Animation7
-Items(I).Animation8 = Items2(I).Animation8
-Items(I).Animation9 = Items2(I).Animation9
-Items(I).Class = Items2(I).Class
-Items(I).ArmorLevel = Items2(I).ArmorLevel
+For i = 0 To iNumberOfRecords
+Items(i).ItemName = Items2(i).ItemName
+Items(i).Image = Items2(i).Image
+Items(i).Animation1 = Items2(i).Animation1
+Items(i).Animation2 = Items2(i).Animation2
+Items(i).Animation3 = Items2(i).Animation3
+Items(i).Animation4 = Items2(i).Animation4
+Items(i).Animation5 = Items2(i).Animation5
+Items(i).Animation6 = Items2(i).Animation6
+Items(i).Animation7 = Items2(i).Animation7
+Items(i).Animation8 = Items2(i).Animation8
+Items(i).Animation9 = Items2(i).Animation9
+Items(i).Class = Items2(i).Class
+Items(i).ArmorLevel = Items2(i).ArmorLevel
 'Items(I).ArmorSpot = Items2(I).ArmorSpot
-Items(I).AttackSpeed = Items2(I).AttackSpeed
-Items(I).BlockMovement = Items2(I).BlockMovement
-Items(I).Burden = Items2(I).Burden
-Items(I).ColdAL = Items2(I).ColdAL
+Items(i).AttackSpeed = Items2(i).AttackSpeed
+Items(i).BlockMovement = Items2(i).BlockMovement
+Items(i).Burden = Items2(i).Burden
+Items(i).ColdAL = Items2(i).ColdAL
 'items(I).CombatSkill = Items2(I).CombatSkill
-Items(I).CRITICALBONUS = Items2(I).CRITICALBONUS
-Items(I).DamageHigh = Items2(I).DamageHigh
-Items(I).DamageLow = Items2(I).DamageLow
-Items(I).ElectricAL = Items2(I).ElectricAL
+Items(i).CRITICALBONUS = Items2(i).CRITICALBONUS
+Items(i).DamageHigh = Items2(i).DamageHigh
+Items(i).DamageLow = Items2(i).DamageLow
+Items(i).ElectricAL = Items2(i).ElectricAL
 'Items(I).EssenceSteal = Items2(I).EssenceSteal
-Items(I).FireAL = Items2(I).FireAL
-Items(I).Food = Items2(I).Food
-Items(I).FoodLife = Items2(I).FoodLife
-Items(I).FoodMana = Items2(I).FoodMana
-Items(I).FoodStamina = Items2(I).FoodStamina
-Items(I).IgnoreShields = Items2(I).IgnoreShields
-Items(I).ImageType = Items2(I).ImageType
-Items(I).MagicArmorLevel = Items2(I).MagicArmorLevel
-Items(I).MagicPower = Items2(I).MagicPower
-Items(I).MissileWeapon = Items2(I).MissleWeapon
-Items(I).PoisonCure = Items2(I).PoisonCure
-Items(I).PoisonDamage = Items2(I).PoisonDamage
-Items(I).Rarity = Items2(I).Rarity
-Items(I).SHIELDBREAK = Items2(I).SHIELDBREAK
-Items(I).SkillReq = Items2(I).SkillReq
-Items(I).Stackable = Items2(I).Stackable
-Items(I).STAMINADAMAGE = Items2(I).STAMINADAMAGE
-Items(I).Twohandweapon = Items2(I).Twohandweapon
-Items(I).value = Items2(I).value
-Items(I).Warmth = Items2(I).Warmth
-Items(I).Water = Items2(I).Water
-Items(I).WeaponAl = Items2(I).WeaponAl
-Items(I).WeaponMaxRange = Items2(I).WeaponMaxRange
+Items(i).FireAL = Items2(i).FireAL
+Items(i).Food = Items2(i).Food
+Items(i).FoodLife = Items2(i).FoodLife
+Items(i).FoodMana = Items2(i).FoodMana
+Items(i).FoodStamina = Items2(i).FoodStamina
+Items(i).IgnoreShields = Items2(i).IgnoreShields
+Items(i).ImageType = Items2(i).ImageType
+Items(i).MagicArmorLevel = Items2(i).MagicArmorLevel
+Items(i).MagicPower = Items2(i).MagicPower
+Items(i).MissileWeapon = Items2(i).MissleWeapon
+Items(i).PoisonCure = Items2(i).PoisonCure
+Items(i).PoisonDamage = Items2(i).PoisonDamage
+Items(i).Rarity = Items2(i).Rarity
+Items(i).SHIELDBREAK = Items2(i).SHIELDBREAK
+Items(i).SkillReq = Items2(i).SkillReq
+Items(i).Stackable = Items2(i).Stackable
+Items(i).STAMINADAMAGE = Items2(i).STAMINADAMAGE
+Items(i).Twohandweapon = Items2(i).Twohandweapon
+Items(i).value = Items2(i).value
+Items(i).Warmth = Items2(i).Warmth
+Items(i).Water = Items2(i).Water
+Items(i).WeaponAl = Items2(i).WeaponAl
+Items(i).WeaponMaxRange = Items2(i).WeaponMaxRange
 
  
-Next I
+Next i
 
 
 
@@ -792,14 +796,14 @@ On Error Resume Next
      '   BitBlt frmMain.picItem.hDC, 0, 0, 96, 96, frmMain.pbxItem(ImageFile).hDC, TileX, TileY, SRCCOPY
   '  End If
 End Sub
-Public Sub CacluateItemXY(I As Integer)  '(Imin As Integer, Imax As Integer)
+Public Sub CacluateItemXY(i As Integer)  '(Imin As Integer, Imax As Integer)
 Dim k As Integer
 For k = 0 To pbxItem.UBound
 
-        If Items(I).Image >= (100 * k) And Items(I).Image < ((k * 100) + 100) Then
+        If Items(i).Image >= (100 * k) And Items(i).Image < ((k * 100) + 100) Then
             
             ImageFile = k
-            s = (Items(I).Image - (k * 100))
+            s = (Items(i).Image - (k * 100))
             If 32 * Int(Right(s, 1)) <= 0 Then
                 TileX = 0
             Else
@@ -862,29 +866,29 @@ Sub DoValues()
     Call PaintItem
 End Sub
 Private Sub LoadItems(Path As String)
-Dim I As Integer, Index As Integer
+Dim i As Integer, Index As Integer
 On Error GoTo nofile
 pbxItem(0).Picture = LoadPicture(Path & "item0.bmp")
-    For I = 1 To 50
+    For i = 1 To 100
     
-        If FileExists(Path & "item" & I & ".bmp") Then
+        If FileExists(Path & "item" & i & ".bmp") Then
         
             Index = pbxItem.UBound + 1
             Load pbxItem(Index)
             With pbxItem(Index)
                 .Enabled = True
                 .Top = pbxItem(0).Top
-                .Left = pbxItem(I - 1).Left + 530
+                .Left = pbxItem(i - 1).Left + 530
                 .Height = pbxItem(0).Height
                 .Width = pbxItem(0).Width
                 .Visible = False
                 .AutoRedraw = True
-                .Picture = LoadPicture(Path & "item" & I & ".bmp")
+                .Picture = LoadPicture(Path & "item" & i & ".bmp")
             End With
         End If
         
         DoEvents
-    Next I
+    Next i
     Exit Sub
 nofile:
     If Err.number = 76 Then
