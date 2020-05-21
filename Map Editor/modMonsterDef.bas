@@ -30,25 +30,30 @@ Private Type MonsterBox
     ImageFile As Integer
     MonsterName As String
     MonsterId As Integer
+    ImageType As Integer
 End Type
 
 Global MonsterBoxes() As MonsterBox
 Public Sub CaculateMonsterBoxes()
-Dim I As Integer
+Dim i As Integer
     ReDim MonsterBoxes(UBound(Monsters))
     
-    For I = 0 To UBound(Monsters)
-        MonsterBoxes(I).ImageNumber = Monsters(I).Image
-        MonsterBoxes(I).MonsterName = Monsters(I).MonsterName
-        MonsterBoxes(I).MonsterId = I + 1 'Monsters(i).MonsterId
-        If I <= 27 Then
-            frmMain.picMonster(I).Tag = I
+    For i = 0 To UBound(Monsters)
+        MonsterBoxes(i).ImageNumber = Monsters(i).Image
+        MonsterBoxes(i).MonsterName = Monsters(i).MonsterName
+        MonsterBoxes(i).ImageType = Monsters(i).ImageType
+        MonsterBoxes(i).MonsterId = i + 1 'Monsters(i).MonsterId
+        
+        
+        
+        If i <= 27 Then
+            frmMain.picMonster(i).Tag = i
         End If
-    Next I
+    Next i
 'Now Calculate TileX and TileY and ImageFile
-    For I = 0 To UBound(Monsters)
-        Call CacluateMonsterXY(I)
-    Next I
+    For i = 0 To UBound(Monsters)
+        Call CacluateMonsterXY(i)
+    Next i
     'Now draw the boxes
     frmMain.vsMonster.Max = UBound(Monsters)
     Call RedrawMonsterBoxes
@@ -56,22 +61,24 @@ End Sub
 Public Sub RedrawMonsterBoxes()
 On Error Resume Next
 Dim TagNum As Integer
-    For I = 0 To 27
-        frmMain.picMonster(I).Cls
-         TagNum = frmMain.picMonster(I).Tag
+    For i = 0 To 27
+        frmMain.picMonster(i).Cls
+         TagNum = frmMain.picMonster(i).Tag
          If TagNum > UBound(Monsters) Then
          Else
-         BitBlt frmMain.picMonster(I).hdc, 0, 0, 32, 32, frmMain.pbxMonster(MonsterBoxes(TagNum).ImageFile).hdc, MonsterBoxes(TagNum).TileX, MonsterBoxes(TagNum).TileY, SRCCOPY
+         BitBlt frmMain.picMonster(i).hdc, 0, 0, 32, 32, frmMain.pbxMonster(MonsterBoxes(TagNum).ImageFile).hdc, MonsterBoxes(TagNum).TileX, MonsterBoxes(TagNum).TileY, SRCCOPY
          End If
-    Next I
+    Next i
 End Sub
-Public Sub CacluateMonsterXY(ByVal I As Integer)
+Public Sub CacluateMonsterXY(ByVal i As Integer)
     Dim picId As Integer
 
-    picId = MonsterBoxes(I).ImageNumber
+    picId = MonsterBoxes(i).ImageNumber
+    
+
     picId = picId - 1
-    MonsterBoxes(I).ImageFile = Int(picId / 100)
+    MonsterBoxes(i).ImageFile = Int(picId / 100)
     picId = picId Mod 100
-    MonsterBoxes(I).TileX = 32 * (picId Mod 10)
-    MonsterBoxes(I).TileY = 32 * Int(picId / 10)
+    MonsterBoxes(i).TileX = 32 * (picId Mod 10)
+    MonsterBoxes(i).TileY = 32 * Int(picId / 10)
 End Sub

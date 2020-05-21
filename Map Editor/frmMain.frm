@@ -107,70 +107,54 @@ Begin VB.Form frmMain
       _ExtentY        =   11324
       _Version        =   393216
       Tabs            =   4
-      Tab             =   1
       TabsPerRow      =   4
       TabHeight       =   520
       TabCaption(0)   =   "Surface"
       TabPicture(0)   =   "frmMain.frx":1030
-      Tab(0).ControlEnabled=   0   'False
+      Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "Label1"
+      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "lblSurfaceNotes"
+      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "txtSurfacePencilWidth"
+      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "vsPencilWidth"
+      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "chkSurfaceFill"
+      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).Control(5)=   "Frame1"
+      Tab(0).Control(5).Enabled=   0   'False
       Tab(0).Control(6)=   "Frame2"
+      Tab(0).Control(6).Enabled=   0   'False
       Tab(0).Control(7)=   "cmdWater"
+      Tab(0).Control(7).Enabled=   0   'False
       Tab(0).ControlCount=   8
       TabCaption(1)   =   "Item"
       TabPicture(1)   =   "frmMain.frx":104C
-      Tab(1).ControlEnabled=   -1  'True
+      Tab(1).ControlEnabled=   0   'False
       Tab(1).Control(0)=   "lblitemSpawnTimeout"
-      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "lblItemSpawnTimeout2"
-      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "Label2(0)"
-      Tab(1).Control(2).Enabled=   0   'False
       Tab(1).Control(3)=   "Label2(1)"
-      Tab(1).Control(3).Enabled=   0   'False
       Tab(1).Control(4)=   "Label2(2)"
-      Tab(1).Control(4).Enabled=   0   'False
       Tab(1).Control(5)=   "Label2(3)"
-      Tab(1).Control(5).Enabled=   0   'False
       Tab(1).Control(6)=   "Label2(4)"
-      Tab(1).Control(6).Enabled=   0   'False
       Tab(1).Control(7)=   "Label3"
-      Tab(1).Control(7).Enabled=   0   'False
       Tab(1).Control(8)=   "Label4"
-      Tab(1).Control(8).Enabled=   0   'False
       Tab(1).Control(9)=   "Label5"
-      Tab(1).Control(9).Enabled=   0   'False
       Tab(1).Control(10)=   "Frame3"
-      Tab(1).Control(10).Enabled=   0   'False
       Tab(1).Control(11)=   "chkItemSpawn"
-      Tab(1).Control(11).Enabled=   0   'False
       Tab(1).Control(12)=   "txtItemSpawnTimeout"
-      Tab(1).Control(12).Enabled=   0   'False
       Tab(1).Control(13)=   "cmdItemWriting"
-      Tab(1).Control(13).Enabled=   0   'False
       Tab(1).Control(14)=   "txtItemData1(0)"
-      Tab(1).Control(14).Enabled=   0   'False
       Tab(1).Control(15)=   "txtItemData1(1)"
-      Tab(1).Control(15).Enabled=   0   'False
       Tab(1).Control(16)=   "txtItemData1(2)"
-      Tab(1).Control(16).Enabled=   0   'False
       Tab(1).Control(17)=   "txtItemData1(3)"
-      Tab(1).Control(17).Enabled=   0   'False
       Tab(1).Control(18)=   "txtItemData1(4)"
-      Tab(1).Control(18).Enabled=   0   'False
       Tab(1).Control(19)=   "txtItemReset"
-      Tab(1).Control(19).Enabled=   0   'False
       Tab(1).Control(20)=   "txtItemUses"
-      Tab(1).Control(20).Enabled=   0   'False
       Tab(1).Control(21)=   "txtItemTrigger"
-      Tab(1).Control(21).Enabled=   0   'False
       Tab(1).Control(22)=   "cmdItemSelect"
-      Tab(1).Control(22).Enabled=   0   'False
       Tab(1).ControlCount=   23
       TabCaption(2)   =   "Monster"
       TabPicture(2)   =   "frmMain.frx":1068
@@ -188,7 +172,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdWater 
          Caption         =   "Water"
          Height          =   315
-         Left            =   -72840
+         Left            =   2160
          TabIndex        =   114
          Top             =   6000
          Width           =   1335
@@ -204,7 +188,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdItemSelect 
          Caption         =   "Item Select"
          Height          =   255
-         Left            =   1920
+         Left            =   -73080
          TabIndex        =   112
          Top             =   5640
          Width           =   1275
@@ -223,7 +207,7 @@ Begin VB.Form frmMain
       Begin VB.Frame Frame2 
          Caption         =   "Flat"
          Height          =   3345
-         Left            =   -73440
+         Left            =   1560
          TabIndex        =   94
          Top             =   2280
          Width           =   1860
@@ -460,7 +444,7 @@ Begin VB.Form frmMain
       Begin VB.Frame Frame1 
          Caption         =   "Elevational"
          Height          =   3345
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   87
          Top             =   2280
          Width           =   1185
@@ -602,14 +586,14 @@ Begin VB.Form frmMain
             Strikethrough   =   0   'False
          EndProperty
          Height          =   285
-         Left            =   -72480
+         Left            =   2520
          TabIndex        =   86
          Top             =   5640
          Width           =   600
       End
       Begin VB.VScrollBar vsPencilWidth 
          Height          =   315
-         Left            =   -73200
+         Left            =   1800
          Max             =   0
          Min             =   1000
          TabIndex        =   85
@@ -619,7 +603,7 @@ Begin VB.Form frmMain
       End
       Begin VB.TextBox txtSurfacePencilWidth 
          Height          =   285
-         Left            =   -73680
+         Left            =   1320
          MaxLength       =   2
          TabIndex        =   84
          Text            =   "1"
@@ -1317,7 +1301,7 @@ Begin VB.Form frmMain
       End
       Begin VB.TextBox txtItemTrigger 
          Height          =   285
-         Left            =   2280
+         Left            =   -72720
          TabIndex        =   49
          Text            =   "0"
          Top             =   5280
@@ -1325,7 +1309,7 @@ Begin VB.Form frmMain
       End
       Begin VB.TextBox txtItemUses 
          Height          =   285
-         Left            =   2280
+         Left            =   -72720
          MaxLength       =   5
          TabIndex        =   47
          Text            =   "0"
@@ -1334,7 +1318,7 @@ Begin VB.Form frmMain
       End
       Begin VB.TextBox txtItemReset 
          Height          =   285
-         Left            =   2280
+         Left            =   -72720
          MaxLength       =   5
          TabIndex        =   46
          Text            =   "0"
@@ -1344,7 +1328,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtItemData1 
          Height          =   285
          Index           =   4
-         Left            =   720
+         Left            =   -74280
          MaxLength       =   5
          TabIndex        =   43
          Text            =   "0"
@@ -1354,7 +1338,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtItemData1 
          Height          =   285
          Index           =   3
-         Left            =   720
+         Left            =   -74280
          MaxLength       =   5
          TabIndex        =   41
          Text            =   "0"
@@ -1364,7 +1348,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtItemData1 
          Height          =   285
          Index           =   2
-         Left            =   720
+         Left            =   -74280
          MaxLength       =   5
          TabIndex        =   38
          Text            =   "0"
@@ -1374,7 +1358,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtItemData1 
          Height          =   285
          Index           =   1
-         Left            =   720
+         Left            =   -74280
          MaxLength       =   5
          TabIndex        =   37
          Text            =   "0"
@@ -1384,7 +1368,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtItemData1 
          Height          =   285
          Index           =   0
-         Left            =   720
+         Left            =   -74280
          MaxLength       =   5
          TabIndex        =   36
          Text            =   "0"
@@ -1394,7 +1378,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdItemWriting 
          Caption         =   "Writing"
          Height          =   285
-         Left            =   1920
+         Left            =   -73080
          TabIndex        =   34
          Top             =   6000
          Width           =   1275
@@ -1402,7 +1386,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtItemSpawnTimeout 
          Enabled         =   0   'False
          Height          =   285
-         Left            =   2040
+         Left            =   -72960
          MaxLength       =   2
          TabIndex        =   32
          Text            =   "1"
@@ -1412,7 +1396,7 @@ Begin VB.Form frmMain
       Begin VB.CheckBox chkItemSpawn 
          Caption         =   "Spawn"
          Height          =   255
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   30
          Top             =   4200
          Width           =   855
@@ -1420,7 +1404,7 @@ Begin VB.Form frmMain
       Begin VB.Frame Frame3 
          Caption         =   "Items"
          Height          =   3705
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   7
          Top             =   360
          Width           =   3075
@@ -1895,7 +1879,7 @@ Begin VB.Form frmMain
          BorderStyle     =   1  'Fixed Single
          Caption         =   "lblSurfaceNotes"
          Height          =   1785
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   107
          Top             =   480
          Width           =   3120
@@ -1904,7 +1888,7 @@ Begin VB.Form frmMain
          Alignment       =   1  'Right Justify
          Caption         =   "Trigger:"
          Height          =   240
-         Left            =   1560
+         Left            =   -73440
          TabIndex        =   106
          Top             =   5280
          Width           =   600
@@ -1921,7 +1905,7 @@ Begin VB.Form frmMain
             Strikethrough   =   0   'False
          EndProperty
          Height          =   240
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   83
          Top             =   6000
          Width           =   1185
@@ -1938,7 +1922,7 @@ Begin VB.Form frmMain
          Alignment       =   1  'Right Justify
          Caption         =   "Uses:"
          Height          =   285
-         Left            =   1680
+         Left            =   -73320
          TabIndex        =   48
          Top             =   4920
          Width           =   465
@@ -1947,7 +1931,7 @@ Begin VB.Form frmMain
          Alignment       =   1  'Right Justify
          Caption         =   "Reset:"
          Height          =   240
-         Left            =   1560
+         Left            =   -73440
          TabIndex        =   45
          Top             =   4560
          Width           =   600
@@ -1957,7 +1941,7 @@ Begin VB.Form frmMain
          Caption         =   "Data5:"
          Height          =   195
          Index           =   4
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   44
          Top             =   6000
          Width           =   465
@@ -1967,7 +1951,7 @@ Begin VB.Form frmMain
          Caption         =   "Data4:"
          Height          =   195
          Index           =   3
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   42
          Top             =   5640
          Width           =   465
@@ -1977,7 +1961,7 @@ Begin VB.Form frmMain
          Caption         =   "Data3:"
          Height          =   195
          Index           =   2
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   40
          Top             =   5280
          Width           =   465
@@ -1987,7 +1971,7 @@ Begin VB.Form frmMain
          Caption         =   "Data2:"
          Height          =   195
          Index           =   1
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   39
          Top             =   4920
          Width           =   465
@@ -1997,7 +1981,7 @@ Begin VB.Form frmMain
          Caption         =   "Data1:"
          Height          =   195
          Index           =   0
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   35
          Top             =   4560
          Width           =   465
@@ -2006,7 +1990,7 @@ Begin VB.Form frmMain
          Caption         =   "x 20 seconds"
          Enabled         =   0   'False
          Height          =   195
-         Left            =   2400
+         Left            =   -72600
          TabIndex        =   33
          Top             =   4200
          Width           =   975
@@ -2016,7 +2000,7 @@ Begin VB.Form frmMain
          Caption         =   "Timeout:"
          Enabled         =   0   'False
          Height          =   195
-         Left            =   1320
+         Left            =   -73680
          TabIndex        =   31
          Top             =   4200
          Width           =   615
@@ -2190,9 +2174,11 @@ Begin VB.Form frmMain
       End
       Begin VB.Menu mnuEditConnectWalls 
          Caption         =   "Connect Granite Walls"
+         Enabled         =   0   'False
       End
       Begin VB.Menu mnuEditConnectWood 
          Caption         =   "Connect Wood Walls"
+         Enabled         =   0   'False
       End
       Begin VB.Menu mnuEditSep5 
          Caption         =   "-"
@@ -2205,6 +2191,7 @@ Begin VB.Form frmMain
       End
       Begin VB.Menu mnuEditMakeCave 
          Caption         =   "Make Cave"
+         Enabled         =   0   'False
          Shortcut        =   ^A
       End
    End
@@ -2412,6 +2399,10 @@ Dim Response As String
 
 End Sub
 
+Private Sub mnuEditConnectWalls_Click()
+
+End Sub
+
 Private Sub mnuEditEditSelect_Click()
     frmSelectRange.Show vbModal, Me
     
@@ -2420,27 +2411,27 @@ End Sub
 Private Sub mnuEditFillEmptySurface_Click()
     If MapLoaded = False Then Exit Sub
 
-Dim x As Long, y As Long
-For y = 0 To UBound(Map, 2)
-    For x = 0 To UBound(Map, 1)
-        If Map(x, y).ImageNumber = 0 Then
+Dim X As Long, Y As Long
+For Y = 0 To UBound(Map, 2)
+    For X = 0 To UBound(Map, 1)
+        If Map(X, Y).ImageNumber = 0 Then
 
-            ItemMap(x, y).ItemId = ItemBoxes(SelectedItem).ItemId
-            ItemMap(x, y).ImageFile = ItemBoxes(SelectedItem).ImageFile
-            ItemMap(x, y).TileX = ItemBoxes(SelectedItem).TileX
-            ItemMap(x, y).TileY = ItemBoxes(SelectedItem).TileY
-            ItemMap(x, y).ImageNumber = ItemBoxes(SelectedItem).ImageNumber
-            ItemMap(x, y).ImageType = ItemBoxes(SelectedItem).ImageType
-            ItemMap(x, y).ItemText = ItemWriting
-            ItemMap(x, y).ItemSpawn = chkItemSpawn.value
-            ItemMap(x, y).ItemTimeOut = txtItemSpawnTimeout.Text
-            ItemMap(x, y).Data1 = txtItemData1(0).Text
-            ItemMap(x, y).Data2 = txtItemData1(1).Text
-            ItemMap(x, y).Data3 = txtItemData1(2).Text
-            ItemMap(x, y).Data4 = txtItemData1(3).Text
-            ItemMap(x, y).Data5 = txtItemData1(4).Text
-            ItemMap(x, y).Data6 = txtItemReset.Text 'Reset
-            ItemMap(x, y).Data7 = txtItemTrigger.Text 'item trigger
+            ItemMap(X, Y).ItemId = ItemBoxes(SelectedItem).ItemId
+            ItemMap(X, Y).ImageFile = ItemBoxes(SelectedItem).ImageFile
+            ItemMap(X, Y).TileX = ItemBoxes(SelectedItem).TileX
+            ItemMap(X, Y).TileY = ItemBoxes(SelectedItem).TileY
+            ItemMap(X, Y).ImageNumber = ItemBoxes(SelectedItem).ImageNumber
+            ItemMap(X, Y).ImageType = ItemBoxes(SelectedItem).ImageType
+            ItemMap(X, Y).ItemText = ItemWriting
+            ItemMap(X, Y).ItemSpawn = chkItemSpawn.value
+            ItemMap(X, Y).ItemTimeOut = txtItemSpawnTimeout.Text
+            ItemMap(X, Y).Data1 = txtItemData1(0).Text
+            ItemMap(X, Y).Data2 = txtItemData1(1).Text
+            ItemMap(X, Y).Data3 = txtItemData1(2).Text
+            ItemMap(X, Y).Data4 = txtItemData1(3).Text
+            ItemMap(X, Y).Data5 = txtItemData1(4).Text
+            ItemMap(X, Y).Data6 = txtItemReset.Text 'Reset
+            ItemMap(X, Y).Data7 = txtItemTrigger.Text 'item trigger
         End If
     Next
 Next
@@ -2619,48 +2610,52 @@ Private Sub mnuEditFindNextMonster_Click()
     End If
 End Sub
 
+Private Sub mnuEditMakeCave_Click()
+
+End Sub
+
 Private Sub mnuEditPaste_Click()
     If RangeX = -1 Then
         MsgBox "You must select an area first", vbCritical, "Yikes!"
     Else
     On Error GoTo badPaste
-    Dim x As Integer, y As Integer
-        For x = 0 To UBound(MapRange, 1)
-            For y = 0 To UBound(MapRange, 2)
+    Dim X As Integer, Y As Integer
+        For X = 0 To UBound(MapRange, 1)
+            For Y = 0 To UBound(MapRange, 2)
             
-                Map(RangeX + x, RangeY + y).ImageFile = MapRange(x, y).ImageFile
-                Map(RangeX + x, RangeY + y).ImageNumber = MapRange(x, y).ImageNumber
-                Map(RangeX + x, RangeY + y).TileX = MapRange(x, y).TileX
-                Map(RangeX + x, RangeY + y).TileY = MapRange(x, y).TileY
-                Map(RangeX + x, RangeY + y).TileType = MapRange(x, y).TileType
-                ItemMap(RangeX + x, RangeY + y).Data1 = ItemMapRange(x, y).Data1
-                ItemMap(RangeX + x, RangeY + y).Data2 = ItemMapRange(x, y).Data2
-                ItemMap(RangeX + x, RangeY + y).Data3 = ItemMapRange(x, y).Data3
-                ItemMap(RangeX + x, RangeY + y).Data4 = ItemMapRange(x, y).Data4
-                ItemMap(RangeX + x, RangeY + y).Data5 = ItemMapRange(x, y).Data5
-                ItemMap(RangeX + x, RangeY + y).Data6 = ItemMapRange(x, y).Data6
-                ItemMap(RangeX + x, RangeY + y).Data7 = ItemMapRange(x, y).Data7
-                ItemMap(RangeX + x, RangeY + y).ImageFile = ItemMapRange(x, y).ImageFile
-                ItemMap(RangeX + x, RangeY + y).ImageNumber = ItemMapRange(x, y).ImageNumber
-                ItemMap(RangeX + x, RangeY + y).ItemId = ItemMapRange(x, y).ItemId
-                ItemMap(RangeX + x, RangeY + y).ItemSpawn = ItemMapRange(x, y).ItemSpawn
-                ItemMap(RangeX + x, RangeY + y).ItemTimeOut = ItemMapRange(x, y).ItemTimeOut
-                ItemMap(RangeX + x, RangeY + y).ItemText = ItemMapRange(x, y).ItemText
-                ItemMap(RangeX + x, RangeY + y).TileType = ItemMapRange(x, y).TileType
-                ItemMap(RangeX + x, RangeY + y).TileX = ItemMapRange(x, y).TileX
-                ItemMap(RangeX + x, RangeY + y).TileY = ItemMapRange(x, y).TileY
-                ItemMap(RangeX + x, RangeY + y).ImageType = ItemMapRange(x, y).ImageType
-                MonsterMap(RangeX + x, RangeY + y).ImageFile = MonsterMapRange(x, y).ImageFile
-                MonsterMap(RangeX + x, RangeY + y).ImageNumber = MonsterMapRange(x, y).ImageNumber
-                MonsterMap(RangeX + x, RangeY + y).ImageType = MonsterMapRange(x, y).ImageType
-                MonsterMap(RangeX + x, RangeY + y).MonsterId = MonsterMapRange(x, y).MonsterId
-                MonsterMap(RangeX + x, RangeY + y).SpawnSeconds = MonsterMapRange(x, y).SpawnSeconds
-                MonsterMap(RangeX + x, RangeY + y).TileX = MonsterMapRange(x, y).TileX
-                MonsterMap(RangeX + x, RangeY + y).TileY = MonsterMapRange(x, y).TileY
+                Map(RangeX + X, RangeY + Y).ImageFile = MapRange(X, Y).ImageFile
+                Map(RangeX + X, RangeY + Y).ImageNumber = MapRange(X, Y).ImageNumber
+                Map(RangeX + X, RangeY + Y).TileX = MapRange(X, Y).TileX
+                Map(RangeX + X, RangeY + Y).TileY = MapRange(X, Y).TileY
+                Map(RangeX + X, RangeY + Y).TileType = MapRange(X, Y).TileType
+                ItemMap(RangeX + X, RangeY + Y).Data1 = ItemMapRange(X, Y).Data1
+                ItemMap(RangeX + X, RangeY + Y).Data2 = ItemMapRange(X, Y).Data2
+                ItemMap(RangeX + X, RangeY + Y).Data3 = ItemMapRange(X, Y).Data3
+                ItemMap(RangeX + X, RangeY + Y).Data4 = ItemMapRange(X, Y).Data4
+                ItemMap(RangeX + X, RangeY + Y).Data5 = ItemMapRange(X, Y).Data5
+                ItemMap(RangeX + X, RangeY + Y).Data6 = ItemMapRange(X, Y).Data6
+                ItemMap(RangeX + X, RangeY + Y).Data7 = ItemMapRange(X, Y).Data7
+                ItemMap(RangeX + X, RangeY + Y).ImageFile = ItemMapRange(X, Y).ImageFile
+                ItemMap(RangeX + X, RangeY + Y).ImageNumber = ItemMapRange(X, Y).ImageNumber
+                ItemMap(RangeX + X, RangeY + Y).ItemId = ItemMapRange(X, Y).ItemId
+                ItemMap(RangeX + X, RangeY + Y).ItemSpawn = ItemMapRange(X, Y).ItemSpawn
+                ItemMap(RangeX + X, RangeY + Y).ItemTimeOut = ItemMapRange(X, Y).ItemTimeOut
+                ItemMap(RangeX + X, RangeY + Y).ItemText = ItemMapRange(X, Y).ItemText
+                ItemMap(RangeX + X, RangeY + Y).TileType = ItemMapRange(X, Y).TileType
+                ItemMap(RangeX + X, RangeY + Y).TileX = ItemMapRange(X, Y).TileX
+                ItemMap(RangeX + X, RangeY + Y).TileY = ItemMapRange(X, Y).TileY
+                ItemMap(RangeX + X, RangeY + Y).ImageType = ItemMapRange(X, Y).ImageType
+                MonsterMap(RangeX + X, RangeY + Y).ImageFile = MonsterMapRange(X, Y).ImageFile
+                MonsterMap(RangeX + X, RangeY + Y).ImageNumber = MonsterMapRange(X, Y).ImageNumber
+                MonsterMap(RangeX + X, RangeY + Y).ImageType = MonsterMapRange(X, Y).ImageType
+                MonsterMap(RangeX + X, RangeY + Y).MonsterId = MonsterMapRange(X, Y).MonsterId
+                MonsterMap(RangeX + X, RangeY + Y).SpawnSeconds = MonsterMapRange(X, Y).SpawnSeconds
+                MonsterMap(RangeX + X, RangeY + Y).TileX = MonsterMapRange(X, Y).TileX
+                MonsterMap(RangeX + X, RangeY + Y).TileY = MonsterMapRange(X, Y).TileY
                 
                 
-            Next y
-        Next x
+            Next Y
+        Next X
         Call modMain.RedrawMap
     End If
     
@@ -2731,18 +2726,18 @@ If MapLoaded = False Then Exit Sub
     ReDim CounterItems(UBound(Items))
     Dim CounterMonsters() As Integer
     ReDim CounterMonsters(UBound(Monsters))
-    Dim x As Integer
-    Dim y As Integer
-    For x = 0 To UBound(Map, 1)
-        For y = 0 To UBound(Map, 2)
-            If ItemMap(x, y).ItemId <> 0 Then
-                CounterItems(ItemMap(x, y).ItemId - 1) = CounterItems(ItemMap(x, y).ItemId - 1) + 1
+    Dim X As Integer
+    Dim Y As Integer
+    For X = 0 To UBound(Map, 1)
+        For Y = 0 To UBound(Map, 2)
+            If ItemMap(X, Y).ItemId <> 0 Then
+                CounterItems(ItemMap(X, Y).ItemId - 1) = CounterItems(ItemMap(X, Y).ItemId - 1) + 1
             End If
-            If MonsterMap(x, y).ImageNumber <> 0 Then
-                CounterMonsters(MonsterMap(x, y).MonsterId - 1) = CounterMonsters(MonsterMap(x, y).MonsterId - 1) + 1
+            If MonsterMap(X, Y).ImageNumber <> 0 Then
+                CounterMonsters(MonsterMap(X, Y).MonsterId - 1) = CounterMonsters(MonsterMap(X, Y).MonsterId - 1) + 1
             End If
-        Next y
-    Next x
+        Next Y
+    Next X
 Dim i As Integer
     Open App.Path & "\mapcount.txt" For Output As #1
         Print #1, "Item Count:"
@@ -2765,7 +2760,7 @@ End Sub
 
 Private Sub mnuFileDumpScript_Click()
 If MapLoaded = False Then Exit Sub
-Dim x As Integer, y As Integer
+Dim X As Integer, Y As Integer
 'Now create the script file
 Open App.Path & "\" & MapName & ".rsf" For Output As #1
     'First Do the item map clear thing
@@ -2775,25 +2770,25 @@ Open App.Path & "\" & MapName & ".rsf" For Output As #1
         Print #1, "/MAPITEMCLEAR " & UBound(Map, 2)
     End If
     'Now do the surfaces
-    For y = 0 To UBound(Map, 2)
-        For x = 0 To UBound(Map, 1)
-            If Map(x, y).ImageNumber <> 0 Then
-                Print #1, "/SURFACEIXY " & Map(x, y).ImageNumber & ", " & x & ", " & y
+    For Y = 0 To UBound(Map, 2)
+        For X = 0 To UBound(Map, 1)
+            If Map(X, Y).ImageNumber <> 0 Then
+                Print #1, "/SURFACEIXY " & Map(X, Y).ImageNumber & ", " & X & ", " & Y
             End If
-            If MonsterMap(x, y).ImageNumber <> 0 Then
-                Print #1, "/MONSTERSPAWNADDXY " & MonsterMap(x, y).ImageNumber & ", " & x & ", " & y & ", " & MonsterMap(x, y).SpawnSeconds
+            If MonsterMap(X, Y).ImageNumber <> 0 Then
+                Print #1, "/MONSTERSPAWNADDXY " & MonsterMap(X, Y).ImageNumber & ", " & X & ", " & Y & ", " & MonsterMap(X, Y).SpawnSeconds
             End If
-            If ItemMap(x, y).ImageNumber <> 0 And ItemMap(x, y).ItemSpawn = 0 Then
-                Print #1, "/ITEMIXY " & ItemMap(x, y).ImageNumber & ", " & x & ", " & y & ", " & ItemMap(x, y).Data1 & ", " & ItemMap(x, y).Data2 & ", " & ItemMap(x, y).Data3 & ", " & ItemMap(x, y).Data4 & ", " & ItemMap(x, y).Data5 & ", " & ItemMap(x, y).Data6 & ", " & ItemMap(x, y).Data7
+            If ItemMap(X, Y).ImageNumber <> 0 And ItemMap(X, Y).ItemSpawn = 0 Then
+                Print #1, "/ITEMIXY " & ItemMap(X, Y).ImageNumber & ", " & X & ", " & Y & ", " & ItemMap(X, Y).Data1 & ", " & ItemMap(X, Y).Data2 & ", " & ItemMap(X, Y).Data3 & ", " & ItemMap(X, Y).Data4 & ", " & ItemMap(X, Y).Data5 & ", " & ItemMap(X, Y).Data6 & ", " & ItemMap(X, Y).Data7
             End If
-            If ItemMap(x, y).ItemSpawn = 1 Then
-                Print #1, "/ITEMSPAWNIXY " & ItemMap(x, y).ImageNumber & ", " & x & ", " & y & ", " & ItemMap(x, y).ItemTimeOut & ", " & ItemMap(x, y).Data1 & ", " & ItemMap(x, y).Data2 & ", " & ItemMap(x, y).Data3 & ", " & ItemMap(x, y).Data4 & ", " & ItemMap(x, y).Data5 & ", " & ItemMap(x, y).Data6 & ", " & ItemMap(x, y).Data7
+            If ItemMap(X, Y).ItemSpawn = 1 Then
+                Print #1, "/ITEMSPAWNIXY " & ItemMap(X, Y).ImageNumber & ", " & X & ", " & Y & ", " & ItemMap(X, Y).ItemTimeOut & ", " & ItemMap(X, Y).Data1 & ", " & ItemMap(X, Y).Data2 & ", " & ItemMap(X, Y).Data3 & ", " & ItemMap(X, Y).Data4 & ", " & ItemMap(X, Y).Data5 & ", " & ItemMap(X, Y).Data6 & ", " & ItemMap(X, Y).Data7
             End If
-            If ItemMap(x, y).ItemText <> "" Then
-                Print #1, "/ITEMTEXTIXY " & x & ", " & y & ", " & ItemMap(x, y).ItemText
+            If ItemMap(X, Y).ItemText <> "" Then
+                Print #1, "/ITEMTEXTIXY " & X & ", " & Y & ", " & ItemMap(X, Y).ItemText
             End If
-        Next x
-    Next y
+        Next X
+    Next Y
     
 Close #1
 
@@ -2912,19 +2907,19 @@ Private Sub mnuFileImport_Click()
             Get #1, , BinaryTown
     
         Close #1
-        Dim x As Integer
-        Dim y As Integer
-        For x = 1 To UBound(BinaryTown, 1)
-            For y = 1 To UBound(BinaryTown, 2)
-                If BinaryTown(x, y).Layer0 <> 0 And BinaryTown(x, y).Layer0 <> -1 Then
-                    ItemMap(x, y).ImageFile = ItemBoxes(BinaryTown(x, y).Layer0 - 1).ImageFile
-                    ItemMap(x, y).ImageNumber = Items(BinaryTown(x, y).Layer0 - 1).Image
-                    ItemMap(x, y).TileX = ItemBoxes(BinaryTown(x, y).Layer0 - 1).TileX
-                    ItemMap(x, y).TileY = ItemBoxes(BinaryTown(x, y).Layer0 - 1).TileY
-                    ItemMap(x, y).ItemId = BinaryTown(x, y).Layer0 - 1
+        Dim X As Integer
+        Dim Y As Integer
+        For X = 1 To UBound(BinaryTown, 1)
+            For Y = 1 To UBound(BinaryTown, 2)
+                If BinaryTown(X, Y).Layer0 <> 0 And BinaryTown(X, Y).Layer0 <> -1 Then
+                    ItemMap(X, Y).ImageFile = ItemBoxes(BinaryTown(X, Y).Layer0 - 1).ImageFile
+                    ItemMap(X, Y).ImageNumber = Items(BinaryTown(X, Y).Layer0 - 1).Image
+                    ItemMap(X, Y).TileX = ItemBoxes(BinaryTown(X, Y).Layer0 - 1).TileX
+                    ItemMap(X, Y).TileY = ItemBoxes(BinaryTown(X, Y).Layer0 - 1).TileY
+                    ItemMap(X, Y).ItemId = BinaryTown(X, Y).Layer0 - 1
                 End If
-            Next y
-        Next x
+            Next Y
+        Next X
         
         frmMain.vsMap.Max = UBound(Map, 2) - 13
         frmMain.hsMap.Max = UBound(Map, 1) - 15
@@ -3294,12 +3289,34 @@ If MapLoaded = False Then Exit Sub
     End If
 End Sub
 
-Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub pbxMap_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+On Error Resume Next
+'Exit Sub
+
+    Dim MINIX As Integer, MiniY As Integer
+    If MapLoaded = False Then Exit Sub
+    ' MINIX = (Snap(X, 32) \ 32)
+    ' MiniY = (Snap(Y, 32) \ 32)
+    MiniY = Y / (pbxMap.ScaleHeight / UBound(Map, 2))
+    MINIX = X / (pbxMap.ScaleWidth / UBound(Map, 1))
+
+
+  '  Debug.Print "X: " & MINIX & " Y: " & MiniY
+    viewYpos = MiniY
+    viewXpos = MINIX
+    
+    frmMain.hsMap.value = MINIX
+    frmMain.vsMap.value = MiniY
+
+    Call modMain.RedrawMap
+End Sub
+
+Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 If MapLoaded = False Then Exit Sub
 RefreshMini = True
 Dim CurX As Integer, CurY As Integer
-CurX = (Snap(x, 32) \ 32) + hsMap.value
-CurY = (Snap(y, 32) \ 32) + vsMap.value
+CurX = (Snap(X, 32) \ 32) + hsMap.value
+CurY = (Snap(Y, 32) \ 32) + vsMap.value
 frmMain.Caption = "RPGWO Edit [" & MapName & "][" & UBound(Map, 1) & " x " & UBound(Map, 2) & "] *"
 'If button pressed paint tile
 If Button = 1 And SelectedTool = "Item Paint" Then
@@ -3385,64 +3402,64 @@ If Button = 1 And SelectedTool = "Ground Paint" Then
     If CurX > UBound(Map) Or CurY > UBound(Map) Then
     Else
     Shape1.BorderColor = &HFFFFFF
-    For x = 0 To (txtSurfacePencilWidth.Text - 1)
-        For y = 0 To (txtSurfacePencilWidth.Text - 1)
+    For X = 0 To (txtSurfacePencilWidth.Text - 1)
+        For Y = 0 To (txtSurfacePencilWidth.Text - 1)
             
             If WaterOn = True Then
-                Map(CurX + x, CurY + y).TileX = WaterSelect(ReturnwaterIndex(SelectedFlat)).TileX
-                Map(CurX + x, CurY + y).TileY = WaterSelect(ReturnwaterIndex(SelectedFlat)).TileY
-                Map(CurX + x, CurY + y).ImageFile = WaterSelect(ReturnwaterIndex(SelectedFlat)).ImageFile
-                Map(CurX + x, CurY + y).ImageNumber = WaterSelect(ReturnwaterIndex(SelectedFlat)).ImageNumber
+                Map(CurX + X, CurY + Y).TileX = WaterSelect(ReturnwaterIndex(SelectedFlat)).TileX
+                Map(CurX + X, CurY + Y).TileY = WaterSelect(ReturnwaterIndex(SelectedFlat)).TileY
+                Map(CurX + X, CurY + Y).ImageFile = WaterSelect(ReturnwaterIndex(SelectedFlat)).ImageFile
+                Map(CurX + X, CurY + Y).ImageNumber = WaterSelect(ReturnwaterIndex(SelectedFlat)).ImageNumber
             Else
                 If ElevationOn = True Then
                     On Error Resume Next
-                    Map(CurX + x, CurY + y).TileX = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).TileX
-                    Map(CurX + x, CurY + y).TileY = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).TileY
-                    Map(CurX + x, CurY + y).ImageFile = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).ImageFile
-                    Map(CurX + x, CurY + y).ImageNumber = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).ImageNumber
+                    Map(CurX + X, CurY + Y).TileX = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).TileX
+                    Map(CurX + X, CurY + Y).TileY = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).TileY
+                    Map(CurX + X, CurY + Y).ImageFile = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).ImageFile
+                    Map(CurX + X, CurY + Y).ImageNumber = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).ImageNumber
                 Else
                 On Error Resume Next
-                    Map(CurX + x, CurY + y).TileX = GroundBoxes(SelectedFlat).TileX
-                    Map(CurX + x, CurY + y).TileY = GroundBoxes(SelectedFlat).TileY
-                    Map(CurX + x, CurY + y).ImageFile = GroundBoxes(SelectedFlat).ImageFile
-                    Map(CurX + x, CurY + y).ImageNumber = GroundBoxes(SelectedFlat).ImageNumber
+                    Map(CurX + X, CurY + Y).TileX = GroundBoxes(SelectedFlat).TileX
+                    Map(CurX + X, CurY + Y).TileY = GroundBoxes(SelectedFlat).TileY
+                    Map(CurX + X, CurY + Y).ImageFile = GroundBoxes(SelectedFlat).ImageFile
+                    Map(CurX + X, CurY + Y).ImageNumber = GroundBoxes(SelectedFlat).ImageNumber
                 End If
             
             End If
             
-            Call modMain.RedrawMapTileXY(CurX + x, CurY + y)
-        Next y
-    Next x
+            Call modMain.RedrawMapTileXY(CurX + X, CurY + Y)
+        Next Y
+    Next X
    End If
 End If
 'Fill screen
 If Button = 1 And SelectedTool = "Ground Paint" And chkSurfaceFill.value = vbChecked Then
-For y = viewYpos To viewYpos + frmMain.pbxView.ScaleHeight \ 32
-    For x = viewXpos To viewXpos + frmMain.pbxView.ScaleWidth \ 32
+For Y = viewYpos To viewYpos + frmMain.pbxView.ScaleHeight \ 32
+    For X = viewXpos To viewXpos + frmMain.pbxView.ScaleWidth \ 32
         If WaterOn = True Then
         On Error Resume Next
             'MsgBox ReturnwaterIndex(SelectedFlat)
-             Map(x, y).TileX = WaterSelect(ReturnwaterIndex(SelectedFlat)).TileX
-             Map(x, y).TileY = WaterSelect(ReturnwaterIndex(SelectedFlat)).TileY
-             Map(x, y).ImageFile = WaterSelect(ReturnwaterIndex(SelectedFlat)).ImageFile
-             Map(x, y).ImageNumber = WaterSelect(ReturnwaterIndex(SelectedFlat)).ImageNumber
+             Map(X, Y).TileX = WaterSelect(ReturnwaterIndex(SelectedFlat)).TileX
+             Map(X, Y).TileY = WaterSelect(ReturnwaterIndex(SelectedFlat)).TileY
+             Map(X, Y).ImageFile = WaterSelect(ReturnwaterIndex(SelectedFlat)).ImageFile
+             Map(X, Y).ImageNumber = WaterSelect(ReturnwaterIndex(SelectedFlat)).ImageNumber
         Else
             On Error Resume Next
             If ElevationOn = True Then
-                Map(x, y).TileX = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).TileX
-                Map(x, y).TileY = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).TileY
-                Map(x, y).ImageFile = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).ImageFile
-                Map(x, y).ImageNumber = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).ImageNumber
+                Map(X, Y).TileX = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).TileX
+                Map(X, Y).TileY = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).TileY
+                Map(X, Y).ImageFile = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).ImageFile
+                Map(X, Y).ImageNumber = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).ImageNumber
             Else
             
-                Map(x, y).ImageFile = GroundBoxes(SelectedFlat).ImageFile
-                Map(x, y).TileX = GroundBoxes(SelectedFlat).TileX
-                Map(x, y).TileY = GroundBoxes(SelectedFlat).TileY
-                Map(x, y).ImageNumber = GroundBoxes(SelectedFlat).ImageNumber
+                Map(X, Y).ImageFile = GroundBoxes(SelectedFlat).ImageFile
+                Map(X, Y).TileX = GroundBoxes(SelectedFlat).TileX
+                Map(X, Y).TileY = GroundBoxes(SelectedFlat).TileY
+                Map(X, Y).ImageNumber = GroundBoxes(SelectedFlat).ImageNumber
             End If
         End If
-    Next x
-Next y
+    Next X
+Next Y
 Call RedrawMap
 End If
 If Button = 2 And SelectedTool = "Ground Paint" Then
@@ -3461,11 +3478,11 @@ MapSaved = False
 Call modMain.RedrawMap
 End Sub
 
-Private Sub pbxView_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub pbxView_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
 If MapLoaded = False Then Exit Sub
 Shape1.Visible = True
 'If mouse moved move square thingy
-Shape1.Left = Snap(x, 32): Shape1.Top = Snap(y, 32)
+Shape1.Left = Snap(X, 32): Shape1.Top = Snap(Y, 32)
     If SelectedTool = "Ground Paint" Then
         Shape1.Width = 32 * txtSurfacePencilWidth.Text
         Shape1.Height = 32 * txtSurfacePencilWidth.Text
@@ -3475,15 +3492,15 @@ Shape1.Left = Snap(x, 32): Shape1.Top = Snap(y, 32)
     End If
 
 
-lblCursor.Caption = (Snap(x, 32) \ 32) + hsMap.value & "," & (Snap(y, 32) \ 32) + vsMap.value
+lblCursor.Caption = (Snap(X, 32) \ 32) + hsMap.value & "," & (Snap(Y, 32) \ 32) + vsMap.value
 Dim CurX As Integer, CurY As Integer
-CurX = (Snap(x, 32) \ 32) + hsMap.value
-CurY = (Snap(y, 32) \ 32) + vsMap.value
+CurX = (Snap(X, 32) \ 32) + hsMap.value
+CurY = (Snap(Y, 32) \ 32) + vsMap.value
 RangeX = CurX
 RangeY = CurY
 Dim OldX As Integer, OldY As Integer
-OldX = x
-OldY = y
+OldX = X
+OldY = Y
 'Update status bar text
 Dim SText As String
 If CurX < LBound(Map) Or CurX > UBound(Map) Or CurY < LBound(Map) Or CurY > UBound(Map) Then Exit Sub
@@ -3594,33 +3611,33 @@ If Button = 1 And SelectedTool = "Ground Paint" Then
     If CurX > UBound(Map) Or CurY > UBound(Map) Then
     Else
     Shape1.BorderColor = &HFFFFFF
-    For x = 0 To (txtSurfacePencilWidth.Text - 1)
-        For y = 0 To (txtSurfacePencilWidth.Text - 1)
+    For X = 0 To (txtSurfacePencilWidth.Text - 1)
+        For Y = 0 To (txtSurfacePencilWidth.Text - 1)
             If WaterOn = True Then
                 On Error Resume Next
-                Map(CurX + x, CurY + y).TileX = WaterSelect(ReturnwaterIndex(SelectedFlat)).TileX
-                Map(CurX + x, CurY + y).TileY = WaterSelect(ReturnwaterIndex(SelectedFlat)).TileY
-                Map(CurX + x, CurY + y).ImageFile = WaterSelect(ReturnwaterIndex(SelectedFlat)).ImageFile
-                Map(CurX + x, CurY + y).ImageNumber = WaterSelect(ReturnwaterIndex(SelectedFlat)).ImageNumber
+                Map(CurX + X, CurY + Y).TileX = WaterSelect(ReturnwaterIndex(SelectedFlat)).TileX
+                Map(CurX + X, CurY + Y).TileY = WaterSelect(ReturnwaterIndex(SelectedFlat)).TileY
+                Map(CurX + X, CurY + Y).ImageFile = WaterSelect(ReturnwaterIndex(SelectedFlat)).ImageFile
+                Map(CurX + X, CurY + Y).ImageNumber = WaterSelect(ReturnwaterIndex(SelectedFlat)).ImageNumber
             Else
                 If ElevationOn = True Then
                     On Error Resume Next
-                    Map(CurX + x, CurY + y).TileX = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).TileX
-                    Map(CurX + x, CurY + y).TileY = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).TileY
-                    Map(CurX + x, CurY + y).ImageFile = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).ImageFile
-                    Map(CurX + x, CurY + y).ImageNumber = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).ImageNumber
+                    Map(CurX + X, CurY + Y).TileX = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).TileX
+                    Map(CurX + X, CurY + Y).TileY = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).TileY
+                    Map(CurX + X, CurY + Y).ImageFile = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).ImageFile
+                    Map(CurX + X, CurY + Y).ImageNumber = ElevationBoxes(ReturnElevationIndex(SelectedFlat)).ImageNumber
                 Else
                     On Error Resume Next
-                    Map(CurX + x, CurY + y).ImageFile = GroundBoxes(SelectedFlat).ImageFile
-                    Map(CurX + x, CurY + y).TileX = GroundBoxes(SelectedFlat).TileX
-                    Map(CurX + x, CurY + y).TileY = GroundBoxes(SelectedFlat).TileY
-                    Map(CurX + x, CurY + y).ImageNumber = GroundBoxes(SelectedFlat).ImageNumber
+                    Map(CurX + X, CurY + Y).ImageFile = GroundBoxes(SelectedFlat).ImageFile
+                    Map(CurX + X, CurY + Y).TileX = GroundBoxes(SelectedFlat).TileX
+                    Map(CurX + X, CurY + Y).TileY = GroundBoxes(SelectedFlat).TileY
+                    Map(CurX + X, CurY + Y).ImageNumber = GroundBoxes(SelectedFlat).ImageNumber
                 End If
             End If
-            Call modMain.RedrawMapTileXY(CurX + x, CurY + y)
+            Call modMain.RedrawMapTileXY(CurX + X, CurY + Y)
             
-         Next y
-    Next x
+         Next Y
+    Next X
     
    End If
 End If
@@ -3628,24 +3645,24 @@ If Button = 2 And SelectedTool = "Ground Paint" Then
 'Delete Tile
     If CurX > UBound(Map) Or CurY > UBound(Map) Then
     Else
-    For x = 0 To (txtSurfacePencilWidth.Text - 1)
-        For y = 0 To (txtSurfacePencilWidth.Text - 1)
+    For X = 0 To (txtSurfacePencilWidth.Text - 1)
+        For Y = 0 To (txtSurfacePencilWidth.Text - 1)
             On Error Resume Next
-            Map(CurX + x, CurY + y).ImageFile = 0
-            Map(CurX + x, CurY + y).TileX = 0
-            Map(CurX + x, CurY + y).TileY = 0
-            Map(CurX + x, CurY + y).ImageNumber = 0
-            Call modMain.RedrawMapTileXY(CurX + x, CurY + y)
+            Map(CurX + X, CurY + Y).ImageFile = 0
+            Map(CurX + X, CurY + Y).TileX = 0
+            Map(CurX + X, CurY + Y).TileY = 0
+            Map(CurX + X, CurY + Y).ImageNumber = 0
+            Call modMain.RedrawMapTileXY(CurX + X, CurY + Y)
             Shape1.BorderColor = &HFFFFFF
-        Next y
-    Next x
+        Next Y
+    Next X
    End If
 End If
 
 Call DoScrolling(OldX, OldY)
 End Sub
 
-Private Sub pbxView_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub pbxView_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
 If Button = 1 Then Shape1.BorderColor = &HFF0000
 End Sub
 
@@ -3663,7 +3680,7 @@ On Error Resume Next
     StatusBar.SimpleText = ItemBoxes(picItem(Index).Tag).ItemName & "(" & ItemBoxes(picItem(Index).Tag).ItemId & ")"
 End Sub
 
-Private Sub picItem_MouseMove(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub picItem_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
 On Error Resume Next
     StatusBar.SimpleText = ItemBoxes(picItem(Index).Tag).ItemName & "(" & ItemBoxes(picItem(Index).Tag).ItemId & ")"
 
@@ -3867,36 +3884,36 @@ Private Sub vsSurfaceFlat_Change()
     Call modGround.RedrawGroundBoxes
 End Sub
 Private Sub EraseAll()
-Dim x As Integer, y As Integer
-For y = 0 To UBound(Map, 2)
-    For x = 0 To UBound(Map, 1)
-        Map(x, y).ImageFile = 0
-        Map(x, y).ImageNumber = 0
-        Map(x, y).TileType = 0
-        Map(x, y).TileX = 0
-        Map(x, y).TileY = 0
-        ItemMap(x, y).Data1 = 0
-        ItemMap(x, y).Data2 = 0
-        ItemMap(x, y).Data3 = 0
-        ItemMap(x, y).Data4 = 0
-        ItemMap(x, y).Data5 = 0
-        ItemMap(x, y).Data6 = 0
-        ItemMap(x, y).Data7 = 0
-        ItemMap(x, y).ImageFile = 0
-        ItemMap(x, y).ImageNumber = 0
-        ItemMap(x, y).ImageType = 0
-        ItemMap(x, y).ItemId = 0
-        ItemMap(x, y).TileType = 0
-        ItemMap(x, y).TileX = 0
-        ItemMap(x, y).TileY = 0
-        ItemMap(x, y).ItemSpawn = 0
-        ItemMap(x, y).ItemText = ""
-        ItemMap(x, y).ItemTimeOut = 0
-        MonsterMap(x, y).ImageFile = 0
-        MonsterMap(x, y).ImageNumber = 0
-        MonsterMap(x, y).SpawnSeconds = 0
-        MonsterMap(x, y).TileX = 0
-        MonsterMap(x, y).TileY = 0
+Dim X As Integer, Y As Integer
+For Y = 0 To UBound(Map, 2)
+    For X = 0 To UBound(Map, 1)
+        Map(X, Y).ImageFile = 0
+        Map(X, Y).ImageNumber = 0
+        Map(X, Y).TileType = 0
+        Map(X, Y).TileX = 0
+        Map(X, Y).TileY = 0
+        ItemMap(X, Y).Data1 = 0
+        ItemMap(X, Y).Data2 = 0
+        ItemMap(X, Y).Data3 = 0
+        ItemMap(X, Y).Data4 = 0
+        ItemMap(X, Y).Data5 = 0
+        ItemMap(X, Y).Data6 = 0
+        ItemMap(X, Y).Data7 = 0
+        ItemMap(X, Y).ImageFile = 0
+        ItemMap(X, Y).ImageNumber = 0
+        ItemMap(X, Y).ImageType = 0
+        ItemMap(X, Y).ItemId = 0
+        ItemMap(X, Y).TileType = 0
+        ItemMap(X, Y).TileX = 0
+        ItemMap(X, Y).TileY = 0
+        ItemMap(X, Y).ItemSpawn = 0
+        ItemMap(X, Y).ItemText = ""
+        ItemMap(X, Y).ItemTimeOut = 0
+        MonsterMap(X, Y).ImageFile = 0
+        MonsterMap(X, Y).ImageNumber = 0
+        MonsterMap(X, Y).SpawnSeconds = 0
+        MonsterMap(X, Y).TileX = 0
+        MonsterMap(X, Y).TileY = 0
     Next
 Next
 End Sub
@@ -3924,26 +3941,26 @@ Sub RedrawMiniMap()
 On Error Resume Next
     If RefreshMini = False Then Exit Sub
     frmMain.pbxMap.Cls
-    Dim x As Integer
-    Dim y As Integer
+    Dim X As Integer
+    Dim Y As Integer
      pbxMap.DrawWidth = 2
-    For x = 0 To UBound(Map, 1)
-        For y = 0 To UBound(Map, 2)
-            If Map(x, y).ImageNumber <> 0 Then
+    For X = 0 To UBound(Map, 1)
+        For Y = 0 To UBound(Map, 2)
+            If Map(X, Y).ImageNumber <> 0 Then
                 
-                pbxMap.PSet (x * (pbxMap.ScaleWidth / UBound(Map, 1)), y * (pbxMap.ScaleHeight / UBound(Map, 2))), vbBlue
+                pbxMap.PSet (X * (pbxMap.ScaleWidth / UBound(Map, 1)), Y * (pbxMap.ScaleHeight / UBound(Map, 2))), vbBlue
             End If
-            If ItemMap(x, y).ItemId <> 0 Then
+            If ItemMap(X, Y).ItemId <> 0 Then
                 
-                pbxMap.PSet (x * (pbxMap.ScaleWidth / UBound(Map, 1)), y * (pbxMap.ScaleHeight / UBound(Map, 2))), vbGreen
+                pbxMap.PSet (X * (pbxMap.ScaleWidth / UBound(Map, 1)), Y * (pbxMap.ScaleHeight / UBound(Map, 2))), vbGreen
             End If
-            If MonsterMap(x, y).ImageNumber <> 0 Then
+            If MonsterMap(X, Y).ImageNumber <> 0 Then
                 
-                pbxMap.PSet (x * (pbxMap.ScaleWidth / UBound(Map, 1)), y * (pbxMap.ScaleHeight / UBound(Map, 2))), vbRed
+                pbxMap.PSet (X * (pbxMap.ScaleWidth / UBound(Map, 1)), Y * (pbxMap.ScaleHeight / UBound(Map, 2))), vbRed
             End If
             DoEvents
-        Next y
-    Next x
+        Next Y
+    Next X
     RefreshMini = False
 End Sub
 Private Function ReturnwaterIndex(Number As Integer) As Integer
@@ -3968,23 +3985,23 @@ Private Function ReturnElevationIndex(Number As Integer) As Integer
         
     Next
 End Function
-Sub DoScrolling(x As Integer, y As Integer)
-    If x < 0 Then
+Sub DoScrolling(X As Integer, Y As Integer)
+    If X < 0 Then
         If hsMap.value > hsMap.Min Then
             hsMap.value = hsMap.value - 1
         End If
     End If
-    If x > pbxView.ScaleWidth Then
+    If X > pbxView.ScaleWidth Then
         If hsMap.value < hsMap.Max Then
             hsMap.value = hsMap.value + 1
         End If
     End If
-    If y < 0 Then
+    If Y < 0 Then
         If vsMap.value > vsMap.Min Then
             vsMap.value = vsMap.value - 1
         End If
     End If
-    If y > pbxView.ScaleHeight Then
+    If Y > pbxView.ScaleHeight Then
         If vsMap.value < vsMap.Max Then
             vsMap.value = vsMap.value + 1
         End If

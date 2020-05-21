@@ -3,7 +3,8 @@ Global v2Map As Boolean
 Dim mMapWidth As Integer
 Dim mMapHeight As Integer
 Dim mMapVersion As String * 30
-Dim mMapExtra As String * 66
+Dim mMapExtra As String * 64
+Dim mSurfaceArray As Boolean
 Dim mMapNotes As String * 5000
 Dim mNumberOfItems As Integer
 Dim mNumberOfMonsters As Integer
@@ -75,14 +76,20 @@ Open filename For Binary Access Read Lock Read As f
     
     End If
     
+    Get f, , mSurfaceArray
+    
+   ' Debug.Print
 
     Get f, , mMapExtra
-    Dim mapElements As Integer
+    Dim mapElements As Long
     Dim un1 As Integer
-   ' MsgBox "Loc: " & Loc(f)
+ '   MsgBox "Loc: " & Loc(f)
+If mSurfaceArray = True Then
     Get f, , mapElements
-    Get f, , un1
-   'MsgBox mapElements
+    
+End If
+  '  Get f, , un1
+  'MsgBox mapElements
     
     
 Dim Response As String
@@ -94,45 +101,76 @@ Dim Response As String
         If Response = vbNo Then Exit Sub
    End If
    
+   ReDim Map(mMapWidth, mMapHeight)
    
-   
-   ReDim mMap(1 To mMapWidth, 1 To mMapHeight)
+   'ReDim mMap(1 To mMapWidth, 1 To mMapHeight)
    ' Setup map
-     Dim x As Integer
-     Dim y As Integer
-     For x = 1 To mMapWidth
-        For y = 1 To mMapHeight
-            mMap(x, y) = 0
-        Next y
-     Next x
+    ' Dim x As Integer
+     'Dim y As Integer
+    ' For x = 1 To mMapWidth
+    '    For y = 1 To mMapHeight
+    '        mMap(x, y) = 0
+   '     Next y
+     'Next x
    
 
     Dim mMapData() As mMapDataType
+    Dim mMapDataInt() As Integer
     Dim j As Integer
     
     If v2Map = False Then
     
    
-  
+        If mapElements = 0 Then
+            ReDim mMapDataInt(1 To mMapWidth, 1 To mMapHeight)
+            Get f, , mMapDataInt
+            
+            'For x = 1 To mMapWidth - 1
+              '  For y = 1 To mMapHeight - 1
+              
+            For X = 1 To mMapWidth
+              For Y = 1 To mMapHeight
+                  Map(X, Y).ImageNumber = mMapDataInt(X, Y)
+            '
+                  Map(X, Y).ImageFile = GroundBoxes(mMapDataInt(X, Y) - 100).ImageFile
+                Map(X, Y).TileX = GroundBoxes(mMapDataInt(X, Y) - 100).TileX
+                   Map(X, Y).TileY = GroundBoxes(mMapDataInt(X, Y) - 100).TileY
+                   'Debug.Print mMapDataInt(x, y)
+                Next Y
+            Next X
+        Else
         
+  
     
         'Get Tile Id
-        ReDim mMapData(1 To mapElements)
-        Get f, , mMapData
+        'ReDim mMapData(1 To mapElements)
+        'Get f, , mMapData
         
-       ' MsgBox mMapData(1).Xpos & " " & mMapData(1).Ypos & " " & mMapData(1).Surface
+           ' MsgBox mMapData(1).Xpos & " " & mMapData(1).Ypos & " " & mMapData(1).Surface
+            ReDim mMapData(0)
+           ' MsgBox mMapData(1).Xpos & " " & mMapData(1).Ypos & " " & mMapData(1).Surface
         
-        For j = 1 To mapElements
-            mMap(mMapData(j).Xpos, mMapData(j).Ypos) = mMapData(j).Surface
-        Next j
-        
-       ' MsgBox "LOC:" & Loc(f)
-   
+            For j = 1 To mapElements
+                Get f, , mMapData
+                Map(mMapData(0).Xpos, mMapData(0).Ypos).ImageNumber = mMapData(0).Surface
+    
+                Map(mMapData(0).Xpos, mMapData(0).Ypos).ImageFile = GroundBoxes(mMapData(0).Surface - 100).ImageFile
+                 Map(mMapData(0).Xpos, mMapData(0).Ypos).TileX = GroundBoxes(mMapData(0).Surface - 100).TileX
+                 Map(mMapData(0).Xpos, mMapData(0).Ypos).TileY = GroundBoxes(mMapData(0).Surface - 100).TileY
+                
+                If j Mod 100 Then
+                    frmMain.StatusBar.SimpleText = "Loading Map Elements: " & j & "/" & mapElements
+                End If
+                
+            Next j
+           ' MsgBox "LOC:" & Loc(f)
+         End If
         'Get Tile Id
         'ReDim mMap(1 To mMapWidth, 1 To mMapHeight)
         'Get f, , mMap
     
         Get f, , mNumberOfItems
+       ' MsgBox "LOC:" & Loc(f)
       '  MsgBox mNumberOfItems
         ReDim mItems(1 To mNumberOfItems)
         Get f, , mItems
@@ -145,16 +183,45 @@ Dim Response As String
     
     
       
+      
+        If mapElements = 0 Then
+            ReDim mMapDataInt(1 To mMapWidth, 1 To mMapHeight)
+            Get f, , mMapDataInt
+            
+            'For x = 1 To mMapWidth - 1
+              '  For y = 1 To mMapHeight - 1
+              
+            For X = 1 To mMapWidth
+              For Y = 1 To mMapHeight
+                  Map(X, Y).ImageNumber = mMapDataInt(X, Y)
+            '
+                  Map(X, Y).ImageFile = GroundBoxes(mMapDataInt(X, Y) - 100).ImageFile
+                Map(X, Y).TileX = GroundBoxes(mMapDataInt(X, Y) - 100).TileX
+                   Map(X, Y).TileY = GroundBoxes(mMapDataInt(X, Y) - 100).TileY
+                   'Debug.Print mMapDataInt(x, y)
+                Next Y
+            Next X
+        Else
     
-        'Get Tile Id
-        ReDim mMapData(1 To mapElements)
-        Get f, , mMapData
+            'Get Tile Id
+            'ReDim mMapData(1 To mapElements)
+            'Get f, , mMapData
+            ReDim mMapData(0)
+           ' MsgBox mMapData(1).Xpos & " " & mMapData(1).Ypos & " " & mMapData(1).Surface
         
-       ' MsgBox mMapData(1).Xpos & " " & mMapData(1).Ypos & " " & mMapData(1).Surface
+            For j = 1 To mapElements
+                Get f, , mMapData
+                Map(mMapData(0).Xpos, mMapData(0).Ypos).ImageNumber = mMapData(0).Surface
     
-        For j = 1 To mapElements
-            mMap(mMapData(j).Xpos, mMapData(j).Ypos) = mMapData(j).Surface
-        Next j
+                Map(mMapData(0).Xpos, mMapData(0).Ypos).ImageFile = GroundBoxes(mMapData(0).Surface - 100).ImageFile
+                 Map(mMapData(0).Xpos, mMapData(0).Ypos).TileX = GroundBoxes(mMapData(0).Surface - 100).TileX
+                 Map(mMapData(0).Xpos, mMapData(0).Ypos).TileY = GroundBoxes(mMapData(0).Surface - 100).TileY
+                    If j Mod 100 Then
+                        frmMain.StatusBar.SimpleText = "Loading Map Elements: " & j & "/" & mapElements
+                    End If
+            Next j
+        End If
+        
         
         Get f, , mv2NumberOfItems
         'MsgBox mv2NumberOfItems
@@ -185,27 +252,27 @@ Close f
 
 'Do all the resizing and moving arrays
 
-ReDim Map(mMapWidth + 1, mMapHeight + 1)
+'ReDim Map(mMapWidth + 1, mMapHeight + 1)
 
 ReDim ItemMap(mMapWidth + 1, mMapHeight + 1)
 ReDim MonsterMap(mMapWidth + 1, mMapHeight + 1)
 
-ReDim Map(mMapWidth, mMapHeight)
+
 ReDim ItemMap(mMapWidth, mMapHeight)
 ReDim MonsterMap(mMapWidth, mMapHeight)
-
+'On Error Resume Next
 'For x = 1 To mMapWidth - 1
   '  For y = 1 To mMapHeight - 1
-For x = 1 To mMapWidth
-    For y = 1 To mMapHeight
-       Map(x, y).ImageNumber = mMap(x, y)
-       On Error Resume Next
-        Map(x, y).ImageFile = GroundBoxes(mMap(x, y) - 100).ImageFile
-        Map(x, y).TileX = GroundBoxes(mMap(x, y) - 100).TileX
-        Map(x, y).TileY = GroundBoxes(mMap(x, y) - 100).TileY
+'For x = 1 To mMapWidth
+'    For y = 1 To mMapHeight
+ '      Map(x, y).ImageNumber = mMap(x, y)
+'
+'        Map(x, y).ImageFile = GroundBoxes(mMap(x, y) - 100).ImageFile
+'        Map(x, y).TileX = GroundBoxes(mMap(x, y) - 100).TileX
+'        Map(x, y).TileY = GroundBoxes(mMap(x, y) - 100).TileY
         'Debug.Print mMap(X, Y)
-    Next y
-Next x
+'    Next y
+'Next x
 
 
 
@@ -249,10 +316,13 @@ For i = 1 To UBound(mMonsters)
     MonsterMap(mMonsters(i).Xpos, mMonsters(i).Ypos).MonsterId = mMonsters(i).MonsterId
     MonsterMap(mMonsters(i).Xpos, mMonsters(i).Ypos).ImageNumber = mMonsters(i).MonsterId
     MonsterMap(mMonsters(i).Xpos, mMonsters(i).Ypos).SpawnSeconds = mMonsters(i).Timeout
+'    Debug.Print "MonsterID" & mMonsters(i).MonsterId - 1
+   ' Debug.Print MonsterBoxes(17).ImageFile
     MonsterMap(mMonsters(i).Xpos, mMonsters(i).Ypos).TileX = MonsterBoxes(mMonsters(i).MonsterId - 1).TileX
     MonsterMap(mMonsters(i).Xpos, mMonsters(i).Ypos).TileY = MonsterBoxes(mMonsters(i).MonsterId - 1).TileY
     MonsterMap(mMonsters(i).Xpos, mMonsters(i).Ypos).ImageFile = MonsterBoxes(mMonsters(i).MonsterId - 1).ImageFile
-
+    MonsterMap(mMonsters(i).Xpos, mMonsters(i).Ypos).ImageType = MonsterBoxes(mMonsters(i).MonsterId - 1).ImageType
+    
 Next
 
 'Clear arrays
@@ -302,18 +372,18 @@ mNumberOfItems = 1
 ReDim mMonsters(1 To mapMonsters)
 ReDim mItems(1 To mapItems)
 
- For x = 0 To UBound(Map, 1)
-   For y = 0 To UBound(Map, 2)
+ For X = 0 To UBound(Map, 1)
+   For Y = 0 To UBound(Map, 2)
         
-       If y + 1 <= UBound(Map, 2) And x + 1 <= UBound(Map, 1) Then
-        mMap(x + 1, y + 1) = Map(x + 1, y + 1).ImageNumber
+       If Y + 1 <= UBound(Map, 2) And X + 1 <= UBound(Map, 1) Then
+        mMap(X + 1, Y + 1) = Map(X + 1, Y + 1).ImageNumber
         End If
         
-        If MonsterMap(x, y).ImageNumber <> 0 Then
-            mMonsters(UBound(mMonsters)).Xpos = x
-            mMonsters(UBound(mMonsters)).Ypos = y
-            mMonsters(UBound(mMonsters)).MonsterId = MonsterMap(x, y).MonsterId
-            mMonsters(UBound(mMonsters)).Timeout = MonsterMap(x, y).SpawnSeconds
+        If MonsterMap(X, Y).ImageNumber <> 0 Then
+            mMonsters(UBound(mMonsters)).Xpos = X
+            mMonsters(UBound(mMonsters)).Ypos = Y
+            mMonsters(UBound(mMonsters)).MonsterId = MonsterMap(X, Y).MonsterId
+            mMonsters(UBound(mMonsters)).Timeout = MonsterMap(X, Y).SpawnSeconds
             mMonsters(UBound(mMonsters)).a = True
             ReDim Preserve mMonsters(1 To UBound(mMonsters) + 1)
             mapMonsters = mapMonsters + 1
@@ -326,34 +396,34 @@ ReDim mItems(1 To mapItems)
             
             
         End If
-        If ItemMap(x, y).ItemId <> 0 Then
+        If ItemMap(X, Y).ItemId <> 0 Then
             mItems(UBound(mItems)).a = True
             If v2Map = True Then
                 mItems(UBound(mItems)).c = 1
                 mItems(UBound(mItems)).unk2 = True
-                mItems(UBound(mItems)).PutIn = ItemMap(x, y).PutIn
+                mItems(UBound(mItems)).PutIn = ItemMap(X, Y).PutIn
             End If
             
             
-            mItems(UBound(mItems)).Xpos = x
-            mItems(UBound(mItems)).Ypos = y
-            mItems(UBound(mItems)).SpawnTimeout = ItemMap(x, y).ItemTimeOut
-            mItems(UBound(mItems)).Writing = ItemMap(x, y).ItemText
-            mItems(UBound(mItems)).Data1 = ItemMap(x, y).Data1
-            mItems(UBound(mItems)).Data2 = ItemMap(x, y).Data2
-            mItems(UBound(mItems)).Data3 = ItemMap(x, y).Data3
-            mItems(UBound(mItems)).Data4 = ItemMap(x, y).Data4
-            mItems(UBound(mItems)).ItemId = ItemMap(x, y).ItemId
+            mItems(UBound(mItems)).Xpos = X
+            mItems(UBound(mItems)).Ypos = Y
+            mItems(UBound(mItems)).SpawnTimeout = ItemMap(X, Y).ItemTimeOut
+            mItems(UBound(mItems)).Writing = ItemMap(X, Y).ItemText
+            mItems(UBound(mItems)).Data1 = ItemMap(X, Y).Data1
+            mItems(UBound(mItems)).Data2 = ItemMap(X, Y).Data2
+            mItems(UBound(mItems)).Data3 = ItemMap(X, Y).Data3
+            mItems(UBound(mItems)).Data4 = ItemMap(X, Y).Data4
+            mItems(UBound(mItems)).ItemId = ItemMap(X, Y).ItemId
             
             If v2Map = False Then
-                mItems(UBound(mItems)).Uses = ItemMap(x, y).Data5
+                mItems(UBound(mItems)).Uses = ItemMap(X, Y).Data5
             Else
-                mItems(UBound(mItems)).Uses = ItemMap(x, y).Uses
-                mItems(UBound(mItems)).Data5 = ItemMap(x, y).Data5
+                mItems(UBound(mItems)).Uses = ItemMap(X, Y).Uses
+                mItems(UBound(mItems)).Data5 = ItemMap(X, Y).Data5
             End If
             
-            mItems(UBound(mItems)).Trigger = ItemMap(x, y).Data7
-            mItems(UBound(mItems)).Reset = ItemMap(x, y).Data6
+            mItems(UBound(mItems)).Trigger = ItemMap(X, Y).Data7
+            mItems(UBound(mItems)).Reset = ItemMap(X, Y).Data6
             ReDim Preserve mItems(1 To UBound(mItems) + 1)
             
             mapItems = mapItems + 1
@@ -366,8 +436,8 @@ ReDim mItems(1 To mapItems)
             
         End If
         
-    Next y
- Next x
+    Next Y
+ Next X
 
  
  If UBound(mItems) > 1 Then
@@ -382,17 +452,20 @@ End Sub
 Sub SaveRpgwoMap(filename As String)
 Call SetSaveINFO
   Dim k As Integer
+  mSurfaceArray = True
+  
 Open filename For Binary Access Write Lock Write As #1
     Put #1, , mMapWidth
     Put #1, , mMapHeight
     Put #1, , mMapVersion
+    Put #1, , mSurfaceArray
     Put #1, , mMapExtra
     mNumberOfMonsters = mNumberOfMonsters - 1
     mNumberOfItems = mNumberOfItems - 1
     'Get Tile Id
     'ReDim mMap(1 To mMapWidth, 1 To mMapHeight)
     
-    Dim MapSizeTotalCount As Integer
+    Dim MapSizeTotalCount As Long
     Dim unk1 As Integer
     Dim countSurfaceItems As Integer
     countSurfaceItems = 1
@@ -400,24 +473,24 @@ Open filename For Binary Access Write Lock Write As #1
    
     ReDim tempmMapData(1 To countSurfaceItems)
     MapSizeTotalCount = 0
-    Dim x As Integer
-     Dim y As Integer
-     For x = 1 To mMapWidth
-        For y = 1 To mMapHeight
-            If mMap(x, y) <> 0 Then
+    Dim X As Integer
+     Dim Y As Integer
+     For X = 1 To mMapWidth
+        For Y = 1 To mMapHeight
+            If mMap(X, Y) <> 0 Then
                 
-                tempmMapData(UBound(tempmMapData)).Xpos = x
-                tempmMapData(UBound(tempmMapData)).Ypos = y
-                tempmMapData(UBound(tempmMapData)).Surface = mMap(x, y)
+                tempmMapData(UBound(tempmMapData)).Xpos = X
+                tempmMapData(UBound(tempmMapData)).Ypos = Y
+                tempmMapData(UBound(tempmMapData)).Surface = mMap(X, Y)
                 MapSizeTotalCount = MapSizeTotalCount + 1
                 ReDim Preserve tempmMapData(1 To UBound(tempmMapData) + 1)
             End If
-        Next y
-     Next x
+        Next Y
+     Next X
      ReDim Preserve tempmMapData(1 To UBound(tempmMapData) - 1)
     
     Put #1, , MapSizeTotalCount
-    Put #1, , unk1
+
     
     
     Put #1, , tempmMapData
