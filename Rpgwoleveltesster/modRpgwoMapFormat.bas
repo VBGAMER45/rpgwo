@@ -4,7 +4,8 @@ Global v2Map As Boolean
 Dim mMapWidth As Integer
 Dim mMapHeight As Integer
 Dim mMapVersion As String * 30
-Dim mMapExtra As String * 66
+Dim mMapExtra As String * 64
+Dim mSurfaceArray As Boolean
 Dim mMapNotes As String * 5000
 Dim mNumberOfItems As Integer
 Dim mNumberOfMonsters As Integer
@@ -71,15 +72,21 @@ On Error Resume Next
             v2Map = False
             
         End If
-    
+        Get f, , mSurfaceArray
+        
       
         Get #f, , mMapExtra
         
-    Dim mapElements As Integer
-    Dim un1 As Integer
+
+
    ' MsgBox "Loc: " & Loc(f)
-    Get f, , mapElements
-    Get f, , un1
+    Dim mapElements As Long
+
+ '   MsgBox "Loc: " & Loc(f)
+    If mSurfaceArray = True Then
+        Get f, , mapElements
+        
+    End If
    'MsgBox mapElements
         
         'Get Tile Id
@@ -87,24 +94,59 @@ On Error Resume Next
         
         
 
-     For x = 1 To mMapWidth
-        For y = 1 To mMapHeight
-            mMap(x, y) = 0
-        Next y
-     Next x
+    ' For x = 1 To mMapWidth
+    '    For y = 1 To mMapHeight
+    '        mMap(x, y) = 0
+    '    Next y
+    ' Next x
    
-
+       Dim mMapDataInt() As Integer
+   
+   
+    ReDim Map(mMapWidth + 1, mMapHeight + 1)
     Dim mMapData() As mMapDataType
+    
+   
+        If mapElements = 0 Then
+            ReDim mMapDataInt(1 To mMapWidth, 1 To mMapHeight)
+            Get f, , mMapDataInt
+            
+            'For x = 1 To mMapWidth - 1
+              '  For y = 1 To mMapHeight - 1
+              
+            For x = 1 To mMapWidth
+              For y = 1 To mMapHeight
+                  Map(x, y).ImageNumber = mMapDataInt(x, y)
+                   'Debug.Print mMapDataInt(x, y)
+                Next y
+            Next x
+        Else
+    
+    
+    
+    
         ReDim mMapData(1 To mapElements)
-        Get f, , mMapData
-        
+
        ' MsgBox mMapData(1).Xpos & " " & mMapData(1).Ypos & " " & mMapData(1).Surface
         Dim j As Integer
-        For j = 1 To mapElements
-            mMap(mMapData(j).Xpos, mMapData(j).Ypos) = mMapData(j).Surface
-        Next j
+        
+            ReDim mMapData(0)
+           ' MsgBox mMapData(1).Xpos & " " & mMapData(1).Ypos & " " & mMapData(1).Surface
+        
+            For j = 1 To mapElements
+                Get f, , mMapData
+                Map(mMapData(0).Xpos, mMapData(0).Ypos).ImageNumber = mMapData(0).Surface
+                
+                If j Mod 100 Then
+                    frmClient.StatusBar.SimpleText = "Loading Map Elements: " & j & "/" & mapElements
+                End If
+                
+            Next j
+        
+      
         
         
+        End If
        ' Get #f, , mMap
         
      If v2Map = False Then
@@ -142,14 +184,14 @@ On Error Resume Next
 
 
     'Do all the resizing and moving arrays
-    ReDim Map(mMapWidth + 1, mMapHeight + 1)
+
     ReDim ItemMap(mMapWidth + 1, mMapHeight + 1)
     ReDim MonsterMap(mMapWidth + 1, mMapHeight + 1)
-    For x = 1 To mMapWidth + 1
-        For y = 1 To mMapHeight + 1
-            Map(x, y).ImageNumber = mMap(x, y)
-        Next y
-    Next x
+  '  For x = 1 To mMapWidth + 1
+   '     For y = 1 To mMapHeight + 1
+   '         Map(x, y).ImageNumber = mMap(x, y)
+    '    Next y
+    'Next x
     Call frmClient.SetupItemArray
     For i = 1 To UBound(mItems)
         ItemMap(mItems(i).Xpos, mItems(i).Ypos).ImageNumber = mItems(i).ItemId - 1

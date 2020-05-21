@@ -412,14 +412,14 @@ Begin VB.Form frmClient
       _ExtentY        =   11456
       _Version        =   393216
       Tabs            =   5
-      Tab             =   4
+      Tab             =   3
       TabsPerRow      =   5
       TabHeight       =   520
       TabCaption(0)   =   "Stats"
       TabPicture(0)   =   "frmClient.frx":0614
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Frame2"
-      Tab(0).Control(1)=   "Frame3"
+      Tab(0).Control(0)=   "Frame3"
+      Tab(0).Control(1)=   "Frame2"
       Tab(0).ControlCount=   2
       TabCaption(1)   =   "Spells"
       TabPicture(1)   =   "frmClient.frx":0630
@@ -433,13 +433,15 @@ Begin VB.Form frmClient
       Tab(2).ControlCount=   1
       TabCaption(3)   =   "Mini Map"
       TabPicture(3)   =   "frmClient.frx":0668
-      Tab(3).ControlEnabled=   0   'False
+      Tab(3).ControlEnabled=   -1  'True
       Tab(3).Control(0)=   "lblMiniMapNote"
+      Tab(3).Control(0).Enabled=   0   'False
       Tab(3).Control(1)=   "picMiniMap"
+      Tab(3).Control(1).Enabled=   0   'False
       Tab(3).ControlCount=   2
       TabCaption(4)   =   "Admin"
       TabPicture(4)   =   "frmClient.frx":0684
-      Tab(4).ControlEnabled=   -1  'True
+      Tab(4).ControlEnabled=   0   'False
       Tab(4).Control(0)=   "Label7"
       Tab(4).Control(0).Enabled=   0   'False
       Tab(4).Control(1)=   "Label8"
@@ -454,7 +456,7 @@ Begin VB.Form frmClient
       Begin VB.CheckBox chkAdminMode 
          Caption         =   "Admin Mode"
          Height          =   255
-         Left            =   1200
+         Left            =   -73800
          TabIndex        =   101
          Top             =   1440
          Width           =   1815
@@ -462,7 +464,7 @@ Begin VB.Form frmClient
       Begin VB.CommandButton cmdMonsterSelect 
          Caption         =   "Monster Select"
          Height          =   375
-         Left            =   2520
+         Left            =   -72480
          TabIndex        =   100
          Top             =   720
          Width           =   1455
@@ -470,7 +472,7 @@ Begin VB.Form frmClient
       Begin VB.CommandButton cmdItemSelect 
          Caption         =   "Item Select"
          Height          =   375
-         Left            =   360
+         Left            =   -74640
          TabIndex        =   99
          Top             =   720
          Width           =   1455
@@ -479,7 +481,7 @@ Begin VB.Form frmClient
          AutoRedraw      =   -1  'True
          BackColor       =   &H00000000&
          Height          =   3375
-         Left            =   -74760
+         Left            =   240
          ScaleHeight     =   221
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   221
@@ -1188,7 +1190,7 @@ Begin VB.Form frmClient
       Begin VB.Label Label8 
          Caption         =   $"frmClient.frx":2CA8
          Height          =   1215
-         Left            =   480
+         Left            =   -74520
          TabIndex        =   103
          Top             =   2640
          Width           =   3255
@@ -1196,7 +1198,7 @@ Begin VB.Form frmClient
       Begin VB.Label Label7 
          Caption         =   "Admin Mode allows you drag monsters and items around the map where ever you want."
          Height          =   375
-         Left            =   600
+         Left            =   -74400
          TabIndex        =   102
          Top             =   1920
          Width           =   3135
@@ -1204,7 +1206,7 @@ Begin VB.Form frmClient
       Begin VB.Label lblMiniMapNote 
          Caption         =   $"frmClient.frx":2D65
          Height          =   975
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   97
          Top             =   3960
          Width           =   3375
@@ -1765,7 +1767,7 @@ Public Sub Init(ByVal Path As String)
             Monsters(i).Image = Monsters2(i - 1).Image
             Monsters(i).Level = Monsters2(i - 1).Level
             Monsters(i).ImageType = Monsters2(i - 1).ImageType
-            Monsters(i).MonsterID = i
+            Monsters(i).MonsterId = i
         End If
     Next
     
@@ -1827,7 +1829,7 @@ Dim totalUsages As Long
         Uses(i).LockFocus = Uses2(i).LockFocus
         Uses(i).LowerLand = Uses2(i).LowerLand
         Uses(i).Mana = Uses2(i).Mana
-        Uses(i).MonsterID = Uses2(i).MonsterID
+        Uses(i).MonsterId = Uses2(i).MonsterId
         Uses(i).Mortardamage = Uses2(i).Mortardamage
         Uses(i).Mortarspeed = Uses2(i).Mortarspeed
         Uses(i).NeedFlatSurface = Uses2(i).NeedFlatSurface
@@ -2113,7 +2115,7 @@ Open Filename For Input As #f
                 SpawnSeconds = Int(DataArray(3))
                 MonsterMap(Xpos, Ypos).ImageNumber = ImageNumber
                 MonsterMap(Xpos, Ypos).MonsterArrayID = GetMonsterArrayId(ImageNumber)
-                MonsterMap(Xpos, Ypos).MonsterID = Monsters(MonsterMap(Xpos, Ypos).MonsterArrayID).MonsterID 'ImageNumber
+                MonsterMap(Xpos, Ypos).MonsterId = Monsters(MonsterMap(Xpos, Ypos).MonsterArrayID).MonsterId 'ImageNumber
                 MonsterMap(Xpos, Ypos).Life = Monsters(MonsterMap(Xpos, Ypos).MonsterArrayID).Life
                 MonsterMap(Xpos, Ypos).Stamina = Monsters(MonsterMap(Xpos, Ypos).MonsterArrayID).Stamina
                 MonsterMap(Xpos, Ypos).Mana = Monsters(MonsterMap(Xpos, Ypos).MonsterArrayID).Mana
@@ -2156,10 +2158,10 @@ End If 'End of rsf file
     
     StatusBar.SimpleText = "Script Loaded"
 End Sub
-Public Function GetMonsterArrayId(ByVal MonsterID As Integer) As Integer
+Public Function GetMonsterArrayId(ByVal MonsterId As Integer) As Integer
     Dim i As Long
     For i = 0 To UBound(Monsters)
-        If Monsters(i).MonsterID = MonsterID Then
+        If Monsters(i).MonsterId = MonsterId Then
             GetMonsterArrayId = i
             Exit For
         End If
@@ -2299,10 +2301,10 @@ Public Function GetRealImageNumber(ByVal ItemId As Integer)
 
 GetRealImageNumber = Items(ItemId).Animation(0)
 End Function
-Private Function GetRealImageNumberMonster(ByVal MonsterID As Integer)
+Private Function GetRealImageNumberMonster(ByVal MonsterId As Integer)
     Dim i As Long
     For i = 0 To UBound(Monsters)
-        If Monsters(i).MonsterID = MonsterID Then
+        If Monsters(i).MonsterId = MonsterId Then
             GetRealImageNumberMonster = Monsters(i).Image
             Exit Function
         End If
@@ -2843,7 +2845,7 @@ Public Function Map_Check(Xpos As Integer, Ypos As Integer) As Boolean
     If Ypos < 0 Or Ypos > UBound(Map) Then Exit Function
     
     'Checks if there is a monster on that positon
-    If MonsterMap(Xpos, Ypos).MonsterID <> 0 Then
+    If MonsterMap(Xpos, Ypos).MonsterId <> 0 Then
        If MonsterMap(Xpos, Ypos).Dead = True Then
        Else
         If Player.IsInStealth = True Then
@@ -2929,7 +2931,7 @@ Private Sub pbxView_DragDrop(Source As Control, x As Single, y As Single)
         End If
         
         If DragSource = "monster" And bAdminMode = True Then
-            If MonsterMap(CurX, CurY).MonsterID = 0 Then
+            If MonsterMap(CurX, CurY).MonsterId = 0 Then
                 MonsterMap(CurX, CurY).Dead = MonsterMap(dMonX, dMonY).Dead
                 MonsterMap(CurX, CurY).ImageFile = MonsterMap(dMonX, dMonY).ImageFile
                 MonsterMap(CurX, CurY).ImageNumber = MonsterMap(dMonX, dMonY).ImageNumber
@@ -2937,7 +2939,7 @@ Private Sub pbxView_DragDrop(Source As Control, x As Single, y As Single)
                 MonsterMap(CurX, CurY).Life = MonsterMap(dMonX, dMonY).Life
                 MonsterMap(CurX, CurY).Mana = MonsterMap(dMonX, dMonY).Mana
                 MonsterMap(CurX, CurY).MonsterArrayID = MonsterMap(dMonX, dMonY).MonsterArrayID
-                MonsterMap(CurX, CurY).MonsterID = MonsterMap(dMonX, dMonY).MonsterID
+                MonsterMap(CurX, CurY).MonsterId = MonsterMap(dMonX, dMonY).MonsterId
                 MonsterMap(CurX, CurY).OldMonsterArrayID = MonsterMap(dMonX, dMonY).OldMonsterArrayID
                 MonsterMap(CurX, CurY).OldX = MonsterMap(dMonX, dMonY).OldX
                 MonsterMap(CurX, CurY).OldY = MonsterMap(dMonX, dMonY).OldY
@@ -2954,7 +2956,7 @@ Private Sub pbxView_DragDrop(Source As Control, x As Single, y As Single)
                 MonsterMap(dMonX, dMonY).Life = 0
                 MonsterMap(dMonX, dMonY).Mana = 0
                 MonsterMap(dMonX, dMonY).MonsterArrayID = 0
-                MonsterMap(dMonX, dMonY).MonsterID = 0
+                MonsterMap(dMonX, dMonY).MonsterId = 0
                 MonsterMap(dMonX, dMonY).OldMonsterArrayID = 0
                 MonsterMap(dMonX, dMonY).OldX = 0
                 MonsterMap(dMonX, dMonY).OldY = 0
@@ -2994,7 +2996,7 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
             If Player.Xpos = CurX And Player.Ypos = CurY Then Exit Sub
             MonsterMap(CurX, CurY).ImageNumber = Monsters(SelectedMonster).Image
             MonsterMap(CurX, CurY).Dead = False
-            MonsterMap(CurX, CurY).MonsterID = SelectedMonster
+            MonsterMap(CurX, CurY).MonsterId = SelectedMonster
             MonsterMap(CurX, CurY).Life = Monsters(SelectedMonster).Life
             MonsterMap(CurX, CurY).Stamina = Monsters(SelectedMonster).Stamina
             MonsterMap(CurX, CurY).Mana = Monsters(SelectedMonster).Mana
@@ -3036,7 +3038,7 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
                 IsDrag = True
             Else
 
-                If MonsterMap(CurX, CurY).MonsterID <> 0 And bAdminMode = True Then
+                If MonsterMap(CurX, CurY).MonsterId <> 0 And bAdminMode = True Then
                     dMonX = CurX
                     dMonY = CurY
                     DragSource = "monster"
@@ -3059,7 +3061,7 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
             If Player.Xpos = CurX And Player.Ypos = CurY Then Exit Sub
             MonsterMap(CurX, CurY).ImageNumber = 0
             MonsterMap(CurX, CurY).Dead = False
-            MonsterMap(CurX, CurY).MonsterID = 0
+            MonsterMap(CurX, CurY).MonsterId = 0
             MonsterMap(CurX, CurY).Life = 0
             MonsterMap(CurX, CurY).Stamina = 0
             MonsterMap(CurX, CurY).Mana = 0
@@ -3106,7 +3108,7 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
     
     For i = 0 To UBound(Monsters)
     If CurX < LBound(ItemMap) Or CurY < LBound(ItemMap) Then Exit For
-        If Monsters(i).MonsterID = MonsterMap(CurX, CurY).MonsterID Then
+        If Monsters(i).MonsterId = MonsterMap(CurX, CurY).MonsterId Then
             MonsterName = Trim$(Monsters(i).MonsterName)
             lblStatus.Caption = MonsterName & "- Life:" & MonsterMap(CurX, CurY).Life & " Stamina:" & MonsterMap(CurX, CurY).Stamina & " Mana:" & MonsterMap(CurX, CurY).Mana
             Exit For
@@ -3123,7 +3125,7 @@ Private Sub pbxView_MouseDown(Button As Integer, Shift As Integer, x As Single, 
     
     If CurX < LBound(ItemMap) Or CurY < LBound(ItemMap) Then
     Else
-    StatusBar.SimpleText = "Surface=" & Map(CurX, CurY).ImageNumber & " Item: " & ItemName & "(" & ItemMap(CurX, CurY).ItemId & ")" & " Monster: " & MonsterName & "(" & MonsterMap(CurX, CurY).MonsterID & ")"
+    StatusBar.SimpleText = "Surface=" & Map(CurX, CurY).ImageNumber & " Item: " & ItemName & "(" & ItemMap(CurX, CurY).ItemId & ")" & " Monster: " & MonsterName & "(" & MonsterMap(CurX, CurY).MonsterId & ")"
     End If
 End Sub
 
@@ -3139,7 +3141,7 @@ Private Sub pbxView_MouseMove(Button As Integer, Shift As Integer, x As Single, 
             If Player.Xpos = CurX And Player.Ypos = CurY Then Exit Sub
             MonsterMap(CurX, CurY).ImageNumber = Monsters(SelectedMonster).Image
             MonsterMap(CurX, CurY).Dead = False
-            MonsterMap(CurX, CurY).MonsterID = SelectedMonster
+            MonsterMap(CurX, CurY).MonsterId = SelectedMonster
             MonsterMap(CurX, CurY).Life = Monsters(SelectedMonster).Life
             MonsterMap(CurX, CurY).Stamina = Monsters(SelectedMonster).Stamina
             MonsterMap(CurX, CurY).Mana = Monsters(SelectedMonster).Mana
@@ -3178,7 +3180,7 @@ Private Sub pbxView_MouseMove(Button As Integer, Shift As Integer, x As Single, 
             If Player.Xpos = CurX And Player.Ypos = CurY Then Exit Sub
             MonsterMap(CurX, CurY).ImageNumber = 0
             MonsterMap(CurX, CurY).Dead = False
-            MonsterMap(CurX, CurY).MonsterID = 0
+            MonsterMap(CurX, CurY).MonsterId = 0
             MonsterMap(CurX, CurY).Life = 0
             MonsterMap(CurX, CurY).Stamina = 0
             MonsterMap(CurX, CurY).Mana = 0
@@ -3307,7 +3309,7 @@ For y = 0 To UBound(Map, 1)
                 MonsterMap(x, y).ImageNumber = Monsters(MonsterMap(x, y).OldMonsterArrayID).Image
                 
                 MonsterMap(x, y).MonsterArrayID = MonsterMap(x, y).OldMonsterArrayID
-                MonsterMap(x, y).MonsterID = Monsters(MonsterMap(x, y).OldMonsterArrayID).MonsterID
+                MonsterMap(x, y).MonsterId = Monsters(MonsterMap(x, y).OldMonsterArrayID).MonsterId
                 
                 MonsterMap(x, y).Dead = False
                 Call modAI.MoveMonsterToNewSquare(x, y, MonsterMap(x, y).OldX, MonsterMap(x, y).OldY)
@@ -3326,7 +3328,7 @@ For y = 0 To UBound(Map, 1)
                 MonsterMap(x, y).ImageNumber = Monsters(MonsterMap(x, y).OldMonsterArrayID).Image
                 
                 MonsterMap(x, y).MonsterArrayID = MonsterMap(x, y).OldMonsterArrayID
-                MonsterMap(x, y).MonsterID = Monsters(MonsterMap(x, y).OldMonsterArrayID).MonsterID
+                MonsterMap(x, y).MonsterId = Monsters(MonsterMap(x, y).OldMonsterArrayID).MonsterId
                 
                 MonsterMap(x, y).Dead = False
                 'MsgBox "hi"
