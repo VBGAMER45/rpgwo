@@ -143,6 +143,7 @@ Open Filename For Input As #1
                 mItems(mNumberOfItems).Data4 = Int(DataArray(7))
                 mItems(mNumberOfItems).Data5 = Int(DataArray(8))
                 mItems(mNumberOfItems).Reset = Int(DataArray(9))
+                mItems(mNumberOfItems).Writing = Space(200)
                ' mItems(mNumberOfItems).Trigger = Int(DataArray(10))
                 
                 modRpgwoMapFormat.mNumberOfItems = modRpgwoMapFormat.mNumberOfItems + 1

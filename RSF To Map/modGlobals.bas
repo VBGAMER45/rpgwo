@@ -27,3 +27,8 @@ End If
 Next t%
 Tokenize = WL 'returns an array of strings
 End Function
+
+Public Function FileExists(filename As String) As Boolean
+    FileExists = Len(Dir(filename, vbNormal)) > 0
+End Function
+
