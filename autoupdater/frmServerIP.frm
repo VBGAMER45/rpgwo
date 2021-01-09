@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmServerIP 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Choose RPG Server IP"
-   ClientHeight    =   3330
+   ClientHeight    =   3795
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   3900
@@ -10,7 +10,7 @@ Begin VB.Form frmServerIP
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   3330
+   ScaleHeight     =   3795
    ScaleWidth      =   3900
    StartUpPosition =   1  'CenterOwner
    Begin VB.ComboBox cboVersion 
@@ -18,7 +18,7 @@ Begin VB.Form frmServerIP
       Left            =   2040
       TabIndex        =   8
       Text            =   "Client.exe"
-      Top             =   2280
+      Top             =   2640
       Width           =   1695
    End
    Begin VB.ListBox List1 
@@ -34,7 +34,7 @@ Begin VB.Form frmServerIP
       Left            =   3195
       TabIndex        =   3
       Text            =   "6015"
-      Top             =   1845
+      Top             =   2205
       Width           =   645
    End
    Begin VB.CommandButton cmdCancel 
@@ -43,7 +43,7 @@ Begin VB.Form frmServerIP
       Height          =   495
       Left            =   2595
       TabIndex        =   5
-      Top             =   2760
+      Top             =   3120
       Width           =   1215
    End
    Begin VB.CommandButton cmdOK 
@@ -52,7 +52,7 @@ Begin VB.Form frmServerIP
       Height          =   495
       Left            =   1200
       TabIndex        =   4
-      Top             =   2760
+      Top             =   3120
       Width           =   1215
    End
    Begin VB.TextBox txtSpecifyIP 
@@ -61,7 +61,7 @@ Begin VB.Form frmServerIP
       Left            =   1770
       TabIndex        =   2
       Text            =   "255.255.255.255"
-      Top             =   1845
+      Top             =   2205
       Width           =   1380
    End
    Begin VB.OptionButton optSpecify 
@@ -69,7 +69,7 @@ Begin VB.Form frmServerIP
       Height          =   255
       Left            =   195
       TabIndex        =   1
-      Top             =   1905
+      Top             =   2265
       Width           =   1560
    End
    Begin VB.OptionButton optLocal 
@@ -77,15 +77,33 @@ Begin VB.Form frmServerIP
       Height          =   255
       Left            =   180
       TabIndex        =   0
-      Top             =   1530
+      Top             =   1890
       Width           =   975
+   End
+   Begin VB.Label lblAddYourOwnServer 
+      Caption         =   "Add Your Own Server"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   -1  'True
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00FF0000&
+      Height          =   255
+      Left            =   240
+      TabIndex        =   10
+      Top             =   1440
+      Width           =   2535
    End
    Begin VB.Label lblClientVersion 
       Caption         =   "Version for Local/Specify"
       Height          =   255
       Left            =   120
       TabIndex        =   9
-      Top             =   2280
+      Top             =   2640
       Width           =   1815
    End
    Begin VB.Label Label1 
@@ -114,6 +132,12 @@ Private Type ServerType
 End Type
 Dim ServerList() As ServerType
 Dim strClientVersion As String
+
+Private Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
+Const SW_SHOWNORMAL = 1
+Const IDC_HAND = 32649&
+Private Declare Function SetCursor Lib "user32" (ByVal hCursor As Long) As Long
+Private Declare Function LoadCursor Lib "user32" Alias "LoadCursorA" (ByVal hInstance As Long, ByVal lpCursorName As Long) As Long
 
 
 Private Sub cmdCancel_Click()
@@ -240,6 +264,14 @@ Exit Sub
 nofile:
     MsgBox "This program needs to be located in the same folder as Rpgwo!", vbExclamation
 Exit Sub
+End Sub
+
+Private Sub lblAddYourOwnServer_Click()
+ShellExecute Me.hwnd, vbNullString, "https://rpgwoforums.net/index.php?action=rpgwo", vbNullString, "C:\", SW_SHOWNORMAL
+End Sub
+
+Private Sub lblAddYourOwnServer_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+SetCursor LoadCursor(0, IDC_HAND)
 End Sub
 
 Private Sub List1_Click()

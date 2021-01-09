@@ -63,7 +63,6 @@ Begin VB.Form frmTitle
    End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
-      Caption         =   "Summoner@rpgwo.com  - Summoner - Mordavia"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   13.5
@@ -235,6 +234,16 @@ Dim data As String
        End If
     Loop
 Close #1
+
+
+
+If MainUrl = "" Then
+    MainUrl = "http://www.rpgwo.net/Client.files/"
+End If
+
+If ConnectiniUrl = "" Then
+    ConnectiniUrl = "http://www.rpgwo.net/connect.ini"
+End If
 
 
     'MainUrl = "http://users.adelphia.net/~kudlo/update/"
@@ -410,6 +419,9 @@ Sub OpenMasterFileList(FileName As String, Prime1 As Boolean)
     
     Dim Version As Integer
     Dim NumFiles As Integer
+    
+    Dim fFileSize As Long
+    
 
     Open FileName For Binary Access Read Lock Read As #3
         Get #3, , Version
@@ -447,9 +459,19 @@ Sub OpenMasterFileList(FileName As String, Prime1 As Boolean)
                 Call DownloadFileX2(App.Path & "\" & Files(i).FileName & ".zlib", bufFile)
                 Call cComp.DecompressFile(App.Path & "\" & Files(i).FileName & ".zlib", App.Path & "\" & Files(i).FileName)
                 Call Kill(App.Path & "\" & Files(i).FileName & ".zlib")
+                
+                 SystemTimeToFileTime Files(i).FILETIME, udtLocalTime
+                 LocalFileTimeToFileTime udtLocalTime, newLocal
+                 
+                 fHandle = CreateFile(App.Path & "\" & Files(i).FileName, GENERIC_WRITE, FILE_SHARE_READ Or FILE_SHARE_WRITE, ByVal 0&, OPEN_EXISTING, 0, 0)
+                  SetFileTime fHandle, newLocal, newLocal, newLocal
+                 CloseHandle fHandle
+               
+                
                            
             Else
                'Open the file
+                fFileSize = FileLen(App.Path & "\" & Files(i).FileName)
                 'Get File Time
                 fHandle = OpenFile(App.Path & "\" & Files(i).FileName, FileStruct, OF_READ)
                 GetFileTime fHandle, Ft1, Ft1, Ft2
@@ -459,7 +481,7 @@ Sub OpenMasterFileList(FileName As String, Prime1 As Boolean)
                 FileTimeToLocalFileTime Ft2, Ft1
                 'Convert the file time to system file time
                 FileTimeToSystemTime Ft1, SysTime
-                If FileChanged(SysTime, Files(i).FILETIME) = True Then
+                If FileChanged(SysTime, Files(i).FILETIME) = True Or Files(i).FileSize <> fFileSize Then
                     lblUpdate.Caption = "Updating " & Files(i).FileName & " ..."
                     Inet1.URL = MainUrl & Files(i).FileName & ".zlib"
                     bufFile = Inet1.OpenURL(Inet1.URL, icByteArray)
@@ -490,6 +512,15 @@ Sub OpenMasterFileList(FileName As String, Prime1 As Boolean)
                Call DownloadFileX2(App.Path & "\" & sName & ".files\" & Files(i).FileName & ".zlib", bufFile)
                Call cComp.DecompressFile(App.Path & "\" & sName & ".files\" & Files(i).FileName & ".zlib", App.Path & "\" & sName & ".files\" & Files(i).FileName)
                Call Kill(App.Path & "\" & sName & ".files\" & Files(i).FileName & ".zlib")
+               
+               
+                 SystemTimeToFileTime Files(i).FILETIME, udtLocalTime
+                 LocalFileTimeToFileTime udtLocalTime, newLocal
+                 
+                 fHandle = CreateFile(App.Path & "\" & sName & ".files\" & Files(i).FileName, GENERIC_WRITE, FILE_SHARE_READ Or FILE_SHARE_WRITE, ByVal 0&, OPEN_EXISTING, 0, 0)
+                  SetFileTime fHandle, newLocal, newLocal, newLocal
+                 CloseHandle fHandle
+               
 
             Else
                 'Open the file
@@ -498,12 +529,13 @@ Sub OpenMasterFileList(FileName As String, Prime1 As Boolean)
                 GetFileTime fHandle, Ft1, Ft1, Ft2
                 CloseHandle fHandle
                 oldTime = Ft1
+            fFileSize = FileLen(App.Path & "\" & sName & ".files\" & Files(i).FileName)
                 'Convert the file time to the local file time
                 FileTimeToLocalFileTime Ft2, Ft1
                 'Convert the file time to system file time
                 FileTimeToSystemTime Ft1, SysTime
             
-                If FileChanged(SysTime, Files(i).FILETIME) = True Then
+                If FileChanged(SysTime, Files(i).FILETIME) = True Or Files(i).FileSize <> fFileSize Then
                  lblUpdate.Caption = "Updating " & Files(i).FileName & " ..."
                  Inet1.URL = sUpdateUrl & "/" & Files(i).FileName & ".zlib"
                  bufFile = Inet1.OpenURL(Inet1.URL, icByteArray)
