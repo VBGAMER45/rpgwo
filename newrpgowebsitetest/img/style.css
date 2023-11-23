@@ -1,0 +1,42 @@
+BODY {
+	FONT-SIZE: 10pt; COLOR: black; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif
+}
+DIV {
+	FONT-SIZE: 10pt; COLOR: black; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif
+}
+P {
+	FONT-SIZE: 10pt; COLOR: black; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif
+}
+TD {
+	FONT-SIZE: 10pt; COLOR: black; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif
+}
+.menuSubsection {
+	FONT-SIZE: 8pt; COLOR: #6c2f17
+}
+.shotSmall {
+	FONT-SIZE: 8pt; COLOR: #ffcc00
+}
+.menutop {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: black
+}
+.newsPost {
+	FONT-SIZE: 10pt; COLOR: black
+}
+.newsTitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; COLOR: black
+}
+.newsDetail {
+	FONT-SIZE: 8pt; COLOR: black
+}
+.statusOn {
+	FONT-SIZE: 10pt; COLOR: lightgreen
+}
+.statusOff {
+	FONT-SIZE: 10pt; COLOR: red
+}
+A {
+	TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}

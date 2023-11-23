@@ -1,4 +1,4 @@
-frmMain = 44, 59, 459, 404, , 22, 29, 437, 375, C
+frmMain = 44, 59, 459, 404, Z, 22, 29, 437, 375, C
 frmNewMap = 0, 0, 385, 346, , 110, 145, 495, 491, C
 frmAbout = 44, 58, 429, 404, , 0, 0, 415, 346, C
 frmReSize = 44, 58, 431, 404, , 88, 116, 476, 462, C
@@ -8,7 +8,7 @@ modMain = 44, 58, 459, 404,
 modItemDef = 66, 88, 481, 433, 
 modMonsterDef = 88, 116, 503, 462, 
 modGround = 110, 145, 497, 491, 
-modRpgwoMapFormat = 66, 66, 415, 412, Z
+modRpgwoMapFormat = 66, 66, 415, 412, 
 frmSelectRange = 44, 44, 353, 390, , 154, 154, 477, 500, C
 frmItemSelect = 132, 132, 441, 478, , 110, 110, 419, 456, C
 frmMonsterSelect = 153, 154, 463, 500, , 132, 132, 441, 478, C
