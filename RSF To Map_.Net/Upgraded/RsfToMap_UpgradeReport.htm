@@ -1,0 +1,144 @@
+﻿<html>
+	<head>
+		<META HTTP-EQUIV="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" href="_UpgradeReport_Files\UpgradeReport.css">
+		<title>RsfToMap.vbp Upgrade Report</title>
+		
+		<script language="javascript">
+			function outliner () {
+				oMe = window.event.srcElement
+				//get child element
+				var child = document.all[event.srcElement.getAttribute("child",false)];
+				//if child element exists, expand or collapse it.
+				if (null != child)
+					child.className = child.className == "collapsed" ? "expanded" : "collapsed";
+			}
+		
+			function changepic() {
+				uMe = window.event.srcElement;
+				var check = uMe.src.toLowerCase();
+				if (check.lastIndexOf("upgradereport_plus.gif") != -1)
+				{
+					uMe.src = "_UpgradeReport_Files/UpgradeReport_Minus.gif"
+				}
+				else
+				{
+					uMe.src = "_UpgradeReport_Files/UpgradeReport_Plus.gif"
+				}
+			}
+		</script>
+		
+	</head>
+	<body topmargin="0" leftmargin="0" rightmargin="0" onclick="outliner();">
+		<h1>Upgrade Report for RsfToMap.vbp</h1>
+		
+		<p><span class="note">
+		<b>Time of Upgrade:  </b>6/7/2020 12:38 AM<br>
+		</span></p>
+		
+		<h2>List of Project Files</h2>
+		<table cellpadding="2" cellspacing="0" width="98%" border="1"bordercolor="white" class="infotable">
+			<tr>
+				<td nowrap class="header">New Filename</td>
+				<td nowrap class="header">Original Filename</td>
+				<td nowrap class="header">File Type</td>
+				<td nowrap class="header">Status</td>
+				<td nowrap class="header">Errors</td>
+				<td nowrap class="header">Warnings</td>
+				<td nowrap class="header">Total Issues</td>
+			</tr>
+		<tr class="row">
+			<td class="content"><IMG alt="expand/collapse section" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue0">&nbsp;(Global Issues)</td>
+			<td class="content"></td>
+			<td class="content"></td>
+			<td class="content">
+		</td>	<td class="content">0</td>
+			<td class="content">0</td>
+			<td class="content">0</td>
+		</tr>
+			<tr class="collapsed" id="issue0" bgcolor="#ffffff"><td colspan="8">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="8" class="issuetitle">Global update issues:</td></tr><tr><td class="issuenone">None</td></tr>
+				</table>
+			</td></tr>
+		<tr class="row">
+			<td class="content"><IMG alt="expand/collapse section" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue1">&nbsp;frmMain.cs</td>
+			<td class="content">frmMain.frm</td>
+			<td class="content">Form</td>
+			<td class="content">
+		Upgraded with issues</td>	<td class="content">10</td>
+			<td class="content">2</td>
+			<td class="content">12</td>
+		</tr>
+			<tr class="collapsed" id="issue1" bgcolor="#ffffff"><td colspan="8">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="8" class="issuetitle">Upgrade Issues for frmMain.frm:</td></tr><tr><td width="10" class="issuehdr">#</td><td class="issuehdr" nowrap>Severity</td><td class="issuehdr">Location</td><td class="issuehdr">Object Type</td><td class="issuehdr">Object Name</td><td class="issuehdr">Property</td><td class="issuehdr">Description</td><td class="issuehdr">Qty</td></tr>
+					<tr><td width="10" class="issuecontent">1</td><td class="issuecontent" nowrap>Compile Error</td><td class="issuecontent">(Rules Applying)</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='https://www.mobilize.net/vbtonet/ewis/ewi2068'>MSComDlg.CommonDialog object was not upgraded.</a></td><td class="issuecontent">2</td></tr>
+					<tr><td width="10" class="issuecontent">2</td><td class="issuecontent" nowrap>Compile Error</td><td class="issuecontent">cmdSelect_Click</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='https://www.mobilize.net/vbtonet/ewis/ewi6012'>CommonDialog variable was not upgraded</a></td><td class="issuecontent">1</td></tr>
+					<tr><td width="10" class="issuecontent">3</td><td class="issuecontent" nowrap>Compile Error</td><td class="issuecontent">cmdSelect_Click</td><td class="issuecontent">MSComDlg.CommonDialog</td><td class="issuecontent">CommonDialog1</td><td class="issuecontent">DialogTitle</td><td class="issuecontent"><a href='https://www.mobilize.net/vbtonet/ewis/ewi2064'>MSComDlg.CommonDialog property CommonDialog1.DialogTitle was not upgraded.</a></td><td class="issuecontent">1</td></tr>
+					<tr><td width="10" class="issuecontent">4</td><td class="issuecontent" nowrap>Compile Error</td><td class="issuecontent">cmdSelect_Click</td><td class="issuecontent">MSComDlg.CommonDialog</td><td class="issuecontent">CommonDialog1</td><td class="issuecontent">Filename</td><td class="issuecontent"><a href='https://www.mobilize.net/vbtonet/ewis/ewi2064'>MSComDlg.CommonDialog property CommonDialog1.Filename was not upgraded.</a></td><td class="issuecontent">2</td></tr>
+					<tr><td width="10" class="issuecontent">5</td><td class="issuecontent" nowrap>Compile Error</td><td class="issuecontent">cmdSelect_Click</td><td class="issuecontent">MSComDlg.CommonDialog</td><td class="issuecontent">CommonDialog1</td><td class="issuecontent">Filter</td><td class="issuecontent"><a href='https://www.mobilize.net/vbtonet/ewis/ewi2064'>MSComDlg.CommonDialog property CommonDialog1.Filter was not upgraded.</a></td><td class="issuecontent">1</td></tr>
+					<tr><td width="10" class="issuecontent">6</td><td class="issuecontent" nowrap>Compile Error</td><td class="issuecontent">cmdSelect_Click</td><td class="issuecontent">MSComDlg.CommonDialog</td><td class="issuecontent">CommonDialog1</td><td class="issuecontent">InitDir</td><td class="issuecontent"><a href='https://www.mobilize.net/vbtonet/ewis/ewi2064'>MSComDlg.CommonDialog property CommonDialog1.InitDir was not upgraded.</a></td><td class="issuecontent">1</td></tr>
+					<tr><td width="10" class="issuecontent">7</td><td class="issuecontent" nowrap>Design Error</td><td class="issuecontent">(Layout)</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='https://www.mobilize.net/vbtonet/ewis/ewi2068'>MSComDlg.CommonDialog object was not upgraded.</a></td><td class="issuecontent">1</td></tr>
+					<tr><td width="10" class="issuecontent">8</td><td class="issuecontent" nowrap>Design Error</td><td class="issuecontent">(Layout)</td><td class="issuecontent">Variant</td><td class="issuecontent">_HiddenModule</td><td class="issuecontent">array</td><td class="issuecontent"><a href='https://www.mobilize.net/vbtonet/ewis/ewi2081'>Array has a new behavior.</a></td><td class="issuecontent">1</td></tr>
+					<tr><td width="10" class="issuecontent">9</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">cmdSelect_Click</td><td class="issuecontent">MSComDlg.CommonDialog</td><td class="issuecontent">CommonDialog1</td><td class="issuecontent">Filter</td><td class="issuecontent"><a href='https://www.mobilize.net/vbtonet/ewis/ewi2081'>Filter has a new behavior.</a></td><td class="issuecontent">1</td></tr>
+					<tr><td width="10" class="issuecontent">10</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">Form_Load</td><td class="issuecontent">Form</td><td class="issuecontent"></td><td class="issuecontent">Load</td><td class="issuecontent"><a href='https://www.mobilize.net/vbtonet/ewis/ewi2080'>Form_Load event was upgraded to Form_Load method and has a new behavior.</a></td><td class="issuecontent">1</td></tr>
+				</table>
+			</td></tr>
+		<tr class="row">
+			<td class="content"><IMG alt="expand/collapse section" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue2">&nbsp;modGlobals.cs</td>
+			<td class="content">modGlobals.bas</td>
+			<td class="content">Module</td>
+			<td class="content">
+		Upgraded</td>	<td class="content">0</td>
+			<td class="content">0</td>
+			<td class="content">0</td>
+		</tr>
+			<tr class="collapsed" id="issue2" bgcolor="#ffffff"><td colspan="8">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="8" class="issuetitle">Upgrade Issues for modGlobals.bas:</td></tr><tr><td class="issuenone">None</td></tr>
+				</table>
+			</td></tr>
+		<tr class="row">
+			<td class="content"><IMG alt="expand/collapse section" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue3">&nbsp;modRpgwoMapFormat.cs</td>
+			<td class="content">modRpgwoMapFormat.bas</td>
+			<td class="content">Module</td>
+			<td class="content">
+		Upgraded with issues</td>	<td class="content">0</td>
+			<td class="content">18</td>
+			<td class="content">18</td>
+		</tr>
+			<tr class="collapsed" id="issue3" bgcolor="#ffffff"><td colspan="8">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="8" class="issuetitle">Upgrade Issues for modRpgwoMapFormat.bas:</td></tr><tr><td width="10" class="issuehdr">#</td><td class="issuehdr" nowrap>Severity</td><td class="issuehdr">Location</td><td class="issuehdr">Object Type</td><td class="issuehdr">Object Name</td><td class="issuehdr">Property</td><td class="issuehdr">Description</td><td class="issuehdr">Qty</td></tr>
+					<tr><td width="10" class="issuecontent">1</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">SaveRpgwoMap</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"><a href='https://www.mobilize.net/vbtonet/ewis/ewi2080'>Put was upgraded to FilePutObject and has a new behavior.</a></td><td class="issuecontent">18</td></tr>
+				</table>
+			</td></tr>
+		<tr valign="top">
+			<td class="foot">3 File(s)</td>
+			<td class="foot">&nbsp;</td>
+			<td class="foot">Forms: 1<br>Modules: 2</td>
+			<td class="foot">
+		Upgraded: 3<BR>
+		Not upgraded: 0
+		</td>
+			<td class="foot">10</td>
+			<td class="foot">20</td>
+			<td class="foot">30</td>
+		</tr>
+		</table>
+		<p class="help">
+		</p>
+				<p>
+					<table class = "note">
+						<tr><td nowrap><b>Upgrade Settings</b></td></tr>
+						<tr><td nowrap><b>Log File:</b> RsfToMap.log</td></tr>
+						<tr><td nowrap><b>Migrate Project To:</b> WinExe</td></tr>
+						<tr><td nowrap><b>Output Directory:</b> C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\Upgraded\</td></tr>
+						<tr><td nowrap><b>Output Name:</b> RsfToMap.csproj</td></tr>
+						<tr><td nowrap><b>Project Name:</b> RsfToMap</td></tr>
+						<tr><td nowrap><b>Project Path:</b> C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map\RsfToMap.vbp</td></tr>
+					</table>
+				</p>
+	</body>
+</html>

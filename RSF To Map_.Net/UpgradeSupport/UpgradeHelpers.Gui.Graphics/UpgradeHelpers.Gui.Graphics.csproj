@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{72E5FF68-A339-4924-85D9-31C32EC540F6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UpgradeHelpers.Gui.Graphics</RootNamespace>
+    <AssemblyName>UpgradeHelpers.Gui.Graphics</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TargetF45;WINFORMS;DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TargetF45;WINFORMS;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <DocumentationFile>bin\Release\UpgradeHelpers.Gui.Graphics.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ImagesHelper.cs" />
+    <Compile Include="Line3D.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LineHeader.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ShapeHelper.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ShapeHelper.designer.cs">
+      <DependentUpon>ShapeHelper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="UpgradeHelpers.VB6.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ShapeHelper.resx">
+      <DependentUpon>ShapeHelper.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpgradeHelpers.VB6.resx">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UpgradeHelpers.Gui.ContainerHelper\UpgradeHelpers.Gui.ContainerHelper.csproj">
+      <Project>{a4c9e0b1-7c82-427a-80f1-b548b5a1b1e8}</Project>
+      <Name>UpgradeHelpers.Gui.ContainerHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UpgradeHelpers.SupportHelper\UpgradeHelpers.SupportHelper.csproj">
+      <Project>{2104ade2-996d-4769-b4ee-add2fae011f8}</Project>
+      <Name>UpgradeHelpers.SupportHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UpgradeHelpers.Utils.ReflectionHelper\UpgradeHelpers.Utils.ReflectionHelper.csproj">
+      <Project>{9ad53694-7256-4635-aeea-92ff88652713}</Project>
+      <Name>UpgradeHelpers.Utils.ReflectionHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UpgradeHelpers.Utils\UpgradeHelpers.Utils.csproj">
+      <Project>{1a91e8f9-beff-4b66-98df-4bfee15fa39f}</Project>
+      <Name>UpgradeHelpers.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- <Import Project="$(ProgramFiles)\MSBuild\StyleCop\v4.7\StyleCop.targets" /> -->
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

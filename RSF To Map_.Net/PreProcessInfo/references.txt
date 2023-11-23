@@ -1,0 +1,20 @@
+<References>
+  <Reference Include="System" />
+  <Reference Include="System.Data" />
+  <Reference Include="System.Drawing" />
+  <Reference Include="System.Windows.Forms" />
+  <Reference Include="System.XML" />
+  <Reference Include="Microsoft.VisualBasic.Compatibility.Data" />
+  <Reference Include="MSDATASRC">
+    <Name>MSDATASRC</Name>
+  </Reference>
+  <COMReference Include="Microsoft.StdFormat">
+    <Guid>{6B263850-900B-11D0-9484-00A0C91110ED}</Guid>
+    <Lcid>0</Lcid>
+    <VersionMajor>1</VersionMajor>
+    <VersionMinor>0</VersionMinor>
+    <WrapperTool>primary</WrapperTool>
+  </COMReference>
+  <Reference Include="Microsoft.CSharp" />
+  <Reference Include="Microsoft.VisualBasic" />
+</References>

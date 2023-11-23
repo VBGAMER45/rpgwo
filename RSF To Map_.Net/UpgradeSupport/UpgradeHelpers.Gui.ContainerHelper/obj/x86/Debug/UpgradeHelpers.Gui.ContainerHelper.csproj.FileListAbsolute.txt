@@ -1,0 +1,7 @@
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.ContainerHelper\bin\Debug\UpgradeHelpers.Gui.ContainerHelper.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.ContainerHelper\bin\Debug\UpgradeHelpers.Gui.ContainerHelper.pdb
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.ContainerHelper\bin\Debug\UpgradeHelpers.Utils.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.ContainerHelper\bin\Debug\UpgradeHelpers.Utils.pdb
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.ContainerHelper\obj\x86\Debug\UpgradeHelpers.Gui.ContainerHelper.csprojResolveAssemblyReference.cache
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.ContainerHelper\obj\x86\Debug\UpgradeHelpers.Gui.ContainerHelper.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.ContainerHelper\obj\x86\Debug\UpgradeHelpers.Gui.ContainerHelper.pdb

@@ -1,0 +1,11 @@
+Type=Exe
+Form=Form1.frm
+Form=Form2.frm
+Module=Predeclares; Predeclares.bas
+Startup="Form1"
+Description=""
+HelpFile=""
+Name="Project1"
+Title="Project1"
+ExeName32="SCIDBALLG.exe"
+

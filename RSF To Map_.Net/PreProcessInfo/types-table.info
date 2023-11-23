@@ -1,0 +1,1 @@
+[segment [list* "RsfToMap.modGlobals.Tokenize" (&fun-type (&array (&string) -1) [segment [&arg (&string) "pData"]])] [list* "RsfToMap.modRpgwoMapFormat.SaveRpgwoMap.mapElements" (&variant)]]

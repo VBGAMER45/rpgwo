@@ -1,0 +1,6 @@
+//SUPPRESSIONPROJ:AutoUpdater
+//VERSION:5.00
+//ENABLE:Yes
+!include msvbvm60.sup
+!include vb6speed.sup
+

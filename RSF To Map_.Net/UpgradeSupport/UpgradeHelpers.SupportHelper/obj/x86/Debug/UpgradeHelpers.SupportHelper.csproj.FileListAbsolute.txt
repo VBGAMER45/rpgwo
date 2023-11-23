@@ -1,0 +1,5 @@
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.SupportHelper\bin\Debug\UpgradeHelpers.SupportHelper.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.SupportHelper\bin\Debug\UpgradeHelpers.SupportHelper.pdb
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.SupportHelper\obj\x86\Debug\UpgradeHelpers.SupportHelper.csprojResolveAssemblyReference.cache
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.SupportHelper\obj\x86\Debug\UpgradeHelpers.SupportHelper.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.SupportHelper\obj\x86\Debug\UpgradeHelpers.SupportHelper.pdb

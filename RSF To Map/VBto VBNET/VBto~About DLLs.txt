@@ -1,0 +1,6 @@
+Unregistered DLLs - None
+
+Registered DLLs:
+{F9043C88-F6F2-101A-A3C9-08002B2F49FB} v1.2	[MSComDlg]	"d:\Program Files (x86)\Semi VB Decompiler\comdlg32.ocx"
+
+{00020430-0000-0000-C000-000000000046} v2.0	[stdole]	"C:\Windows\SysWOW64\stdole2.tlb"

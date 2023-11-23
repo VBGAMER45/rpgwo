@@ -1,0 +1,7 @@
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Utils.ReflectionHelper\bin\Debug\UpgradeHelpers.Utils.ReflectionHelper.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Utils.ReflectionHelper\bin\Debug\UpgradeHelpers.Utils.ReflectionHelper.pdb
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Utils.ReflectionHelper\bin\Debug\UpgradeHelpers.Utils.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Utils.ReflectionHelper\bin\Debug\UpgradeHelpers.Utils.pdb
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Utils.ReflectionHelper\obj\x86\Debug\UpgradeHelpers.Utils.ReflectionHelper.csprojResolveAssemblyReference.cache
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Utils.ReflectionHelper\obj\x86\Debug\UpgradeHelpers.Utils.ReflectionHelper.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Utils.ReflectionHelper\obj\x86\Debug\UpgradeHelpers.Utils.ReflectionHelper.pdb

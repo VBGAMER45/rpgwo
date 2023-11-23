@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UpgradeLog>
+  <Settings>
+    <Setting Name="LogFile" Value="RsfToMap.log" />
+    <Setting Name="GenerateInterfacesForClasses" Value="FALSE" />
+    <Setting Name="ProjectName" Value="RsfToMap" />
+    <Setting Name="OutputName" Value="RsfToMap.csproj" />
+    <Setting Name="OutputDir" Value="C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\PreProcessInfo\" />
+    <Setting Name="ProjectPath" Value="C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map\RsfToMap.vbp" />
+    <Setting Name="MigrateProjectTo" Value="WinExe" />
+  </Settings>
+  <File OldPath="C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map\frmMain.frm" NewPath="C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\PreProcessInfo\frmMain.cs" FileType="Form" Upgraded="True" />
+  <File OldPath="C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map\modRpgwoMapFormat.bas" NewPath="C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\PreProcessInfo\modRpgwoMapFormat.cs" FileType="Module" Upgraded="True" />
+  <File OldPath="C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map\modGlobals.bas" NewPath="C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\PreProcessInfo\modGlobals.cs" FileType="Module" Upgraded="True" />
+</UpgradeLog>
+

@@ -1,0 +1,9 @@
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.VB\bin\Debug\UpgradeHelpers.VB.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.VB\bin\Debug\UpgradeHelpers.VB.pdb
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.VB\bin\Debug\UpgradeHelpers.SupportHelper.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.VB\bin\Debug\UpgradeHelpers.Utils.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.VB\bin\Debug\UpgradeHelpers.SupportHelper.pdb
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.VB\bin\Debug\UpgradeHelpers.Utils.pdb
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.VB\obj\x86\Debug\UpgradeHelpers.VB.csprojResolveAssemblyReference.cache
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.VB\obj\x86\Debug\UpgradeHelpers.VB.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.VB\obj\x86\Debug\UpgradeHelpers.VB.pdb

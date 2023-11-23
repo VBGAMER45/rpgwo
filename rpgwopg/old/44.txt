@@ -1,0 +1,1068 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+ <html>
+<head>
+<title>admins - www.ezboard.com</title>
+ 
+<CENTER><!-- START POPUP AD SCRIPT -->
+<SCRIPT LANGUAGE="javascript" TYPE="text/javascript" src="http://www.bravenet.com/jsbanner.php?size=446"></script>
+<!-- END POPUP AD SCRIPT --></CENTER>
+
+
+<script language="JavaScript">
+<!--
+function sendtext()
+	{
+	var text;
+	var semi = new RegExp(";","g");
+	document.sendspellcheck.checkme.value = document.PostMessage.body.value.replace(semi,";");
+	document.sendspellcheck.form.value = "PostMessage";
+	document.sendspellcheck.field.value = "body";
+	window.open('','SpellChecker','width=700,height=500,top=150,left=150,scrollbars=1,resizable=yes, location=true,toolbar=false');
+	document.sendspellcheck.submit();
+	}
+-->
+</script>
+
+<script language="javascript" src="http://www.ezboard.com/scripts/ezformatting.js"></script>
+
+
+
+<script language="JavaScript">
+
+
+
+
+
+g_html = false;
+
+
+
+
+
+
+
+
+
+function showEl(name,s)
+
+{
+
+if (document.getElementById)
+
+	{
+
+	var el = document.getElementById(name);
+
+         el.style.display = (s)?"":"none";
+
+	}
+
+}
+
+
+
+function setMode (mode)
+
+{
+
+var show = true;
+
+switch (mode) {
+
+ case 0: g_html=false; show=false;break;
+
+ case 1: g_html=false; break;
+
+ case 2: g_html=true; break;
+
+ }
+
+showEl ("insertcodes", show);
+
+showEl ("textformatting", show);
+
+}
+
+</script>
+
+
+
+
+
+
+
+<script language="javascript">
+
+var eList = new Array ( "http://www.ezboard.com/intl/aenglish/images/emoticons/eyes.gif",":rolleyes","http://www.ezboard.com/intl/aenglish/images/emoticons/happy.gif",":D","http://www.ezboard.com/intl/aenglish/images/emoticons/eek.gif",":eek","http://www.ezboard.com/intl/aenglish/images/emoticons/mad.gif",">:","http://www.ezboard.com/intl/aenglish/images/emoticons/glasses.gif","8)","http://www.ezboard.com/intl/aenglish/images/emoticons/pimp.gif",":hat","http://www.ezboard.com/intl/aenglish/images/emoticons/smile.gif",":)","http://www.ezboard.com/intl/aenglish/images/emoticons/sick.gif",":x","http://www.ezboard.com/intl/aenglish/images/emoticons/tongue.gif",":p","http://www.ezboard.com/intl/aenglish/images/emoticons/smokin.gif",":smokin","http://www.ezboard.com/intl/aenglish/images/emoticons/tired.gif","|I","http://www.ezboard.com/intl/aenglish/images/emoticons/frown.gif",":(","http://www.ezboard.com/intl/aenglish/images/emoticons/nerd.gif","8o","http://www.ezboard.com/intl/aenglish/images/emoticons/tongue.gif",":b","http://www.ezboard.com/intl/aenglish/images/emoticons/laugh.gif",":lol","http://www.ezboard.com/intl/aenglish/images/emoticons/embarassed.gif",":o","http://www.ezboard.com/intl/aenglish/images/emoticons/wink.gif",";)","http://www.ezboard.com/intl/aenglish/images/emoticons/indifferent.gif",":|","http://www.ezboard.com/intl/aenglish/images/emoticons/grin.gif"," >D","http://www.ezboard.com/intl/aenglish/images/emoticons/alien.gif","0]","http://www.ezboard.com/intl/aenglish/images/emoticons/roll.gif",":rollin","http://www.ezboard.com/intl/aenglish/images/emoticons/devil.gif",":evil","http://www.ezboard.com/intl/aenglish/images/emoticons/ohwell.gif",":\\" );
+
+</script>
+
+
+
+
+
+<style type="text/css">
+
+#textformatting { margin: 3px 0 3px 0;}
+
+.insertbutton {font-size: 11px; width: 70px;}
+
+.formatbutton {font-size: 11px; width: 25px;}
+
+.fontselect {font-size: 11px;}
+
+#setfont { margin-left:15px; padding: 3px; background-color: #444444; border: 1px solid #000000; }
+
+.fontbutton {font-size: 11px;}
+
+#emoticonbox {padding:4px; width:90%;}
+
+</style>
+
+
+
+
+
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<style>
+<!--
+body { font-family: arial, helvetica, sans-serif;  font-size: 11px; color: #ffffff }
+td { font-size: 13px }
+a:link {color: #ff7e00;  font-family: arial, helvetica, sans-serif;  font-size: 13px; text-decoration: none}
+a:visited {color: #ff7e00;  font-family: arial, helvetica, sans-serif;  font-size: 13px; text-decoration: none} 
+a:active {color: #ffffff;  font-family: arial, helvetica, sans-serif;  font-size: 13px; text-decoration: none} 
+a:hover {text-decoration: underline;  font-family:arial, helvetica, sans-serif;  font-size: 13px; color: #ffffff}
+.m { font-family: arial, helvetica, sans-serif;  font-size: 11px; color: #dddddd }
+.title { font-size: 15px }
+h4 { font-family: arial, helvetica, sans-serif;  font-size: 20px; color: #eeeeee }
+//-->
+</style>
+
+
+</head>
+
+<body text=#000000 bgcolor=#000000 link=#0000FF vlink=#0000FF alink=#FF0000  
+
+
+
+
+
+
+
+>
+
+<center>
+
+<CENTER><!-- START TOP AD SCRIPT -->
+<SCRIPT LANGUAGE="javascript" TYPE="text/javascript" src="http://www.bravenet.com/jsbanner.php?size=445"></script><noscript><div align="center"><iframe src="http://www.ezboard.com/bravenet/ads/eznoscript1.htm" frameborder="0" scrolling="No" width="756" height="60" marginwidth="0" marginheight="0" style="border-width:1px; border-color:000000; border-style:solid;"></iframe></div></noscript>
+<!-- END TOP AD SCRIPT --></CENTER>
+
+
+
+ <br>
+
+ <a href=http://www.ezboard.com/intl/aenglish><img src=http://www.ezboard.com/intl/aenglish/images/ezBoardBanner1s.gif border=0></a>  
+
+<table width=95%><tr><td class=headings valign="bottom">
+
+ <a href=http://pub205.ezboard.com/brpgworldonline>RPG World Online</a><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;> <a href=http://pub205.ezboard.com/frpgworldonlinefrm3>Admin Chat</a><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> admins</td>
+
+<td align=right valign="bottom">
+
+
+
+
+
+
+
+<a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showAddTopicScreenFromWeb><img src=http://www.ezboard.com/themes/space/newTopic.gif border=0 alt="New Topic"></a>
+
+
+
+
+
+ 
+
+ &nbsp;&nbsp;
+
+<a self 
+
+href=http://pub205.ezboard.com/frpgworldonlinefrm3.showAddReplyScreenFromWeb?topicID=71.topic><img 
+
+src=http://www.ezboard.com/themes/space/addReply.gif border=0 alt="Add Reply"></a> 
+
+ 
+
+
+
+</td>
+
+</tr>
+
+<tr><td align=left>
+
+
+
+</td>
+
+<td align=right> <br> 
+
+
+
+<a href="http://pub205.ezboard.com/frpgworldonlinefrm3.showNextMessage?topicID=71.topic">
+
+
+
+ Next Topic >> </a>
+
+ </td>
+
+</tr>
+
+</table> 
+
+
+
+
+
+<table border=0 cellpadding=0 cellspacing=0 width=95%><tr><td bgcolor=#000000>
+
+<table border=0 width=100% cellpadding=5 cellspacing=1>
+
+
+
+
+
+<tr><td valign=top bgcolor=#ff7e00 class=headings>
+
+<font color=#FFFFFF>Author</font>
+
+</td>
+
+<td valign=top bgcolor=#ff7e00 class=headings>
+
+<font color=#FFFFFF>Comment</font>
+
+</td></tr>
+
+<tr bgcolor=#444444><td nowrap width=20% valign=top align=left>
+
+<span class=title> <A HREF=http://pub83.ezboard.com/brpgworldonline.showLocalUserPublicProfile?login=swiggs>swiggs</A></span><br>
+
+ <span class=usertitle>Administrator</span><br> 
+
+ 
+
+Posts: 8<br>
+
+ 
+
+<font color=#FF0000>(1/14/02 8:26 pm)</font><br>
+
+ 67.208.123.12<br> 
+
+
+
+   <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showAddReplyScreenFromWeb?topicID=71.topic>Reply</a> 
+
+
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showEditScreen?topicID=71.topic>Edit</a> 
+
+
+
+  | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.deleteTopicConfirm?topicID=71.topic>Del All</a> 
+
+ 
+
+  
+
+
+
+
+
+</td>
+
+<td valign=top align=left class=m>
+
+
+
+<img src=http://www.ezboard.com/themes/grunge/unread.gif border=0 alt="New Post">
+
+
+
+
+
+
+
+<span class=title> admins</span><hr size=1>
+
+ Hey, how's it goin everyone? Well i haven't been playin the game very much lately, but I have been checkin in and seein what was goin on. It seems to me that some admins seem to be causing problems with players, and pretty much messin up the game. I know when mickey was making this game it was for the players and I feel it should be given back to the players. It seems that players can do most of the necessities in the game now and admins aren't really needed. There have been admin problems all the way back to the beginning of the game. So, with this said, I feel there should be no admins and mickey should just go back to running the game himself, instead of other people who he hardly even knows. I'm not trying to cause any arguements, just making an opinion. Peace.   
+
+<p></p><i></i></td></tr><tr bgcolor=#333333><td nowrap width=20% valign=top align=left>
+
+<span class=title> <A HREF=http://pub83.ezboard.com/uretroman56.showPublicProfile?language=EN>Retroman56</A></span><br>
+
+ <span class=usertitle>Admin</span><br> 
+
+ 
+
+Posts: 132<br>
+
+ 
+
+<font color=#FF0000>(1/14/02 8:33 pm)</font><br>
+
+ 142.165.18.227<br> 
+
+
+
+   <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showAddReplyScreenFromWeb?topicID=71.topic&index=1>Reply</a> 
+
+
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showEditScreen?topicID=71.topic&index=1>Edit</a> 
+
+
+
+ 
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.confirmDeleteSingle?topicID=71.topic&index=1>Del</a>  
+
+  
+
+
+
+<BR><img src=http://www.angelfire.com/games3/rpgwo/penguinx.gif WIDTH=60 HEIGHT=60>
+
+</td>
+
+<td valign=top align=left class=m>
+
+
+
+<img src=http://www.ezboard.com/themes/grunge/unread.gif border=0 alt="New Post">
+
+
+
+
+
+
+
+<span class=title> Re: admins</span><hr size=1>
+
+ I only need basic commands for general testing.<br>
+<br>
+As far as I know, Mickey is demoting a lot of admins now.  So you'll probably get what you want. 
+
+<p></p><i></i></td></tr><tr bgcolor=#444444><td nowrap width=20% valign=top align=left>
+
+<span class=title> <A HREF=http://pub83.ezboard.com/brpgworldonline.showLocalUserPublicProfile?login=rummager>Rummager</A></span><br>
+
+ <span class=usertitle>Administrator</span><br> 
+
+ 
+
+Posts: 323<br>
+
+ 
+
+<font color=#FF0000>(1/29/02 1:08 am)</font><br>
+
+ 65.101.153.235<br> 
+
+
+
+   <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showAddReplyScreenFromWeb?topicID=71.topic&index=2>Reply</a> 
+
+
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showEditScreen?topicID=71.topic&index=2>Edit</a> 
+
+
+
+ 
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.confirmDeleteSingle?topicID=71.topic&index=2>Del</a>  
+
+  
+
+
+
+
+
+</td>
+
+<td valign=top align=left class=m>
+
+
+
+<img src=http://www.ezboard.com/themes/grunge/unread.gif border=0 alt="New Post">
+
+
+
+
+
+
+
+<span class=title> Re: admins</span><hr size=1>
+
+ o.0 
+
+<p><br><br><b>The dynamic principle of fantasy is play.</b>
+</p><i></i></td></tr><tr bgcolor=#333333><td nowrap width=20% valign=top align=left>
+
+<span class=title> <A HREF=http://pub83.ezboard.com/brpgworldonline.showLocalUserPublicProfile?login=mickey>Mickey</A>&nbsp; <IMG HEIGHT=10 WIDTH=10 SRC="http://www.ezboard.com/ezgfx/gicons/white_fire.gif" BORDER=0></span><br>
+
+ <span class=usertitle>Creator</span><br> 
+
+ 
+
+Posts: 338<br>
+
+ 
+
+<font color=#FF0000>(2/12/02 3:04 pm)</font><br>
+
+ 12.108.161.60<br> 
+
+
+
+   <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showAddReplyScreenFromWeb?topicID=71.topic&index=3>Reply</a> 
+
+
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showEditScreen?topicID=71.topic&index=3>Edit</a> 
+
+
+
+ 
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.confirmDeleteSingle?topicID=71.topic&index=3>Del</a>  
+
+  
+
+
+
+
+
+</td>
+
+<td valign=top align=left class=m>
+
+
+
+<img src=http://www.ezboard.com/themes/grunge/unread.gif border=0 alt="New Post">
+
+
+
+
+
+
+
+<span class=title> Re: admins</span><hr size=1>
+
+ Basically, I will be the only admin with building power.<br>
+<br>
+The rest will just be there to muzzle, ban, etc., and to give general help to n00bs. That is the most important thing really, help n00bs out.<br>
+<br>
+So I will be making the towns, quests, and the rules. I think some admins had made some rules like no PK'ing at the Life stones, well, come on, if you are PK, tough. But soon I will have town guards and a alignment on players so that guards will attack PK'rs if the kill nearby, hmmm... we'll see how it goes as always. 
+
+<p></p><i></i></td></tr><tr bgcolor=#444444><td nowrap width=20% valign=top align=left>
+
+<span class=title> <A HREF=http://pub83.ezboard.com/brpgworldonline.showLocalUserPublicProfile?login=rummager>Rummager</A></span><br>
+
+ <span class=usertitle>Administrator</span><br> 
+
+ 
+
+Posts: 332<br>
+
+ 
+
+<font color=#FF0000>(2/12/02 11:11 pm)</font><br>
+
+ 65.101.153.67<br> 
+
+
+
+   <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showAddReplyScreenFromWeb?topicID=71.topic&index=4>Reply</a> 
+
+
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showEditScreen?topicID=71.topic&index=4>Edit</a> 
+
+
+
+ 
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.confirmDeleteSingle?topicID=71.topic&index=4>Del</a>  
+
+  
+
+
+
+
+
+</td>
+
+<td valign=top align=left class=m>
+
+
+
+<img src=http://www.ezboard.com/themes/grunge/unread.gif border=0 alt="New Post">
+
+
+
+
+
+
+
+<span class=title> Re: admins</span><hr size=1>
+
+ I agree, thanks for speaking up Mickey... its a step in the right direction.<br>
+<br>
+Basicly it got out of hand, and time for you to move in again and take full charge... Then you can see whats still goin around and how it is and see how you feel later about things. 
+
+<p><br><br><b>The dynamic principle of fantasy is play.</b>
+</p><i></i></td></tr><tr bgcolor=#333333><td nowrap width=20% valign=top align=left>
+
+<span class=title> <A HREF=http://pub83.ezboard.com/brpgworldonline.showLocalUserPublicProfile?login=swiggs>swiggs</A></span><br>
+
+ <span class=usertitle>Administrator</span><br> 
+
+ 
+
+Posts: 9<br>
+
+ 
+
+<font color=#FF0000>(2/15/02 3:00 pm)</font><br>
+
+ 67.201.175.20<br> 
+
+
+
+   <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showAddReplyScreenFromWeb?topicID=71.topic&index=5>Reply</a> 
+
+
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showEditScreen?topicID=71.topic&index=5>Edit</a> 
+
+
+
+ 
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.confirmDeleteSingle?topicID=71.topic&index=5>Del</a>  
+
+  
+
+
+
+
+
+</td>
+
+<td valign=top align=left class=m>
+
+
+
+<img src=http://www.ezboard.com/themes/grunge/unread.gif border=0 alt="New Post">
+
+
+
+
+
+
+
+<span class=title> Re: admins</span><hr size=1>
+
+ I'd have to agree also. I'm glad your taking control again Mickey. 
+
+<p></p><i></i></td></tr><tr bgcolor=#444444><td nowrap width=20% valign=top align=left>
+
+<span class=title> <A HREF=http://pub83.ezboard.com/uatrus14.showPublicProfile?language=EN>Atrus14</A></span><br>
+
+ <span class=usertitle>Admin</span><br> 
+
+ 
+
+Posts: 118<br>
+
+ 
+
+<font color=#FF0000>(2/21/02 7:37 am)</font><br>
+
+ 66.156.226.96<br> 
+
+
+
+   <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showAddReplyScreenFromWeb?topicID=71.topic&index=6>Reply</a> 
+
+
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showEditScreen?topicID=71.topic&index=6>Edit</a> 
+
+
+
+ 
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.confirmDeleteSingle?topicID=71.topic&index=6>Del</a>  
+
+  
+
+
+
+
+
+</td>
+
+<td valign=top align=left class=m>
+
+
+
+<img src=http://www.ezboard.com/themes/grunge/unread.gif border=0 alt="New Post">
+
+
+
+
+
+
+
+<span class=title> Re: admins</span><hr size=1>
+
+ It's funny.. but no one seems to get my point still after all this time. Before I left, everything was fine. Totally and completely. We had a slate of set rules that were fair to all players. The only problem was the admins who did not abide by these rules. Im tired of not mentioning names, or holding my tounge. James is one of the biggest of all the admins who would not go by the rules. I caught him cheating his player numerous times, then cheating OTHER players numerous times (He power leveled with his own char some guy in his square house with no entrance). And then he would come on and give people undestructable walled houses and go against everything we were trying to get done. It doesnt really matter anymore but whatever. The point is after I left I told UT and Leo do whatever the hell you want. Im not making the rules or trying to keep them up anymore. And thats exactly when it all went to hell. Obviously my point has not been taken yet. Because Mickey is doing the exact opposite as usual. Taking the game by yourself isnt the answer, its getting a real staff to work. And making them ABIDE by your rules and rule strictly over the few who can build and run the game. I would never of left if I had even an ounce of your help trying to get people to listen to me. But of course when I wanted things to be strict I was always countered by 50 players and 2 admins who said what I was doing (by enforcing rules) was wrong. I gave permission to kill anyone running against a wall cheating. (By first moving the wall and making sure they are truley afk). Or anyone training off of eachother for experience. And these things did work and cut down. I got a great market running but of course some admins would still sell things at cheap prices or free. Things like taking out the warps that made the whole world one small map, I was countered by you Mickey. And all the whining players who couldnt get to there huge mansions. The point is I gave up because no one would back me. Hell, maybe I was the wrong one. That must be it. Always is.   
+
+<p></p><i>Edited by: <A HREF=http://pub83.ezboard.com/uatrus14.showPublicProfile?language=EN>Atrus14</A> at: 2/21/02 7:38:55 am<br></i></td></tr><tr bgcolor=#333333><td nowrap width=20% valign=top align=left>
+
+<span class=title> <A HREF=http://pub83.ezboard.com/brpgworldonline.showLocalUserPublicProfile?login=rummager>Rummager</A>&nbsp; <IMG HEIGHT=10 WIDTH=10 SRC="http://www.angelfire.com/super/rummager/Rummager2.txt" BORDER=0></span><br>
+
+ <span class=usertitle>Administrator</span><br> 
+
+ 
+
+Posts: 345<br>
+
+ 
+
+<font color=#FF0000>(2/21/02 11:03 am)</font><br>
+
+ 65.101.155.41<br> 
+
+
+
+   <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showAddReplyScreenFromWeb?topicID=71.topic&index=7>Reply</a> 
+
+
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showEditScreen?topicID=71.topic&index=7>Edit</a> 
+
+
+
+ 
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.confirmDeleteSingle?topicID=71.topic&index=7>Del</a>  
+
+  
+
+
+
+<BR><img src=http://www.angelfire.com/super/rummager/Rummager/portrait2.txt WIDTH=60 HEIGHT=60>
+
+</td>
+
+<td valign=top align=left class=m>
+
+
+
+<img src=http://www.ezboard.com/themes/grunge/unread.gif border=0 alt="New Post">
+
+
+
+
+
+
+
+<span class=title> Re: admins</span><hr size=1>
+
+ It didnt go to hell, we just chose a wrong person to host the server, and gave him to many privaleges that he in turn abused.<br>
+<br>
+The game isnt in dead water, it just took a jump start to get it back goin again.<br>
+<br>
+The in game issues were just that.. in game issues that in time would be dealt with, also we gotta start somewhere and learn how the player market reacts to money, and even though Mickey may not have been devoting as much time and listening to you to help out the market.. maybe because he was busy doin other stuff, it doesnt mean it was looked passed and was always going to be that way....<br>
+<br>
+Unfortunately a real staff costs money... or it doesnt but then we get admins like Leo...  Ofcoarse there are some that can put in a bit of quality time and help the game but we all need breaks and cant be counted on ALL the time and expect to know and do everything straight as an arrow as others wanted or were expected by other admins to know and do...<br>
+<br>
+As i see it the time spent in the passed was a learning phase...  some of it was good, others were bad, but we all still learned a bit.  I am happy with my abilities I learned using mspaint, and hope later to move onto more diffucult things.. As I was hoping when i started to devote some time to this game.<br>
+<br>
+Next time if your still around and able to donate your time and if Mickey allows us to continue to help with his game... then well do better job then before by knowing from our past mistakes and triumphs. 
+
+<p><br><br><b>The dynamic principle of fantasy is play.</b>
+</p><i></i></td></tr><tr bgcolor=#444444><td nowrap width=20% valign=top align=left>
+
+<span class=title> <A HREF=http://pub83.ezboard.com/brpgworldonline.showLocalUserPublicProfile?login=swiggs>swiggs</A></span><br>
+
+ <span class=usertitle>Administrator</span><br> 
+
+ 
+
+Posts: 10<br>
+
+ 
+
+<font color=#FF0000>(2/21/02 2:42 pm)</font><br>
+
+ 67.201.77.213<br> 
+
+
+
+   <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showAddReplyScreenFromWeb?topicID=71.topic&index=8>Reply</a> 
+
+
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showEditScreen?topicID=71.topic&index=8>Edit</a> 
+
+
+
+ 
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.confirmDeleteSingle?topicID=71.topic&index=8>Del</a>  
+
+  
+
+
+
+
+
+</td>
+
+<td valign=top align=left class=m>
+
+
+
+<img src=http://www.ezboard.com/themes/grunge/unread.gif border=0 alt="New Post">
+
+
+
+
+
+
+
+<span class=title> Re: admins</span><hr size=1>
+
+ Yet again.....I agree with Rummager. 
+
+<p></p><i></i></td></tr><tr bgcolor=#333333><td nowrap width=20% valign=top align=left>
+
+<span class=title> <A HREF=http://pub83.ezboard.com/uatrus14.showPublicProfile?language=EN>Atrus14</A></span><br>
+
+ <span class=usertitle>Admin</span><br> 
+
+ 
+
+Posts: 120<br>
+
+ 
+
+<font color=#FF0000>(2/22/02 8:13 pm)</font><br>
+
+ 66.156.226.96<br> 
+
+
+
+   <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showAddReplyScreenFromWeb?topicID=71.topic&index=9>Reply</a> 
+
+
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showEditScreen?topicID=71.topic&index=9>Edit</a> 
+
+
+
+ 
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.confirmDeleteSingle?topicID=71.topic&index=9>Del</a>  
+
+  
+
+
+
+
+
+</td>
+
+<td valign=top align=left class=m>
+
+
+
+<img src=http://www.ezboard.com/themes/grunge/unread.gif border=0 alt="New Post">
+
+
+
+
+
+
+
+<span class=title> Re: admins</span><hr size=1>
+
+ Ok. NO ONE GETS WHAT I AM SAYING. For god sakes, just listen to me. When I sat on there 24/7 babysitting and enforcing rules by myself. Leo ABIDED by all of them and did what was told. When I told him do whatever you want its when he went wrong. Because I wanted everyone to see how good it was without any rules and just a staff of rouge admins. Most likely, if I still had sat on there till this day 24/7 the game would still be up running by Leo. My point is I had no help trying to get any kind of rules working. So I let them go and thats when Leo took over and what-not. Im not saying Mickey was no help, and he's worthless and this and that. And I know he took a well-needed break. All im saying is next time make this team work and enforce these rules. Give the power to who you trust and actually listen to them. Dont go behind our backs and do things like promote admins or make new ones. (If I renember we were to vote on super admins, UT was made one without us. And then leo was made an admin even though I was told and thought he wouldnt.) There needs to be one thing and thats COMMUNICATION. 
+
+<p></p><i></i></td></tr><tr bgcolor=#444444><td nowrap width=20% valign=top align=left>
+
+<span class=title> <A HREF=http://pub83.ezboard.com/unirvanarules67.showPublicProfile?language=EN>nirvanarules67</A></span><br>
+
+ <span class=usertitle>Administrator</span><br> 
+
+ 
+
+Posts: 44<br>
+
+ 
+
+<font color=#FF0000>(3/20/02 2:26 pm)</font><br>
+
+ 216.65.164.106<br> 
+
+
+
+   <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showAddReplyScreenFromWeb?topicID=71.topic&index=10>Reply</a> 
+
+
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.showEditScreen?topicID=71.topic&index=10>Edit</a> 
+
+
+
+ 
+
+ | <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.confirmDeleteSingle?topicID=71.topic&index=10>Del</a>  
+
+  
+
+
+
+
+
+</td>
+
+<td valign=top align=left class=m>
+
+
+
+<img src=http://www.ezboard.com/themes/grunge/unread.gif border=0 alt="New Post">
+
+
+
+
+
+
+
+<span class=title> Re: admins</span><hr size=1>
+
+ ummm  i know i have been gone for a wile but i remember why i quit playing, cuse it was fun when i use too get on and see how strong my char was i think you guys made things too complicated and it turned from fun too stupid. im not alone here my best freind jake (-ions) agrees totaly. i dont know if you guy think im worng but somthing did happen. and it screwed this game up. i think one of the thing was for sure arugements it was dumb admins fought all the time. im gonna try to play today and see how things are but i have a feeling that it hasnt changed<br>
+<br>
+-steven- 
+
+<p></p><i></i></td></tr>
+
+</table>
+
+ </td></tr></table> 
+
+
+
+<table border=0 width=95%><tr><td align=left valign="top"> </td>
+
+<td align=right valign="top">
+
+
+
+<a href="http://pub205.ezboard.com/frpgworldonlinefrm3.showNextMessage?topicID=71.topic">
+
+
+
+ Next Topic >> </a>
+
+<br><br>
+
+
+
+
+
+<a self 
+
+href=http://pub205.ezboard.com/frpgworldonlinefrm3.showAddReplyScreenFromWeb?topicID=71.topic&index=10><img 
+
+src=http://www.ezboard.com/themes/space/addReply.gif border=0 alt="Add Reply"></a> 
+
+
+
+
+
+</td></tr></table>
+
+<br>
+
+<table width=95% border=0>
+
+<td valign="top">
+
+ <a href=http://pub205.ezboard.com/frpgworldonlinefrm3.emailToFriend?topicID=71.topic><img src=http://www.ezboard.com/image/email.gif border=0 alt="Email This To a Friend"> Email This To a Friend</a><br> 
+
+<a href=http://pub205.ezboard.com/frpgworldonlinefrm3.threadControl?topicID=71.topic><img src=http://www.ezboard.com/themes/space/deleteThread.gif border=0 alt="Topic Control Image"> Topic Commands</a><br>
+
+ 
+
+<a href=http://pub205.ezboard.com/frpgworldonlinefrm3.subscribeToTopic?topicID=71.topic>
+
+
+
+
+
+
+
+
+
+<img src=http://www.ezboard.com/themes/ultimate/subscribe.gif width=20 height=20 border=0 alt="Click to receive email notification of replies"> Click to receive email notification of replies</a> <br> 
+
+
+
+</td>
+
+<td align="right" valign="top"></td>
+
+</tr>
+
+<tr align="right"><td colspan=2>
+
+<form action=http://pub205.ezboard.com/BBSForum.jumpShowForum method=post>
+
+<table border="0" cellspacing="0" cellpadding="1">
+
+<tr>
+
+<td><b>jump to:</b>
+
+<select name=forumName>
+
+<option value="rpgworldonlinefrm7">Announcements
+
+ 
+
+(New) 
+
+<option value="rpgworldonlinefrm3">Admin Chat
+
+ 
+
+(New) 
+
+<option value="rpgworldonlinefrm1">General
+
+ 
+
+(New) 
+
+<option value="rpgworldonlinefrm2">Suggestions
+
+ 
+
+(New) 
+
+<option value="rpgworldonlinefrm8">Bugs
+
+ 
+
+(New) 
+
+<option value="rpgworldonlinefrm6">Getting Started
+
+ 
+
+(New) 
+
+<option value="rpgworldonlinefrm5">Frequently Asked Questions
+
+ 
+
+(New) 
+
+<option value="rpgworldonlinefrm10">Guild Hall
+
+ 
+
+(New) 
+
+<option value="rpgworldonlinefrm9">Role Playing
+
+ 
+
+(New) 
+
+<option value="rpgworldonlinefrm11">Questions or Suggestions for Admins
+
+ 
+
+(New) 
+
+
+
+</select>
+
+</td>
+
+<td>
+
+<input type=submit value="Go" class=inputbutton>
+
+</td>
+
+</tr>
+
+</table>
+
+</form>
+
+</td></tr></table><br>
+
+<font color=#FF0000>- </font>
+
+<a href=http://pub205.ezboard.com/brpgworldonline>RPG World Online</a>
+
+<font color=#FF0000> - </font>
+
+<a href=http://pub205.ezboard.com/frpgworldonlinefrm3>Admin Chat</a>
+
+ 
+
+<font color=#FF0000> - </font>
+
+<a href="http://www.thedropship.com/rpgwo/rpgwo">Back to the RPG World Online site</a>
+
+
+
+<font color=#FF0000> - </font>
+
+<br><br><table border=0 align=center><tr><td align=center><a href="http://login.ezboard.com/BBSSystem.showUserPaymentScreen" target="_blank">Upgrade your account to ezSupporter...</a></td><td><img src="http://www.ezboard.com/image/spacer.gif" width=15 height=1 border=0></td><td align=center><a href="http://login.ezboard.com/BBSSystem.showUserPaymentScreen" target="_blank">...and never see another ad or pop-up again</a></td></tr></table><CENTER><!-- START BOTTOM AD SCRIPT -->
+<SCRIPT LANGUAGE="javascript" TYPE="text/javascript" src="http://www.bravenet.com/jsbanner.php?size=447"></script><noscript><div align="center"><iframe src="http://www.ezboard.com/bravenet/ads/eznoscript1.htm" frameborder="0" scrolling="No" width="756" height="60" marginwidth="0" marginheight="0" style="border-width:1px; border-color:000000; border-style:solid;"></iframe></div></noscript>
+<!-- END BOTTOM AD SCRIPT --></CENTER>
+
+
+
+<br><br>Powered By <a href=http://www.ezboard.com/>ezboard®</a> Ver. 7.31i<br>Copyright ©1999-2003 ezboard, Inc.
+
+</center>
+
+</body>
+
+</html>
+
+
+
+
+

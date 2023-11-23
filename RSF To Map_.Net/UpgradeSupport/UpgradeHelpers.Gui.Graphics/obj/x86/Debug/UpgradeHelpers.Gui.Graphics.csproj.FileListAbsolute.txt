@@ -1,0 +1,17 @@
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\bin\Debug\UpgradeHelpers.VB6.resx
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\bin\Debug\UpgradeHelpers.Gui.Graphics.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\bin\Debug\UpgradeHelpers.Gui.Graphics.pdb
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\bin\Debug\UpgradeHelpers.Gui.ContainerHelper.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\bin\Debug\UpgradeHelpers.SupportHelper.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\bin\Debug\UpgradeHelpers.Utils.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\bin\Debug\UpgradeHelpers.Utils.ReflectionHelper.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\bin\Debug\UpgradeHelpers.Gui.ContainerHelper.pdb
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\bin\Debug\UpgradeHelpers.SupportHelper.pdb
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\bin\Debug\UpgradeHelpers.Utils.ReflectionHelper.pdb
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\bin\Debug\UpgradeHelpers.Utils.pdb
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\obj\x86\Debug\UpgradeHelpers.Gui.Graphics.csprojResolveAssemblyReference.cache
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\obj\x86\Debug\UpgradeHelpers.Gui.ShapeHelper.resources
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\obj\x86\Debug\UpgradeHelpers.Gui.Graphics.UpgradeHelpers.VB6.resources
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\obj\x86\Debug\UpgradeHelpers.Gui.Graphics.csproj.GenerateResource.Cache
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\obj\x86\Debug\UpgradeHelpers.Gui.Graphics.dll
+C:\Users\Jonathan\Desktop\githubprojects\rpgwo\RSF To Map_.Net\UpgradeSupport\UpgradeHelpers.Gui.Graphics\obj\x86\Debug\UpgradeHelpers.Gui.Graphics.pdb
